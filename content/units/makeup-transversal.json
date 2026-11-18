@@ -1,0 +1,611 @@
+{
+  "id": "makeup-transversal",
+  "title": "Prep: Angles on a Transversal",
+  "description": "Focused prep for the Angles on a Transversal make-up quiz: name each angle pair, know which are equal and which add to 180°, and solve for x.",
+  "strand": "makeup",
+  "status": "starter",
+  "related": ["parallel-perpendicular"],
+  "practice": [
+    {
+      "id": "mt-p01",
+      "type": "mcq",
+      "prompt": "Lines m and n are parallel. What kind of angle pair are ∠1 and ∠5?",
+      "figure": {
+        "alt": "Parallel lines m and n cut by a transversal. Angle 1 is above line m on the left. Angle 5 is above line n on the left.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 84.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 84.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 214.4, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 214.4, "name": "" },
+          { "id": "P", "x": 263.6, "y": 84.2, "name": "" },
+          { "id": "Q", "x": 188.4, "y": 214.4, "name": "" },
+          { "id": "PU", "x": 308.7, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 143.3, "y": 292.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "PU", "text": "1", "deg": 120.0 },
+          { "at": "Q", "a": "QL", "b": "P", "text": "5", "deg": 120.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 68.2, "text": "m" }, { "x": 450.0, "y": 198.4, "text": "n" }]
+      },
+      "choices": ["Corresponding angles", "Alternate interior angles", "Alternate exterior angles", "Vertical angles"],
+      "answer": "Corresponding angles",
+      "acceptable": [],
+      "hints": [
+        "Look at where each angle sits at its crossing: above or below the line, left or right of the transversal.",
+        "∠1 is upper-left at line m. ∠5 is upper-left at line n.",
+        "Same position at each crossing = corresponding."
+      ],
+      "solution": "Both are in the upper-left spot at their crossing, so they are <b>corresponding angles</b>. With parallel lines they are congruent."
+    },
+    {
+      "id": "mt-p02",
+      "type": "mcq",
+      "prompt": "Lines m and n are parallel. What kind of angle pair are ∠4 and ∠5?",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Angle 4 is below line m on the right. Angle 5 is above line n on the left.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 84.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 84.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 214.4, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 214.4, "name": "" },
+          { "id": "P", "x": 263.6, "y": 84.2, "name": "" },
+          { "id": "Q", "x": 188.4, "y": 214.4, "name": "" },
+          { "id": "PU", "x": 308.7, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 143.3, "y": 292.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "Q", "b": "PR", "text": "4", "deg": 120.0 },
+          { "at": "Q", "a": "QL", "b": "P", "text": "5", "deg": 120.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 68.2, "text": "m" }, { "x": 450.0, "y": 198.4, "text": "n" }]
+      },
+      "choices": ["Alternate interior angles", "Same-side interior angles", "Corresponding angles", "Alternate exterior angles"],
+      "answer": "Alternate interior angles",
+      "acceptable": [],
+      "hints": [
+        "Interior = between the two parallel lines.",
+        "Are ∠4 and ∠5 on the same side of the transversal or opposite sides?",
+        "Between the lines + opposite sides = alternate interior."
+      ],
+      "solution": "Both are between m and n, on opposite sides of the transversal: <b>alternate interior angles</b> (congruent)."
+    },
+    {
+      "id": "mt-p03",
+      "type": "mcq",
+      "prompt": "Lines m and n are parallel. What kind of angle pair are ∠2 and ∠7?",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Angle 2 is above line m on the right. Angle 7 is below line n on the left.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 84.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 84.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 214.4, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 214.4, "name": "" },
+          { "id": "P", "x": 263.6, "y": 84.2, "name": "" },
+          { "id": "Q", "x": 188.4, "y": 214.4, "name": "" },
+          { "id": "PU", "x": 308.7, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 143.3, "y": 292.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PU", "b": "PR", "text": "2", "deg": 60.0 },
+          { "at": "Q", "a": "QL", "b": "QD", "text": "7", "deg": 60.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 68.2, "text": "m" }, { "x": 450.0, "y": 198.4, "text": "n" }]
+      },
+      "choices": ["Alternate exterior angles", "Alternate interior angles", "Corresponding angles", "Linear pair"],
+      "answer": "Alternate exterior angles",
+      "acceptable": [],
+      "hints": [
+        "Exterior = outside the two parallel lines.",
+        "∠2 is above m and ∠7 is below n, so both are outside.",
+        "Outside + opposite sides of the transversal = alternate exterior."
+      ],
+      "solution": "Both are outside the parallel lines, on opposite sides of the transversal: <b>alternate exterior angles</b> (congruent)."
+    },
+    {
+      "id": "mt-p04",
+      "type": "mcq",
+      "prompt": "What kind of angle pair are ∠1 and ∠4?",
+      "figure": {
+        "alt": "A transversal crossing line m. Angle 1 is upper-left and angle 4 is lower-right at the same crossing.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 84.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 84.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 214.4, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 214.4, "name": "" },
+          { "id": "P", "x": 263.6, "y": 84.2, "name": "" },
+          { "id": "Q", "x": 188.4, "y": 214.4, "name": "" },
+          { "id": "PU", "x": 308.7, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 143.3, "y": 292.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "PU", "text": "1", "deg": 120.0 },
+          { "at": "P", "a": "Q", "b": "PR", "text": "4", "deg": 120.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 68.2, "text": "m" }, { "x": 450.0, "y": 198.4, "text": "n" }]
+      },
+      "choices": ["Vertical angles", "Linear pair", "Corresponding angles", "Alternate interior angles"],
+      "answer": "Vertical angles",
+      "acceptable": [],
+      "hints": [
+        "Both angles are at the same crossing point.",
+        "They are across from each other, like an X.",
+        "Angles across from each other at one crossing are vertical angles."
+      ],
+      "solution": "∠1 and ∠4 are opposite each other at the same intersection: <b>vertical angles</b>. Vertical angles are always congruent."
+    },
+    {
+      "id": "mt-p05",
+      "type": "numeric",
+      "prompt": "∠1 and ∠2 form a linear pair. m∠1 = 125°. Find x, the measure of ∠2.",
+      "figure": {
+        "alt": "Line m crossed by a transversal. Angle 1, upper-left, is 125 degrees. Angle 2, upper-right next to it, is marked x.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 81.4, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 81.4, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 207.1, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 207.1, "name": "" },
+          { "id": "P", "x": 270.0, "y": 81.4, "name": "" },
+          { "id": "Q", "x": 182.0, "y": 207.1, "name": "" },
+          { "id": "PU", "x": 322.8, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 129.2, "y": 282.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "PU", "text": "125°", "deg": 125.0 },
+          { "at": "P", "a": "PU", "b": "PR", "text": "x", "ask": true, "deg": 55.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 65.4, "text": "m" }, { "x": 450.0, "y": 191.1, "text": "n" }]
+      },
+      "answer": "55",
+      "acceptable": [],
+      "check": "180 - 125",
+      "hints": [
+        "A linear pair sits side by side on a straight line.",
+        "Angles on a straight line add to 180°.",
+        "x = 180 − 125."
+      ],
+      "solution": "Linear pair → supplementary: x = 180 − 125 = <b>55°</b>"
+    },
+    {
+      "id": "mt-p06",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. Corresponding angles measure (3x + 10)° and (5x − 20)°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Corresponding angles in the upper-right spots are labeled 3x + 10 degrees and 5x − 20 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 81.4, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 81.4, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 207.1, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 207.1, "name": "" },
+          { "id": "P", "x": 270.0, "y": 81.4, "name": "" },
+          { "id": "Q", "x": 182.0, "y": 207.1, "name": "" },
+          { "id": "PU", "x": 322.8, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 129.2, "y": 282.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PU", "b": "PR", "text": "(3x + 10)°", "out": true, "deg": 55 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "(5x − 20)°", "out": true, "deg": 55 }
+        ],
+        "notes": [{ "x": 450.0, "y": 65.4, "text": "m" }, { "x": 450.0, "y": 191.1, "text": "n" }]
+      },
+      "answer": "15",
+      "acceptable": [],
+      "check": "(10 + 20) / (5 - 3)",
+      "hints": [
+        "Corresponding angles are congruent when the lines are parallel.",
+        "Set them equal: 3x + 10 = 5x − 20.",
+        "Get the x's on one side: 30 = 2x."
+      ],
+      "solution": "3x + 10 = 5x − 20<br>30 = 2x<br>x = <b>15</b> (each angle is 55°)"
+    },
+    {
+      "id": "mt-p07",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. Same-side interior angles measure (2x + 30)° and (4x)°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Two same-side interior angles on the right are labeled 2x + 30 degrees and 4x degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 87.8, "name": "" },
+          { "id": "PR", "x": 411.9, "y": 87.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 224.2, "name": "" },
+          { "id": "QR", "x": 411.9, "y": 224.2, "name": "" },
+          { "id": "P", "x": 196.9, "y": 87.8, "name": "" },
+          { "id": "Q", "x": 221.0, "y": 224.2, "name": "" },
+          { "id": "PU", "x": 182.5, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 235.4, "y": 306.0, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "Q", "b": "PR", "text": "(2x + 30)°", "out": true, "deg": 80 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "(4x)°", "out": true, "deg": 100 }
+        ],
+        "notes": [{ "x": 415.9, "y": 71.8, "text": "m" }, { "x": 415.9, "y": 208.2, "text": "n" }]
+      },
+      "answer": "25",
+      "acceptable": [],
+      "check": "(180 - 30) / (2 + 4)",
+      "hints": ["Same-side interior angles are supplementary: they add to 180°.", "(2x + 30) + 4x = 180.", "6x + 30 = 180."],
+      "solution": "(2x + 30) + 4x = 180<br>6x = 150<br>x = <b>25</b> (the angles are 80° and 100°)"
+    },
+    {
+      "id": "mt-p08",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. Alternate exterior angles measure (7x − 9)° and (4x + 27)°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Alternate exterior angles, upper-left at m and lower-right at n, are labeled 7x − 9 degrees and 4x + 27 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 87.8, "name": "" },
+          { "id": "PR", "x": 424.4, "y": 87.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 224.2, "name": "" },
+          { "id": "QR", "x": 424.4, "y": 224.2, "name": "" },
+          { "id": "P", "x": 196.9, "y": 87.8, "name": "" },
+          { "id": "Q", "x": 233.4, "y": 224.2, "name": "" },
+          { "id": "PU", "x": 175.0, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 255.4, "y": 306.0, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "PU", "text": "(7x − 9)°", "out": true, "deg": 75 },
+          { "at": "Q", "a": "QD", "b": "QR", "text": "(4x + 27)°", "out": true, "deg": 75 }
+        ],
+        "notes": [{ "x": 428.4, "y": 71.8, "text": "m" }, { "x": 428.4, "y": 208.2, "text": "n" }]
+      },
+      "answer": "12",
+      "acceptable": [],
+      "check": "(27 + 9) / (7 - 4)",
+      "hints": ["Alternate exterior angles are congruent when the lines are parallel.", "7x − 9 = 4x + 27.", "3x = 36."],
+      "solution": "7x − 9 = 4x + 27<br>3x = 36<br>x = <b>12</b> (each angle is 75°)"
+    },
+    {
+      "id": "mt-p09",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel and m∠2 = 48°. Find x, the measure of ∠8.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Angle 2, upper-right at line m, is 48 degrees. Angle 8, lower-right at line n, is marked x.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 77.3, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 77.3, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 196.2, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 196.2, "name": "" },
+          { "id": "P", "x": 279.5, "y": 77.3, "name": "" },
+          { "id": "Q", "x": 172.5, "y": 196.2, "name": "" },
+          { "id": "PU", "x": 343.8, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 108.2, "y": 267.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PU", "b": "PR", "text": "48°", "deg": 48.0 },
+          { "at": "Q", "a": "QD", "b": "QR", "text": "x", "ask": true, "deg": 132.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 61.3, "text": "m" }, { "x": 450.0, "y": 180.2, "text": "n" }]
+      },
+      "answer": "132",
+      "acceptable": [],
+      "check": "180 - 48",
+      "hints": [
+        "Go one step at a time. ∠2 and ∠6 are corresponding, so ∠6 = 48°.",
+        "∠6 and ∠8 are a linear pair at line n.",
+        "x = 180 − 48."
+      ],
+      "solution": "∠6 = ∠2 = 48° (corresponding)<br>∠6 + ∠8 = 180° (linear pair)<br>x = 180 − 48 = <b>132°</b>"
+    },
+    {
+      "id": "mt-p10",
+      "type": "numeric",
+      "prompt": "∠3 measures (3x + 5)° and ∠6 measures 65°. What value of x makes lines m and n parallel?",
+      "figure": {
+        "alt": "Two lines cut by a transversal. Alternate interior angles are labeled 3x + 5 degrees and 65 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 86.8, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 86.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 221.5, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 221.5, "name": "" },
+          { "id": "P", "x": 257.4, "y": 86.8, "name": "" },
+          { "id": "Q", "x": 194.6, "y": 221.5, "name": "" },
+          { "id": "PU", "x": 295.1, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 156.9, "y": 302.4, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR" }, { "a": "QL", "b": "QR" }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "Q", "text": "(3x + 5)°", "out": true, "deg": 65 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "65°", "deg": 65.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 70.8, "text": "m" }, { "x": 450.0, "y": 205.5, "text": "n" }]
+      },
+      "answer": "20",
+      "acceptable": [],
+      "check": "(65 - 5) / 3",
+      "hints": ["Converse: if alternate interior angles are congruent, the lines are parallel.", "Set 3x + 5 = 65.", "3x = 60."],
+      "solution": "For m ∥ n, alternate interior angles must be equal: 3x + 5 = 65 → 3x = 60 → x = <b>20</b>"
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "mt-fc01",
+      "front": "The 8 angles",
+      "back": "A transversal crossing two parallel lines makes 8 angles: 1–4 at line m and 5–8 at line n, in the same order (upper-left, upper-right, lower-left, lower-right).",
+      "figure": {
+        "alt": "Parallel lines m and n cut by a transversal, with the eight angles numbered 1 to 8.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 84.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 84.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 214.4, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 214.4, "name": "" },
+          { "id": "P", "x": 263.6, "y": 84.2, "name": "" },
+          { "id": "Q", "x": 188.4, "y": 214.4, "name": "" },
+          { "id": "PU", "x": 308.7, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 143.3, "y": 292.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "PU", "text": "1", "deg": 120.0 },
+          { "at": "P", "a": "PU", "b": "PR", "text": "2", "deg": 60.0 },
+          { "at": "P", "a": "PL", "b": "Q", "text": "3", "deg": 60.0 },
+          { "at": "P", "a": "Q", "b": "PR", "text": "4", "deg": 120.0 },
+          { "at": "Q", "a": "QL", "b": "P", "text": "5", "deg": 120.0 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "6", "deg": 60.0 },
+          { "at": "Q", "a": "QL", "b": "QD", "text": "7", "deg": 60.0 },
+          { "at": "Q", "a": "QD", "b": "QR", "text": "8", "deg": 120.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 68.2, "text": "m" }, { "x": 450.0, "y": 198.4, "text": "n" }]
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "mt-fc02",
+      "front": "Corresponding angles",
+      "back": "Same spot at each crossing (∠1 & ∠5, ∠2 & ∠6, ∠3 & ∠7, ∠4 & ∠8). Parallel lines → <b>congruent</b>."
+    },
+    {
+      "id": "mt-fc03",
+      "front": "Alternate interior angles",
+      "back": "Between the lines, opposite sides of the transversal (∠3 & ∠6, ∠4 & ∠5). Parallel lines → <b>congruent</b>."
+    },
+    {
+      "id": "mt-fc04",
+      "front": "Alternate exterior angles",
+      "back": "Outside the lines, opposite sides of the transversal (∠1 & ∠8, ∠2 & ∠7). Parallel lines → <b>congruent</b>."
+    },
+    {
+      "id": "mt-fc05",
+      "front": "Same-side interior angles",
+      "back": "Between the lines, same side of the transversal (∠3 & ∠5, ∠4 & ∠6). Parallel lines → <b>supplementary</b> (add to 180°). Also called consecutive interior angles."
+    },
+    {
+      "id": "mt-fc06",
+      "front": "Vertical angles",
+      "back": "Across from each other at one crossing, like an X (∠1 & ∠4, ∠2 & ∠3). Always <b>congruent</b>, even if the lines aren't parallel."
+    },
+    {
+      "id": "mt-fc07",
+      "front": "Linear pair",
+      "back": "Side by side on a straight line (∠1 & ∠2, ∠1 & ∠3). Always <b>supplementary</b>: they add to 180°."
+    },
+    {
+      "id": "mt-fc08",
+      "front": "Equal or add to 180?",
+      "back": "Quick check with parallel lines: two acute angles are equal, two obtuse angles are equal, and an acute + an obtuse add to 180°."
+    },
+    {
+      "id": "mt-fc09",
+      "front": "Solving for x",
+      "back": "1) Name the pair. 2) Congruent → set the expressions equal. Supplementary → add them and set = 180. 3) Solve. 4) Plug x back in to check the angles."
+    },
+    {
+      "id": "mt-fc10",
+      "front": "Proving lines parallel (converse)",
+      "back": "If corresponding, alternate interior, or alternate exterior angles are congruent, or same-side interior angles add to 180°, then the lines are parallel."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "mt-q01",
+      "type": "mcq",
+      "prompt": "What kind of angle pair are ∠6 and ∠8?",
+      "figure": {
+        "alt": "A transversal crossing line n. Angle 6 is upper-right and angle 8 is lower-right at the same crossing.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 84.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 84.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 214.4, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 214.4, "name": "" },
+          { "id": "P", "x": 263.6, "y": 84.2, "name": "" },
+          { "id": "Q", "x": 188.4, "y": 214.4, "name": "" },
+          { "id": "PU", "x": 308.7, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 143.3, "y": 292.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "Q", "a": "P", "b": "QR", "text": "6", "deg": 60.0 },
+          { "at": "Q", "a": "QD", "b": "QR", "text": "8", "deg": 120.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 68.2, "text": "m" }, { "x": 450.0, "y": 198.4, "text": "n" }]
+      },
+      "choices": ["Linear pair", "Vertical angles", "Corresponding angles", "Alternate interior angles"],
+      "answer": "Linear pair",
+      "acceptable": [],
+      "hints": ["Both are at the same crossing.", "Do they share a side and make a straight line together?"],
+      "solution": "∠6 and ∠8 share a side and together make a straight line: <b>linear pair</b> (they add to 180°)."
+    },
+    {
+      "id": "mt-q02",
+      "type": "mcq",
+      "prompt": "Lines m and n are parallel. What kind of angle pair are ∠3 and ∠7?",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Angle 3 is below line m on the left. Angle 7 is below line n on the left.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 84.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 84.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 214.4, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 214.4, "name": "" },
+          { "id": "P", "x": 263.6, "y": 84.2, "name": "" },
+          { "id": "Q", "x": 188.4, "y": 214.4, "name": "" },
+          { "id": "PU", "x": 308.7, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 143.3, "y": 292.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "Q", "text": "3", "deg": 60.0 },
+          { "at": "Q", "a": "QL", "b": "QD", "text": "7", "deg": 60.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 68.2, "text": "m" }, { "x": 450.0, "y": 198.4, "text": "n" }]
+      },
+      "choices": ["Corresponding angles", "Alternate exterior angles", "Same-side interior angles", "Vertical angles"],
+      "answer": "Corresponding angles",
+      "acceptable": [],
+      "hints": ["Compare their spots at each crossing.", "Both are lower-left."],
+      "solution": "Same spot (lower-left) at each crossing: <b>corresponding angles</b>."
+    },
+    {
+      "id": "mt-q03",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel and m∠1 = 112°. Find x, the measure of ∠5.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Angle 1, upper-left at m, is 112 degrees. Angle 5, upper-left at n, is marked x.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 87.8, "name": "" },
+          { "id": "PR", "x": 442.9, "y": 87.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 224.2, "name": "" },
+          { "id": "QR", "x": 442.9, "y": 224.2, "name": "" },
+          { "id": "P", "x": 252.0, "y": 87.8, "name": "" },
+          { "id": "Q", "x": 196.9, "y": 224.2, "name": "" },
+          { "id": "PU", "x": 285.1, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 163.9, "y": 306.0, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "PU", "text": "112°", "deg": 112.0 },
+          { "at": "Q", "a": "QL", "b": "P", "text": "x", "ask": true, "deg": 112.0 }
+        ],
+        "notes": [{ "x": 446.9, "y": 71.8, "text": "m" }, { "x": 446.9, "y": 208.2, "text": "n" }]
+      },
+      "answer": "112",
+      "acceptable": [],
+      "check": "112",
+      "hints": ["∠1 and ∠5 are in the same spot at each crossing.", "Corresponding angles are congruent."],
+      "solution": "Corresponding angles are congruent: x = <b>112°</b>"
+    },
+    {
+      "id": "mt-q04",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. Alternate interior angles measure (6x − 8)° and (4x + 12)°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Alternate interior angles are labeled 6x − 8 degrees and 4x + 12 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 79.7, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 79.7, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 202.6, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 202.6, "name": "" },
+          { "id": "P", "x": 274.0, "y": 79.7, "name": "" },
+          { "id": "Q", "x": 178.0, "y": 202.6, "name": "" },
+          { "id": "PU", "x": 331.6, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 120.4, "y": 276.3, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "Q", "text": "(6x − 8)°", "out": true, "deg": 52 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "(4x + 12)°", "out": true, "deg": 52 }
+        ],
+        "notes": [{ "x": 450.0, "y": 63.7, "text": "m" }, { "x": 450.0, "y": 186.6, "text": "n" }]
+      },
+      "answer": "10",
+      "acceptable": [],
+      "check": "(12 + 8) / (6 - 4)",
+      "hints": ["Alternate interior angles are congruent.", "6x − 8 = 4x + 12."],
+      "solution": "6x − 8 = 4x + 12 → 2x = 20 → x = <b>10</b> (each is 52°)"
+    },
+    {
+      "id": "mt-q05",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. Same-side interior angles measure (x + 20)° and (3x)°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Same-side interior angles on the left are labeled x + 20 degrees and 3x degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 84.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 84.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 214.4, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 214.4, "name": "" },
+          { "id": "P", "x": 263.6, "y": 84.2, "name": "" },
+          { "id": "Q", "x": 188.4, "y": 214.4, "name": "" },
+          { "id": "PU", "x": 308.7, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 143.3, "y": 292.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "Q", "text": "(x + 20)°", "out": true, "deg": 60 },
+          { "at": "Q", "a": "QL", "b": "P", "text": "(3x)°", "out": true, "deg": 120 }
+        ],
+        "notes": [{ "x": 450.0, "y": 68.2, "text": "m" }, { "x": 450.0, "y": 198.4, "text": "n" }]
+      },
+      "answer": "40",
+      "acceptable": [],
+      "check": "(180 - 20) / 4",
+      "hints": ["Same-side interior angles add to 180°.", "(x + 20) + 3x = 180."],
+      "solution": "4x + 20 = 180 → 4x = 160 → x = <b>40</b> (60° and 120°)"
+    },
+    {
+      "id": "mt-q06",
+      "type": "numeric",
+      "prompt": "∠1 and ∠2 form a linear pair. They measure (2x + 15)° and (x + 30)°. Find x.",
+      "figure": {
+        "alt": "Line m crossed by a transversal. The linear pair angles 1 and 2 are labeled 2x + 15 degrees and x + 30 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 87.8, "name": "" },
+          { "id": "PR", "x": 424.4, "y": 87.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 224.2, "name": "" },
+          { "id": "QR", "x": 424.4, "y": 224.2, "name": "" },
+          { "id": "P", "x": 233.4, "y": 87.8, "name": "" },
+          { "id": "Q", "x": 196.9, "y": 224.2, "name": "" },
+          { "id": "PU", "x": 255.4, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 175.0, "y": 306.0, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "PU", "text": "(2x + 15)°", "out": true, "deg": 105 },
+          { "at": "P", "a": "PU", "b": "PR", "text": "(x + 30)°", "out": true, "deg": 75 }
+        ],
+        "notes": [{ "x": 428.4, "y": 71.8, "text": "m" }, { "x": 428.4, "y": 208.2, "text": "n" }]
+      },
+      "answer": "45",
+      "acceptable": [],
+      "check": "(180 - 15 - 30) / 3",
+      "hints": ["A linear pair adds to 180°.", "(2x + 15) + (x + 30) = 180."],
+      "solution": "3x + 45 = 180 → 3x = 135 → x = <b>45</b> (105° and 75°)"
+    },
+    {
+      "id": "mt-q07",
+      "type": "numeric",
+      "prompt": "∠5 and ∠8 are vertical angles. They measure (5x − 10)° and (3x + 22)°. Find x.",
+      "figure": {
+        "alt": "A transversal crossing line n. Vertical angles 5 and 8 are labeled 5x − 10 degrees and 3x + 22 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 87.8, "name": "" },
+          { "id": "PR", "x": 437.5, "y": 87.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 224.2, "name": "" },
+          { "id": "QR", "x": 437.5, "y": 224.2, "name": "" },
+          { "id": "P", "x": 196.9, "y": 87.8, "name": "" },
+          { "id": "Q", "x": 246.5, "y": 224.2, "name": "" },
+          { "id": "PU", "x": 167.1, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 276.3, "y": 306.0, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "Q", "a": "QL", "b": "P", "text": "(5x − 10)°", "out": true, "deg": 70 },
+          { "at": "Q", "a": "QD", "b": "QR", "text": "(3x + 22)°", "out": true, "deg": 70 }
+        ],
+        "notes": [{ "x": 441.5, "y": 71.8, "text": "m" }, { "x": 441.5, "y": 208.2, "text": "n" }]
+      },
+      "answer": "16",
+      "acceptable": [],
+      "check": "(22 + 10) / (5 - 3)",
+      "hints": ["Vertical angles are congruent.", "5x − 10 = 3x + 22."],
+      "solution": "5x − 10 = 3x + 22 → 2x = 32 → x = <b>16</b> (each is 70°)"
+    }
+  ]
+}

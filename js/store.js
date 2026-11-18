@@ -16,7 +16,8 @@
       totalSeconds: 0,
       studyDays: [],          // ['YYYY-MM-DD', ...] local dates with activity
       lastStudied: null,      // { at: ISO string, unitId }
-      makeups: [],            // [{ id, name, due: 'YYYY-MM-DD', unitId, notes }]
+      makeups: [],            // [{ id, name, due: 'YYYY-MM-DD' or '', unitId, notes }]
+      seededMakeups: [],      // ids of make-ups added once from content (never re-added after delete)
       pin: null,              // { salt, hash } — courtesy lock only
       tipDismissed: false
     };
@@ -130,8 +131,25 @@
     save();
   }
 
+  /* Add make-ups listed in content once per device. Never overwrites or duplicates saved entries,
+   * and never re-adds one the user deleted (its id stays in seededMakeups). */
+  function seedMakeups(list) {
+    if (!Array.isArray(state.makeups)) state.makeups = [];
+    if (!Array.isArray(state.seededMakeups)) state.seededMakeups = [];
+    var changed = false;
+    (list || []).forEach(function (q) {
+      if (!q || !q.id || state.seededMakeups.indexOf(q.id) !== -1) return;
+      state.seededMakeups.push(q.id);
+      changed = true;
+      var exists = state.makeups.some(function (m) { return m.id === q.id; });
+      if (!exists) state.makeups.push({ id: q.id, name: q.name, due: q.due || '', unitId: q.prepUnit || null, notes: q.notes || '' });
+    });
+    if (changed) save();
+    return changed;
+  }
+
   function resetProgress() {
-    var keep = { firstName: state.firstName, pin: state.pin, makeups: state.makeups, tipDismissed: state.tipDismissed };
+    var keep = { firstName: state.firstName, pin: state.pin, makeups: state.makeups, seededMakeups: state.seededMakeups, tipDismissed: state.tipDismissed };
     state = blank();
     for (var k in keep) state[k] = keep[k];
     save();
@@ -234,6 +252,7 @@
     recordCard: recordCard,
     recordQuiz: recordQuiz,
     upsertMakeup: upsertMakeup,
+    seedMakeups: seedMakeups,
     removeMakeup: removeMakeup,
     resetProgress: resetProgress,
     hasPin: hasPin,

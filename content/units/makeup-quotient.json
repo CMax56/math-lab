@@ -1,0 +1,324 @@
+{
+  "id": "makeup-quotient",
+  "title": "Prep: Laws of Exponents — Quotient Rule",
+  "description": "Focused prep for the Laws of Exponents: Quotient Rule make-up quiz. Divide powers with the same base, get zero and negative exponents, and handle coefficients and more than one variable.",
+  "strand": "makeup",
+  "status": "starter",
+  "related": ["exponent-rules"],
+  "reference": {
+    "title": "Quotient rule (from class)",
+    "rows": [
+      { "label": "Quotient rule", "rule": "x<sup>a</sup> / x<sup>b</sup> = x<sup>a−b</sup>" },
+      { "label": "Zero exponent", "rule": "x<sup>0</sup> = 1", "note": "x ≠ 0" },
+      { "label": "Negative exponent", "rule": "x<sup>−a</sup> = 1/x<sup>a</sup>" },
+      { "label": "Power of a quotient", "rule": "(x/y)<sup>a</sup> = x<sup>a</sup>/y<sup>a</sup>" }
+    ],
+    "foot": "Divide the numbers in front. Subtract the exponents of each variable (top minus bottom)."
+  },
+  "practice": [
+    {
+      "id": "mq-p01",
+      "type": "numeric",
+      "prompt": "Quotient rule: x⁸ / x³ = xⁿ. What is n?",
+      "figure": {
+        "alt": "Eight x tiles over three x tiles, equals x to the n.",
+        "chips": { "num": { "n": 8, "text": "x" }, "den": { "n": 3, "text": "x" }, "rhs": "xⁿ", "caption": "n = ?" }
+      },
+      "answer": "5",
+      "acceptable": [],
+      "check": "8 - 3",
+      "hints": [
+        "Quotient rule: x<sup>a</sup> / x<sup>b</sup> = x<sup>a−b</sup>.",
+        "Each x on the bottom cancels one x on top.",
+        "8 − 3 = ?"
+      ],
+      "solution": "x⁸ / x³ = x⁸⁻³ = x⁵, so n = <b>5</b>"
+    },
+    {
+      "id": "mq-p02",
+      "type": "numeric",
+      "prompt": "Evaluate 3⁶ / 3⁴.",
+      "figure": {
+        "alt": "Six tiles of 3 over four tiles of 3.",
+        "chips": { "num": { "n": 6, "text": "3" }, "den": { "n": 4, "text": "3" }, "rhs": "?" }
+      },
+      "answer": "9",
+      "acceptable": [],
+      "check": "3**6 / 3**4",
+      "hints": ["Same base, dividing → subtract the exponents.", "6 − 4 = 2, so it's 3².", "3² = 9."],
+      "solution": "3⁶ / 3⁴ = 3² = <b>9</b>"
+    },
+    {
+      "id": "mq-p03",
+      "type": "numeric",
+      "prompt": "Evaluate 9³ / 9³.",
+      "figure": {
+        "alt": "Three tiles of 9 over three tiles of 9.",
+        "chips": { "num": { "n": 3, "text": "9" }, "den": { "n": 3, "text": "9" }, "rhs": "?" }
+      },
+      "answer": "1",
+      "acceptable": [],
+      "check": "9**3 / 9**3",
+      "hints": ["Subtract the exponents: 3 − 3 = 0.", "9⁰ = 1. (Anything nonzero over itself is 1.)"],
+      "solution": "9³ / 9³ = 9⁰ = <b>1</b>"
+    },
+    {
+      "id": "mq-p04",
+      "type": "numeric",
+      "prompt": "x³ / x⁷ = 1/xⁿ. What is n?",
+      "figure": {
+        "alt": "Three x tiles over seven x tiles.",
+        "chips": { "num": { "n": 3, "text": "x" }, "den": { "n": 7, "text": "x" }, "rhs": "1/xⁿ", "caption": "n = ?" }
+      },
+      "answer": "4",
+      "acceptable": [],
+      "check": "7 - 3",
+      "hints": [
+        "Subtract: 3 − 7 = −4, so x³ / x⁷ = x⁻⁴.",
+        "A negative exponent means one over: x⁻⁴ = 1/x⁴.",
+        "Or cancel: 3 x's cancel, 4 are left on the bottom."
+      ],
+      "solution": "x³⁻⁷ = x⁻⁴ = 1/x⁴, so n = <b>4</b>"
+    },
+    {
+      "id": "mq-p05",
+      "type": "numeric",
+      "prompt": "Evaluate 2³ / 2⁶. Give a fraction or a decimal.",
+      "figure": {
+        "alt": "Three tiles of 2 over six tiles of 2.",
+        "chips": { "num": { "n": 3, "text": "2" }, "den": { "n": 6, "text": "2" }, "rhs": "?" }
+      },
+      "answer": "1/8",
+      "acceptable": ["0.125"],
+      "check": "2**3 / 2**6",
+      "hints": ["3 − 6 = −3, so the result is 2⁻³.", "2⁻³ = 1/2³.", "2³ = 8."],
+      "solution": "2³ / 2⁶ = 2⁻³ = 1/2³ = <b>1/8</b> (0.125)"
+    },
+    {
+      "id": "mq-p06",
+      "type": "mcq",
+      "prompt": "Simplify 18x⁶ / (6x²).",
+      "figure": { "alt": "The fraction 18 x to the 6th over 6 x squared.", "frac": { "num": "18x⁶", "den": "6x²", "rhs": "?" } },
+      "choices": ["3x⁴", "12x⁴", "3x³", "12x³"],
+      "answer": "3x⁴",
+      "acceptable": [],
+      "hints": ["Numbers in front: divide them normally.", "18 ÷ 6 = 3.", "x's: x⁶ / x² → subtract the exponents."],
+      "solution": "18 ÷ 6 = 3 and x⁶⁻² = x⁴ → <b>3x⁴</b>"
+    },
+    {
+      "id": "mq-p07",
+      "type": "mcq",
+      "prompt": "Simplify −15a⁸b³ / (5a²b⁵). Use only positive exponents.",
+      "figure": {
+        "alt": "The fraction negative 15 a to the 8th b cubed over 5 a squared b to the 5th.",
+        "frac": { "num": "−15a⁸b³", "den": "5a²b⁵", "rhs": "?" }
+      },
+      "choices": ["−3a⁶/b²", "−3a⁶b²", "−10a⁶/b²", "3a⁶/b²"],
+      "answer": "−3a⁶/b²",
+      "acceptable": [],
+      "hints": ["Numbers: −15 ÷ 5 = −3.", "a: 8 − 2 = 6.", "b: 3 − 5 = −2, so b ends up on the bottom as b²."],
+      "solution": "−15 ÷ 5 = −3, a⁸⁻² = a⁶, b³⁻⁵ = b⁻² = 1/b² → <b>−3a⁶/b²</b>"
+    },
+    {
+      "id": "mq-p08",
+      "type": "mcq",
+      "prompt": "Simplify (x³ / y²)⁴.",
+      "figure": {
+        "alt": "The fraction x cubed over y squared, in parentheses, to the 4th.",
+        "frac": { "num": "x³", "den": "y²", "power": "4" }
+      },
+      "choices": ["x¹²/y⁸", "x⁷/y⁶", "x¹²/y²", "x³/y⁸"],
+      "answer": "x¹²/y⁸",
+      "acceptable": [],
+      "hints": [
+        "Power of a quotient: the outside power goes on the top and the bottom.",
+        "(x³)⁴ and (y²)⁴.",
+        "Power rule: multiply the exponents."
+      ],
+      "solution": "(x³)⁴ / (y²)⁴ = <b>x¹²/y⁸</b>"
+    },
+    {
+      "id": "mq-p09",
+      "type": "numeric",
+      "prompt": "Mixed: (x⁴ · x⁶) / x³ = xⁿ. What is n?",
+      "figure": {
+        "alt": "The fraction x to the 4th times x to the 6th, over x cubed, equals x to the n.",
+        "frac": { "num": "x⁴ · x⁶", "den": "x³", "rhs": "xⁿ", "caption": "n = ?" }
+      },
+      "answer": "7",
+      "acceptable": [],
+      "check": "4 + 6 - 3",
+      "hints": ["Top first, product rule: x⁴ · x⁶ = x¹⁰.", "Then the quotient rule: x¹⁰ / x³.", "10 − 3 = ?"],
+      "solution": "x⁴ · x⁶ = x¹⁰, then x¹⁰ / x³ = x⁷ → n = <b>7</b>"
+    },
+    {
+      "id": "mq-p10",
+      "type": "mcq",
+      "prompt": "Which is the correct simplification of 8x⁶ / (2x³)?",
+      "figure": { "alt": "The fraction 8 x to the 6th over 2 x cubed.", "frac": { "num": "8x⁶", "den": "2x³", "rhs": "?" } },
+      "choices": ["4x³", "6x³", "4x²", "6x²"],
+      "answer": "4x³",
+      "acceptable": [],
+      "hints": [
+        "Divide the numbers (don't subtract them): 8 ÷ 2.",
+        "Subtract the exponents (don't divide them): 6 − 3.",
+        "Common mistakes: 8 − 2 = 6 and 6 ÷ 3 = 2 are both wrong steps."
+      ],
+      "solution": "8 ÷ 2 = 4 and x⁶⁻³ = x³ → <b>4x³</b>"
+    },
+    {
+      "id": "mq-p11",
+      "type": "mcq",
+      "prompt": "Simplify 10x⁴y² / (2x⁴y).",
+      "figure": {
+        "alt": "The fraction 10 x to the 4th y squared over 2 x to the 4th y.",
+        "frac": { "num": "10x⁴y²", "den": "2x⁴y", "rhs": "?" }
+      },
+      "choices": ["5y", "5xy", "8y", "5x⁰"],
+      "answer": "5y",
+      "acceptable": [],
+      "hints": ["10 ÷ 2 = 5.", "x⁴ / x⁴ = x⁰ = 1, so the x's disappear.", "y² / y¹ = y¹."],
+      "solution": "10 ÷ 2 = 5, x⁴⁻⁴ = x⁰ = 1, y²⁻¹ = y → <b>5y</b>"
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "mq-fc01",
+      "front": "Quotient rule",
+      "back": "x<sup>a</sup> / x<sup>b</sup> = x<sup>a−b</sup> (x ≠ 0). Same base, dividing → <b>subtract</b> the exponents (top minus bottom).",
+      "figure": {
+        "alt": "Five x tiles over two x tiles. Two pairs are crossed out, leaving three x tiles on top.",
+        "chips": { "num": { "n": 5, "text": "x" }, "den": { "n": 2, "text": "x" }, "cancel": 2, "rhs": "x³", "ask": false }
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "mq-fc02",
+      "front": "When the exponents match",
+      "back": "x<sup>a</sup> / x<sup>a</sup> = x<sup>0</sup> = 1. Example: 9³ / 9³ = 1."
+    },
+    {
+      "id": "mq-fc03",
+      "front": "When the bottom is bigger",
+      "back": "You get a negative exponent: x³ / x⁷ = x⁻⁴ = 1/x⁴. Final answers usually use only positive exponents."
+    },
+    {
+      "id": "mq-fc04",
+      "front": "Negative exponent",
+      "back": "x<sup>−a</sup> = 1/x<sup>a</sup>. It means \"one over\", not a negative number: 2⁻³ = 1/8."
+    },
+    {
+      "id": "mq-fc05",
+      "front": "Coefficients",
+      "back": "Divide the numbers in front like normal: 18x⁶ / 6x² = 3x⁴. Keep the sign: −15 ÷ 5 = −3."
+    },
+    {
+      "id": "mq-fc06",
+      "front": "More than one variable",
+      "back": "Do each variable separately: a with a, b with b. 12x⁷y³ / 4x²y⁵ = 3x⁵/y²."
+    },
+    {
+      "id": "mq-fc07",
+      "front": "Power of a quotient",
+      "back": "(x/y)<sup>a</sup> = x<sup>a</sup>/y<sup>a</sup>. The power goes on top and bottom: (x³/y²)⁴ = x¹²/y⁸."
+    },
+    {
+      "id": "mq-fc08",
+      "front": "Two common mistakes",
+      "back": "Don't subtract the coefficients (8x⁶/2x³ is 4x³, not 6x³). Don't divide the exponents (x⁶/x³ is x³, not x²)."
+    },
+    {
+      "id": "mq-fc09",
+      "front": "\"Quotient rule\": which one?",
+      "back": "In calculus, \"quotient rule\" means a rule for derivatives of fractions (f/g)′. That's a different topic. On this quiz it means the exponent rule x<sup>a</sup>/x<sup>b</sup> = x<sup>a−b</sup>."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "mq-q01",
+      "type": "numeric",
+      "prompt": "y¹² / y⁵ = yⁿ. What is n?",
+      "figure": {
+        "alt": "y to the 12th over y to the 5th equals y to the n.",
+        "frac": { "num": "y¹²", "den": "y⁵", "rhs": "yⁿ", "caption": "n = ?" }
+      },
+      "answer": "7",
+      "acceptable": [],
+      "check": "12 - 5",
+      "hints": ["Subtract the exponents.", "12 − 5."],
+      "solution": "y¹²⁻⁵ = y⁷ → n = <b>7</b>"
+    },
+    {
+      "id": "mq-q02",
+      "type": "numeric",
+      "prompt": "Evaluate 5⁸ / 5⁶.",
+      "figure": { "alt": "5 to the 8th over 5 to the 6th.", "frac": { "num": "5⁸", "den": "5⁶", "rhs": "?" } },
+      "answer": "25",
+      "acceptable": [],
+      "check": "5**8 / 5**6",
+      "hints": ["8 − 6 = 2.", "5² = ?"],
+      "solution": "5⁸⁻⁶ = 5² = <b>25</b>"
+    },
+    {
+      "id": "mq-q03",
+      "type": "numeric",
+      "prompt": "Evaluate 4² / 4⁵. Give a fraction or a decimal.",
+      "figure": {
+        "alt": "Two tiles of 4 over five tiles of 4.",
+        "chips": { "num": { "n": 2, "text": "4" }, "den": { "n": 5, "text": "4" }, "rhs": "?" }
+      },
+      "answer": "1/64",
+      "acceptable": ["0.015625"],
+      "check": "4**2 / 4**5",
+      "hints": ["2 − 5 = −3, so it's 4⁻³.", "4⁻³ = 1/4³ = 1/64."],
+      "solution": "4²⁻⁵ = 4⁻³ = 1/4³ = <b>1/64</b> (0.015625)"
+    },
+    {
+      "id": "mq-q04",
+      "type": "numeric",
+      "prompt": "Simplify 12x⁵ / (4x⁵). (The answer is a number.)",
+      "figure": { "alt": "12 x to the 5th over 4 x to the 5th.", "frac": { "num": "12x⁵", "den": "4x⁵", "rhs": "?" } },
+      "answer": "3",
+      "acceptable": [],
+      "check": "12 / 4",
+      "hints": ["12 ÷ 4 = 3.", "x⁵ / x⁵ = x⁰ = 1."],
+      "solution": "12 ÷ 4 = 3 and x⁰ = 1 → <b>3</b>"
+    },
+    {
+      "id": "mq-q05",
+      "type": "mcq",
+      "prompt": "Simplify 24m⁷n² / (8m³n⁶). Use only positive exponents.",
+      "figure": { "alt": "24 m to the 7th n squared over 8 m cubed n to the 6th.", "frac": { "num": "24m⁷n²", "den": "8m³n⁶" } },
+      "choices": ["3m⁴/n⁴", "3m⁴n⁴", "16m⁴/n⁴", "3m¹⁰/n⁸"],
+      "answer": "3m⁴/n⁴",
+      "acceptable": [],
+      "hints": ["24 ÷ 8 = 3.", "m: 7 − 3. n: 2 − 6 = −4."],
+      "solution": "3 · m⁴ · n⁻⁴ = <b>3m⁴/n⁴</b>"
+    },
+    {
+      "id": "mq-q06",
+      "type": "mcq",
+      "prompt": "Simplify (2a / b³)³.",
+      "figure": { "alt": "2a over b cubed, in parentheses, cubed.", "frac": { "num": "2a", "den": "b³", "power": "3" } },
+      "choices": ["8a³/b⁹", "6a³/b⁹", "2a³/b⁹", "8a³/b⁶"],
+      "answer": "8a³/b⁹",
+      "acceptable": [],
+      "hints": ["The power goes on everything: the 2, the a, and b³.", "2³ = 8, and (b³)³ = b⁹."],
+      "solution": "2³a³ / (b³)³ = <b>8a³/b⁹</b>"
+    },
+    {
+      "id": "mq-q07",
+      "type": "mcq",
+      "prompt": "Write x³ / x⁸ using only positive exponents.",
+      "figure": {
+        "alt": "Three x tiles over eight x tiles.",
+        "chips": { "num": { "n": 3, "text": "x" }, "den": { "n": 8, "text": "x" } }
+      },
+      "choices": ["1/x⁵", "x⁵", "−x⁵", "1/x¹¹"],
+      "answer": "1/x⁵",
+      "acceptable": [],
+      "hints": ["3 − 8 = −5.", "x⁻⁵ = 1/x⁵."],
+      "solution": "x³⁻⁸ = x⁻⁵ = <b>1/x⁵</b>"
+    }
+  ]
+}

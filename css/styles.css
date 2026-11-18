@@ -318,3 +318,17 @@ textarea.report { font-family: ui-monospace, Menlo, Consolas, monospace; font-si
 .flashcard .figure { width: 100%; margin: 6px 0 0; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* Make-up quizzes (top of home, from content/app.json makeupQuizzes) */
+.mq-section { margin: 4px 0 18px; padding: 14px; border: 2px solid var(--warn); border-radius: 16px; background: var(--warn-soft); }
+.mq-section > h2 { margin: 0 0 4px; }
+.mq-note { margin: 0 0 12px; font-weight: 600; color: var(--warn); font-size: .95rem; }
+.mq-grid { display: grid; gap: 10px; }
+.mq-card { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: inherit; text-decoration: none; min-height: 44px; }
+.mq-card h3 { margin: 0; font-size: 1.02rem; }
+.mq-card p { margin: 4px 0 0; }
+.mq-card .row-between { gap: 8px; align-items: flex-start; }
+.mq-go { display: inline-block; margin-top: 8px; font-weight: 700; color: var(--primary); }
+.mq-chip { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); }
+.related a { font-weight: 600; }
+@media (min-width: 720px) { .mq-grid { grid-template-columns: repeat(3, 1fr); } }

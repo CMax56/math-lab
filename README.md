@@ -44,3 +44,9 @@ Item JSON fields follow the existing unit files: `practice`, `flashcards`, and `
 Every practice item has an inline diagram (`figure`, drawn by `js/figures.js`): triangles and polygons, transversals, coordinate grids (lines, points, segments, and `shapes` polygons for transformations), number lines, balances, bar models, fractions (`frac`), factor tiles (`chips`: x·x·x groups for the product and power rules, numerator over denominator with optional cancel strokes for the quotient rule), and solids.
 
 A unit may have an optional `reference` card, shown at the top of its unit page: `{ "title": "...", "rows": [{ "label": "Product rule", "rule": "x<sup>a</sup> · x<sup>b</sup> = x<sup>a+b</sup>", "note": "optional" }], "foot": "optional" }`. Rules may use `<sup>`, `<sub>`, `<b>`, and `<i>` only; `tools/validate.py` checks this. The Exponent Rules unit uses it for the rules from class.
+
+## Make-up quizzes
+
+`content/app.json` → `makeupQuizzes` lists quizzes the teacher asked to be made up or retaken. They appear in a **Make-up Quizzes** section at the top of the home screen with no setup, and each card links to a focused prep unit (`prepUnit`, for example `makeup-transversal`). Prep units use the `makeup` strand, are not part of any term, and may list `related` regular units.
+
+On first load each quiz is also added once to the device's make-up list (no due date). Seeding never overwrites or duplicates a saved entry, and a quiz deleted from the list is not added back (its id is remembered in `seededMakeups`, which survives "reset progress").

@@ -9,7 +9,18 @@
   },
   "strands": {
     "geometry": "Geometry",
-    "algebra": "Algebra review"
+    "algebra": "Algebra review",
+    "makeup": "Make-up quiz prep"
+  },
+  "makeupQuizzes": {
+    "title": "Make-up Quizzes",
+    "note": "Retake during practice time in class · Mr. Cook tutoring after school (not Mondays)",
+    "source": "From Mr. Cook, Nov 18, 2026. No due dates given.",
+    "quizzes": [
+      { "id": "seed-transversal", "name": "Angles on a Transversal Quiz", "prepUnit": "makeup-transversal", "related": ["parallel-perpendicular"] },
+      { "id": "seed-linear-forms", "name": "3 Forms of Linear Equations Quiz", "detail": "Standard form, slope-intercept form, point-slope form", "prepUnit": "makeup-linear-forms", "related": ["linear"] },
+      { "id": "seed-quotient", "name": "Laws of Exponents: Quotient Rule Quiz", "prepUnit": "makeup-quotient", "related": ["exponent-rules"] }
+    ]
   },
   "terms": [
     {
@@ -50,6 +61,9 @@
     }
   ],
   "units": [
+    "makeup-transversal",
+    "makeup-linear-forms",
+    "makeup-quotient",
     "linear",
     "systems",
     "quadratics",

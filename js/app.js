@@ -72,7 +72,7 @@
 
   function fmtDue(s) {
     var d = parseDay(s);
-    return d ? d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) : '—';
+    return d ? d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) : 'No due date';
   }
 
   function daysUntil(s) {
@@ -86,7 +86,7 @@
 
   function dueInfo(s) {
     var n = daysUntil(s);
-    if (n === null) return { text: 'No date', cls: 'ok' };
+    if (n === null) return { text: 'No due date', cls: 'ok' };
     if (n < 0) return { text: plural(-n, 'day') + ' overdue', cls: 'overdue' };
     if (n === 0) return { text: 'Due today', cls: 'soon' };
     if (n === 1) return { text: 'Due tomorrow', cls: 'soon' };
@@ -94,7 +94,13 @@
   }
 
   function sortedMakeups() {
-    return S.makeups.slice().sort(function (a, b) { return String(a.due).localeCompare(String(b.due)); });
+    // Dated entries first (soonest first), then entries with no due date, in the order they were added.
+    return S.makeups.map(function (m, i) { return { m: m, i: i }; }).sort(function (a, b) {
+      var ad = a.m.due || '', bd = b.m.due || '';
+      if (ad && bd) return ad.localeCompare(bd) || a.i - b.i;
+      if (ad || bd) return ad ? -1 : 1;
+      return a.i - b.i;
+    }).map(function (x) { return x.m; });
   }
 
   /* ---------- content helpers ---------- */
@@ -103,6 +109,41 @@
     return (S.firstName != null ? S.firstName : (CONTENT.app.studentFirstName || '')).trim();
   }
   function unitById(id) { return CONTENT.byId[id] || null; }
+
+  /* ---------- make-up quizzes (from content/app.json makeupQuizzes) ---------- */
+
+  function makeupCfg() { return CONTENT.makeupQuizzes || null; }
+  function makeupQuizList() { var c = makeupCfg(); return c && Array.isArray(c.quizzes) ? c.quizzes : []; }
+  function isPrepUnit(id) { return makeupQuizList().some(function (q) { return q.prepUnit === id; }); }
+  function prepQuizFor(unitId) { return makeupQuizList().filter(function (q) { return q.prepUnit === unitId; })[0] || null; }
+  function makeupQuizNote() {
+    var c = makeupCfg();
+    return c && c.note ? h('p', { class: 'mq-note', text: c.note }) : null;
+  }
+
+  function makeupQuizSection() {
+    var c = makeupCfg();
+    var list = makeupQuizList();
+    if (!c || !list.length) return null;
+    return h('section', { class: 'mq-section', 'aria-labelledby': 'mq-title' },
+      h('h2', { id: 'mq-title', text: c.title || 'Make-up Quizzes' }),
+      makeupQuizNote(),
+      h('div', { class: 'mq-grid' }, list.map(function (q) {
+        var u = unitById(q.prepUnit);
+        if (!u) return null;
+        var done = practiceSolved(u);
+        var best = S.quizzes[u.id] && S.quizzes[u.id].best;
+        return h('a', { class: 'mq-card', href: '#/unit/' + encodeURIComponent(u.id) },
+          h('div', { class: 'row-between' }, h('h3', { text: q.name }), h('span', { class: 'badge ok', text: 'No due date' })),
+          q.detail ? h('p', { class: 'muted small', text: q.detail }) : null,
+          progressBar(done, u.practice.length),
+          h('div', { class: 'row-between small muted' },
+            h('span', { text: done + '/' + u.practice.length + ' prep problems' }),
+            h('span', { text: best ? 'Prep quiz best ' + best.pct + '%' : 'Prep quiz not taken' })),
+          h('span', { class: 'mq-go', text: 'Start prep ›' }));
+      })),
+      c.source ? h('p', { class: 'muted small', text: c.source }) : null);
+  }
 
   /* ---------- terms (pacing guide sections) ---------- */
 
@@ -336,6 +377,7 @@
       h('section', { class: 'hero' },
         h('h1', { text: name ? 'Aloha, ' + name : 'Aloha' }),
         h('p', { class: 'muted', text: [CONTENT.app.course, CONTENT.app.teacher].filter(Boolean).join(' · ') })),
+      makeupQuizSection(),
       tip,
       h('div', { class: 'stats' },
         stat(Store.streak(), Store.streak() === 1 ? 'day streak' : 'day streak'),
@@ -381,7 +423,7 @@
           isNow ? h('span', { class: 'badge now', text: 'Now' }) : null),
         body));
     });
-    var other = CONTENT.units.filter(function (u) { return !placed[u.id]; });
+    var other = CONTENT.units.filter(function (u) { return !placed[u.id] && !isPrepUnit(u.id); });
     if (other.length) {
       out.push(h('details', { class: 'term', id: 'term-other', open: !(CONTENT.terms || []).length },
         h('summary', {}, h('span', { class: 'term-head' }, h('span', { class: 'term-name', text: 'Other' })),
@@ -413,7 +455,10 @@
     show(
       backLink('#/', 'Home'),
       termOf(u.id) ? h('p', { class: 'term-line' }, h('span', { class: 'term-chip' + (termOf(u.id).id === currentTermId() ? ' now' : ''), text: termShortLabel(termOf(u.id)) })) : null,
+      isPrepUnit(u.id) ? h('p', { class: 'term-line' }, h('span', { class: 'term-chip mq-chip', text: 'Make-up quiz prep' })) : null,
       h('h1', { text: u.title }),
+      isPrepUnit(u.id) ? makeupQuizNote() : null,
+      relatedLinks(u),
       referenceCard(u.reference),
       u.status === 'starter' ? h('p', { class: 'tag-line' }, h('span', { class: 'tag', text: 'starter set' }), ' Practice content, not official class material.') : null,
       h('p', { class: 'muted', text: u.description || '' }),
@@ -429,6 +474,17 @@
         actionCard('#/quiz/' + encodeURIComponent(u.id), 'Quiz', plural(u.quiz.length, 'question') + ', scored. No hints.',
           q && q.latest ? 'Latest ' + q.latest.pct + '% · Best ' + q.best.pct + '%' : 'Not taken yet'))
     );
+  }
+
+  function relatedLinks(u) {
+    var rel = (u.related || []).map(unitById).filter(Boolean);
+    if (!rel.length) return null;
+    var kids = ['Related units: '];
+    rel.forEach(function (r, i) {
+      if (i) kids.push(' · ');
+      kids.push(h('a', { href: '#/unit/' + encodeURIComponent(r.id), text: r.title }));
+    });
+    return h('p', { class: 'small related' }, kids);
   }
 
   /* Optional quick-reference card: unit.reference = { title, rows: [{ label, rule, note? }], foot? }.
@@ -734,6 +790,8 @@
       var units = (t.units || []).map(unitById).filter(Boolean);
       if (units.length) out.push(h('optgroup', { label: t.label }, units.map(opt)));
     });
+    var prep = CONTENT.units.filter(function (u) { return !placed[u.id] && isPrepUnit(u.id); });
+    if (prep.length) out.unshift(h('optgroup', { label: 'Make-up quiz prep' }, prep.map(opt)));
     var other = CONTENT.units.filter(function (u) { return !placed[u.id]; });
     if (other.length) out.push(out.length ? h('optgroup', { label: 'Other' }, other.map(opt)) : other.map(opt));
     return out;
@@ -749,7 +807,7 @@
       var u = m.unitId ? unitById(m.unitId) : null;
       return h('li', { class: 'makeup' },
         h('div', { class: 'row-between' }, h('strong', { text: m.name }), badge(dueInfo(m.due))),
-        h('div', { class: 'muted small', text: 'Due ' + fmtDue(m.due) }),
+        h('div', { class: 'muted small', text: m.due ? 'Due ' + fmtDue(m.due) : 'No due date given' }),
         u ? h('div', { class: 'small' }, 'Unit: ', h('a', { href: '#/unit/' + encodeURIComponent(u.id), text: u.title })) : null,
         m.notes ? h('p', { class: 'notes', text: m.notes }) : null,
         h('div', { class: 'btn-row' },
@@ -764,7 +822,7 @@
     var form = null;
     if (editing) {
       var nameIn = h('input', { type: 'text', id: 'mu-name', value: editing.name, maxlength: '80', required: true, placeholder: 'e.g. Unit 3 Test: Right Triangles' });
-      var dueIn = h('input', { type: 'date', id: 'mu-due', value: editing.due, required: true });
+      var dueIn = h('input', { type: 'date', id: 'mu-due', value: editing.due || '' });
       var unitSel = h('select', { id: 'mu-unit' }, h('option', { value: '' }, '— none —'), unitOptions());
       unitSel.value = editing.unitId || '';
       var notesIn = h('textarea', { id: 'mu-notes', rows: '3', maxlength: '500', placeholder: 'Room, time, what to bring, topics…' });
@@ -775,14 +833,14 @@
           e.preventDefault();
           var name = nameIn.value.trim();
           if (!name) { err.textContent = 'Please enter the test name.'; return; }
-          if (!/^\d{4}-\d{2}-\d{2}$/.test(dueIn.value)) { err.textContent = 'Please pick a due date.'; return; }
+          if (dueIn.value && !/^\d{4}-\d{2}-\d{2}$/.test(dueIn.value)) { err.textContent = 'Please pick a valid date, or leave it blank.'; return; }
           Store.upsertMakeup({ id: editing.id, name: name, due: dueIn.value, unitId: unitSel.value || null, notes: notesIn.value.trim() });
           renderMakeups();
         }
       },
         h('h2', { text: editing.id ? 'Edit make-up test' : 'Add a make-up test' }),
         h('label', { for: 'mu-name' }, 'Test name'), nameIn,
-        h('label', { for: 'mu-due' }, 'Due date'), dueIn,
+        h('label', { for: 'mu-due' }, 'Due date (optional)'), dueIn,
         h('label', { for: 'mu-unit' }, 'Linked unit (optional)'), unitSel,
         h('label', { for: 'mu-notes' }, 'Notes (optional)'), notesIn,
         err,
@@ -794,6 +852,7 @@
     show(
       h('h1', { text: 'Make-up tests' }),
       h('p', { class: 'muted', text: 'Keep track of the tests to make up and when each is due. Saved only on this device.' }),
+      makeupQuizNote(),
       form,
       editing ? null : h('button', { type: 'button', class: 'btn primary', onclick: function () { renderMakeups('new'); } }, '+ Add a make-up test'),
       list.length ? h('ul', { class: 'makeup-list' }, items)
@@ -859,7 +918,7 @@
     return CONTENT.units.map(function (u) {
       var q = S.quizzes[u.id] || {};
       return {
-        id: u.id, title: u.title, term: termOf(u.id) ? termOf(u.id).label : '',
+        id: u.id, title: u.title, term: termOf(u.id) ? termOf(u.id).label : (isPrepUnit(u.id) ? 'Make-up prep' : ''),
         practiceSolved: practiceSolved(u), practiceFirstTry: practiceFirstTry(u), practiceTotal: u.practice.length,
         cardsKnown: cardsKnown(u), cardsTotal: u.flashcards.length,
         seconds: Math.round(S.time[u.id] || 0),
@@ -1045,6 +1104,8 @@
 
   /* ---------- startup ---------- */
 
+  function byIdOk(id) { return CONTENT && CONTENT.byId[id] ? id : null; }
+
   function getJSON(url) {
     return fetch(url).then(function (r) {
       if (!r.ok) throw new Error(url + ': HTTP ' + r.status);
@@ -1067,13 +1128,16 @@
         var order = [];
         terms.forEach(function (t) { (t.units || []).forEach(function (id) { if (byId[id] && order.indexOf(id) === -1) order.push(id); }); });
         units.forEach(function (u) { if (order.indexOf(u.id) === -1) order.push(u.id); });
-        return { app: cfg.app || {}, strands: cfg.strands || {}, terms: terms, units: order.map(function (id) { return byId[id]; }), byId: byId };
+        return { app: cfg.app || {}, strands: cfg.strands || {}, terms: terms, makeupQuizzes: cfg.makeupQuizzes || null, units: order.map(function (id) { return byId[id]; }), byId: byId };
       });
     });
   }
 
   loadContent().then(function (c) {
     CONTENT = c;
+    Store.seedMakeups(makeupQuizList().map(function (q) {
+      return { id: q.id, name: q.name, prepUnit: byIdOk(q.prepUnit), notes: (c.makeupQuizzes && c.makeupQuizzes.note) || '' };
+    }));
     document.title = c.app.title || 'Math Lab';
     var t = document.getElementById('app-title');
     if (t) t.textContent = c.app.title || 'Math Lab';

@@ -57,6 +57,8 @@ def main():
                 time.sleep(0.1)
         cfg = json.loads((ROOT / "content" / "app.json").read_text())
         units = {uid: json.loads((ROOT / "content" / "units" / f"{uid}.json").read_text()) for uid in cfg["units"]}
+        mq = (cfg.get("makeupQuizzes") or {}).get("quizzes") or []
+        prep_ids = {q["prepUnit"] for q in mq}
         with sync_playwright() as p:
             browser = p.chromium.launch()
             ctx = browser.new_context(viewport={"width": 390, "height": 844}, device_scale_factor=2,
@@ -109,8 +111,21 @@ def main():
             if page.locator("#term-t2 .badge.now").count() != 1:
                 fails.append("Term 2 has no Now badge")
             shown = page.eval_on_selector_all("details.term .unit-card", "els => els.length")
-            if shown != len(units):
-                fails.append(f"home lists {shown} unit cards, expected {len(units)}")
+            if shown != len(units) - len(prep_ids):
+                fails.append(f"home lists {shown} term unit cards, expected {len(units) - len(prep_ids)}")
+            # ---- make-up quizzes: first section on home, built from content ----
+            order = page.eval_on_selector_all("#app > *", "els => els.map(e => e.className)")
+            if len(order) < 2 or "mq-section" not in order[1]:
+                fails.append(f"Make-up Quizzes is not the first section under the greeting: {order[:3]}")
+            if page.locator(".mq-card").count() != len(mq):
+                fails.append(f"home shows {page.locator('.mq-card').count()} make-up quiz cards, expected {len(mq)}")
+            note = page.locator(".mq-section .mq-note").inner_text()
+            if "Retake during practice time in class" not in note or "not Mondays" not in note:
+                fails.append(f"make-up note wrong: {note!r}")
+            for q in mq:
+                if page.locator(f".mq-card[href='#/unit/{q['prepUnit']}']", has_text=q["name"]).count() != 1:
+                    fails.append(f"no make-up card linking {q['name']!r} to {q['prepUnit']}")
+            page.screenshot(path=str(OUT / "home-makeup.png"))
             shot("home.png")
             # expand all terms for a full overview
             page.eval_on_selector_all("details.term", "els => els.forEach(e => e.open = true)")
@@ -203,26 +218,100 @@ def main():
             go("/makeup")
             page.click("text=+ Add a make-up test")
             groups = page.eval_on_selector_all("#mu-unit optgroup", "els => els.map(e => e.label)")
-            if groups[:4] != ["Term 1", "Term 2", "Term 3", "Term 4"]:
+            if groups[:5] != ["Make-up quiz prep", "Term 1", "Term 2", "Term 3", "Term 4"]:
                 fails.append(f"make-up unit dropdown groups: {groups}")
             page.fill("#mu-name", "Unit test: Relationships in Triangles")
             page.fill("#mu-due", "2026-11-24")
             page.select_option("#mu-unit", "triangle-relationships")
             page.click("button:has-text('Save')")
-            if page.locator(".makeup").count() != 1:
-                fails.append("make-up test not saved")
+            if page.locator(".makeup").count() != len(mq) + 1:
+                fails.append(f"make-up list has {page.locator('.makeup').count()} entries, expected {len(mq) + 1}")
+            if not page.locator(".makeup").first.inner_text().startswith("Unit test: Relationships in Triangles"):
+                fails.append("dated make-up entry does not sort first")
+            shot("makeup-list.png")
             go("/parent")
             page.fill("#pin-new", "2468")
             page.fill("#pin-confirm", "2468")
             page.click("button:has-text('Set PIN')")
             page.wait_for_selector("table")
             first = page.locator("tbody tr td").first.inner_text()
-            if not first.startswith(units[cfg["units"][0]]["title"]):
+            if not first.startswith(units[cfg["terms"][0]["units"][0]]["title"]):
                 fails.append(f"parent table does not start with the first pacing unit: {first!r}")
             report = page.locator("textarea.report").input_value()
             if "[Term 2] Relationships in Triangles" not in report:
                 fails.append("parent report lacks term labels")
             shot("parent.png")
+
+            # ---- make-up prep units: pages, practice, a full prep quiz each ----
+            go("/unit/makeup-transversal")
+            if "Make-up quiz prep" not in page.locator(".term-chip").inner_text():
+                fails.append("prep unit page lacks the Make-up quiz prep chip")
+            if page.locator(".related a[href='#/unit/parallel-perpendicular']").count() != 1:
+                fails.append("prep unit page lacks the related-unit link")
+            shot("unit-makeup-transversal.png")
+            for uid, idx in [("makeup-transversal", 5), ("makeup-linear-forms", 9), ("makeup-quotient", 6)]:
+                go(f"/practice/{uid}/{idx}")
+                shot(f"practice-{uid}.png")
+            for quid in sorted(prep_ids):
+                go(f"/quiz/{quid}")
+                page.click("text=Start quiz")
+                for q in units[quid]["quiz"]:
+                    if q["type"] == "mcq":
+                        page.locator(".choice", has_text=q["answer"]).first.click()
+                    else:
+                        page.fill(".answer-input", q["answer"])
+                    page.click("button:has-text('Check')")
+                    if page.locator(".feedback.good").count() != 1:
+                        fails.append(f"prep quiz: {q['id']} answer not accepted")
+                    page.locator(".btn-row button.primary:visible").click()
+                n = len(units[quid]["quiz"])
+                score = page.locator(".big-score").inner_text()
+                if score.replace(" ", "") != f"{n}/{n}":
+                    fails.append(f"prep quiz {quid} score {score!r}, expected {n}/{n}")
+            page.screenshot(path=str(OUT / "quiz-result-makeup.png"))
+            go("/")
+            if "Prep quiz best 100%" not in page.locator(".mq-section").inner_text():
+                fails.append("make-up card does not show the prep quiz best score")
+
+            # ---- seeding: fresh device, reload, delete, pre-existing data ----
+            def fresh(pre=None):
+                c = browser.new_context(viewport={"width": 390, "height": 844}, service_workers="block")
+                c.clock.set_fixed_time(FROZEN)
+                pg = c.new_page()
+                pg.on("pageerror", lambda e: errors.append(f"pageerror (seed test): {e}"))
+                if pre is not None:
+                    pg.add_init_script("if (!sessionStorage.getItem('pre')) { localStorage.setItem('mathlab.v1', %s); sessionStorage.setItem('pre', '1'); }" % json.dumps(json.dumps(pre)))
+                return c, pg
+            def saved(pg):
+                return json.loads(pg.evaluate("localStorage.getItem('mathlab.v1')") or "{}")
+            seed_ids = [q["id"] for q in mq]
+            c, pg = fresh()
+            pg.goto(base + "index.html#/makeup"); pg.wait_for_selector(".makeup")
+            st = saved(pg)
+            if [m["id"] for m in st.get("makeups", [])] != seed_ids or any(m.get("due") for m in st["makeups"]):
+                fails.append(f"fresh device not seeded with the undated quizzes: {st.get('makeups')}")
+            pg.reload(); pg.wait_for_selector(".makeup")
+            if len(saved(pg)["makeups"]) != len(mq):
+                fails.append("seeding duplicated entries on reload")
+            pg.on("dialog", lambda d: d.accept())
+            pg.locator(".makeup").first.locator("button:has-text('Delete')").click()
+            pg.wait_for_timeout(100)
+            pg.reload(); pg.wait_for_selector(".makeup")
+            if len(saved(pg)["makeups"]) != len(mq) - 1:
+                fails.append("a deleted seeded quiz came back after reload")
+            c.close()
+            pre = {"version": 1, "makeups": [{"id": "mabc", "name": "Chapter 2 test", "due": "2026-12-01", "unitId": "congruence", "notes": "keep me"},
+                                             {"id": "seed-quotient", "name": "My own edit", "due": "2026-11-30", "unitId": "exponent-rules", "notes": "edited"}],
+                   "practice": {"par-p01": {"status": "correct"}}}
+            c, pg = fresh(pre)
+            pg.goto(base + "index.html#/makeup"); pg.wait_for_selector(".makeup")
+            st = saved(pg)
+            ms = {m["id"]: m for m in st["makeups"]}
+            if ms.get("mabc", {}).get("notes") != "keep me" or ms.get("seed-quotient", {}).get("name") != "My own edit":
+                fails.append(f"seeding changed saved entries: {st['makeups']}")
+            if len(st["makeups"]) != 4 or st.get("practice", {}).get("par-p01", {}).get("status") != "correct":
+                fails.append(f"seeding lost or duplicated data: {len(st['makeups'])} entries")
+            c.close()
             browser.close()
     finally:
         srv.terminate()

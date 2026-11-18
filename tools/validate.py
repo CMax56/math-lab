@@ -1189,7 +1189,7 @@ def load_json(path):
         return None
 
 
-def check_terms(terms, unit_files):
+def check_terms(terms, unit_files, prep_ids=()):
     """Pacing-guide sections: each term names real units, each unit at most once, valid dates in order."""
     import datetime
     if terms is None:
@@ -1241,12 +1241,46 @@ def check_terms(terms, unit_files):
                 if uid not in units:
                     err(f"{where}: group '{g['label']}' lists '{uid}', which is not in this term")
     for uid in unit_files:
-        if uid not in placed:
+        if uid not in placed and uid not in prep_ids:
             warn(f"unit '{uid}' is not in any term (shown under 'Other')")
+        if uid in placed and uid in prep_ids:
+            err(f"unit '{uid}' is a make-up prep unit and also in a term")
     order = [u for t in terms if isinstance(t, dict) for u in (t.get("units") or [])]
     listed = [u for u in unit_files if u in placed]
     if listed != order:
         warn("app.json: 'units' is not in pacing (term) order")
+
+
+def check_makeup_quizzes(mq, unit_files):
+    """Built-in make-up quizzes shown at the top of home and seeded once into the device's make-up list."""
+    if mq is None:
+        return set()
+    if not isinstance(mq, dict) or not isinstance(mq.get("quizzes"), list) or not mq["quizzes"]:
+        err("app.json: makeupQuizzes needs a non-empty 'quizzes' list")
+        return set()
+    if not nonempty_str(mq.get("title")):
+        err("app.json: makeupQuizzes needs a title")
+    seen, prep = set(), set()
+    for i, q in enumerate(mq["quizzes"]):
+        where = f"app.json makeupQuizzes[{i}]"
+        if not isinstance(q, dict):
+            err(f"{where}: must be an object")
+            continue
+        for k in ("id", "name", "prepUnit"):
+            if not nonempty_str(q.get(k)):
+                err(f"{where}: missing {k}")
+        if q.get("id") in seen:
+            err(f"{where}: duplicate id {q.get('id')!r}")
+        seen.add(q.get("id"))
+        if q.get("prepUnit") not in unit_files:
+            err(f"{where}: prepUnit {q.get('prepUnit')!r} is not in the app.json units list")
+        prep.add(q.get("prepUnit"))
+        for r in q.get("related") or []:
+            if r not in unit_files:
+                err(f"{where}: related unit {r!r} is not in the app.json units list")
+        if "due" in q and q["due"] and not re.match(r"^\d{4}-\d{2}-\d{2}$", str(q["due"])):
+            err(f"{where}: due must be YYYY-MM-DD or empty")
+    return prep
 
 
 def check_reference(uid, ref):
@@ -1287,7 +1321,8 @@ def check_content():
         err("app.json: 'units' must be a non-empty list of unit file names")
         return []
     strands = cfg.get("strands", {})
-    check_terms(cfg.get("terms"), unit_files)
+    prep_ids = check_makeup_quizzes(cfg.get("makeupQuizzes"), unit_files)
+    check_terms(cfg.get("terms"), unit_files, prep_ids)
     seen_units, seen_ids, inventory = set(), {}, []
     for name in unit_files:
         path = CONTENT / "units" / f"{name}.json"
@@ -1334,6 +1369,9 @@ def check_content():
             check_html(where, card.get("back"))
             check_figure(uid, "flashcards", card, where)
         check_reference(uid, unit.get("reference"))
+        for r in unit.get("related") or []:
+            if r not in unit_files:
+                err(f"{uid}: related unit {r!r} is not in the app.json units list")
         if len(practice) < 8:
             warn(f"{uid}: only {len(practice)} practice items (target ~10)")
         if not 8 <= len(cards) <= 14:

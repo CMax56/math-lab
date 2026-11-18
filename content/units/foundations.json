@@ -1,0 +1,535 @@
+{
+  "id": "foundations",
+  "title": "Foundations of Geometry",
+  "description": "Points, lines, and planes; segment addition; midpoint and distance; angle pairs and angle addition; basic constructions.",
+  "strand": "geometry",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "fnd-p01",
+      "type": "numeric",
+      "prompt": "Point B is between A and C on a line. AB = 7 and BC = 12. Find AC.",
+      "figure": {
+        "alt": "Points A, B, and C on a line. AB is 7 and BC is 12. The whole length AC is unknown.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 60.0, "name": "A", "dot": true, "nameAt": [6.0, 86.0] },
+          { "id": "B", "x": 123.2, "y": 60.0, "name": "B", "dot": true, "nameAt": [123.2, 86.0] },
+          { "id": "C", "x": 324.0, "y": 60.0, "name": "C", "dot": true, "nameAt": [324.0, 86.0] }
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "lx": 0, "ly": -24, "text": "7" },
+          { "a": "B", "b": "C", "lx": 0, "ly": -24, "text": "12" }
+        ],
+        "notes": [{ "x": 166, "y": 120, "text": "AC = ?", "ask": true }]
+      },
+      "answer": "19",
+      "acceptable": [],
+      "check": "7 + 12",
+      "hints": [
+        "Segment Addition Postulate: if B is between A and C, then AB + BC = AC.",
+        "The two small pieces add up to the whole segment.",
+        "Add 7 + 12."
+      ],
+      "solution": "AB + BC = AC<br>7 + 12 = <b>19</b>"
+    },
+    {
+      "id": "fnd-p02",
+      "type": "numeric",
+      "prompt": "M is the midpoint of segment AB. AM = 3x + 4 and MB = 5x − 6. Find the length of AB.",
+      "figure": {
+        "alt": "Segment AB with midpoint M. AM is 3x + 4 and MB is 5x − 6, marked congruent. AB is unknown.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 60.0, "name": "A", "dot": true, "nameAt": [6.0, 86.0] },
+          { "id": "M", "x": 165.0, "y": 60.0, "name": "M", "dot": true, "nameAt": [165.0, 86.0] },
+          { "id": "B", "x": 324.0, "y": 60.0, "name": "B", "dot": true, "nameAt": [324.0, 86.0] }
+        ],
+        "segs": [
+          { "a": "A", "b": "M", "lx": 0, "ly": -24, "text": "3x + 4", "ticks": 1 },
+          { "a": "M", "b": "B", "lx": 0, "ly": -24, "text": "5x − 6", "ticks": 1 }
+        ],
+        "notes": [{ "x": 166, "y": 120, "text": "AB = ?", "ask": true }]
+      },
+      "answer": "38",
+      "acceptable": [],
+      "check": "2 * (3 * ((4 + 6) / (5 - 3)) + 4)",
+      "hints": [
+        "A midpoint cuts a segment into two equal pieces, so AM = MB.",
+        "Solve 3x + 4 = 5x − 6. You should get x = 5.",
+        "Plug x = 5 into AM, then double it (AB = AM + MB)."
+      ],
+      "solution": "3x + 4 = 5x − 6 → 10 = 2x → x = 5<br>AM = 3(5) + 4 = 19, so MB = 19 too<br>AB = 19 + 19 = <b>38</b>"
+    },
+    {
+      "id": "fnd-p03",
+      "type": "pair",
+      "prompt": "Find the midpoint of the segment with endpoints (−2, 5) and (6, −1). Type it like (x, y).",
+      "figure": {
+        "alt": "A segment from (−2, 5) to (6, −1). Its midpoint is not shown.",
+        "grid": {
+          "x0": -4,
+          "x1": 8,
+          "y0": -3,
+          "y1": 7,
+          "w": 300,
+          "h": 260,
+          "numbered": true,
+          "points": [{ "x": -2, "y": 5, "text": "(−2, 5)" }, { "x": 6, "y": -1, "text": "(6, −1)" }],
+          "segs": [{ "x1": -2, "y1": 5, "x2": 6, "y2": -1 }]
+        }
+      },
+      "answer": "(2, 2)",
+      "acceptable": [],
+      "check": "[(-2 + 6) / 2, (5 + -1) / 2]",
+      "hints": [
+        "Midpoint formula: ((x₁ + x₂)/2, (y₁ + y₂)/2). Average the x's and average the y's.",
+        "x: (−2 + 6)/2 = 4/2.",
+        "y: (5 + (−1))/2 = 4/2."
+      ],
+      "solution": "x = (−2 + 6)/2 = 2<br>y = (5 − 1)/2 = 2<br>Midpoint = <b>(2, 2)</b>"
+    },
+    {
+      "id": "fnd-p04",
+      "type": "numeric",
+      "prompt": "Find the distance between the points (1, 2) and (7, 10).",
+      "figure": {
+        "alt": "Points (1, 2) and (7, 10) joined by a segment, with a dashed run and rise under it.",
+        "grid": {
+          "x0": 0,
+          "x1": 9,
+          "y0": 0,
+          "y1": 11,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "points": [{ "x": 1, "y": 2, "text": "(1, 2)" }, { "x": 7, "y": 10, "text": "(7, 10)" }],
+          "segs": [{ "x1": 1, "y1": 2, "x2": 7, "y2": 10 }],
+          "tri": { "x": 1, "y": 2, "run": 6, "rise": 8, "runText": "run", "riseText": "rise" }
+        }
+      },
+      "answer": "10",
+      "acceptable": [],
+      "check": "sqrt((7 - 1)**2 + (10 - 2)**2)",
+      "hints": [
+        "Distance formula: d = √((x₂ − x₁)² + (y₂ − y₁)²). It's the Pythagorean theorem on the grid.",
+        "Run: 7 − 1 = 6. Rise: 10 − 2 = 8.",
+        "d = √(6² + 8²) = √(36 + 64)."
+      ],
+      "solution": "d = √((7 − 1)² + (10 − 2)²) = √(36 + 64) = √100 = <b>10</b>"
+    },
+    {
+      "id": "fnd-p05",
+      "type": "mcq",
+      "prompt": "Points A, B, and C are <b>not</b> on the same line (they are noncollinear). How many planes pass through all three points?",
+      "figure": {
+        "alt": "Three noncollinear points A, B, and C drawn on a slanted flat surface.",
+        "pts": [
+          { "id": "W1", "x": 6.0, "y": 128.3, "name": "" },
+          { "id": "W2", "x": 250.6, "y": 128.3, "name": "" },
+          { "id": "W3", "x": 324.0, "y": 6.0, "name": "" },
+          { "id": "W4", "x": 79.4, "y": 6.0, "name": "" },
+          { "id": "A", "x": 84.3, "y": 94.1, "name": "A", "dot": true },
+          { "id": "B", "x": 211.5, "y": 81.8, "name": "B", "dot": true },
+          { "id": "C", "x": 167.4, "y": 35.4, "name": "C", "dot": true }
+        ],
+        "polys": [["W1", "W2", "W3", "W4"]],
+        "segs": [{ "a": "W1", "b": "W2" }, { "a": "W2", "b": "W3" }, { "a": "W3", "b": "W4" }, { "a": "W4", "b": "W1" }]
+      },
+      "choices": ["Exactly one", "Exactly two", "None", "Infinitely many"],
+      "answer": "Exactly one",
+      "acceptable": [],
+      "hints": [
+        "A plane is a flat surface that goes on forever.",
+        "Think of a three-legged stool: it never wobbles, because three points fix one flat surface.",
+        "If the three points were on one line, a plane could spin around that line. Here they are not."
+      ],
+      "solution": "Through any three noncollinear points there is <b>exactly one</b> plane. (If they were collinear, there would be infinitely many.)"
+    },
+    {
+      "id": "fnd-p06",
+      "type": "numeric",
+      "prompt": "∠AOC and ∠COB are complementary. m∠AOC = 38°. Find m∠COB.",
+      "figure": {
+        "alt": "Angle AOB is split by ray OC. Angle AOC is 38 degrees and angle COB is marked x.",
+        "pts": [
+          { "id": "O", "x": 6.0, "y": 306.0, "name": "O" },
+          { "id": "A", "x": 306.0, "y": 306.0, "name": "A" },
+          { "id": "C", "x": 242.4, "y": 121.3, "name": "C" },
+          { "id": "B", "x": 6.0, "y": 6.0, "name": "B" }
+        ],
+        "segs": [{ "a": "O", "b": "A" }, { "a": "O", "b": "C" }, { "a": "O", "b": "B" }],
+        "angles": [
+          { "at": "O", "a": "A", "b": "C", "text": "38°", "deg": 38 },
+          { "at": "O", "a": "C", "b": "B", "text": "x", "deg": 52, "ask": true }
+        ]
+      },
+      "answer": "52",
+      "acceptable": [],
+      "check": "90 - 38",
+      "hints": ["Complementary angles add up to 90°.", "38 + x = 90.", "Subtract 38 from 90."],
+      "solution": "38 + x = 90<br>x = 90 − 38 = <b>52°</b>"
+    },
+    {
+      "id": "fnd-p07",
+      "type": "numeric",
+      "prompt": "∠ABD and ∠DBC form a linear pair. m∠ABD = (3x + 15)° and m∠DBC = (2x + 5)°. Find x.",
+      "figure": {
+        "alt": "Line AC with ray BD. Angle ABD is 3x + 15 degrees and angle DBC is 2x + 5 degrees.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 186.0, "name": "A" },
+          { "id": "B", "x": 198.8, "y": 186.0, "name": "B" },
+          { "id": "C", "x": 391.6, "y": 186.0, "name": "C" },
+          { "id": "D", "x": 267.9, "y": 6.0, "name": "D" }
+        ],
+        "segs": [{ "a": "A", "b": "C" }, { "a": "B", "b": "D" }],
+        "angles": [
+          { "at": "B", "a": "A", "b": "D", "text": "(3x + 15)°", "out": true, "deg": 111 },
+          { "at": "B", "a": "D", "b": "C", "text": "(2x + 5)°", "out": true, "deg": 69 }
+        ]
+      },
+      "answer": "32",
+      "acceptable": [],
+      "check": "(180 - 15 - 5) / (3 + 2)",
+      "hints": [
+        "A linear pair sits on a straight line, so the two angles add to 180°.",
+        "(3x + 15) + (2x + 5) = 180, so 5x + 20 = 180.",
+        "Subtract 20, then divide by 5."
+      ],
+      "solution": "(3x + 15) + (2x + 5) = 180<br>5x + 20 = 180<br>5x = 160<br>x = <b>32</b><br>Check: 111° + 69° = 180° ✓"
+    },
+    {
+      "id": "fnd-p08",
+      "type": "numeric",
+      "prompt": "Two lines cross. One angle measures (4x − 10)° and the angle vertical to it measures (2x + 30)°. Find x.",
+      "figure": {
+        "alt": "Two crossing lines. A pair of vertical angles is labeled 4x − 10 degrees and 2x + 30 degrees.",
+        "pts": [
+          { "id": "A", "x": 325.3, "y": 156.0, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 156.0, "name": "B" },
+          { "id": "C", "x": 220.2, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 111.0, "y": 306.0, "name": "D" },
+          { "id": "O", "x": 165.6, "y": 156.0, "name": "O" }
+        ],
+        "segs": [{ "a": "A", "b": "B" }, { "a": "C", "b": "D" }],
+        "angles": [
+          { "at": "O", "a": "A", "b": "C", "text": "(4x − 10)°", "out": true, "deg": 70 },
+          { "at": "O", "a": "B", "b": "D", "text": "(2x + 30)°", "out": true, "deg": 70 }
+        ]
+      },
+      "answer": "20",
+      "acceptable": [],
+      "check": "(30 + 10) / (4 - 2)",
+      "hints": [
+        "Vertical angles are across from each other where two lines cross. They are congruent (equal).",
+        "Set them equal: 4x − 10 = 2x + 30.",
+        "Subtract 2x from both sides, then add 10."
+      ],
+      "solution": "4x − 10 = 2x + 30<br>2x = 40<br>x = <b>20</b> (each angle is 70°)"
+    },
+    {
+      "id": "fnd-p09",
+      "type": "numeric",
+      "prompt": "Point D is in the interior of ∠ABC. m∠ABD = 47° and m∠ABC = 112°. Find m∠DBC.",
+      "figure": {
+        "alt": "Angle ABC is 112 degrees with ray BD inside it. Angle ABD is 47 degrees and angle DBC is marked x.",
+        "pts": [
+          { "id": "B", "x": 119.1, "y": 286.0, "name": "B" },
+          { "id": "C", "x": 421.1, "y": 286.0, "name": "C" },
+          { "id": "D", "x": 246.8, "y": 12.3, "name": "D" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" }
+        ],
+        "segs": [{ "a": "B", "b": "A" }, { "a": "B", "b": "D" }, { "a": "B", "b": "C" }],
+        "angles": [
+          { "at": "B", "a": "D", "b": "A", "text": "47°" },
+          { "at": "B", "a": "C", "b": "D", "text": "x", "ask": true, "deg": 65 }
+        ],
+        "notes": [{ "x": 239.1, "y": 326.0, "text": "m∠ABC = 112°" }]
+      },
+      "answer": "65",
+      "acceptable": [],
+      "check": "112 - 47",
+      "hints": ["Angle Addition Postulate: m∠ABD + m∠DBC = m∠ABC.", "47 + x = 112.", "Subtract 47 from 112."],
+      "solution": "47 + x = 112<br>x = 112 − 47 = <b>65°</b>"
+    },
+    {
+      "id": "fnd-p10",
+      "type": "mcq",
+      "prompt": "To construct the perpendicular bisector of segment AB, you draw an arc centered at A and an arc centered at B, then join the two points where the arcs cross (P and Q). What must be true about the compass width?",
+      "figure": {
+        "alt": "Segment AB with a circle drawn around A and a circle drawn around B. The circles cross at P and Q, and a dashed line joins P and Q.",
+        "pts": [
+          { "id": "A", "x": 6, "y": 80, "name": "A", "dot": true },
+          { "id": "B", "x": 146.0, "y": 80, "name": "B", "dot": true },
+          { "id": "P", "x": 76.0, "y": 11.4, "name": "P", "dot": true },
+          { "id": "Q", "x": 76.0, "y": 148.6, "name": "Q", "dot": true }
+        ],
+        "segs": [{ "a": "A", "b": "B" }, { "a": "P", "b": "Q", "dash": true }],
+        "circles": [{ "c": "A", "r": 98.0 }, { "c": "B", "r": 98.0 }]
+      },
+      "choices": [
+        "Keep the same width for both arcs, and make it more than half of AB",
+        "Use a width less than half of AB",
+        "Use one width at A and a different width at B",
+        "Set the width equal to exactly half of AB"
+      ],
+      "answer": "Keep the same width for both arcs, and make it more than half of AB",
+      "acceptable": [],
+      "hints": [
+        "Every point on the perpendicular bisector is the same distance from A and from B.",
+        "If the widths were different, P and Q would not be equally far from A and B.",
+        "If the width were half of AB or less, would the arcs cross above and below the segment?"
+      ],
+      "solution": "Use the <b>same compass width from A and from B, more than half of AB</b>. Then P and Q are each equally far from A and B, and line PQ is the perpendicular bisector. Too small a width and the arcs never meet."
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "fnd-fc01",
+      "front": "Point, line, plane",
+      "back": "Point: a location (no size). Line: straight, goes on forever both ways. Plane: a flat surface that goes on forever. These are the undefined terms of geometry."
+    },
+    {
+      "id": "fnd-fc02",
+      "front": "Collinear and coplanar",
+      "back": "Collinear: on the same line. Coplanar: on the same plane. Any 3 noncollinear points lie on exactly one plane."
+    },
+    {
+      "id": "fnd-fc03",
+      "front": "Segment Addition Postulate",
+      "back": "If B is between A and C, then AB + BC = AC.",
+      "figure": {
+        "alt": "Points A, B, C on a line; AB plus BC equals AC.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 60.0, "name": "A", "dot": true, "nameAt": [6.0, 86.0] },
+          { "id": "B", "x": 123.2, "y": 60.0, "name": "B", "dot": true, "nameAt": [123.2, 86.0] },
+          { "id": "C", "x": 324.0, "y": 60.0, "name": "C", "dot": true, "nameAt": [324.0, 86.0] }
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "lx": 0, "ly": -24, "text": "AB" },
+          { "a": "B", "b": "C", "lx": 0, "ly": -24, "text": "BC" }
+        ],
+        "notes": [{ "x": 166, "y": 120, "text": "AB + BC = AC" }]
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "fnd-fc04",
+      "front": "Midpoint",
+      "back": "The point that splits a segment into two congruent halves. If M is the midpoint of AB, then AM = MB = ½ AB."
+    },
+    {
+      "id": "fnd-fc05",
+      "front": "Midpoint formula",
+      "back": "M = ((x₁ + x₂)/2, (y₁ + y₂)/2). Average the x's, average the y's."
+    },
+    {
+      "id": "fnd-fc06",
+      "front": "Distance formula",
+      "back": "d = √((x₂ − x₁)² + (y₂ − y₁)²). It is the Pythagorean theorem on a coordinate grid."
+    },
+    {
+      "id": "fnd-fc07",
+      "front": "Complementary angles",
+      "back": "Two angles whose measures add to <b>90°</b>. Example: 38° and 52°."
+    },
+    {
+      "id": "fnd-fc08",
+      "front": "Supplementary angles",
+      "back": "Two angles whose measures add to <b>180°</b>. Example: 127° and 53°."
+    },
+    {
+      "id": "fnd-fc09",
+      "front": "Vertical angles",
+      "back": "The angles across from each other when two lines cross. Vertical angles are <b>congruent</b>.",
+      "figure": {
+        "alt": "Two crossing lines with vertical angles 1 and 2 across from each other.",
+        "pts": [
+          { "id": "A", "x": 352.4, "y": 156.0, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 156.0, "name": "B" },
+          { "id": "C", "x": 265.8, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 92.6, "y": 306.0, "name": "D" },
+          { "id": "O", "x": 179.2, "y": 156.0, "name": "O" }
+        ],
+        "segs": [{ "a": "A", "b": "B" }, { "a": "C", "b": "D" }],
+        "angles": [
+          { "at": "O", "a": "A", "b": "C", "text": "1", "deg": 60 },
+          { "at": "O", "a": "B", "b": "D", "text": "2", "deg": 60 }
+        ]
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "fnd-fc10",
+      "front": "Linear pair",
+      "back": "Two adjacent angles whose outer sides make a straight line. They are supplementary (add to 180°).",
+      "figure": {
+        "alt": "Line AC with ray BD making adjacent angles 1 and 2 that together form a straight angle.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 186.0, "name": "A" },
+          { "id": "B", "x": 213.8, "y": 186.0, "name": "B" },
+          { "id": "C", "x": 421.7, "y": 186.0, "name": "C" },
+          { "id": "D", "x": 317.8, "y": 6.0, "name": "D" }
+        ],
+        "segs": [{ "a": "A", "b": "C" }, { "a": "B", "b": "D" }],
+        "angles": [
+          { "at": "B", "a": "A", "b": "D", "text": "1", "deg": 120 },
+          { "at": "B", "a": "D", "b": "C", "text": "2", "deg": 60 }
+        ]
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "fnd-fc11",
+      "front": "Angle Addition Postulate",
+      "back": "If D is in the interior of ∠ABC, then m∠ABD + m∠DBC = m∠ABC. An <b>angle bisector</b> splits an angle into two equal angles."
+    },
+    {
+      "id": "fnd-fc12",
+      "front": "Basic constructions (compass + straightedge)",
+      "back": "Copy a segment, copy an angle, bisect an angle, and construct a perpendicular bisector. Keep the compass width the same when the steps say so."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "fnd-q01",
+      "type": "numeric",
+      "prompt": "B is between A and C. AB = 2x + 3, BC = 4x − 1, and AC = 32. Find x.",
+      "figure": {
+        "alt": "Points A, B, C on a line. AB is 2x + 3, BC is 4x − 1, and AC is 32.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 60.0, "name": "A", "dot": true, "nameAt": [6.0, 86.0] },
+          { "id": "B", "x": 135.2, "y": 60.0, "name": "B", "dot": true, "nameAt": [135.2, 86.0] },
+          { "id": "C", "x": 324.0, "y": 60.0, "name": "C", "dot": true, "nameAt": [324.0, 86.0] }
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "lx": 0, "ly": -24, "text": "2x + 3" },
+          { "a": "B", "b": "C", "lx": 0, "ly": -24, "text": "4x − 1" }
+        ],
+        "notes": [{ "x": 166, "y": 120, "text": "AC = 32" }]
+      },
+      "answer": "5",
+      "acceptable": [],
+      "check": "(32 - 3 + 1) / (2 + 4)",
+      "hints": ["AB + BC = AC.", "(2x + 3) + (4x − 1) = 32 → 6x + 2 = 32."],
+      "solution": "6x + 2 = 32 → 6x = 30 → x = <b>5</b>"
+    },
+    {
+      "id": "fnd-q02",
+      "type": "numeric",
+      "prompt": "Two angles are supplementary. One measures 127°. Find the other.",
+      "figure": {
+        "alt": "Two angles that form a straight line. One is 127 degrees and the other is marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 173.7, "name": "A" },
+          { "id": "B", "x": 216.0, "y": 173.7, "name": "B" },
+          { "id": "C", "x": 426.0, "y": 173.7, "name": "C" },
+          { "id": "D", "x": 342.4, "y": 6.0, "name": "D" }
+        ],
+        "segs": [{ "a": "A", "b": "C" }, { "a": "B", "b": "D" }],
+        "angles": [
+          { "at": "B", "a": "A", "b": "D", "text": "127°", "deg": 127 },
+          { "at": "B", "a": "D", "b": "C", "text": "x", "deg": 53, "ask": true }
+        ]
+      },
+      "answer": "53",
+      "acceptable": [],
+      "check": "180 - 127",
+      "hints": ["Supplementary angles add to 180°.", "180 − 127."],
+      "solution": "180 − 127 = <b>53°</b>"
+    },
+    {
+      "id": "fnd-q03",
+      "type": "pair",
+      "prompt": "Find the midpoint of the segment with endpoints (4, −3) and (−8, 7). Type it like (x, y).",
+      "figure": {
+        "alt": "A segment from (4, −3) to (−8, 7). Its midpoint is not shown.",
+        "grid": {
+          "x0": -9,
+          "x1": 6,
+          "y0": -4,
+          "y1": 8,
+          "w": 300,
+          "h": 260,
+          "numbered": true,
+          "points": [{ "x": 4, "y": -3, "text": "(4, −3)" }, { "x": -8, "y": 7, "text": "(−8, 7)" }],
+          "segs": [{ "x1": 4, "y1": -3, "x2": -8, "y2": 7 }]
+        }
+      },
+      "answer": "(-2, 2)",
+      "acceptable": [],
+      "check": "[(4 + -8) / 2, (-3 + 7) / 2]",
+      "hints": ["Average the x's and average the y's.", "(4 + (−8))/2 and (−3 + 7)/2."],
+      "solution": "x = (4 − 8)/2 = −2, y = (−3 + 7)/2 = 2 → <b>(−2, 2)</b>"
+    },
+    {
+      "id": "fnd-q04",
+      "type": "numeric",
+      "prompt": "Find the distance between (−1, −2) and (4, 10).",
+      "figure": {
+        "alt": "Points (−1, −2) and (4, 10) joined by a segment.",
+        "grid": {
+          "x0": -2,
+          "x1": 6,
+          "y0": -3,
+          "y1": 11,
+          "w": 260,
+          "h": 300,
+          "numbered": true,
+          "points": [{ "x": -1, "y": -2, "text": "(−1, −2)" }, { "x": 4, "y": 10, "text": "(4, 10)" }],
+          "segs": [{ "x1": -1, "y1": -2, "x2": 4, "y2": 10 }]
+        }
+      },
+      "answer": "13",
+      "acceptable": [],
+      "check": "sqrt((4 - -1)**2 + (10 - -2)**2)",
+      "hints": ["d = √((x₂ − x₁)² + (y₂ − y₁)²).", "Run = 4 − (−1) = 5, rise = 10 − (−2) = 12."],
+      "solution": "d = √(5² + 12²) = √169 = <b>13</b>"
+    },
+    {
+      "id": "fnd-q05",
+      "type": "mcq",
+      "prompt": "Two lines cross and one of the four angles is 64°. What are the other three angles?",
+      "figure": {
+        "alt": "Two crossing lines. One of the four angles is 64 degrees.",
+        "pts": [
+          { "id": "A", "x": 339.8, "y": 156.0, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 156.0, "name": "B" },
+          { "id": "C", "x": 246.1, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 99.7, "y": 306.0, "name": "D" },
+          { "id": "O", "x": 172.9, "y": 156.0, "name": "O" }
+        ],
+        "segs": [{ "a": "A", "b": "B" }, { "a": "C", "b": "D" }],
+        "angles": [{ "at": "O", "a": "A", "b": "C", "text": "64°", "deg": 64 }]
+      },
+      "choices": ["64°, 116°, 116°", "64°, 64°, 64°", "26°, 64°, 26°", "116°, 116°, 116°"],
+      "answer": "64°, 116°, 116°",
+      "acceptable": [],
+      "hints": [
+        "The angle across from 64° is its vertical angle.",
+        "The angles next to 64° form linear pairs with it (add to 180°)."
+      ],
+      "solution": "Vertical angle: 64°. Each neighbor: 180 − 64 = 116°. So <b>64°, 116°, 116°</b>."
+    },
+    {
+      "id": "fnd-q06",
+      "type": "numeric",
+      "prompt": "Ray QS bisects ∠PQR. m∠PQS = 34°. Find m∠PQR.",
+      "figure": {
+        "alt": "Angle PQR split by ray QS into two equal angles. Angle PQS is 34 degrees.",
+        "pts": [
+          { "id": "Q", "x": 6.0, "y": 286.0, "name": "Q" },
+          { "id": "R", "x": 308.0, "y": 286.0, "name": "R" },
+          { "id": "S", "x": 256.4, "y": 117.1, "name": "S" },
+          { "id": "P", "x": 119.1, "y": 6.0, "name": "P" }
+        ],
+        "segs": [{ "a": "Q", "b": "R" }, { "a": "Q", "b": "S" }, { "a": "Q", "b": "P" }],
+        "angles": [{ "at": "Q", "a": "S", "b": "P", "text": "34°", "arcs": 1 }, { "at": "Q", "a": "R", "b": "S", "arcs": 1 }],
+        "notes": [{ "x": 166.0, "y": 326.0, "text": "m∠PQR = ?", "ask": true }]
+      },
+      "answer": "68",
+      "acceptable": [],
+      "check": "2 * 34",
+      "hints": ["A bisector splits the angle into two equal halves.", "The whole angle is twice one half."],
+      "solution": "m∠PQR = 2 · 34° = <b>68°</b>"
+    }
+  ]
+}

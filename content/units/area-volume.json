@@ -1,7 +1,7 @@
 {
   "id": "area-volume",
-  "title": "Area & Volume",
-  "description": "Area of triangles, trapezoids, and circles; volume and surface area of prisms, cylinders, pyramids, cones, and spheres, with the right units.",
+  "title": "Two & Three Dimensional Models",
+  "description": "Area of 2D shapes; volume and surface area of prisms, cylinders, pyramids, cones, and spheres; cross sections, nets, and solids made by spinning a shape.",
   "strand": "geometry",
   "status": "starter",
   "practice": [
@@ -225,6 +225,63 @@
         "Add 8π and 20π."
       ],
       "solution": "Top + bottom: 2πr² = 2π(2²) = 8π<br>Side: 2πrh = 2π(2)(5) = 20π<br>Total = <b>28π ≈ 87.96</b>"
+    },
+    {
+      "id": "vol-p11",
+      "type": "mcq",
+      "prompt": "A cylinder is sliced straight down through the center of both circles, perpendicular to the bases. What shape is the cross section?",
+      "figure": { "alt": "A cylinder standing upright.", "solid": { "kind": "cylinder", "r": 3, "h": 7 } },
+      "choices": ["Rectangle", "Circle", "Triangle", "Oval (ellipse)"],
+      "answer": "Rectangle",
+      "acceptable": [],
+      "hints": [
+        "A cross section is the flat face you would see after cutting the solid.",
+        "The cut goes from the top circle straight down to the bottom circle.",
+        "Its width is the diameter, and its height is the height of the cylinder."
+      ],
+      "solution": "The cut runs across a diameter and down the full height, so the face is a <b>rectangle</b> (diameter × height). A cut parallel to the bases would give a circle."
+    },
+    {
+      "id": "vol-p12",
+      "type": "mcq",
+      "prompt": "This net is one square with four matching triangles attached to its sides. Folded up, what solid does it make?",
+      "figure": {
+        "alt": "A net made of one square in the middle with a triangle attached to each of its four sides.",
+        "pts": [
+          { "id": "S1", "x": 95.0, "y": 95.0, "name": "" },
+          { "id": "S2", "x": 225.0, "y": 95.0, "name": "" },
+          { "id": "S3", "x": 225.0, "y": 225.0, "name": "" },
+          { "id": "S4", "x": 95.0, "y": 225.0, "name": "" },
+          { "id": "T1", "x": 160.0, "y": -15.0, "name": "" },
+          { "id": "T2", "x": 335.0, "y": 160.0, "name": "" },
+          { "id": "T3", "x": 160.0, "y": 335.0, "name": "" },
+          { "id": "T4", "x": -15.0, "y": 160.0, "name": "" }
+        ],
+        "polys": [["S1", "S2", "S3", "S4"], ["S1", "S2", "T1"], ["S2", "S3", "T2"], ["S3", "S4", "T3"], ["S4", "S1", "T4"]],
+        "segs": [
+          { "a": "S1", "b": "S2" },
+          { "a": "S2", "b": "S3" },
+          { "a": "S3", "b": "S4" },
+          { "a": "S4", "b": "S1" },
+          { "a": "S1", "b": "T1" },
+          { "a": "T1", "b": "S2" },
+          { "a": "S2", "b": "T2" },
+          { "a": "T2", "b": "S3" },
+          { "a": "S3", "b": "T3" },
+          { "a": "T3", "b": "S4" },
+          { "a": "S4", "b": "T4" },
+          { "a": "T4", "b": "S1" }
+        ]
+      },
+      "choices": ["Square pyramid", "Cube", "Triangular prism", "Cone"],
+      "answer": "Square pyramid",
+      "acceptable": [],
+      "hints": [
+        "A net is a flat pattern that folds into a solid.",
+        "The square will be the base. Fold each triangle up.",
+        "The four triangle tips meet at one point at the top."
+      ],
+      "solution": "One square base plus four triangles that meet at a point: a <b>square pyramid</b>."
     }
   ],
   "flashcards": [
@@ -262,7 +319,12 @@
     { "id": "vol-fc08", "front": "Surface area of a cylinder", "back": "SA = 2πr² + 2πrh (two circles + the side)" },
     { "id": "vol-fc09", "front": "Units", "back": "Length: cm. Area: cm² (square units). Volume: cm³ (cubic units)." },
     { "id": "vol-fc10", "front": "Cavalieri's principle", "back": "If two solids have the same height and the same cross-section area at every level, they have the same volume." },
-    { "id": "vol-fc11", "front": "Scaling a solid by k", "back": "Surface area is multiplied by k²; volume is multiplied by k³." }
+    { "id": "vol-fc11", "front": "Scaling a solid by k", "back": "Surface area is multiplied by k²; volume is multiplied by k³." },
+    {
+      "id": "vol-fc12",
+      "front": "Cross sections, nets, and solids of revolution",
+      "back": "Cross section: the flat shape you get by slicing a solid. Net: a flat pattern that folds into a solid. Solid of revolution: spin a 2D shape around a line (a rectangle makes a cylinder, a right triangle makes a cone)."
+    }
   ],
   "quiz": [
     {
@@ -327,6 +389,36 @@
       "acceptable": [],
       "hints": ["Volume = l · w · h, and each one doubles.", "2 · 2 · 2."],
       "solution": "(2l)(2w)(2h) = 8 · lwh. Volume is multiplied by <b>8</b> (k³ with k = 2)."
+    },
+    {
+      "id": "vol-q07",
+      "type": "mcq",
+      "prompt": "A right triangle with legs 3 and 4 is spun all the way around the leg of length 4. What solid does it sweep out?",
+      "figure": {
+        "alt": "A right triangle with a vertical leg of 4 and a horizontal leg of 3. A dashed line runs along the vertical leg as the spin axis.",
+        "pts": [
+          { "id": "R", "x": 100.0, "y": 246.0, "name": "" },
+          { "id": "T", "x": 100.0, "y": 6.0, "name": "" },
+          { "id": "F", "x": 280.0, "y": 246.0, "name": "" },
+          { "id": "X1", "x": 100.0, "y": -34.0, "name": "" },
+          { "id": "X2", "x": 100.0, "y": 286.0, "name": "" }
+        ],
+        "polys": [["R", "T", "F"]],
+        "segs": [
+          { "a": "R", "b": "T", "text": "4", "scale": "s", "draw": 4.0 },
+          { "a": "R", "b": "F", "text": "3", "scale": "s", "draw": 3.0 },
+          { "a": "T", "b": "F" },
+          { "a": "X1", "b": "T", "dash": true },
+          { "a": "R", "b": "X2", "dash": true }
+        ],
+        "angles": [{ "at": "R", "a": "T", "b": "F", "right": true }],
+        "notes": [{ "x": 60.0, "y": -24.0, "text": "axis" }]
+      },
+      "choices": ["Cone", "Cylinder", "Sphere", "Pyramid"],
+      "answer": "Cone",
+      "acceptable": [],
+      "hints": ["The leg of length 4 stays still and becomes the height.", "The leg of length 3 sweeps out a circle: the base."],
+      "solution": "A circular base (radius 3) and a point at the top (height 4): a <b>cone</b>."
     }
   ]
 }

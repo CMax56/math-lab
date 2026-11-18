@@ -1,7 +1,7 @@
 {
   "id": "right-triangles",
-  "title": "Right Triangles & Trig",
-  "description": "Pythagorean theorem, the special 45-45-90 and 30-60-90 triangles, and SOH CAH TOA for missing sides and angles.",
+  "title": "Right Triangles & Trigonometry",
+  "description": "Pythagorean theorem, the special 45-45-90 and 30-60-90 triangles, SOH CAH TOA for missing sides and angles, and angles of elevation and depression.",
   "strand": "geometry",
   "status": "starter",
   "practice": [
@@ -353,6 +353,43 @@
         "Which special angle has a sine of 1/2? (Think 30-60-90.)"
       ],
       "solution": "sin A = 5/10 = 0.5<br>A = sin⁻¹(0.5) = <b>30°</b>"
+    },
+    {
+      "id": "trig-p11",
+      "type": "numeric",
+      "prompt": "From the top of a 60 ft lighthouse, the angle of depression to a boat is 25°. How far is the boat from the base of the lighthouse, to the nearest foot?",
+      "figure": {
+        "alt": "A lighthouse 60 ft tall. From the top, a dashed horizontal line and a line down to a boat make a 25 degree angle of depression. The distance from the base to the boat is marked x.",
+        "pts": [
+          { "id": "Top", "x": 6.0, "y": 6.0, "name": "" },
+          { "id": "Base", "x": 6.0, "y": 154.3, "name": "" },
+          { "id": "Boat", "x": 324.0, "y": 154.3, "name": "" },
+          { "id": "H", "x": 324.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [["Top", "Boat", "Base"]],
+        "segs": [
+          { "a": "Base", "b": "Top", "text": "60 ft", "scale": "s", "draw": 60.0 },
+          { "a": "Base", "b": "Boat", "text": "x", "ask": true, "scale": "s", "draw": 128.67 },
+          { "a": "Top", "b": "Boat" },
+          { "a": "Top", "b": "H", "dash": true }
+        ],
+        "angles": [
+          { "at": "Base", "a": "Top", "b": "Boat", "right": true },
+          { "at": "Top", "a": "H", "b": "Boat", "text": "25°" }
+        ],
+        "notes": [{ "x": 60.0, "y": 77.2, "text": "lighthouse" }, { "x": 314.0, "y": 180.3, "text": "boat" }]
+      },
+      "answer": "129",
+      "acceptable": [],
+      "roundTo": 0,
+      "tolerance": 0.5,
+      "check": "60 / tan(radians(25))",
+      "hints": [
+        "The angle of depression is measured <b>down</b> from a horizontal line at the top.",
+        "It equals the angle of elevation from the boat up to the top (alternate interior angles), so the angle at the boat is 25°.",
+        "From the boat: the height 60 is opposite and x is adjacent. tan 25° = 60/x, so x = 60 ÷ tan 25°."
+      ],
+      "solution": "Angle at the boat = 25° (alternate interior with the angle of depression)<br>tan 25° = 60/x<br>x = 60 ÷ tan 25° ≈ 60 ÷ 0.4663 ≈ 128.7<br>x ≈ <b>129 ft</b>"
     }
   ],
   "flashcards": [

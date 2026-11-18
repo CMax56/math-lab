@@ -1,6 +1,7 @@
 /* Inline diagrams. No network, no libraries.
  * A figure is a plain object: geometry (pts, polys, segs, angles, circles, notes)
- * and/or a graph, number line, balance, bar model, or solid.
+ * and/or a graph (with optional polygons on the grid), number line, balance,
+ * bar model, fraction (frac), factor tiles (chips), or solid.
  * Coordinates are SVG pixels, y down. Geometry checks live in tools/validate.py. */
 var Figures = (function () {
   'use strict';
@@ -82,6 +83,8 @@ var Figures = (function () {
     (fig.notes || []).forEach(function (n) { xs.push(n.x); ys.push(n.y); });
     if (!xs.length) return null;
     var pad = 46;
+    // Tile and fraction views have no point labels that need room around the edge.
+    if (!(fig.pts || []).length && (fig.chips || fig.frac) && !fig.grid) pad = 14;
     function growPad(text) {
       if (!text) return;
       var need = 24 + String(text).length * 8.4;
@@ -92,6 +95,7 @@ var Figures = (function () {
     (fig.notes || []).forEach(function (n) { growPad(n.text); });
     (fig.grid && fig.grid.lines || []).forEach(function (ln) { growPad(ln.text); });
     (fig.grid && fig.grid.points || []).forEach(function (p) { growPad(p.text); });
+    (fig.grid && fig.grid.shapes || []).forEach(function (sh) { growPad(sh.text); });
     if (fig.balance) { growPad(fig.balance.left); growPad(fig.balance.right); }
     (fig.bars && fig.bars.items || []).forEach(function (it) { growPad(it.text); });
     var minX = Math.min.apply(null, xs) - pad;
@@ -113,6 +117,8 @@ var Figures = (function () {
     if (fig.numberline) drawNumberline(svg, fig.numberline);
     if (fig.balance) drawBalance(svg, fig.balance);
     if (fig.bars) drawBars(svg, fig.bars);
+    if (fig.frac) drawFrac(svg, fig.frac);
+    if (fig.chips) drawChips(svg, fig.chips);
     (fig.solids || (fig.solid ? [fig.solid] : [])).forEach(function (s, i) { drawSolid(svg, s, i); });
 
     var polys = fig.polys || [];
@@ -230,6 +236,8 @@ var Figures = (function () {
       if (g.text) {
         var mid = sw.start + sw.sweep / 2;
         var ld = r + (g.arcs || 1) * 6 + 14;
+        // out: true moves a long label like (3x + 15)° farther out so it clears the rays.
+        if (g.out) ld += Math.max(0, String(g.text).length - 4) * 5.5;
         if (g.right) ld = Math.max(ld, 36);
         svg.appendChild(textEl(labelClass(g.text), at.x + Math.cos(mid) * ld, at.y + Math.sin(mid) * ld, g.text, g.ask));
       }
@@ -309,6 +317,8 @@ var Figures = (function () {
     if (fig.grid) boxes.push({ x: 0, y: 0, w: fig.grid.w || 300, h: fig.grid.h || 210 });
     if (fig.numberline) boxes.push({ x: 0, y: 0, w: 320, h: 86 });
     if (fig.balance) boxes.push({ x: 0, y: 0, w: 320, h: 150 });
+    if (fig.frac) boxes.push({ x: 0, y: 0, w: 320, h: fig.frac.caption ? 130 : 110 });
+    if (fig.chips) { var cl = chipsLayout(fig.chips); boxes.push({ x: 0, y: 0, w: cl.w, h: cl.h }); }
     if (fig.bars) {
       var n = (fig.bars.items || fig.bars.ratios || []).length;
       boxes.push({ x: 0, y: 0, w: 320, h: Math.max(100, 36 + n * 48) });
@@ -382,6 +392,26 @@ var Figures = (function () {
       }));
       if (g.vline.text) svg.appendChild(textEl('label ask', X(g.vline.x) + 8, Y(y1) + 16, g.vline.text, true));
     }
+    (g.segs || []).forEach(function (sg) {
+      svg.appendChild(el('line', { class: 'stroke' + (sg.dash ? ' dash' : ''), x1: rnd(X(sg.x1)), y1: rnd(Y(sg.y1)), x2: rnd(X(sg.x2)), y2: rnd(Y(sg.y2)) }));
+    });
+    (g.shapes || []).forEach(function (sh, n) {
+      var P = (sh.pts || []).map(function (q) { return [X(q[0]), Y(q[1])]; });
+      if (P.length < 2) return;
+      var pts = P.map(function (q) { return rnd(q[0]) + ',' + rnd(q[1]); }).join(' ');
+      svg.appendChild(el('polygon', { class: (n % 2 ? 'fill2' : 'fill') + ' shape-fill', points: pts }));
+      svg.appendChild(el('polygon', { class: 'stroke' + (sh.dash ? ' dash' : ''), points: pts }));
+      var cx = 0, cy = 0;
+      P.forEach(function (q) { cx += q[0]; cy += q[1]; });
+      cx /= P.length; cy /= P.length;
+      (sh.labels || []).forEach(function (name, k) {
+        if (!name || !P[k]) return;
+        var vx = P[k][0] - cx, vy = P[k][1] - cy;
+        var L = Math.hypot(vx, vy) || 1;
+        svg.appendChild(textEl('vlabel', P[k][0] + vx / L * 16, P[k][1] + vy / L * 16, name, false));
+      });
+      if (sh.text) svg.appendChild(textEl('label', cx, cy, sh.text, sh.ask));
+    });
     (g.points || []).forEach(function (p) {
       svg.appendChild(el('circle', { class: p.open ? 'open-dot' : 'dot', cx: rnd(X(p.x)), cy: rnd(Y(p.y)), r: 4.5 }));
       if (p.text) svg.appendChild(textEl('label', X(p.x) + 8, Y(p.y) - 14, p.text, p.ask));
@@ -460,6 +490,102 @@ var Figures = (function () {
     });
     if (b.total) svg.appendChild(textEl('note', 160, 100, b.total, false));
     if (b.caption) svg.appendChild(textEl('note', 160, 18, b.caption, false));
+  }
+
+  /* A fraction like 12x⁷y³ over 4x²y⁵. Optional: power (draws (num/den)^power),
+   * rhs (draws "= rhs" in the accent color, normally "?"), caption above. */
+  function drawFrac(svg, f) {
+    var top = f.caption ? 30 : 10;
+    var hasRhs = f.rhs != null && f.rhs !== '';
+    var w = Math.max(80, Math.max(String(f.num || '').length, String(f.den || '').length) * 13 + 24);
+    var extra = f.power ? 44 : 0;
+    var cx = hasRhs ? 120 - extra / 2 : 160 - extra / 2;
+    var mid = top + 51;
+    if (f.caption) svg.appendChild(textEl('note', 160, 12, f.caption, false));
+    svg.appendChild(textEl('label frac-text', cx, top + 24, f.num || '', false));
+    svg.appendChild(el('line', { class: 'stroke', x1: rnd(cx - w / 2), y1: mid, x2: rnd(cx + w / 2), y2: mid }));
+    svg.appendChild(textEl('label frac-text', cx, top + 78, f.den || '', false));
+    var right = cx + w / 2;
+    if (f.power) {
+      svg.appendChild(textEl('frac-paren', cx - w / 2 - 12, mid, '(', false));
+      svg.appendChild(textEl('frac-paren', right + 12, mid, ')', false));
+      svg.appendChild(textEl('label frac-text', right + 32, top + 2, f.power, false));
+      right += extra;
+    }
+    if (hasRhs) {
+      svg.appendChild(textEl('vlabel', right + 22, mid, '=', false));
+      svg.appendChild(textEl('label frac-text', right + 56, mid, f.rhs, f.ask !== false));
+    }
+  }
+
+  /* Factor tiles: x·x·x written out as little boxes.
+   * Groups mode: { groups: [{ items: ['x','x'] } or { n: 3, text: 'x', label: 'x³' }], sep: '·' }
+   * Quotient mode: { num: {...}, den: {...}, cancel: k } draws num over den and strikes k pairs.
+   * Optional rhs ("= ?"; ask: false for a given value) and caption. */
+  var CH = 24, CG = 4;
+  function chipItems(g) {
+    if (!g) return [];
+    if (g.items) return g.items;
+    var out = [], i;
+    for (i = 0; i < (g.n || 0); i++) out.push(g.text || 'x');
+    return out;
+  }
+  function rowW(items) { return items.length ? items.length * CH + (items.length - 1) * CG : 0; }
+  function chipsLayout(c) {
+    var top = c.caption ? 28 : 6, w, h;
+    var rhsW = c.rhs ? 40 + String(c.rhs).length * 13 : 0;
+    if (c.num) {
+      w = Math.max(rowW(chipItems(c.num)), rowW(chipItems(c.den)));
+      h = top + CH * 2 + 22 + 8;
+    } else {
+      w = 0;
+      (c.groups || []).forEach(function (g, i) { w += rowW(chipItems(g)) + (i ? 24 : 0); });
+      h = top + CH + 40;
+    }
+    return { top: top, body: w, rhsW: rhsW, w: Math.max(200, 20 + w + rhsW), h: h };
+  }
+  function chipRow(svg, items, x, y, strike) {
+    items.forEach(function (t, i) {
+      var cx = x + i * (CH + CG);
+      svg.appendChild(el('rect', { class: 'chip', x: rnd(cx), y: rnd(y), width: CH, height: CH, rx: 5 }));
+      svg.appendChild(textEl('chip-text', cx + CH / 2, y + CH / 2 + 1, t, false));
+      if (i < (strike || 0)) {
+        svg.appendChild(el('line', { class: 'cancel', x1: rnd(cx + 3), y1: rnd(y + CH - 3), x2: rnd(cx + CH - 3), y2: rnd(y + 3) }));
+      }
+    });
+  }
+  function drawChips(svg, c) {
+    var L = chipsLayout(c);
+    var x0 = (L.w - L.body - L.rhsW) / 2;
+    var midY;
+    if (c.caption) svg.appendChild(textEl('note', L.w / 2, 12, c.caption, false));
+    if (c.num) {
+      var ni = chipItems(c.num), di = chipItems(c.den);
+      var y1 = L.top, y2 = L.top + CH + 22;
+      chipRow(svg, ni, x0 + (L.body - rowW(ni)) / 2, y1, c.cancel);
+      midY = y1 + CH + 11;
+      svg.appendChild(el('line', { class: 'stroke', x1: rnd(x0 - 4), y1: rnd(midY), x2: rnd(x0 + L.body + 4), y2: rnd(midY) }));
+      chipRow(svg, di, x0 + (L.body - rowW(di)) / 2, y2, c.cancel);
+    } else {
+      var x = x0, y = L.top;
+      midY = y + CH / 2;
+      (c.groups || []).forEach(function (g, i) {
+        if (i) { svg.appendChild(textEl('vlabel', x + 10, midY, c.sep || '·', false)); x += 24; }
+        var it = chipItems(g), gw = rowW(it);
+        chipRow(svg, it, x, y, 0);
+        if (g.label) {
+          svg.appendChild(el('path', { class: 'angle', d: 'M ' + rnd(x) + ' ' + rnd(y + CH + 5) + ' L ' + rnd(x) + ' ' + rnd(y + CH + 9) +
+            ' L ' + rnd(x + gw) + ' ' + rnd(y + CH + 9) + ' L ' + rnd(x + gw) + ' ' + rnd(y + CH + 5) }));
+          svg.appendChild(textEl('label', x + gw / 2, y + CH + 24, g.label, false));
+        }
+        x += gw;
+      });
+    }
+    if (c.rhs) {
+      var rx = x0 + L.body;
+      svg.appendChild(textEl('vlabel', rx + 16, midY, '=', false));
+      svg.appendChild(textEl('label frac-text', rx + 30 + String(c.rhs).length * 6.5, midY, c.rhs, c.ask !== false));
+    }
   }
 
   function isoPoint(ox, oy, x, y, z) {

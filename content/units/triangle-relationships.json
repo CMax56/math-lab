@@ -1,0 +1,575 @@
+{
+  "id": "triangle-relationships",
+  "title": "Relationships in Triangles",
+  "description": "Bisectors, medians, and altitudes and where they meet; the midsegment theorem; the triangle inequality; angle sum and exterior angles; and which side is longest.",
+  "strand": "geometry",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "tri-p01",
+      "type": "numeric",
+      "prompt": "In △ABC, m∠A = 48° and m∠B = 67°. Find m∠C.",
+      "figure": {
+        "alt": "Triangle ABC with angle A 48 degrees, angle B 67 degrees, and angle C marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 246.0, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 246.0, "name": "B" },
+          { "id": "C", "x": 222.1, "y": 6.0, "name": "C" }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [{ "a": "A", "b": "B" }, { "a": "B", "b": "C" }, { "a": "C", "b": "A" }],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "text": "48°" },
+          { "at": "B", "a": "A", "b": "C", "text": "67°" },
+          { "at": "C", "a": "A", "b": "B", "text": "x", "ask": true, "deg": 65 }
+        ]
+      },
+      "answer": "65",
+      "acceptable": [],
+      "check": "180 - 48 - 67",
+      "hints": ["The three angles of any triangle add to 180°.", "48 + 67 + x = 180.", "48 + 67 = 115. Subtract from 180."],
+      "solution": "48 + 67 + x = 180<br>115 + x = 180<br>x = <b>65°</b>"
+    },
+    {
+      "id": "tri-p02",
+      "type": "numeric",
+      "prompt": "In △ABC, side BC is extended to point D. m∠A = 52° and m∠B = 71°. Find the exterior angle m∠ACD.",
+      "figure": {
+        "alt": "Triangle ABC with side BC extended past C to D. Angle A is 52 degrees, angle B is 71 degrees, and exterior angle ACD is marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 266.0, "name": "A" },
+          { "id": "B", "x": 194.8, "y": 266.0, "name": "B" },
+          { "id": "C", "x": 137.1, "y": 98.3, "name": "C" },
+          { "id": "D", "x": 105.3, "y": 6.0, "name": "D" }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [{ "a": "A", "b": "B" }, { "a": "B", "b": "C" }, { "a": "C", "b": "A" }, { "a": "C", "b": "D" }],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "text": "52°" },
+          { "at": "B", "a": "A", "b": "C", "text": "71°" },
+          { "at": "C", "a": "A", "b": "D", "text": "x", "ask": true, "deg": 123 }
+        ]
+      },
+      "answer": "123",
+      "acceptable": [],
+      "check": "52 + 71",
+      "hints": [
+        "Exterior Angle Theorem: an exterior angle equals the sum of the two remote (far-away) interior angles.",
+        "The remote interior angles for ∠ACD are ∠A and ∠B.",
+        "Add 52 + 71."
+      ],
+      "solution": "m∠ACD = m∠A + m∠B = 52 + 71 = <b>123°</b>"
+    },
+    {
+      "id": "tri-p03",
+      "type": "numeric",
+      "prompt": "G is the centroid of △ABC, and AD is a median. GD = 6. Find AG.",
+      "figure": {
+        "alt": "Triangle ABC with median AD to the midpoint D of BC. G is the centroid on AD. GD is 6 and AG is marked x.",
+        "pts": [
+          { "id": "A", "x": 101.4, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 260.4, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 260.4, "name": "C" },
+          { "id": "D", "x": 165.0, "y": 260.4, "name": "D", "dot": true },
+          { "id": "G", "x": 143.8, "y": 175.6, "name": "G", "dot": true, "nameAt": [125.8, 169.6] }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "C", "b": "A" },
+          { "a": "B", "b": "D", "ticks": 1 },
+          { "a": "D", "b": "C", "ticks": 1 },
+          { "a": "A", "b": "G", "text": "x", "ask": true, "scale": "m", "draw": 12, "dash": true },
+          { "a": "G", "b": "D", "text": "6", "scale": "m", "draw": 6, "dash": true }
+        ],
+        "angles": []
+      },
+      "answer": "12",
+      "acceptable": [],
+      "check": "2 * 6",
+      "hints": [
+        "The centroid is where the three medians meet.",
+        "The centroid splits each median 2 : 1. The longer piece is from the vertex to the centroid.",
+        "AG is twice GD."
+      ],
+      "solution": "AG = 2 · GD = 2 · 6 = <b>12</b> (the whole median AD is 18)"
+    },
+    {
+      "id": "tri-p04",
+      "type": "numeric",
+      "prompt": "D is the midpoint of AB and E is the midpoint of AC, so DE is a midsegment of △ABC. BC = 26. Find DE.",
+      "figure": {
+        "alt": "Triangle ABC with midsegment DE joining the midpoints of AB and AC. BC is 26 and DE is marked x.",
+        "pts": [
+          { "id": "A", "x": 107.2, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 208.4, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 208.4, "name": "C" },
+          { "id": "D", "x": 56.6, "y": 107.2, "name": "D", "dot": true },
+          { "id": "E", "x": 215.6, "y": 107.2, "name": "E", "dot": true }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "A", "b": "D", "ticks": 1 },
+          { "a": "D", "b": "B", "ticks": 1 },
+          { "a": "A", "b": "E", "ticks": 2 },
+          { "a": "E", "b": "C", "ticks": 2 },
+          { "a": "D", "b": "E", "text": "x", "arrows": 1, "ask": true, "scale": "s", "draw": 13 },
+          { "a": "B", "b": "C", "text": "26", "arrows": 1, "scale": "s", "draw": 26 }
+        ],
+        "angles": []
+      },
+      "answer": "13",
+      "acceptable": [],
+      "check": "26 / 2",
+      "hints": [
+        "Midsegment Theorem: a midsegment is parallel to the third side and half as long.",
+        "DE is half of BC.",
+        "26 ÷ 2."
+      ],
+      "solution": "DE = ½ · BC = ½ · 26 = <b>13</b>"
+    },
+    {
+      "id": "tri-p05",
+      "type": "numeric",
+      "prompt": "DE is a midsegment of △ABC (parallel to BC). DE = 2x + 1 and BC = 5x − 4. Find x.",
+      "figure": {
+        "alt": "Triangle ABC with midsegment DE. DE is 2x + 1 and BC is 5x − 4.",
+        "pts": [
+          { "id": "A", "x": 107.2, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 208.4, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 208.4, "name": "C" },
+          { "id": "D", "x": 56.6, "y": 107.2, "name": "D", "dot": true },
+          { "id": "E", "x": 215.6, "y": 107.2, "name": "E", "dot": true }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "A", "b": "D", "ticks": 1 },
+          { "a": "D", "b": "B", "ticks": 1 },
+          { "a": "A", "b": "E", "ticks": 2 },
+          { "a": "E", "b": "C", "ticks": 2 },
+          { "a": "D", "b": "E", "text": "2x + 1", "arrows": 1 },
+          { "a": "B", "b": "C", "text": "5x − 4", "arrows": 1 }
+        ],
+        "angles": []
+      },
+      "answer": "6",
+      "acceptable": [],
+      "check": "(4 + 2) / (5 - 4)",
+      "hints": [
+        "The third side is twice the midsegment: BC = 2 · DE.",
+        "5x − 4 = 2(2x + 1) = 4x + 2.",
+        "Subtract 4x from both sides, then add 4."
+      ],
+      "solution": "5x − 4 = 2(2x + 1)<br>5x − 4 = 4x + 2<br>x = <b>6</b> (DE = 13, BC = 26)"
+    },
+    {
+      "id": "tri-p06",
+      "type": "mcq",
+      "prompt": "Which set of side lengths can make a triangle?",
+      "figure": {
+        "alt": "A triangle with sides labeled a, b, and c.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 196.8, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 196.8, "name": "B" },
+          { "id": "C", "x": 117.3, "y": 6.0, "name": "C" }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [{ "a": "B", "b": "C", "text": "a" }, { "a": "C", "b": "A", "text": "b" }, { "a": "A", "b": "B", "text": "c" }],
+        "angles": []
+      },
+      "choices": ["3, 4, 8", "5, 6, 12", "4, 7, 10", "2, 9, 11"],
+      "answer": "4, 7, 10",
+      "acceptable": [],
+      "hints": [
+        "Triangle Inequality: the two shorter sides must add up to <b>more than</b> the longest side.",
+        "Test each set: add the two smaller numbers and compare with the biggest.",
+        "Exactly equal is not enough: the sides would lie flat."
+      ],
+      "solution": "3 + 4 = 7 &lt; 8 ✗ · 5 + 6 = 11 &lt; 12 ✗ · <b>4 + 7 = 11 &gt; 10 ✓</b> · 2 + 9 = 11, not more than 11 ✗"
+    },
+    {
+      "id": "tri-p07",
+      "type": "numeric",
+      "prompt": "Two sides of a triangle are 6 and 11. What is the <b>largest whole number</b> the third side can be?",
+      "figure": {
+        "alt": "A triangle with sides 6 and 11. The third side is marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 108.3, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 108.3, "name": "B" },
+          { "id": "C", "x": 234.0, "y": 6.0, "name": "C" }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "B", "b": "C", "text": "6", "scale": "s", "draw": 6 },
+          { "a": "C", "b": "A", "text": "11", "scale": "s", "draw": 11 },
+          { "a": "A", "b": "B", "text": "x", "ask": true }
+        ],
+        "angles": []
+      },
+      "answer": "16",
+      "acceptable": [],
+      "check": "6 + 11 - 1",
+      "hints": [
+        "The third side must be less than the sum of the other two sides.",
+        "6 + 11 = 17, so the third side is less than 17.",
+        "What is the biggest whole number less than 17?"
+      ],
+      "solution": "11 − 6 &lt; x &lt; 11 + 6, so 5 &lt; x &lt; 17.<br>Largest whole number: <b>16</b>"
+    },
+    {
+      "id": "tri-p08",
+      "type": "mcq",
+      "prompt": "In △ABC, m∠A = 72°, m∠B = 40°, and m∠C = 68°. Which side is the longest?",
+      "figure": {
+        "alt": "Triangle ABC with angle A 72 degrees, angle B 40 degrees, and angle C 68 degrees.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 215.7, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 215.7, "name": "B" },
+          { "id": "C", "x": 74.1, "y": 6.0, "name": "C" }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [{ "a": "A", "b": "B" }, { "a": "B", "b": "C" }, { "a": "C", "b": "A" }],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "text": "72°" },
+          { "at": "B", "a": "A", "b": "C", "text": "40°" },
+          { "at": "C", "a": "A", "b": "B", "text": "68°" }
+        ]
+      },
+      "choices": ["BC", "AB", "AC", "All three are equal"],
+      "answer": "BC",
+      "acceptable": [],
+      "hints": [
+        "The longest side is across from (opposite) the largest angle.",
+        "The largest angle is ∠A = 72°.",
+        "Which side does not touch vertex A?"
+      ],
+      "solution": "Largest angle: ∠A (72°). The side opposite A is <b>BC</b>."
+    },
+    {
+      "id": "tri-p09",
+      "type": "numeric",
+      "prompt": "P is the circumcenter of △ABC (where the perpendicular bisectors of the sides meet). PA = 2x + 5 and PC = 4x − 3. Find x.",
+      "figure": {
+        "alt": "Triangle ABC with circumcenter P. Dashed segments PA, PB, and PC are marked congruent. PA is 2x + 5 and PC is 4x − 3.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 196.8, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 196.8, "name": "B" },
+          { "id": "C", "x": 101.4, "y": 6.0, "name": "C" },
+          { "id": "P", "x": 165.0, "y": 157.1, "name": "P", "dot": true, "nameAt": [179.0, 171.1] }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "C", "b": "A" },
+          { "a": "P", "b": "A", "text": "2x + 5", "dash": true, "ticks": 1, "lx": -6, "ly": -20 },
+          { "a": "P", "b": "B", "dash": true, "ticks": 1 },
+          { "a": "P", "b": "C", "text": "4x − 3", "dash": true, "ticks": 1, "lx": -44, "ly": 0 }
+        ],
+        "angles": []
+      },
+      "answer": "4",
+      "acceptable": [],
+      "check": "(5 + 3) / (4 - 2)",
+      "hints": [
+        "The circumcenter is the same distance from all three <b>vertices</b>.",
+        "So PA = PC: 2x + 5 = 4x − 3.",
+        "Subtract 2x, then add 3."
+      ],
+      "solution": "2x + 5 = 4x − 3<br>8 = 2x<br>x = <b>4</b> (each distance is 13)"
+    },
+    {
+      "id": "tri-p10",
+      "type": "numeric",
+      "prompt": "I is the incenter of △ABC (where the angle bisectors meet). The distance from I to side AB is 2x + 1, and the distance from I to side BC is x + 4. Find x.",
+      "figure": {
+        "alt": "Triangle ABC with incenter I. Dashed perpendicular segments from I to side AB and to side BC are marked congruent and labeled 2x + 1 and x + 4.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 196.8, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 196.8, "name": "B" },
+          { "id": "C", "x": 101.4, "y": 6.0, "name": "C" },
+          { "id": "I", "x": 125.1, "y": 123.2, "name": "I", "dot": true, "nameAt": [109.1, 113.2] },
+          { "id": "F", "x": 125.1, "y": 196.8, "name": "" },
+          { "id": "H", "x": 173.0, "y": 67.3, "name": "" }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "C", "b": "A" },
+          { "a": "I", "b": "F", "text": "2x + 1", "dash": true, "ticks": 1 },
+          { "a": "I", "b": "H", "text": "x + 4", "dash": true, "ticks": 1 }
+        ],
+        "angles": [{ "at": "F", "a": "I", "b": "B", "right": true }, { "at": "H", "a": "I", "b": "C", "right": true }]
+      },
+      "answer": "3",
+      "acceptable": [],
+      "check": "(4 - 1) / (2 - 1)",
+      "hints": [
+        "The incenter is the same distance from all three <b>sides</b>.",
+        "Set the distances equal: 2x + 1 = x + 4.",
+        "Subtract x, then subtract 1."
+      ],
+      "solution": "2x + 1 = x + 4<br>x = <b>3</b> (each distance is 7)"
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "tri-fc01",
+      "front": "Perpendicular bisector",
+      "back": "A line through the midpoint of a segment at a right angle. Every point on it is the same distance from both endpoints."
+    },
+    {
+      "id": "tri-fc02",
+      "front": "Circumcenter",
+      "back": "Where the three perpendicular bisectors meet. It is the same distance from all three <b>vertices</b> (center of the circle through them)."
+    },
+    {
+      "id": "tri-fc03",
+      "front": "Angle bisector",
+      "back": "A ray that splits an angle into two equal angles. Every point on it is the same distance from the two sides of the angle."
+    },
+    {
+      "id": "tri-fc04",
+      "front": "Incenter",
+      "back": "Where the three angle bisectors meet. It is the same distance from all three <b>sides</b> (center of the circle inside the triangle)."
+    },
+    {
+      "id": "tri-fc05",
+      "front": "Median and centroid",
+      "back": "A median joins a vertex to the midpoint of the opposite side. The medians meet at the <b>centroid</b>, which is 2/3 of the way from each vertex (2 : 1 split).",
+      "figure": {
+        "alt": "Triangle ABC with its three medians meeting at the centroid G.",
+        "pts": [
+          { "id": "A", "x": 101.4, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 260.4, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 260.4, "name": "C" },
+          { "id": "D", "x": 165.0, "y": 260.4, "name": "" },
+          { "id": "E", "x": 212.7, "y": 133.2, "name": "" },
+          { "id": "F", "x": 53.7, "y": 133.2, "name": "" },
+          { "id": "G", "x": 143.8, "y": 175.6, "name": "G", "dot": true, "nameAt": [159.8, 165.6] }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "C", "b": "A" },
+          { "a": "A", "b": "D", "dash": true },
+          { "a": "B", "b": "E", "dash": true },
+          { "a": "C", "b": "F", "dash": true }
+        ],
+        "angles": []
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "tri-fc06",
+      "front": "Altitude and orthocenter",
+      "back": "An altitude goes from a vertex to the opposite side (or its extension) at a right angle. The altitudes meet at the <b>orthocenter</b>."
+    },
+    {
+      "id": "tri-fc07",
+      "front": "Midsegment Theorem",
+      "back": "A segment joining the midpoints of two sides is <b>parallel</b> to the third side and <b>half</b> as long."
+    },
+    {
+      "id": "tri-fc08",
+      "front": "Triangle Inequality",
+      "back": "Any two sides must add to <b>more than</b> the third side. If the sides are a and b, the third side is between |a − b| and a + b."
+    },
+    { "id": "tri-fc09", "front": "Triangle Angle Sum", "back": "The three angles of a triangle add to <b>180°</b>." },
+    {
+      "id": "tri-fc10",
+      "front": "Exterior Angle Theorem",
+      "back": "An exterior angle equals the sum of the two remote (non-adjacent) interior angles."
+    },
+    {
+      "id": "tri-fc11",
+      "front": "Sides and angles",
+      "back": "The longest side is across from the largest angle. The shortest side is across from the smallest angle."
+    },
+    {
+      "id": "tri-fc12",
+      "front": "Which center?",
+      "back": "Circumcenter: perpendicular bisectors, equal distance to vertices. Incenter: angle bisectors, equal distance to sides. Centroid: medians, balance point. Orthocenter: altitudes."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "tri-q01",
+      "type": "numeric",
+      "prompt": "The angles of a triangle measure x°, 2x°, and 3x°. Find x.",
+      "figure": {
+        "alt": "A triangle with angles labeled x, 2x, and 3x degrees.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 143.7, "name": "" },
+          { "id": "B", "x": 324.0, "y": 143.7, "name": "" },
+          { "id": "C", "x": 244.5, "y": 6.0, "name": "" }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [{ "a": "A", "b": "B" }, { "a": "B", "b": "C" }, { "a": "C", "b": "A" }],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "text": "x°", "deg": 30 },
+          { "at": "B", "a": "A", "b": "C", "text": "2x°", "deg": 60 },
+          { "at": "C", "a": "A", "b": "B", "text": "3x°", "deg": 90 }
+        ]
+      },
+      "answer": "30",
+      "acceptable": [],
+      "check": "180 / (1 + 2 + 3)",
+      "hints": ["The angles add to 180°.", "x + 2x + 3x = 6x."],
+      "solution": "6x = 180 → x = <b>30</b>"
+    },
+    {
+      "id": "tri-q02",
+      "type": "numeric",
+      "prompt": "In △ABC, BC is extended to D. m∠A = (x + 20)°, m∠B = 50°, and the exterior angle m∠ACD = (3x + 10)°. Find x.",
+      "figure": {
+        "alt": "Triangle ABC with BC extended to D. Angle A is x + 20 degrees, angle B is 50 degrees, and exterior angle ACD is 3x + 10 degrees.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 266.0, "name": "A" },
+          { "id": "B", "x": 287.5, "y": 266.0, "name": "B" },
+          { "id": "C", "x": 146.8, "y": 98.3, "name": "C" },
+          { "id": "D", "x": 69.3, "y": 6.0, "name": "D" }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [{ "a": "A", "b": "B" }, { "a": "B", "b": "C" }, { "a": "C", "b": "A" }, { "a": "C", "b": "D" }],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "text": "(x + 20)°", "out": true, "deg": 50 },
+          { "at": "B", "a": "A", "b": "C", "text": "50°" },
+          { "at": "C", "a": "A", "b": "D", "text": "(3x + 10)°", "out": true, "deg": 100 }
+        ]
+      },
+      "answer": "30",
+      "acceptable": [],
+      "check": "(20 + 50 - 10) / (3 - 1)",
+      "hints": ["Exterior angle = sum of the two remote interior angles.", "3x + 10 = (x + 20) + 50."],
+      "solution": "3x + 10 = x + 70 → 2x = 60 → x = <b>30</b>"
+    },
+    {
+      "id": "tri-q03",
+      "type": "numeric",
+      "prompt": "G is the centroid of △ABC, and BE is a median with BE = 27. Find BG.",
+      "figure": {
+        "alt": "Triangle ABC with median BE to the midpoint E of AC. G is the centroid on BE. BG is marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 260.4, "name": "A" },
+          { "id": "C", "x": 324.0, "y": 260.4, "name": "C" },
+          { "id": "B", "x": 133.2, "y": 6.0, "name": "B" },
+          { "id": "E", "x": 165.0, "y": 260.4, "name": "E", "dot": true },
+          { "id": "G", "x": 154.4, "y": 175.6, "name": "G", "dot": true, "nameAt": [172.4, 171.6] }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "A", "b": "E", "ticks": 1 },
+          { "a": "E", "b": "C", "ticks": 1 },
+          { "a": "B", "b": "G", "text": "x", "ask": true, "dash": true },
+          { "a": "G", "b": "E", "dash": true }
+        ],
+        "angles": [],
+        "notes": [{ "x": 160, "y": 304.4, "text": "BE = 27" }]
+      },
+      "answer": "18",
+      "acceptable": [],
+      "check": "27 * 2 / 3",
+      "hints": ["The centroid is 2/3 of the way from the vertex along the median.", "2/3 of 27."],
+      "solution": "BG = (2/3) · 27 = <b>18</b>"
+    },
+    {
+      "id": "tri-q04",
+      "type": "mcq",
+      "prompt": "The three altitudes of △ABC meet at point H. What is point H called?",
+      "figure": {
+        "alt": "Triangle ABC with three dashed segments, each from a vertex to the opposite side at a right angle. They meet at point H.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 196.8, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 196.8, "name": "B" },
+          { "id": "C", "x": 101.4, "y": 6.0, "name": "C" },
+          { "id": "H", "x": 101.4, "y": 85.5, "name": "H", "dot": true, "nameAt": [117.4, 73.5] },
+          { "id": "F", "x": 101.4, "y": 196.8, "name": "" },
+          { "id": "K", "x": 140.7, "y": 39.7, "name": "" },
+          { "id": "L", "x": 69.6, "y": 69.6, "name": "" }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "C", "b": "A" },
+          { "a": "C", "b": "F", "dash": true },
+          { "a": "A", "b": "K", "dash": true },
+          { "a": "B", "b": "L", "dash": true }
+        ],
+        "angles": [
+          { "at": "F", "a": "C", "b": "B", "right": true },
+          { "at": "K", "a": "A", "b": "C", "right": true },
+          { "at": "L", "a": "B", "b": "A", "right": true }
+        ]
+      },
+      "choices": ["Orthocenter", "Centroid", "Incenter", "Circumcenter"],
+      "answer": "Orthocenter",
+      "acceptable": [],
+      "hints": [
+        "Altitudes make right angles with the sides.",
+        "Centroid ↔ medians, incenter ↔ angle bisectors, circumcenter ↔ perpendicular bisectors."
+      ],
+      "solution": "Altitudes meet at the <b>orthocenter</b>."
+    },
+    {
+      "id": "tri-q05",
+      "type": "numeric",
+      "prompt": "DE is a midsegment of △ABC, parallel to BC. DE = 9.5. Find BC.",
+      "figure": {
+        "alt": "Triangle ABC with midsegment DE. DE is 9.5 and BC is marked x.",
+        "pts": [
+          { "id": "A", "x": 107.2, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 208.4, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 208.4, "name": "C" },
+          { "id": "D", "x": 56.6, "y": 107.2, "name": "D", "dot": true },
+          { "id": "E", "x": 215.6, "y": 107.2, "name": "E", "dot": true }
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+          { "a": "A", "b": "D", "ticks": 1 },
+          { "a": "D", "b": "B", "ticks": 1 },
+          { "a": "A", "b": "E", "ticks": 2 },
+          { "a": "E", "b": "C", "ticks": 2 },
+          { "a": "D", "b": "E", "text": "9.5", "arrows": 1, "scale": "s", "draw": 9.5 },
+          { "a": "B", "b": "C", "text": "x", "arrows": 1, "ask": true, "scale": "s", "draw": 19 }
+        ],
+        "angles": []
+      },
+      "answer": "19",
+      "acceptable": [],
+      "check": "2 * 9.5",
+      "hints": ["The midsegment is half the third side.", "So the third side is double the midsegment."],
+      "solution": "BC = 2 · 9.5 = <b>19</b>"
+    },
+    {
+      "id": "tri-q06",
+      "type": "mcq",
+      "prompt": "In △PQR, PQ = 8, QR = 13, and PR = 10. Which angle is the smallest?",
+      "figure": {
+        "alt": "Triangle PQR with PQ 8, QR 13, and PR 10.",
+        "pts": [
+          { "id": "P", "x": 14.1, "y": 266.0, "name": "P" },
+          { "id": "Q", "x": 222.2, "y": 266.0, "name": "Q" },
+          { "id": "R", "x": 6.0, "y": 6.0, "name": "R" }
+        ],
+        "polys": [["P", "Q", "R"]],
+        "segs": [
+          { "a": "P", "b": "Q", "text": "8", "scale": "s", "draw": 8 },
+          { "a": "Q", "b": "R", "text": "13", "scale": "s", "draw": 13 },
+          { "a": "R", "b": "P", "text": "10", "scale": "s", "draw": 10 }
+        ],
+        "angles": []
+      },
+      "choices": ["∠P", "∠Q", "∠R", "They are all equal"],
+      "answer": "∠R",
+      "acceptable": [],
+      "hints": ["The smallest angle is across from the shortest side.", "The shortest side is PQ. Which vertex is not on PQ?"],
+      "solution": "Shortest side PQ = 8 is opposite <b>∠R</b>, so ∠R is the smallest."
+    }
+  ]
+}

@@ -1,0 +1,584 @@
+{
+  "id": "transformations",
+  "title": "Transformations",
+  "description": "Translations, reflections, rotations, and dilations on the coordinate plane, coordinate rules, and doing two transformations in a row.",
+  "strand": "geometry",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "tf-p01",
+      "type": "pair",
+      "prompt": "Triangle ABC has vertex A(2, −3). It is translated by the rule (x, y) → (x − 5, y + 4). Where is A′? Type it like (x, y).",
+      "figure": {
+        "alt": "Triangle ABC on a grid with A at (2, −3). The image is not drawn.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[2, -3], [5, -1], [3, 1]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(-3, 1)",
+      "acceptable": [],
+      "check": "[2 - 5, -3 + 4]",
+      "hints": [
+        "A translation slides every point the same way.",
+        "x − 5 means move 5 left. y + 4 means move 4 up.",
+        "Do the math on each coordinate: 2 − 5 and −3 + 4."
+      ],
+      "solution": "A(2, −3) → (2 − 5, −3 + 4) = <b>(−3, 1)</b>"
+    },
+    {
+      "id": "tf-p02",
+      "type": "pair",
+      "prompt": "Triangle ABC has vertex B(4, 2). Reflect it over the x-axis. Where is B′?",
+      "figure": {
+        "alt": "Triangle ABC above the x-axis with B at (4, 2). The image is not drawn.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[1, 2], [4, 2], [2, 5]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(4, -2)",
+      "acceptable": [],
+      "check": "[4, -2]",
+      "hints": [
+        "Reflecting over the x-axis flips the figure up ↔ down.",
+        "Rule: (x, y) → (x, −y). The x-coordinate stays the same.",
+        "Change the sign of y only."
+      ],
+      "solution": "(x, y) → (x, −y)<br>B(4, 2) → <b>(4, −2)</b>"
+    },
+    {
+      "id": "tf-p03",
+      "type": "pair",
+      "prompt": "Triangle ABC has vertex A(−3, 5). Reflect it over the y-axis. Where is A′?",
+      "figure": {
+        "alt": "Triangle ABC left of the y-axis with A at (−3, 5). The image is not drawn.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[-3, 5], [-1, 2], [-5, 1]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(3, 5)",
+      "acceptable": [],
+      "check": "[3, 5]",
+      "hints": [
+        "Reflecting over the y-axis flips the figure left ↔ right.",
+        "Rule: (x, y) → (−x, y).",
+        "Change the sign of x only."
+      ],
+      "solution": "(x, y) → (−x, y)<br>A(−3, 5) → <b>(3, 5)</b>"
+    },
+    {
+      "id": "tf-p04",
+      "type": "pair",
+      "prompt": "Triangle ABC has vertex A(1, 4). Reflect it over the line y = x. Where is A′?",
+      "figure": {
+        "alt": "Triangle ABC above the line y = x with A at (1, 4). The image is not drawn.",
+        "grid": {
+          "x0": -2,
+          "x1": 7,
+          "y0": -2,
+          "y1": 7,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[1, 4], [3, 5], [1, 6]],
+              "labels": ["A", "B", "C"]
+            }
+          ],
+          "lines": [{ "m": 1, "b": 0, "text": "y = x", "labelAt": 44 }]
+        }
+      },
+      "answer": "(4, 1)",
+      "acceptable": [],
+      "check": "[4, 1]",
+      "hints": [
+        "The line y = x is the diagonal through (0, 0), (1, 1), (2, 2)…",
+        "Rule: (x, y) → (y, x). Swap the coordinates.",
+        "Swap 1 and 4."
+      ],
+      "solution": "(x, y) → (y, x)<br>A(1, 4) → <b>(4, 1)</b>"
+    },
+    {
+      "id": "tf-p05",
+      "type": "pair",
+      "prompt": "Triangle ABC has vertex A(3, 1). Rotate it 90° counterclockwise about the origin. Where is A′?",
+      "figure": {
+        "alt": "Triangle ABC with A at (3, 1), and a dashed segment from the origin to A. The image is not drawn.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[3, 1], [5, 2], [4, 4]],
+              "labels": ["A", "B", "C"]
+            }
+          ],
+          "segs": [{ "x1": 0, "y1": 0, "x2": 3, "y2": 1, "dash": true }]
+        }
+      },
+      "answer": "(-1, 3)",
+      "acceptable": [],
+      "check": "[-1, 3]",
+      "hints": [
+        "Counterclockwise is the direction opposite a clock's hands (a quarter turn to the left).",
+        "Rule for 90° counterclockwise: (x, y) → (−y, x).",
+        "Swap the coordinates, then make the new first coordinate the opposite."
+      ],
+      "solution": "(x, y) → (−y, x)<br>A(3, 1) → <b>(−1, 3)</b><br>Check: A was in Quadrant I; a quarter turn left lands in Quadrant II ✓"
+    },
+    {
+      "id": "tf-p06",
+      "type": "pair",
+      "prompt": "Triangle ABC has vertex A(−2, 5). Rotate it 180° about the origin. Where is A′?",
+      "figure": {
+        "alt": "Triangle ABC with A at (−2, 5). The image is not drawn.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[-2, 5], [0, 5], [-3, 2]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(2, -5)",
+      "acceptable": [],
+      "check": "[2, -5]",
+      "hints": ["A 180° turn is a half turn. Direction doesn't matter.", "Rule: (x, y) → (−x, −y).", "Change both signs."],
+      "solution": "(x, y) → (−x, −y)<br>A(−2, 5) → <b>(2, −5)</b>"
+    },
+    {
+      "id": "tf-p07",
+      "type": "pair",
+      "prompt": "Triangle ABC has vertex A(4, −1). Rotate it 270° counterclockwise about the origin (the same as 90° clockwise). Where is A′?",
+      "figure": {
+        "alt": "Triangle ABC with A at (4, −1). The image is not drawn.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[4, -1], [5, -4], [2, -3]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(-1, -4)",
+      "acceptable": [],
+      "check": "[-1, -4]",
+      "hints": [
+        "270° counterclockwise = 90° clockwise.",
+        "Rule: (x, y) → (y, −x).",
+        "Swap the coordinates, then change the sign of the new second coordinate."
+      ],
+      "solution": "(x, y) → (y, −x)<br>A(4, −1) → <b>(−1, −4)</b>"
+    },
+    {
+      "id": "tf-p08",
+      "type": "pair",
+      "prompt": "Triangle ABC has vertex A(6, −4). Dilate it about the origin with scale factor 1/2. Where is A′?",
+      "figure": {
+        "alt": "Triangle ABC with A at (6, −4). The image is not drawn.",
+        "grid": {
+          "x0": -7,
+          "x1": 7,
+          "y0": -7,
+          "y1": 7,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[6, -4], [6, 2], [2, -4]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(3, -2)",
+      "acceptable": [],
+      "check": "[6 * 0.5, -4 * 0.5]",
+      "hints": [
+        "A dilation about the origin multiplies both coordinates by the scale factor.",
+        "Rule: (x, y) → (½x, ½y).",
+        "Half of 6 and half of −4."
+      ],
+      "solution": "(x, y) → (½x, ½y)<br>A(6, −4) → <b>(3, −2)</b> (the triangle shrinks)"
+    },
+    {
+      "id": "tf-p09",
+      "type": "pair",
+      "prompt": "Point A(2, 3) is reflected over the x-axis, and then the result is translated by (x, y) → (x + 4, y − 1). Where does A end up?",
+      "figure": {
+        "alt": "Triangle ABC with A at (2, 3). The images are not drawn.",
+        "grid": {
+          "x0": -7,
+          "x1": 7,
+          "y0": -7,
+          "y1": 7,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[2, 3], [4, 3], [2, 6]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(6, -4)",
+      "acceptable": [],
+      "check": "[2 + 4, -3 - 1]",
+      "hints": [
+        "Do the steps in order. First the reflection, then the translation.",
+        "Over the x-axis: (2, 3) → (2, −3).",
+        "Then add 4 to x and subtract 1 from y."
+      ],
+      "solution": "Reflect: (2, 3) → (2, −3)<br>Translate: (2 + 4, −3 − 1) = <b>(6, −4)</b>"
+    },
+    {
+      "id": "tf-p10",
+      "type": "mcq",
+      "prompt": "Triangle ABC is rotated 90° <b>clockwise</b> about the origin to make A′B′C′. Which rule describes this rotation?",
+      "figure": {
+        "alt": "Triangle ABC in Quadrant I and its image A′B′C′ in Quadrant IV after a quarter turn about the origin.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[1, 2], [4, 2], [1, 4]],
+              "labels": ["A", "B", "C"]
+            },
+            {
+              "pts": [[2, -1], [2, -4], [4, -1]],
+              "labels": ["A′", "B′", "C′"],
+              "dash": true
+            }
+          ]
+        }
+      },
+      "choices": ["(x, y) → (y, −x)", "(x, y) → (−y, x)", "(x, y) → (−x, −y)", "(x, y) → (y, x)"],
+      "answer": "(x, y) → (y, −x)",
+      "acceptable": [],
+      "hints": [
+        "Test one point. A is (1, 2). Where is A′ on the grid?",
+        "A′ is (2, −1).",
+        "Which rule turns (1, 2) into (2, −1)?"
+      ],
+      "solution": "A(1, 2) → A′(2, −1): swap the coordinates and change the sign of the new y. <b>(x, y) → (y, −x)</b>"
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "tf-fc01",
+      "front": "Translation",
+      "back": "A slide. Rule: (x, y) → (x + a, y + b). Every point moves the same distance in the same direction."
+    },
+    { "id": "tf-fc02", "front": "Reflection over the x-axis", "back": "(x, y) → (x, −y). The x stays, y changes sign." },
+    { "id": "tf-fc03", "front": "Reflection over the y-axis", "back": "(x, y) → (−x, y). The y stays, x changes sign." },
+    {
+      "id": "tf-fc04",
+      "front": "Reflection over y = x",
+      "back": "(x, y) → (y, x). Swap the coordinates. (Over y = −x: (x, y) → (−y, −x).)",
+      "figure": {
+        "alt": "A triangle and its reflection across the line y = x.",
+        "grid": {
+          "x0": -1,
+          "x1": 6,
+          "y0": -1,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[1, 3], [2, 5], [1, 5]],
+              "labels": ["A", "B", "C"]
+            },
+            {
+              "pts": [[3, 1], [5, 2], [5, 1]],
+              "labels": ["A′", "B′", "C′"],
+              "dash": true
+            }
+          ],
+          "lines": [{ "m": 1, "b": 0, "text": "y = x", "labelAt": 40 }]
+        }
+      },
+      "figureSide": "back"
+    },
+    { "id": "tf-fc05", "front": "Rotation 90° counterclockwise about the origin", "back": "(x, y) → (−y, x)" },
+    {
+      "id": "tf-fc06",
+      "front": "Rotation 180° about the origin",
+      "back": "(x, y) → (−x, −y). Clockwise or counterclockwise gives the same result."
+    },
+    { "id": "tf-fc07", "front": "Rotation 270° counterclockwise (= 90° clockwise)", "back": "(x, y) → (y, −x)" },
+    {
+      "id": "tf-fc08",
+      "front": "Dilation about the origin",
+      "back": "(x, y) → (kx, ky). k &gt; 1 enlarges, 0 &lt; k &lt; 1 shrinks. Shape stays the same, size changes."
+    },
+    {
+      "id": "tf-fc09",
+      "front": "Rigid motion (isometry)",
+      "back": "A transformation that keeps lengths and angles: translations, reflections, rotations. The image is <b>congruent</b>. A dilation is not rigid; it makes a <b>similar</b> figure."
+    },
+    {
+      "id": "tf-fc10",
+      "front": "Composition",
+      "back": "Doing one transformation and then another. Work in order: apply the first rule, then apply the second rule to that result."
+    },
+    {
+      "id": "tf-fc11",
+      "front": "Prime notation",
+      "back": "The image of point A is written A′ (\"A prime\"). After a second transformation: A″."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "tf-q01",
+      "type": "pair",
+      "prompt": "Translate A(−4, 2) by (x, y) → (x + 3, y − 6). Where is A′?",
+      "figure": {
+        "alt": "Triangle ABC with A at (−4, 2).",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[-4, 2], [-2, 5], [-5, 4]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(-1, -4)",
+      "acceptable": [],
+      "check": "[-4 + 3, 2 - 6]",
+      "hints": ["Add 3 to x.", "Subtract 6 from y."],
+      "solution": "(−4 + 3, 2 − 6) = <b>(−1, −4)</b>"
+    },
+    {
+      "id": "tf-q02",
+      "type": "pair",
+      "prompt": "Reflect A(−5, 2) over the line y = x. Where is A′?",
+      "figure": {
+        "alt": "Triangle ABC with A at (−5, 2) and the line y = x.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[-5, 2], [-3, 4], [-5, 5]],
+              "labels": ["A", "B", "C"]
+            }
+          ],
+          "lines": [{ "m": 1, "b": 0, "text": "y = x", "labelAt": 42 }]
+        }
+      },
+      "answer": "(2, -5)",
+      "acceptable": [],
+      "check": "[2, -5]",
+      "hints": ["Over y = x, swap the coordinates.", "(x, y) → (y, x)."],
+      "solution": "(−5, 2) → <b>(2, −5)</b>"
+    },
+    {
+      "id": "tf-q03",
+      "type": "pair",
+      "prompt": "Rotate A(−2, −3) 90° counterclockwise about the origin. Where is A′?",
+      "figure": {
+        "alt": "Triangle ABC with A at (−2, −3).",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[-2, -3], [-5, -5], [-4, -2]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(3, -2)",
+      "acceptable": [],
+      "check": "[-(-3), -2]",
+      "hints": ["90° counterclockwise: (x, y) → (−y, x).", "−y = −(−3)."],
+      "solution": "(x, y) → (−y, x): (−2, −3) → <b>(3, −2)</b>"
+    },
+    {
+      "id": "tf-q04",
+      "type": "pair",
+      "prompt": "Dilate A(−1, 2) about the origin with scale factor 3. Where is A′?",
+      "figure": {
+        "alt": "A small triangle ABC near the origin with A at (−1, 2).",
+        "grid": {
+          "x0": -4,
+          "x1": 7,
+          "y0": -4,
+          "y1": 7,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[-1, 2], [1, 1], [0, 3]],
+              "labels": ["A", "B", "C"]
+            }
+          ]
+        }
+      },
+      "answer": "(-3, 6)",
+      "acceptable": [],
+      "check": "[-1 * 3, 2 * 3]",
+      "hints": ["Multiply both coordinates by 3.", "(3 · (−1), 3 · 2)."],
+      "solution": "(−1, 2) → <b>(−3, 6)</b>"
+    },
+    {
+      "id": "tf-q05",
+      "type": "mcq",
+      "prompt": "Which transformation can change the <b>size</b> of a figure?",
+      "figure": {
+        "alt": "A small triangle and a larger triangle with the same shape.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[1, 1], [3, 1], [1, 2]],
+              "labels": ["", "", ""]
+            },
+            {
+              "pts": [[-2, -4], [4, -4], [-2, -1]],
+              "labels": ["", "", ""],
+              "dash": true
+            }
+          ]
+        }
+      },
+      "choices": ["Dilation", "Translation", "Reflection", "Rotation"],
+      "answer": "Dilation",
+      "acceptable": [],
+      "hints": ["Translations, reflections, and rotations are rigid motions.", "Rigid motions keep every length the same."],
+      "solution": "Only a <b>dilation</b> changes size (it makes a similar figure, not a congruent one)."
+    },
+    {
+      "id": "tf-q06",
+      "type": "mcq",
+      "prompt": "Which single transformation maps every point (x, y) to (−x, −y)?",
+      "figure": {
+        "alt": "Triangle ABC and its image A′B′C′, where each image point has both coordinates the opposite of the original.",
+        "grid": {
+          "x0": -6,
+          "x1": 6,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "shapes": [
+            {
+              "pts": [[1, 2], [5, 2], [2, 5]],
+              "labels": ["A", "B", "C"]
+            },
+            {
+              "pts": [[-1, -2], [-5, -2], [-2, -5]],
+              "labels": ["A′", "B′", "C′"],
+              "dash": true
+            }
+          ]
+        }
+      },
+      "choices": [
+        "Rotation of 180° about the origin",
+        "Reflection over the x-axis",
+        "Reflection over the line y = x",
+        "Rotation of 90° clockwise"
+      ],
+      "answer": "Rotation of 180° about the origin",
+      "acceptable": [],
+      "hints": ["Reflecting over the x-axis changes only y.", "Changing both signs is a half turn."],
+      "solution": "(x, y) → (−x, −y) is a <b>rotation of 180° about the origin</b>."
+    }
+  ]
+}

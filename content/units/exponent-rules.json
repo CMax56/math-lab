@@ -1,0 +1,511 @@
+{
+  "id": "exponent-rules",
+  "title": "Exponent Rules",
+  "description": "The product, quotient, and power rules for exponents, plus zero and negative exponents, and problems that mix them. (\"Quotient rule\" here is the exponent rule, not the calculus one.)",
+  "strand": "algebra",
+  "status": "starter",
+  "reference": {
+    "title": "Exponent rules (from class)",
+    "rows": [
+      { "label": "Product rule", "rule": "x<sup>a</sup> · x<sup>b</sup> = x<sup>a+b</sup>" },
+      { "label": "Quotient rule", "rule": "x<sup>a</sup> / x<sup>b</sup> = x<sup>a−b</sup>" },
+      { "label": "Power rule", "rule": "(x<sup>a</sup>)<sup>b</sup> = x<sup>a·b</sup>" },
+      { "label": "Zero exponent", "rule": "x<sup>0</sup> = 1", "note": "x ≠ 0" },
+      { "label": "Negative exponent", "rule": "x<sup>−a</sup> = 1/x<sup>a</sup>" }
+    ],
+    "foot": "Same base x in each rule. Multiply → add exponents. Divide → subtract. Power of a power → multiply."
+  },
+  "practice": [
+    {
+      "id": "exp-p01",
+      "type": "numeric",
+      "prompt": "Product rule: x³ · x⁵ = xⁿ. What is n?",
+      "figure": {
+        "alt": "Three x tiles labeled x cubed, times five x tiles labeled x to the 5th, equals x to the n.",
+        "chips": {
+          "groups": [{ "n": 3, "text": "x", "label": "x³" }, { "n": 5, "text": "x", "label": "x⁵" }],
+          "sep": "·",
+          "rhs": "xⁿ",
+          "caption": "n = ?"
+        }
+      },
+      "answer": "8",
+      "acceptable": [],
+      "check": "3 + 5",
+      "hints": [
+        "Product rule: x<sup>a</sup> · x<sup>b</sup> = x<sup>a+b</sup>. Same base, multiplying → <b>add</b> the exponents.",
+        "Count the tiles: 3 x's times 5 more x's.",
+        "3 + 5 = ?"
+      ],
+      "solution": "x³ · x⁵ = x³⁺⁵ = x⁸, so n = <b>8</b>"
+    },
+    {
+      "id": "exp-p02",
+      "type": "numeric",
+      "prompt": "Evaluate 2³ · 2².",
+      "figure": {
+        "alt": "Three tiles of 2 labeled 2 cubed, times two tiles of 2 labeled 2 squared.",
+        "chips": {
+          "groups": [{ "n": 3, "text": "2", "label": "2³" }, { "n": 2, "text": "2", "label": "2²" }],
+          "sep": "·",
+          "rhs": "?"
+        }
+      },
+      "answer": "32",
+      "acceptable": [],
+      "check": "2**3 * 2**2",
+      "hints": ["Same base 2, multiplying → add the exponents.", "2³ · 2² = 2⁵.", "2⁵ = 2 · 2 · 2 · 2 · 2."],
+      "solution": "2³ · 2² = 2³⁺² = 2⁵ = <b>32</b>"
+    },
+    {
+      "id": "exp-p03",
+      "type": "mcq",
+      "prompt": "Simplify (3x⁴)(5x²).",
+      "figure": {
+        "alt": "The terms 3 x to the 4th and 5 x squared written as tiles: 3, x, x, x, x times 5, x, x.",
+        "chips": {
+          "groups": [
+            { "items": ["3", "x", "x", "x", "x"], "label": "3x⁴" },
+            { "items": ["5", "x", "x"], "label": "5x²" }
+          ],
+          "sep": "·"
+        }
+      },
+      "choices": ["15x⁶", "8x⁶", "15x⁸", "8x⁸"],
+      "answer": "15x⁶",
+      "acceptable": [],
+      "hints": [
+        "Multiply the numbers in front (the coefficients).",
+        "3 · 5 = 15.",
+        "For the x's, use the product rule: add the exponents, 4 + 2."
+      ],
+      "solution": "(3 · 5)(x⁴ · x²) = 15x⁴⁺² = <b>15x⁶</b>"
+    },
+    {
+      "id": "exp-p04",
+      "type": "numeric",
+      "prompt": "Quotient rule: x⁹ / x⁴ = xⁿ. What is n?",
+      "figure": {
+        "alt": "Nine x tiles over four x tiles, equals x to the n.",
+        "chips": { "num": { "n": 9, "text": "x" }, "den": { "n": 4, "text": "x" }, "rhs": "xⁿ", "caption": "n = ?" }
+      },
+      "answer": "5",
+      "acceptable": [],
+      "check": "9 - 4",
+      "hints": [
+        "Quotient rule: x<sup>a</sup> / x<sup>b</sup> = x<sup>a−b</sup>. Same base, dividing → <b>subtract</b> the exponents.",
+        "Each x on the bottom cancels one x on top.",
+        "9 − 4 = ?"
+      ],
+      "solution": "x⁹ / x⁴ = x⁹⁻⁴ = x⁵, so n = <b>5</b> (four pairs cancel, five x's are left)"
+    },
+    {
+      "id": "exp-p05",
+      "type": "numeric",
+      "prompt": "Evaluate 5⁷ / 5⁵.",
+      "figure": {
+        "alt": "Seven tiles of 5 over five tiles of 5.",
+        "chips": { "num": { "n": 7, "text": "5" }, "den": { "n": 5, "text": "5" }, "rhs": "?" }
+      },
+      "answer": "25",
+      "acceptable": [],
+      "check": "5**7 / 5**5",
+      "hints": ["Same base, dividing → subtract the exponents.", "7 − 5 = 2, so the result is 5².", "5² = 25."],
+      "solution": "5⁷ / 5⁵ = 5⁷⁻⁵ = 5² = <b>25</b>"
+    },
+    {
+      "id": "exp-p06",
+      "type": "mcq",
+      "prompt": "Simplify (12x⁷y³) / (4x²y⁵). Use only positive exponents.",
+      "figure": {
+        "alt": "The fraction 12 x to the 7th y cubed over 4 x squared y to the 5th.",
+        "frac": { "num": "12x⁷y³", "den": "4x²y⁵", "rhs": "?" }
+      },
+      "choices": ["3x⁵/y²", "3x⁵y²", "8x⁵/y²", "3x⁹/y⁸"],
+      "answer": "3x⁵/y²",
+      "acceptable": [],
+      "hints": [
+        "Work in three parts: the numbers, the x's, and the y's.",
+        "12 ÷ 4 = 3, and x⁷ / x² = x⁵.",
+        "y³ / y⁵ = y⁻² = 1/y²."
+      ],
+      "solution": "12 ÷ 4 = 3<br>x⁷⁻² = x⁵<br>y³⁻⁵ = y⁻² = 1/y²<br>Answer: <b>3x⁵/y²</b>"
+    },
+    {
+      "id": "exp-p07",
+      "type": "numeric",
+      "prompt": "Power rule: (x²)³ = xⁿ. What is n?",
+      "figure": {
+        "alt": "Three groups, each two x tiles labeled x squared, multiplied together. Equals x to the n.",
+        "chips": {
+          "groups": [
+            { "n": 2, "text": "x", "label": "x²" },
+            { "n": 2, "text": "x", "label": "x²" },
+            { "n": 2, "text": "x", "label": "x²" }
+          ],
+          "sep": "·",
+          "rhs": "xⁿ",
+          "caption": "(x²)³ means x² three times; n = ?"
+        }
+      },
+      "answer": "6",
+      "acceptable": [],
+      "check": "2 * 3",
+      "hints": [
+        "Power rule: (x<sup>a</sup>)<sup>b</sup> = x<sup>a·b</sup>. A power of a power → <b>multiply</b> the exponents.",
+        "(x²)³ = x² · x² · x².",
+        "2 · 3 = ?"
+      ],
+      "solution": "(x²)³ = x²·³ = x⁶, so n = <b>6</b> (three groups of two x's)"
+    },
+    {
+      "id": "exp-p08",
+      "type": "numeric",
+      "prompt": "Evaluate (2²)³.",
+      "figure": {
+        "alt": "Three groups, each two tiles of 2, labeled 2 squared.",
+        "chips": {
+          "groups": [
+            { "n": 2, "text": "2", "label": "2²" },
+            { "n": 2, "text": "2", "label": "2²" },
+            { "n": 2, "text": "2", "label": "2²" }
+          ],
+          "sep": "·",
+          "rhs": "?"
+        }
+      },
+      "answer": "64",
+      "acceptable": [],
+      "check": "(2**2)**3",
+      "hints": ["Power rule: multiply the exponents.", "(2²)³ = 2⁶.", "2⁶ = 64. (Check: 2² = 4, and 4³ = 64.)"],
+      "solution": "(2²)³ = 2²·³ = 2⁶ = <b>64</b>"
+    },
+    {
+      "id": "exp-p09",
+      "type": "mcq",
+      "prompt": "Simplify (2x³)².",
+      "figure": {
+        "alt": "Two groups, each with tiles 2, x, x, x, labeled 2 x cubed.",
+        "chips": {
+          "groups": [
+            { "items": ["2", "x", "x", "x"], "label": "2x³" },
+            { "items": ["2", "x", "x", "x"], "label": "2x³" }
+          ],
+          "sep": "·"
+        }
+      },
+      "choices": ["4x⁶", "2x⁶", "4x⁵", "2x⁹"],
+      "answer": "4x⁶",
+      "acceptable": [],
+      "hints": [
+        "The power goes on <b>everything</b> inside the parentheses: the 2 and the x³.",
+        "2² = 4.",
+        "(x³)² = x³·² by the power rule."
+      ],
+      "solution": "(2x³)² = 2² · (x³)² = 4 · x⁶ = <b>4x⁶</b>"
+    },
+    {
+      "id": "exp-p10",
+      "type": "numeric",
+      "prompt": "Evaluate 5x⁰ when x = 8.",
+      "figure": {
+        "alt": "Three x tiles over three x tiles: every tile cancels.",
+        "chips": {
+          "num": { "n": 3, "text": "x" },
+          "den": { "n": 3, "text": "x" },
+          "rhs": "x⁰",
+          "ask": false,
+          "caption": "why x⁰ = 1"
+        }
+      },
+      "answer": "5",
+      "acceptable": [],
+      "check": "5 * 8**0",
+      "hints": [
+        "Zero exponent: x⁰ = 1 for any x ≠ 0. (x³ / x³ = x⁰, and anything over itself is 1.)",
+        "The exponent 0 is only on the x, not on the 5.",
+        "5 · 1 = ?"
+      ],
+      "solution": "x⁰ = 1, so 5x⁰ = 5 · 1 = <b>5</b>. (Careful: (5x)⁰ would be 1.)"
+    },
+    {
+      "id": "exp-p11",
+      "type": "numeric",
+      "prompt": "Evaluate 2⁻³. Give a fraction or a decimal.",
+      "figure": {
+        "alt": "Two tiles of 2 over five tiles of 2. After canceling, three 2s are left on the bottom.",
+        "chips": {
+          "num": { "n": 2, "text": "2" },
+          "den": { "n": 5, "text": "2" },
+          "rhs": "2⁻³",
+          "ask": false,
+          "caption": "one way to get 2⁻³"
+        }
+      },
+      "answer": "1/8",
+      "acceptable": ["0.125"],
+      "check": "2**-3",
+      "hints": [
+        "Negative exponent: x<sup>−a</sup> = 1/x<sup>a</sup>. It means \"one over\", not a negative number.",
+        "2⁻³ = 1/2³.",
+        "2³ = 8."
+      ],
+      "solution": "2⁻³ = 1/2³ = <b>1/8</b> (0.125)"
+    },
+    {
+      "id": "exp-p12",
+      "type": "mcq",
+      "prompt": "Rewrite 3x⁻² using only positive exponents.",
+      "figure": { "alt": "The expression 3 times x to the negative 2.", "frac": { "num": "3 · x⁻²", "den": "1", "rhs": "?" } },
+      "choices": ["3/x²", "1/(3x²)", "−3x²", "9/x²"],
+      "answer": "3/x²",
+      "acceptable": [],
+      "hints": ["The −2 exponent belongs only to x, not to the 3.", "x⁻² = 1/x².", "3 · 1/x² = ?"],
+      "solution": "3x⁻² = 3 · 1/x² = <b>3/x²</b>"
+    },
+    {
+      "id": "exp-p13",
+      "type": "numeric",
+      "prompt": "Mixed: (x³ · x⁵) / x² = xⁿ. What is n?",
+      "figure": {
+        "alt": "The fraction x cubed times x to the 5th, over x squared, equals x to the n.",
+        "frac": { "num": "x³ · x⁵", "den": "x²", "rhs": "xⁿ", "caption": "n = ?" }
+      },
+      "answer": "6",
+      "acceptable": [],
+      "check": "3 + 5 - 2",
+      "hints": ["Do the top first with the product rule: x³ · x⁵ = x⁸.", "Then the quotient rule: x⁸ / x².", "8 − 2 = ?"],
+      "solution": "Top: x³ · x⁵ = x⁸ (add)<br>Then x⁸ / x² = x⁶ (subtract)<br>n = <b>6</b>"
+    },
+    {
+      "id": "exp-p14",
+      "type": "mcq",
+      "prompt": "Mixed: simplify (2x³)² · x.",
+      "figure": {
+        "alt": "Two groups of tiles 2, x, x, x, labeled 2 x cubed, times one more x tile.",
+        "chips": {
+          "groups": [
+            { "items": ["2", "x", "x", "x"], "label": "2x³" },
+            { "items": ["2", "x", "x", "x"], "label": "2x³" },
+            { "n": 1, "text": "x", "label": "x" }
+          ],
+          "sep": "·"
+        }
+      },
+      "choices": ["4x⁷", "4x⁶", "2x⁷", "4x¹⁰"],
+      "answer": "4x⁷",
+      "acceptable": [],
+      "hints": ["Power rule first: (2x³)² = 4x⁶.", "Then the product rule: x⁶ · x = x⁶ · x¹.", "6 + 1 = ?"],
+      "solution": "(2x³)² = 4x⁶ (power rule)<br>4x⁶ · x¹ = 4x⁷ (product rule)<br>Answer: <b>4x⁷</b>"
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "exp-fc01",
+      "front": "Product rule",
+      "back": "x<sup>a</sup> · x<sup>b</sup> = x<sup>a+b</sup><br>Same base, multiplying → <b>add</b> the exponents. Example: x³ · x⁵ = x⁸.",
+      "figure": {
+        "alt": "Three x tiles times two x tiles makes five x tiles.",
+        "chips": {
+          "groups": [{ "n": 3, "text": "x", "label": "x³" }, { "n": 2, "text": "x", "label": "x²" }],
+          "sep": "·",
+          "rhs": "x⁵",
+          "ask": false
+        }
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "exp-fc02",
+      "front": "Quotient rule",
+      "back": "x<sup>a</sup> / x<sup>b</sup> = x<sup>a−b</sup> (x ≠ 0)<br>Same base, dividing → <b>subtract</b> the exponents. Example: x⁵ / x² = x³.",
+      "figure": {
+        "alt": "Five x tiles over two x tiles. Two pairs are crossed out, leaving three x tiles on top.",
+        "chips": { "num": { "n": 5, "text": "x" }, "den": { "n": 2, "text": "x" }, "cancel": 2, "rhs": "x³", "ask": false }
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "exp-fc03",
+      "front": "Power rule",
+      "back": "(x<sup>a</sup>)<sup>b</sup> = x<sup>a·b</sup><br>Power of a power → <b>multiply</b> the exponents. Example: (x²)³ = x⁶.",
+      "figure": {
+        "alt": "Three groups of two x tiles makes six x tiles.",
+        "chips": {
+          "groups": [
+            { "n": 2, "text": "x", "label": "x²" },
+            { "n": 2, "text": "x", "label": "x²" },
+            { "n": 2, "text": "x", "label": "x²" }
+          ],
+          "sep": "·",
+          "rhs": "x⁶",
+          "ask": false
+        }
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "exp-fc04",
+      "front": "Zero exponent",
+      "back": "x<sup>0</sup> = 1 (x ≠ 0)<br>Reason: x³ / x³ = x⁰, and anything divided by itself is 1."
+    },
+    {
+      "id": "exp-fc05",
+      "front": "Negative exponent",
+      "back": "x<sup>−a</sup> = 1/x<sup>a</sup><br>Example: 2⁻³ = 1/8. A negative exponent does <b>not</b> make the number negative."
+    },
+    {
+      "id": "exp-fc06",
+      "front": "Negative exponent on the bottom",
+      "back": "1/x<sup>−a</sup> = x<sup>a</sup>. Moving a factor across the fraction bar flips the sign of its exponent."
+    },
+    {
+      "id": "exp-fc07",
+      "front": "Power of a product",
+      "back": "(xy)<sup>a</sup> = x<sup>a</sup>y<sup>a</sup>. The power goes on every factor: (2x³)² = 4x⁶."
+    },
+    {
+      "id": "exp-fc08",
+      "front": "Power of a quotient",
+      "back": "(x/y)<sup>a</sup> = x<sup>a</sup>/y<sup>a</sup> (y ≠ 0). Example: (2/5)³ = 8/125."
+    },
+    {
+      "id": "exp-fc09",
+      "front": "Numbers in front (coefficients)",
+      "back": "Multiply or divide the numbers like normal; use the exponent rules only on the variables. (3x⁴)(5x²) = 15x⁶."
+    },
+    {
+      "id": "exp-fc10",
+      "front": "Add, subtract, or multiply?",
+      "back": "Multiplying powers → add. Dividing powers → subtract. Power of a power → multiply. Common mistakes: x³ · x⁵ is x⁸ (not x¹⁵), and (x²)³ is x⁶ (not x⁵)."
+    },
+    {
+      "id": "exp-fc11",
+      "front": "5x⁰ vs (5x)⁰",
+      "back": "5x⁰ = 5 · 1 = 5, because the 0 is only on the x. (5x)⁰ = 1, because the 0 is on everything in the parentheses."
+    },
+    {
+      "id": "exp-fc12",
+      "front": "\"Quotient rule\": which one?",
+      "back": "In calculus, \"quotient rule\" means a rule for derivatives of fractions (f/g)′. That's a different topic. In this class it means the exponent rule x<sup>a</sup>/x<sup>b</sup> = x<sup>a−b</sup>."
+    },
+    {
+      "id": "exp-fc13",
+      "front": "Looking it up online?",
+      "back": "Search for \"exponent rules\" or \"quotient of powers\". A search for just \"quotient rule\" or \"product rule\" often shows the calculus derivative rules, which are not what this unit covers."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "exp-q01",
+      "type": "numeric",
+      "prompt": "y⁴ · y⁶ = yⁿ. What is n?",
+      "figure": {
+        "alt": "Four y tiles times six y tiles.",
+        "chips": {
+          "groups": [{ "n": 4, "text": "y", "label": "y⁴" }, { "n": 6, "text": "y", "label": "y⁶" }],
+          "sep": "·",
+          "rhs": "yⁿ"
+        }
+      },
+      "answer": "10",
+      "acceptable": [],
+      "check": "4 + 6",
+      "hints": ["Product rule: add the exponents.", "4 + 6."],
+      "solution": "y⁴⁺⁶ = y¹⁰, so n = <b>10</b>"
+    },
+    {
+      "id": "exp-q02",
+      "type": "numeric",
+      "prompt": "Evaluate 3⁷ / 3⁴.",
+      "figure": {
+        "alt": "Seven tiles of 3 over four tiles of 3.",
+        "chips": { "num": { "n": 7, "text": "3" }, "den": { "n": 4, "text": "3" }, "rhs": "?" }
+      },
+      "answer": "27",
+      "acceptable": [],
+      "check": "3**7 / 3**4",
+      "hints": ["Quotient rule: subtract the exponents.", "3³ = ?"],
+      "solution": "3⁷⁻⁴ = 3³ = <b>27</b>"
+    },
+    {
+      "id": "exp-q03",
+      "type": "numeric",
+      "prompt": "(a⁵)² = aⁿ. What is n?",
+      "figure": {
+        "alt": "Two groups of five a tiles.",
+        "chips": {
+          "groups": [{ "n": 5, "text": "a", "label": "a⁵" }, { "n": 5, "text": "a", "label": "a⁵" }],
+          "sep": "·",
+          "rhs": "aⁿ"
+        }
+      },
+      "answer": "10",
+      "acceptable": [],
+      "check": "5 * 2",
+      "hints": ["Power rule: multiply the exponents.", "5 · 2."],
+      "solution": "(a⁵)² = a⁵·² = a¹⁰, so n = <b>10</b>"
+    },
+    {
+      "id": "exp-q04",
+      "type": "mcq",
+      "prompt": "What is (−7)⁰? (Think of (−7)⁵ / (−7)⁵.)",
+      "figure": { "alt": "Negative 7 to the 5th over negative 7 to the 5th.", "frac": { "num": "(−7)⁵", "den": "(−7)⁵" } },
+      "choices": ["1", "0", "−7", "−1"],
+      "answer": "1",
+      "acceptable": [],
+      "hints": ["Anything nonzero divided by itself is 1.", "(−7)⁵ / (−7)⁵ = (−7)⁰."],
+      "solution": "(−7)⁰ = <b>1</b>. Any nonzero base to the zero power is 1."
+    },
+    {
+      "id": "exp-q05",
+      "type": "numeric",
+      "prompt": "Evaluate 5⁻². Give a fraction or a decimal.",
+      "figure": {
+        "alt": "Two tiles of 5 over four tiles of 5.",
+        "chips": { "num": { "n": 2, "text": "5" }, "den": { "n": 4, "text": "5" }, "rhs": "5⁻²", "ask": false }
+      },
+      "answer": "1/25",
+      "acceptable": ["0.04"],
+      "check": "5**-2",
+      "hints": ["x<sup>−a</sup> = 1/x<sup>a</sup>.", "5² = 25."],
+      "solution": "5⁻² = 1/5² = <b>1/25</b> (0.04)"
+    },
+    {
+      "id": "exp-q06",
+      "type": "mcq",
+      "prompt": "Mixed: simplify (x⁴ / x)².",
+      "figure": {
+        "alt": "The fraction x to the 4th over x, in parentheses, squared.",
+        "frac": { "num": "x⁴", "den": "x", "power": "2" }
+      },
+      "choices": ["x⁶", "x⁸", "x⁷", "x⁵"],
+      "answer": "x⁶",
+      "acceptable": [],
+      "hints": ["Inside first: x⁴ / x¹ = x³ (quotient rule).", "Then (x³)² by the power rule."],
+      "solution": "x⁴ / x = x³, then (x³)² = <b>x⁶</b>"
+    },
+    {
+      "id": "exp-q07",
+      "type": "mcq",
+      "prompt": "Simplify (20a⁶b²) / (5a²b⁷). Use only positive exponents.",
+      "figure": { "alt": "20 a to the 6th b squared over 5 a squared b to the 7th.", "frac": { "num": "20a⁶b²", "den": "5a²b⁷" } },
+      "choices": ["4a⁴/b⁵", "4a⁴b⁵", "15a⁴/b⁵", "4a³/b⁵"],
+      "answer": "4a⁴/b⁵",
+      "acceptable": [],
+      "hints": ["20 ÷ 5 = 4.", "a: 6 − 2. b: 2 − 7 = −5, which moves b to the bottom."],
+      "solution": "4 · a⁴ · b⁻⁵ = <b>4a⁴/b⁵</b>"
+    },
+    {
+      "id": "exp-q08",
+      "type": "numeric",
+      "prompt": "Mixed: evaluate (2³)² / 2⁴.",
+      "figure": { "alt": "2 cubed, squared, over 2 to the 4th.", "frac": { "num": "(2³)²", "den": "2⁴", "rhs": "?" } },
+      "answer": "4",
+      "acceptable": [],
+      "check": "(2**3)**2 / 2**4",
+      "hints": ["Power rule on top: (2³)² = 2⁶.", "Quotient rule: 2⁶ / 2⁴ = 2²."],
+      "solution": "(2³)² = 2⁶, then 2⁶ / 2⁴ = 2² = <b>4</b>"
+    }
+  ]
+}

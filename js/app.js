@@ -103,6 +103,41 @@
     return (S.firstName != null ? S.firstName : (CONTENT.app.studentFirstName || '')).trim();
   }
   function unitById(id) { return CONTENT.byId[id] || null; }
+
+  /* ---------- terms (pacing guide sections) ---------- */
+
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function shortDay(s) {
+    var d = parseDay(s);
+    return d ? MONTHS[d.getMonth()] + ' ' + d.getDate() : '';
+  }
+  function termById(id) {
+    return (CONTENT.terms || []).filter(function (t) { return t.id === id; })[0] || null;
+  }
+  function termOf(unitId) {
+    return (CONTENT.terms || []).filter(function (t) { return (t.units || []).indexOf(unitId) !== -1; })[0] || null;
+  }
+  function termShortLabel(t) {
+    var range = t.start && t.end ? shortDay(t.start) + ' – ' + shortDay(t.end) : '';
+    return t.label + (range ? ' · ' + range : '');
+  }
+  /* The term whose dates include today; between terms, the next one; after the last, the last. */
+  function currentTermId() {
+    var terms = CONTENT.terms || [];
+    if (!terms.length) return null;
+    var t = new Date();
+    var today = new Date(t.getFullYear(), t.getMonth(), t.getDate()).getTime();
+    var i, start, end;
+    for (i = 0; i < terms.length; i++) {
+      start = parseDay(terms[i].start); end = parseDay(terms[i].end);
+      if (start && end && today >= start.getTime() && today <= end.getTime()) return terms[i].id;
+    }
+    for (i = 0; i < terms.length; i++) {
+      start = parseDay(terms[i].start);
+      if (start && start.getTime() > today) return terms[i].id;
+    }
+    return terms[terms.length - 1].id;
+  }
   function practiceSolved(unit) {
     return unit.practice.filter(function (p) { var r = S.practice[p.id]; return r && r.status === 'correct'; }).length;
   }
@@ -295,17 +330,7 @@
         }))
         : h('p', { class: 'muted', text: 'None added yet. When the list from ' + (CONTENT.app.teacher || 'your teacher') + ' arrives, add each test and its due date here.' }));
 
-    var groups = [];
-    var strandOrder = Object.keys(CONTENT.strands || {});
-    CONTENT.units.forEach(function (u) { if (strandOrder.indexOf(u.strand) === -1 && strandOrder.indexOf('other') === -1) strandOrder.push('other'); });
-    strandOrder.forEach(function (key) {
-      var units = CONTENT.units.filter(function (u) {
-        return key === 'other' ? !(CONTENT.strands || {})[u.strand] : u.strand === key;
-      });
-      if (!units.length) return;
-      groups.push(h('h2', { class: 'group-title', text: (CONTENT.strands || {})[key] || 'Other' }));
-      groups.push(h('div', { class: 'unit-grid' }, units.map(unitCard)));
-    });
+    var groups = termSections();
 
     show(
       h('section', { class: 'hero' },
@@ -324,6 +349,46 @@
       groups,
       h('p', { class: 'notice', text: CONTENT.app.contentNotice || '' })
     );
+  }
+
+  /* One collapsible section per term. The current term is open and badged "Now". */
+  function termSections() {
+    var nowId = currentTermId();
+    var placed = {};
+    var out = [h('h2', { class: 'group-title', text: 'Units by term' })];
+    (CONTENT.terms || []).forEach(function (t) {
+      var units = (t.units || []).map(unitById).filter(Boolean);
+      if (!units.length) return;
+      units.forEach(function (u) { placed[u.id] = true; });
+      var isNow = t.id === nowId;
+      var body = [];
+      var grouped = {};
+      (t.groups || []).forEach(function (g) {
+        var gu = (g.units || []).map(unitById).filter(function (u) { return u && (t.units || []).indexOf(u.id) !== -1; });
+        if (!gu.length) return;
+        gu.forEach(function (u) { grouped[u.id] = true; });
+        body.push(h('h3', { class: 'subgroup-title', text: g.label }));
+        body.push(h('div', { class: 'unit-grid' }, gu.map(unitCard)));
+      });
+      var rest = units.filter(function (u) { return !grouped[u.id]; });
+      if (rest.length) body.push(h('div', { class: 'unit-grid' }, rest.map(unitCard)));
+      out.push(h('details', { class: 'term' + (isNow ? ' now' : ''), id: 'term-' + t.id, open: isNow },
+        h('summary', {},
+          h('span', { class: 'term-head' },
+            h('span', { class: 'term-name', text: t.label }),
+            t.dates ? h('span', { class: 'term-dates', text: t.dates }) : null,
+            h('span', { class: 'term-topics', text: units.map(function (u) { return u.title; }).join(' · ') })),
+          isNow ? h('span', { class: 'badge now', text: 'Now' }) : null),
+        body));
+    });
+    var other = CONTENT.units.filter(function (u) { return !placed[u.id]; });
+    if (other.length) {
+      out.push(h('details', { class: 'term', id: 'term-other', open: !(CONTENT.terms || []).length },
+        h('summary', {}, h('span', { class: 'term-head' }, h('span', { class: 'term-name', text: 'Other' })),
+          h('span', { class: 'term-count muted small', text: plural(other.length, 'unit') })),
+        h('div', { class: 'unit-grid' }, other.map(unitCard))));
+    }
+    return out;
   }
 
   function unitCard(u) {
@@ -347,7 +412,9 @@
     var linked = sortedMakeups().filter(function (m) { return m.unitId === u.id; });
     show(
       backLink('#/', 'Home'),
+      termOf(u.id) ? h('p', { class: 'term-line' }, h('span', { class: 'term-chip' + (termOf(u.id).id === currentTermId() ? ' now' : ''), text: termShortLabel(termOf(u.id)) })) : null,
       h('h1', { text: u.title }),
+      referenceCard(u.reference),
       u.status === 'starter' ? h('p', { class: 'tag-line' }, h('span', { class: 'tag', text: 'starter set' }), ' Practice content, not official class material.') : null,
       h('p', { class: 'muted', text: u.description || '' }),
       linked.length ? h('section', { class: 'card' }, h('h2', { text: 'Make-up tests for this unit' }),
@@ -362,6 +429,20 @@
         actionCard('#/quiz/' + encodeURIComponent(u.id), 'Quiz', plural(u.quiz.length, 'question') + ', scored. No hints.',
           q && q.latest ? 'Latest ' + q.latest.pct + '% · Best ' + q.best.pct + '%' : 'Not taken yet'))
     );
+  }
+
+  /* Optional quick-reference card: unit.reference = { title, rows: [{ label, rule, note? }], foot? }.
+   * rule/note may use <sup> (our own content, checked by tools/validate.py). */
+  function referenceCard(ref) {
+    if (!ref || !ref.rows || !ref.rows.length) return null;
+    var dl = h('dl', { class: 'ref-rows' });
+    ref.rows.forEach(function (r) {
+      dl.appendChild(h('dt', { text: r.label }));
+      dl.appendChild(h('dd', {}, h('span', { html: r.rule }), r.note ? h('span', { class: 'ref-note', html: ' (' + r.note + ')' }) : null));
+    });
+    return h('section', { class: 'card ref-card', 'aria-label': ref.title || 'Quick reference' },
+      h('h2', { text: ref.title || 'Quick reference' }), dl,
+      ref.foot ? h('p', { class: 'muted small ref-foot', html: ref.foot }) : null);
   }
 
   function actionCard(href, title, desc, meta) {
@@ -645,6 +726,19 @@
 
   /* ----- make-up tests ----- */
 
+  function unitOptions() {
+    var out = [];
+    var placed = {};
+    function opt(u) { placed[u.id] = true; return h('option', { value: u.id }, u.title); }
+    (CONTENT.terms || []).forEach(function (t) {
+      var units = (t.units || []).map(unitById).filter(Boolean);
+      if (units.length) out.push(h('optgroup', { label: t.label }, units.map(opt)));
+    });
+    var other = CONTENT.units.filter(function (u) { return !placed[u.id]; });
+    if (other.length) out.push(out.length ? h('optgroup', { label: 'Other' }, other.map(opt)) : other.map(opt));
+    return out;
+  }
+
   function renderMakeups(editId) {
     var editing = null;
     if (editId === 'new') editing = { id: null, name: '', due: '', unitId: '', notes: '' };
@@ -671,8 +765,7 @@
     if (editing) {
       var nameIn = h('input', { type: 'text', id: 'mu-name', value: editing.name, maxlength: '80', required: true, placeholder: 'e.g. Unit 3 Test: Right Triangles' });
       var dueIn = h('input', { type: 'date', id: 'mu-due', value: editing.due, required: true });
-      var unitSel = h('select', { id: 'mu-unit' }, h('option', { value: '' }, '— none —'),
-        CONTENT.units.map(function (u) { return h('option', { value: u.id }, u.title); }));
+      var unitSel = h('select', { id: 'mu-unit' }, h('option', { value: '' }, '— none —'), unitOptions());
       unitSel.value = editing.unitId || '';
       var notesIn = h('textarea', { id: 'mu-notes', rows: '3', maxlength: '500', placeholder: 'Room, time, what to bring, topics…' });
       notesIn.value = editing.notes || '';
@@ -766,7 +859,7 @@
     return CONTENT.units.map(function (u) {
       var q = S.quizzes[u.id] || {};
       return {
-        id: u.id, title: u.title,
+        id: u.id, title: u.title, term: termOf(u.id) ? termOf(u.id).label : '',
         practiceSolved: practiceSolved(u), practiceFirstTry: practiceFirstTry(u), practiceTotal: u.practice.length,
         cardsKnown: cardsKnown(u), cardsTotal: u.flashcards.length,
         seconds: Math.round(S.time[u.id] || 0),
@@ -788,9 +881,9 @@
     lines.push('Generated: ' + fmtDateTime(new Date().toISOString()));
     lines.push('Streak: ' + plural(Store.streak(), 'day') + ' | Total study time: ' + fmtDuration(S.totalSeconds) + ' | Last studied: ' + lastStudiedText());
     lines.push('');
-    lines.push('Units:');
+    lines.push('Units (in class pacing order):');
     unitSummaries().forEach(function (s) {
-      lines.push('- ' + s.title + ': practice ' + s.practiceSolved + '/' + s.practiceTotal + ' solved (' + s.practiceFirstTry + ' first try, no hints)' +
+      lines.push('- ' + (s.term ? '[' + s.term + '] ' : '') + s.title + ': practice ' + s.practiceSolved + '/' + s.practiceTotal + ' solved (' + s.practiceFirstTry + ' first try, no hints)' +
         ', flashcards ' + s.cardsKnown + '/' + s.cardsTotal + ' known' +
         ', time ' + fmtDuration(s.seconds) +
         ', quiz ' + (s.quizLatest ? 'latest ' + quizText(s.quizLatest) + ' on ' + fmtDateTime(s.quizLatest.at) + ', best ' + quizText(s.quizBest) : 'not taken'));
@@ -804,7 +897,7 @@
       lines.push('- ' + m.name + ' — due ' + fmtDue(m.due) + ' (' + dueInfo(m.due).text + ')' + (u ? ' [' + u.title + ']' : '') + (m.notes ? ' — ' + m.notes : ''));
     });
     lines.push('');
-    lines.push('Note: practice content is a starter set, not official class material.');
+    lines.push('Note: topics follow the class pacing guide; the practice problems are written for this site, not official class material.');
     return lines.join('\n');
   }
 
@@ -838,7 +931,7 @@
       h('thead', {}, h('tr', {}, ['Unit', 'Practice', 'First try*', 'Cards', 'Time', 'Quiz latest', 'Quiz best'].map(function (t) { return h('th', { text: t }); }))),
       h('tbody', {}, sums.map(function (s) {
         return h('tr', {},
-          h('td', { text: s.title }),
+          h('td', {}, s.title, s.term ? h('div', { class: 'muted small', text: s.term }) : null),
           h('td', { text: s.practiceSolved + '/' + s.practiceTotal }),
           h('td', { text: String(s.practiceFirstTry) }),
           h('td', { text: s.cardsKnown + '/' + s.cardsTotal }),
@@ -969,7 +1062,12 @@
           u.quiz = u.quiz || [];
           byId[u.id] = u;
         });
-        return { app: cfg.app || {}, strands: cfg.strands || {}, units: units, byId: byId };
+        // Pacing order: units in term order first, then any unit not in a term.
+        var terms = Array.isArray(cfg.terms) ? cfg.terms : [];
+        var order = [];
+        terms.forEach(function (t) { (t.units || []).forEach(function (id) { if (byId[id] && order.indexOf(id) === -1) order.push(id); }); });
+        units.forEach(function (u) { if (order.indexOf(u.id) === -1) order.push(u.id); });
+        return { app: cfg.app || {}, strands: cfg.strands || {}, terms: terms, units: order.map(function (id) { return byId[id]; }), byId: byId };
       });
     });
   }

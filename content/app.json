@@ -3,22 +3,66 @@
     "title": "Math Lab",
     "studentFirstName": "",
     "school": "",
-    "course": "10th Grade Math",
+    "course": "Geometry (Grade 10)",
     "teacher": "",
-    "contentNotice": "Starter set: typical 10th-grade topics written for practice. This is not official class material. Units can be replaced with the real class topics when they arrive."
+    "contentNotice": "Topics follow the class pacing guide (time frames may change). The problems are practice written for this site, not official class material."
   },
   "strands": {
     "geometry": "Geometry",
     "algebra": "Algebra review"
   },
+  "terms": [
+    {
+      "id": "t1",
+      "label": "Term 1",
+      "dates": "Aug 3 – Oct 2, 2026",
+      "start": "2026-08-03",
+      "end": "2026-10-02",
+      "units": ["linear", "systems", "quadratics", "exponent-rules", "foundations"],
+      "groups": [
+        { "label": "Algebra Review", "units": ["linear", "systems", "quadratics", "exponent-rules"] },
+        { "label": "Foundations of Geometry", "units": ["foundations"] }
+      ]
+    },
+    {
+      "id": "t2",
+      "label": "Term 2",
+      "dates": "Oct 12 – Dec 18, 2026",
+      "start": "2026-10-12",
+      "end": "2026-12-18",
+      "units": ["parallel-perpendicular", "congruence", "triangle-relationships"]
+    },
+    {
+      "id": "t3",
+      "label": "Term 3",
+      "dates": "Jan 5 – Mar 12, 2027",
+      "start": "2027-01-05",
+      "end": "2027-03-12",
+      "units": ["quadrilaterals-polygons", "transformations", "similarity"]
+    },
+    {
+      "id": "t4",
+      "label": "Term 4",
+      "dates": "Mar 22 – May 27, 2027",
+      "start": "2027-03-22",
+      "end": "2027-05-27",
+      "units": ["right-triangles", "circles", "area-volume"]
+    }
+  ],
   "units": [
+    "linear",
+    "systems",
+    "quadratics",
+    "exponent-rules",
+    "foundations",
+    "parallel-perpendicular",
     "congruence",
+    "triangle-relationships",
+    "quadrilaterals-polygons",
+    "transformations",
     "similarity",
     "right-triangles",
     "circles",
-    "area-volume",
-    "linear",
-    "systems",
-    "quadratics"
+    "area-volume"
   ]
 }

@@ -1,0 +1,559 @@
+{
+  "id": "parallel-perpendicular",
+  "title": "Parallel & Perpendicular Lines",
+  "description": "Angle pairs made by a transversal, solving for x, and slopes and equations of parallel and perpendicular lines.",
+  "strand": "geometry",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "par-p01",
+      "type": "mcq",
+      "prompt": "Lines m and n are parallel. What kind of angle pair are ∠3 and ∠6?",
+      "figure": {
+        "alt": "Parallel lines m and n cut by a transversal. Angle 3 is at the top line, below it on the left. Angle 6 is at the bottom line, above it on the right.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 85.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 85.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 217.3, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 217.3, "name": "" },
+          { "id": "P", "x": 261.1, "y": 85.2, "name": "" },
+          { "id": "Q", "x": 190.9, "y": 217.3, "name": "" },
+          { "id": "PU", "x": 303.2, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 148.8, "y": 296.5, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "Q", "text": "3", "deg": 62.0 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "6", "deg": 62.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 69.2, "text": "m" }, { "x": 450.0, "y": 201.3, "text": "n" }]
+      },
+      "choices": ["Alternate interior angles", "Corresponding angles", "Alternate exterior angles", "Same-side interior angles"],
+      "answer": "Alternate interior angles",
+      "acceptable": [],
+      "hints": [
+        "Interior means between the two parallel lines. Exterior means outside them.",
+        "Are ∠3 and ∠6 between the lines? Are they on the same side of the transversal or opposite sides?",
+        "Between the lines + opposite sides of the transversal = alternate interior."
+      ],
+      "solution": "Both angles are between m and n (interior), on opposite sides of the transversal (alternate): <b>alternate interior angles</b>. They are congruent."
+    },
+    {
+      "id": "par-p02",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. One angle is 64°. Find x.",
+      "figure": {
+        "alt": "Parallel lines m and n cut by a transversal. The upper right angle at line m is 64 degrees. The upper right angle at line n is marked x.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 86.3, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 86.3, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 220.1, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 220.1, "name": "" },
+          { "id": "P", "x": 258.6, "y": 86.3, "name": "" },
+          { "id": "Q", "x": 193.4, "y": 220.1, "name": "" },
+          { "id": "PU", "x": 297.8, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 154.2, "y": 300.4, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PU", "b": "PR", "text": "64°", "deg": 64.0 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "x", "ask": true, "deg": 64.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 70.3, "text": "m" }, { "x": 450.0, "y": 204.1, "text": "n" }]
+      },
+      "answer": "64",
+      "acceptable": [],
+      "check": "64",
+      "hints": [
+        "The two marked angles are in the same position at each crossing (both upper right).",
+        "Angles in matching positions are corresponding angles.",
+        "When lines are parallel, corresponding angles are congruent."
+      ],
+      "solution": "x and 64° are corresponding angles, and m ∥ n, so x = <b>64°</b>."
+    },
+    {
+      "id": "par-p03",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. Two alternate interior angles measure (2x + 10)° and 70°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Alternate interior angles are labeled 2x + 10 degrees and 70 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 87.8, "name": "" },
+          { "id": "PR", "x": 437.5, "y": 87.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 224.2, "name": "" },
+          { "id": "QR", "x": 437.5, "y": 224.2, "name": "" },
+          { "id": "P", "x": 246.5, "y": 87.8, "name": "" },
+          { "id": "Q", "x": 196.9, "y": 224.2, "name": "" },
+          { "id": "PU", "x": 276.3, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 167.1, "y": 306.0, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "Q", "text": "(2x + 10)°", "out": true, "deg": 70 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "70°", "deg": 70.0 }
+        ],
+        "notes": [{ "x": 441.5, "y": 71.8, "text": "m" }, { "x": 441.5, "y": 208.2, "text": "n" }]
+      },
+      "answer": "30",
+      "acceptable": [],
+      "check": "(70 - 10) / 2",
+      "hints": [
+        "Alternate interior angles are congruent when the lines are parallel.",
+        "Set them equal: 2x + 10 = 70.",
+        "Subtract 10, then divide by 2."
+      ],
+      "solution": "2x + 10 = 70<br>2x = 60<br>x = <b>30</b>"
+    },
+    {
+      "id": "par-p04",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. Two same-side interior angles measure (5x + 17)° and (3x + 3)°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Two same-side interior angles are labeled 5x + 17 degrees and 3x + 3 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 85.8, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 85.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 218.7, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 218.7, "name": "" },
+          { "id": "P", "x": 259.9, "y": 85.8, "name": "" },
+          { "id": "Q", "x": 192.1, "y": 218.7, "name": "" },
+          { "id": "PU", "x": 300.5, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 151.5, "y": 298.5, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "Q", "b": "PR", "text": "(5x + 17)°", "out": true, "deg": 117 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "(3x + 3)°", "out": true, "deg": 63 }
+        ],
+        "notes": [{ "x": 450.0, "y": 69.8, "text": "m" }, { "x": 450.0, "y": 202.7, "text": "n" }]
+      },
+      "answer": "20",
+      "acceptable": [],
+      "check": "(180 - 17 - 3) / (5 + 3)",
+      "hints": [
+        "Same-side interior angles are supplementary (they add to 180°) when the lines are parallel.",
+        "(5x + 17) + (3x + 3) = 180, so 8x + 20 = 180.",
+        "Subtract 20, then divide by 8."
+      ],
+      "solution": "(5x + 17) + (3x + 3) = 180<br>8x + 20 = 180<br>8x = 160<br>x = <b>20</b> (the angles are 117° and 63°)"
+    },
+    {
+      "id": "par-p05",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. One exterior angle is 118°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. The upper left angle at line m is 118 degrees. The lower right angle at line n is marked x.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 85.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 85.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 217.3, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 217.3, "name": "" },
+          { "id": "P", "x": 261.1, "y": 85.2, "name": "" },
+          { "id": "Q", "x": 190.9, "y": 217.3, "name": "" },
+          { "id": "PU", "x": 303.2, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 148.8, "y": 296.5, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "PU", "text": "118°", "deg": 118.0 },
+          { "at": "Q", "a": "QD", "b": "QR", "text": "x", "ask": true, "deg": 118.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 69.2, "text": "m" }, { "x": 450.0, "y": 201.3, "text": "n" }]
+      },
+      "answer": "118",
+      "acceptable": [],
+      "check": "118",
+      "hints": [
+        "Both marked angles are outside the parallel lines (exterior).",
+        "They are on opposite sides of the transversal, so they are alternate exterior angles.",
+        "Alternate exterior angles are congruent when the lines are parallel."
+      ],
+      "solution": "Alternate exterior angles are congruent, so x = <b>118°</b>."
+    },
+    {
+      "id": "par-p06",
+      "type": "numeric",
+      "prompt": "Line ℓ has the equation y = −3x + 7. What is the slope of any line parallel to ℓ?",
+      "figure": {
+        "alt": "The line y = −3x + 7 on a grid.",
+        "grid": {
+          "x0": -2,
+          "x1": 5,
+          "y0": -4,
+          "y1": 9,
+          "w": 280,
+          "h": 300,
+          "numbered": true,
+          "lines": [{ "m": -3, "b": 7, "text": "ℓ", "labelAt": 10 }]
+        }
+      },
+      "answer": "-3",
+      "acceptable": [],
+      "check": "-3",
+      "hints": [
+        "In y = mx + b, the slope is m.",
+        "Parallel lines never meet, so they have the same steepness.",
+        "Parallel lines have equal slopes."
+      ],
+      "solution": "Slope of ℓ = −3. Parallel lines have the same slope: <b>−3</b>."
+    },
+    {
+      "id": "par-p07",
+      "type": "numeric",
+      "prompt": "A line has slope 2/3. What is the slope of a line perpendicular to it?",
+      "figure": {
+        "alt": "A line with slope 2/3 on a grid.",
+        "grid": {
+          "x0": -4,
+          "x1": 6,
+          "y0": -3,
+          "y1": 6,
+          "w": 300,
+          "h": 270,
+          "numbered": true,
+          "lines": [{ "m": 0.6666666666666666, "b": 1, "text": "slope 2/3", "labelAt": 30 }]
+        }
+      },
+      "answer": "-3/2",
+      "acceptable": ["-1.5"],
+      "check": "-1 / (2 / 3)",
+      "hints": [
+        "Perpendicular slopes are negative reciprocals.",
+        "Flip 2/3 upside down, then change the sign.",
+        "Check: the two slopes should multiply to −1."
+      ],
+      "solution": "Flip 2/3 → 3/2, change the sign → <b>−3/2</b> (−1.5). Check: (2/3)(−3/2) = −1 ✓"
+    },
+    {
+      "id": "par-p08",
+      "type": "mcq",
+      "prompt": "Which line is parallel to y = 2x − 5 and passes through the point (3, 4)?",
+      "figure": {
+        "alt": "The line y = 2x − 5 and the point (3, 4).",
+        "grid": {
+          "x0": -1,
+          "x1": 6,
+          "y0": -6,
+          "y1": 8,
+          "w": 280,
+          "h": 300,
+          "numbered": true,
+          "lines": [{ "m": 2, "b": -5, "text": "y = 2x − 5", "labelAt": 44 }],
+          "points": [{ "x": 3, "y": 4, "text": "(3, 4)" }]
+        }
+      },
+      "choices": ["y = 2x − 2", "y = 2x + 4", "y = −(1/2)x + 5.5", "y = 2x − 5"],
+      "answer": "y = 2x − 2",
+      "acceptable": [],
+      "hints": [
+        "A parallel line has the same slope, 2.",
+        "Use point-slope form: y − 4 = 2(x − 3).",
+        "Distribute and add 4 to both sides."
+      ],
+      "solution": "Same slope: m = 2.<br>y − 4 = 2(x − 3)<br>y − 4 = 2x − 6<br><b>y = 2x − 2</b>"
+    },
+    {
+      "id": "par-p09",
+      "type": "mcq",
+      "prompt": "Which line is perpendicular to y = 3x + 1 and passes through (6, −1)?",
+      "figure": {
+        "alt": "The line y = 3x + 1 and the point (6, −1).",
+        "grid": {
+          "x0": -2,
+          "x1": 8,
+          "y0": -4,
+          "y1": 8,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "lines": [{ "m": 3, "b": 1, "text": "", "labelAt": 13 }],
+          "points": [{ "x": 6, "y": -1, "text": "(6, −1)" }]
+        }
+      },
+      "choices": ["y = −(1/3)x + 1", "y = −(1/3)x − 1", "y = 3x − 19", "y = (1/3)x − 3"],
+      "answer": "y = −(1/3)x + 1",
+      "acceptable": [],
+      "hints": [
+        "Perpendicular slope: the negative reciprocal of 3 is −1/3.",
+        "Point-slope: y − (−1) = −(1/3)(x − 6).",
+        "y + 1 = −(1/3)x + 2. Subtract 1."
+      ],
+      "solution": "m = −1/3<br>y + 1 = −(1/3)(x − 6) = −(1/3)x + 2<br><b>y = −(1/3)x + 1</b>"
+    },
+    {
+      "id": "par-p10",
+      "type": "mcq",
+      "prompt": "Are the lines y = 4x + 1 and y = −(1/4)x − 3 parallel, perpendicular, or neither?",
+      "figure": {
+        "alt": "The lines y = 4x + 1 and y = −(1/4)x − 3 on a grid.",
+        "grid": {
+          "x0": -5,
+          "x1": 5,
+          "y0": -6,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "lines": [{ "m": 4, "b": 1, "text": "", "labelAt": 10 }, { "m": -0.25, "b": -3, "text": "" }]
+        }
+      },
+      "choices": ["Perpendicular", "Parallel", "Neither", "The same line"],
+      "answer": "Perpendicular",
+      "acceptable": [],
+      "hints": [
+        "Compare the slopes: 4 and −1/4.",
+        "Equal slopes → parallel. Slopes that multiply to −1 → perpendicular.",
+        "4 · (−1/4) = ?"
+      ],
+      "solution": "4 · (−1/4) = −1, so the lines are <b>perpendicular</b>."
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "par-fc01",
+      "front": "Transversal",
+      "back": "A line that crosses two or more other lines. With two parallel lines it makes 8 angles: 4 at each crossing.",
+      "figure": {
+        "alt": "Parallel lines m and n cut by a transversal, with the eight angles numbered 1 to 8.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 84.2, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 84.2, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 214.4, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 214.4, "name": "" },
+          { "id": "P", "x": 263.6, "y": 84.2, "name": "" },
+          { "id": "Q", "x": 188.4, "y": 214.4, "name": "" },
+          { "id": "PU", "x": 308.7, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 143.3, "y": 292.6, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "PU", "text": "1", "deg": 120.0 },
+          { "at": "P", "a": "PU", "b": "PR", "text": "2", "deg": 60.0 },
+          { "at": "P", "a": "PL", "b": "Q", "text": "3", "deg": 60.0 },
+          { "at": "P", "a": "Q", "b": "PR", "text": "4", "deg": 120.0 },
+          { "at": "Q", "a": "QL", "b": "P", "text": "5", "deg": 120.0 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "6", "deg": 60.0 },
+          { "at": "Q", "a": "QL", "b": "QD", "text": "7", "deg": 60.0 },
+          { "at": "Q", "a": "QD", "b": "QR", "text": "8", "deg": 120.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 68.2, "text": "m" }, { "x": 450.0, "y": 198.4, "text": "n" }]
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "par-fc02",
+      "front": "Corresponding angles",
+      "back": "Same position at each crossing (like ∠2 and ∠6). Parallel lines → <b>congruent</b>."
+    },
+    {
+      "id": "par-fc03",
+      "front": "Alternate interior angles",
+      "back": "Between the lines, on opposite sides of the transversal (like ∠3 and ∠6). Parallel lines → <b>congruent</b>."
+    },
+    {
+      "id": "par-fc04",
+      "front": "Alternate exterior angles",
+      "back": "Outside the lines, on opposite sides of the transversal (like ∠1 and ∠8). Parallel lines → <b>congruent</b>."
+    },
+    {
+      "id": "par-fc05",
+      "front": "Same-side interior angles",
+      "back": "Between the lines, on the same side of the transversal (like ∠3 and ∠5). Parallel lines → <b>supplementary</b> (add to 180°). Also called consecutive interior angles."
+    },
+    {
+      "id": "par-fc06",
+      "front": "Proving lines parallel (converses)",
+      "back": "If corresponding, alternate interior, or alternate exterior angles are congruent, or same-side interior angles are supplementary, then the lines are parallel."
+    },
+    {
+      "id": "par-fc07",
+      "front": "Slopes of parallel lines",
+      "back": "Parallel (non-vertical) lines have <b>equal slopes</b>. Example: y = 2x + 1 and y = 2x − 7."
+    },
+    {
+      "id": "par-fc08",
+      "front": "Slopes of perpendicular lines",
+      "back": "<b>Negative reciprocals</b>: flip and change the sign. The slopes multiply to −1. Example: 2/3 and −3/2."
+    },
+    {
+      "id": "par-fc09",
+      "front": "Point-slope form",
+      "back": "y − y₁ = m(x − x₁). Use it to write a line through a point (x₁, y₁) with slope m."
+    },
+    {
+      "id": "par-fc10",
+      "front": "Horizontal and vertical lines",
+      "back": "Horizontal: y = k, slope 0. Vertical: x = k, slope undefined. A horizontal and a vertical line are perpendicular."
+    },
+    {
+      "id": "par-fc11",
+      "front": "Perpendicular Transversal Theorem",
+      "back": "If a line is perpendicular to one of two parallel lines, it is perpendicular to the other one too."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "par-q01",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. Corresponding angles measure (4x + 8)° and 116°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Corresponding angles are labeled 4x + 8 degrees and 116 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 86.3, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 86.3, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 220.1, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 220.1, "name": "" },
+          { "id": "P", "x": 193.4, "y": 86.3, "name": "" },
+          { "id": "Q", "x": 258.6, "y": 220.1, "name": "" },
+          { "id": "PU", "x": 154.2, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 297.8, "y": 300.4, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PU", "b": "PR", "text": "(4x + 8)°", "out": true, "deg": 116 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "116°", "deg": 116.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 70.3, "text": "m" }, { "x": 450.0, "y": 204.1, "text": "n" }]
+      },
+      "answer": "27",
+      "acceptable": [],
+      "check": "(116 - 8) / 4",
+      "hints": ["Corresponding angles are congruent.", "4x + 8 = 116."],
+      "solution": "4x + 8 = 116 → 4x = 108 → x = <b>27</b>"
+    },
+    {
+      "id": "par-q02",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. A same-side interior angle measures 72°. Find x, the other same-side interior angle.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Same-side interior angles: one is 72 degrees, the other is marked x.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 87.8, "name": "" },
+          { "id": "PR", "x": 432.1, "y": 87.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 224.2, "name": "" },
+          { "id": "QR", "x": 432.1, "y": 224.2, "name": "" },
+          { "id": "P", "x": 241.2, "y": 87.8, "name": "" },
+          { "id": "Q", "x": 196.9, "y": 224.2, "name": "" },
+          { "id": "PU", "x": 267.8, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 170.3, "y": 306.0, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "Q", "text": "72°", "deg": 72.0 },
+          { "at": "Q", "a": "QL", "b": "P", "text": "x", "ask": true, "deg": 108.0 }
+        ],
+        "notes": [{ "x": 436.1, "y": 71.8, "text": "m" }, { "x": 436.1, "y": 208.2, "text": "n" }]
+      },
+      "answer": "108",
+      "acceptable": [],
+      "check": "180 - 72",
+      "hints": ["Same-side interior angles are supplementary.", "x + 72 = 180."],
+      "solution": "x = 180 − 72 = <b>108°</b>"
+    },
+    {
+      "id": "par-q03",
+      "type": "numeric",
+      "prompt": "What is the slope of a line perpendicular to y = −(4/5)x + 2?",
+      "figure": {
+        "alt": "The line y = −(4/5)x + 2 on a grid.",
+        "grid": {
+          "x0": -4,
+          "x1": 6,
+          "y0": -4,
+          "y1": 6,
+          "w": 300,
+          "h": 300,
+          "numbered": true,
+          "lines": [{ "m": -0.8, "b": 2, "text": "", "labelAt": 10 }]
+        }
+      },
+      "answer": "5/4",
+      "acceptable": ["1.25"],
+      "check": "-1 / (-4 / 5)",
+      "hints": ["Negative reciprocal: flip and change the sign.", "−4/5 flipped is −5/4; change the sign."],
+      "solution": "Perpendicular slope = <b>5/4</b> (1.25)"
+    },
+    {
+      "id": "par-q04",
+      "type": "mcq",
+      "prompt": "Which line is parallel to y = −(1/2)x + 3 and passes through (−2, 1)?",
+      "figure": {
+        "alt": "The given line, which has slope −1/2 and y-intercept 3, and the point (−2, 1).",
+        "grid": {
+          "x0": -5,
+          "x1": 6,
+          "y0": -3,
+          "y1": 6,
+          "w": 300,
+          "h": 260,
+          "numbered": true,
+          "lines": [{ "m": -0.5, "b": 3, "text": "", "labelAt": 10 }],
+          "points": [{ "x": -2, "y": 1, "text": "(−2, 1)" }]
+        }
+      },
+      "choices": ["y = −(1/2)x", "y = −(1/2)x + 1", "y = 2x + 5", "y = (1/2)x + 2"],
+      "answer": "y = −(1/2)x",
+      "acceptable": [],
+      "hints": ["Same slope: −1/2.", "1 = −(1/2)(−2) + b → 1 = 1 + b."],
+      "solution": "m = −1/2, and 1 = 1 + b gives b = 0: <b>y = −(1/2)x</b>"
+    },
+    {
+      "id": "par-q05",
+      "type": "mcq",
+      "prompt": "Lines m and n are parallel. What kind of angle pair are ∠3 and ∠5?",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Angle 3 is below line m on the left. Angle 5 is above line n on the left.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 86.3, "name": "" },
+          { "id": "PR", "x": 446.0, "y": 86.3, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 220.1, "name": "" },
+          { "id": "QR", "x": 446.0, "y": 220.1, "name": "" },
+          { "id": "P", "x": 258.6, "y": 86.3, "name": "" },
+          { "id": "Q", "x": 193.4, "y": 220.1, "name": "" },
+          { "id": "PU", "x": 297.8, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 154.2, "y": 300.4, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "Q", "text": "3", "deg": 64.0 },
+          { "at": "Q", "a": "QL", "b": "P", "text": "5", "deg": 116.0 }
+        ],
+        "notes": [{ "x": 450.0, "y": 70.3, "text": "m" }, { "x": 450.0, "y": 204.1, "text": "n" }]
+      },
+      "choices": ["Same-side interior angles", "Alternate interior angles", "Corresponding angles", "Vertical angles"],
+      "answer": "Same-side interior angles",
+      "acceptable": [],
+      "hints": ["Are both angles between the lines?", "Are they on the same side of the transversal?"],
+      "solution": "Both are between the lines and on the same (left) side: <b>same-side interior angles</b>. They add to 180°."
+    },
+    {
+      "id": "par-q06",
+      "type": "numeric",
+      "prompt": "Lines m and n are parallel. Alternate interior angles measure (3x − 15)° and (x + 45)°. Find x.",
+      "figure": {
+        "alt": "Parallel lines cut by a transversal. Alternate interior angles are labeled 3x − 15 degrees and x + 45 degrees.",
+        "pts": [
+          { "id": "PL", "x": 6.0, "y": 87.8, "name": "" },
+          { "id": "PR", "x": 424.4, "y": 87.8, "name": "" },
+          { "id": "QL", "x": 6.0, "y": 224.2, "name": "" },
+          { "id": "QR", "x": 424.4, "y": 224.2, "name": "" },
+          { "id": "P", "x": 233.4, "y": 87.8, "name": "" },
+          { "id": "Q", "x": 196.9, "y": 224.2, "name": "" },
+          { "id": "PU", "x": 255.4, "y": 6.0, "name": "" },
+          { "id": "QD", "x": 175.0, "y": 306.0, "name": "" }
+        ],
+        "segs": [{ "a": "PL", "b": "PR", "arrows": 1 }, { "a": "QL", "b": "QR", "arrows": 1 }, { "a": "QD", "b": "PU" }],
+        "angles": [
+          { "at": "P", "a": "PL", "b": "Q", "text": "(3x − 15)°", "out": true, "deg": 75 },
+          { "at": "Q", "a": "P", "b": "QR", "text": "(x + 45)°", "out": true, "deg": 75 }
+        ],
+        "notes": [{ "x": 428.4, "y": 71.8, "text": "m" }, { "x": 428.4, "y": 208.2, "text": "n" }]
+      },
+      "answer": "30",
+      "acceptable": [],
+      "check": "(45 + 15) / (3 - 1)",
+      "hints": ["Alternate interior angles are congruent.", "3x − 15 = x + 45."],
+      "solution": "3x − 15 = x + 45 → 2x = 60 → x = <b>30</b>"
+    }
+  ]
+}

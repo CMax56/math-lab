@@ -1,6 +1,6 @@
 /* Math Lab service worker: offline cache for same-origin files only.
  * Bump VERSION whenever app files change so phones pick up the update. */
-var VERSION = 'mathlab-v5';
+var VERSION = 'mathlab-v6';
 
 var CORE = [
   './',
@@ -13,14 +13,20 @@ var CORE = [
   'js/app.js',
   'icons/icon.svg',
   'content/app.json',
+  'content/units/linear.json',
+  'content/units/systems.json',
+  'content/units/quadratics.json',
+  'content/units/exponent-rules.json',
+  'content/units/foundations.json',
+  'content/units/parallel-perpendicular.json',
   'content/units/congruence.json',
+  'content/units/triangle-relationships.json',
+  'content/units/quadrilaterals-polygons.json',
+  'content/units/transformations.json',
   'content/units/similarity.json',
   'content/units/right-triangles.json',
   'content/units/circles.json',
-  'content/units/area-volume.json',
-  'content/units/linear.json',
-  'content/units/systems.json',
-  'content/units/quadratics.json'
+  'content/units/area-volume.json'
 ];
 
 // PNG icons are made by tools/make_icons.py; cache them if present, skip if not.

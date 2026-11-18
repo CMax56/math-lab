@@ -1,0 +1,654 @@
+{
+  "id": "quadrilaterals-polygons",
+  "title": "Quadrilaterals & Other Polygons",
+  "description": "Interior and exterior angles of polygons, and the properties of parallelograms, rectangles, rhombi, squares, trapezoids, and kites.",
+  "strand": "geometry",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "poly-p01",
+      "type": "numeric",
+      "prompt": "What is the sum of the interior angles of a hexagon (6 sides)?",
+      "figure": {
+        "alt": "A hexagon. The sum of its interior angles is unknown.",
+        "pts": [
+          { "id": "V0", "x": 205.2, "y": 236.0, "name": "" },
+          { "id": "V1", "x": 271.6, "y": 121.0, "name": "" },
+          { "id": "V2", "x": 205.2, "y": 6.0, "name": "" },
+          { "id": "V3", "x": 72.4, "y": 6.0, "name": "" },
+          { "id": "V4", "x": 6.0, "y": 121.0, "name": "" },
+          { "id": "V5", "x": 72.4, "y": 236.0, "name": "" }
+        ],
+        "polys": [["V0", "V1", "V2", "V3", "V4", "V5"]],
+        "segs": [
+          { "a": "V0", "b": "V1" },
+          { "a": "V1", "b": "V2" },
+          { "a": "V2", "b": "V3" },
+          { "a": "V3", "b": "V4" },
+          { "a": "V4", "b": "V5" },
+          { "a": "V5", "b": "V0" }
+        ],
+        "angles": [],
+        "notes": [{ "text": "sum of the angles = ?", "ask": true, "x": 160, "y": 276.0 }]
+      },
+      "answer": "720",
+      "acceptable": [],
+      "check": "(6 - 2) * 180",
+      "hints": ["Polygon Angle Sum: (n − 2) · 180°.", "A hexagon has n = 6.", "(6 − 2) · 180 = 4 · 180."],
+      "solution": "(n − 2) · 180 = (6 − 2) · 180 = <b>720°</b>"
+    },
+    {
+      "id": "poly-p02",
+      "type": "numeric",
+      "prompt": "Find the measure of each interior angle of a regular octagon (8 sides).",
+      "figure": {
+        "alt": "A regular octagon with all sides marked congruent. One interior angle is marked x.",
+        "pts": [
+          { "id": "V0", "x": 168.6, "y": 236.0, "name": "" },
+          { "id": "V1", "x": 236.0, "y": 168.6, "name": "" },
+          { "id": "V2", "x": 236.0, "y": 73.4, "name": "" },
+          { "id": "V3", "x": 168.6, "y": 6.0, "name": "" },
+          { "id": "V4", "x": 73.4, "y": 6.0, "name": "" },
+          { "id": "V5", "x": 6.0, "y": 73.4, "name": "" },
+          { "id": "V6", "x": 6.0, "y": 168.6, "name": "" },
+          { "id": "V7", "x": 73.4, "y": 236.0, "name": "" }
+        ],
+        "polys": [["V0", "V1", "V2", "V3", "V4", "V5", "V6", "V7"]],
+        "segs": [
+          { "a": "V0", "b": "V1", "ticks": 1 },
+          { "a": "V1", "b": "V2", "ticks": 1 },
+          { "a": "V2", "b": "V3", "ticks": 1 },
+          { "a": "V3", "b": "V4", "ticks": 1 },
+          { "a": "V4", "b": "V5", "ticks": 1 },
+          { "a": "V5", "b": "V6", "ticks": 1 },
+          { "a": "V6", "b": "V7", "ticks": 1 },
+          { "a": "V7", "b": "V0", "ticks": 1 }
+        ],
+        "angles": [{ "at": "V0", "a": "V7", "b": "V1", "text": "x", "ask": true, "deg": 135 }]
+      },
+      "answer": "135",
+      "acceptable": [],
+      "check": "(8 - 2) * 180 / 8",
+      "hints": [
+        "First find the total: (n − 2) · 180°.",
+        "(8 − 2) · 180 = 1080°.",
+        "A regular polygon has equal angles, so divide by 8."
+      ],
+      "solution": "Sum = 6 · 180 = 1080°<br>Each angle = 1080 ÷ 8 = <b>135°</b>"
+    },
+    {
+      "id": "poly-p03",
+      "type": "numeric",
+      "prompt": "Find the measure of each exterior angle of a regular decagon (10 sides).",
+      "figure": {
+        "alt": "A regular decagon with one side extended past a vertex. The exterior angle there is marked x.",
+        "pts": [
+          { "id": "V0", "x": 164.3, "y": 236.0, "name": "" },
+          { "id": "V1", "x": 224.7, "y": 192.1, "name": "" },
+          { "id": "V2", "x": 247.8, "y": 121.0, "name": "" },
+          { "id": "V3", "x": 224.7, "y": 49.9, "name": "" },
+          { "id": "V4", "x": 164.3, "y": 6.0, "name": "" },
+          { "id": "V5", "x": 89.6, "y": 6.0, "name": "" },
+          { "id": "V6", "x": 29.1, "y": 49.9, "name": "" },
+          { "id": "V7", "x": 6.0, "y": 121.0, "name": "" },
+          { "id": "V8", "x": 29.1, "y": 192.1, "name": "" },
+          { "id": "V9", "x": 89.6, "y": 236.0, "name": "" },
+          { "id": "E", "x": 224.1, "y": 236.0, "name": "" }
+        ],
+        "polys": [["V0", "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9"]],
+        "segs": [
+          { "a": "V0", "b": "V1", "ticks": 1 },
+          { "a": "V1", "b": "V2", "ticks": 1 },
+          { "a": "V2", "b": "V3", "ticks": 1 },
+          { "a": "V3", "b": "V4", "ticks": 1 },
+          { "a": "V4", "b": "V5", "ticks": 1 },
+          { "a": "V5", "b": "V6", "ticks": 1 },
+          { "a": "V6", "b": "V7", "ticks": 1 },
+          { "a": "V7", "b": "V8", "ticks": 1 },
+          { "a": "V8", "b": "V9", "ticks": 1 },
+          { "a": "V9", "b": "V0", "ticks": 1 },
+          { "a": "V0", "b": "E", "dash": true }
+        ],
+        "angles": [{ "at": "V0", "a": "E", "b": "V1", "text": "x", "ask": true, "deg": 36 }]
+      },
+      "answer": "36",
+      "acceptable": [],
+      "check": "360 / 10",
+      "hints": [
+        "The exterior angles of any convex polygon add up to 360°.",
+        "A regular decagon has 10 equal exterior angles.",
+        "360 ÷ 10."
+      ],
+      "solution": "Each exterior angle = 360 ÷ 10 = <b>36°</b>"
+    },
+    {
+      "id": "poly-p04",
+      "type": "numeric",
+      "prompt": "ABCD is an isosceles trapezoid with bases AB and DC. m∠A = 64°. Find m∠D.",
+      "figure": {
+        "alt": "Isosceles trapezoid ABCD with bases AB and DC and congruent legs. Angle A is 64 degrees and angle D is marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 169.0, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 169.0, "name": "B" },
+          { "id": "C", "x": 244.5, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 85.5, "y": 6.0, "name": "D" }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B", "arrows": 1 },
+          { "a": "D", "b": "C", "arrows": 1 },
+          { "a": "A", "b": "D", "ticks": 1 },
+          { "a": "B", "b": "C", "ticks": 1 }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "D", "text": "64°" },
+          { "at": "D", "a": "A", "b": "C", "text": "x", "ask": true, "deg": 116 }
+        ]
+      },
+      "answer": "116",
+      "acceptable": [],
+      "check": "180 - 64",
+      "hints": [
+        "∠A and ∠D are on the same leg, between the two parallel bases.",
+        "Angles along one leg of a trapezoid are same-side interior angles, so they add to 180°.",
+        "180 − 64."
+      ],
+      "solution": "AB ∥ DC, so ∠A + ∠D = 180°.<br>m∠D = 180 − 64 = <b>116°</b>"
+    },
+    {
+      "id": "poly-p05",
+      "type": "numeric",
+      "prompt": "A pentagon has angles of 100°, 110°, 95°, and 120°. Find the fifth angle, x.",
+      "figure": {
+        "alt": "Pentagon ABCDE with angles B 100, C 110, D 95, and E 120 degrees. Angle A is marked x.",
+        "pts": [
+          { "id": "A", "x": 40.0, "y": 256.0, "name": "A" },
+          { "id": "B", "x": 234.3, "y": 256.0, "name": "B" },
+          { "id": "C", "x": 264.7, "y": 83.7, "name": "C" },
+          { "id": "D", "x": 130.0, "y": 6.0, "name": "D" },
+          { "id": "E", "x": 6.0, "y": 183.2, "name": "E" }
+        ],
+        "polys": [["A", "B", "C", "D", "E"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "C", "b": "D" },
+          { "a": "D", "b": "E" },
+          { "a": "E", "b": "A" }
+        ],
+        "angles": [
+          { "at": "A", "a": "E", "b": "B", "text": "x", "ask": true, "deg": 115 },
+          { "at": "B", "a": "A", "b": "C", "text": "100°" },
+          { "at": "C", "a": "B", "b": "D", "text": "110°" },
+          { "at": "D", "a": "C", "b": "E", "text": "95°" },
+          { "at": "E", "a": "D", "b": "A", "text": "120°" }
+        ]
+      },
+      "answer": "115",
+      "acceptable": [],
+      "check": "(5 - 2) * 180 - (100 + 110 + 95 + 120)",
+      "hints": [
+        "First find the total for a pentagon: (5 − 2) · 180°.",
+        "The total is 540°.",
+        "Subtract the four known angles from 540."
+      ],
+      "solution": "Sum = 3 · 180 = 540°<br>100 + 110 + 95 + 120 = 425<br>x = 540 − 425 = <b>115°</b>"
+    },
+    {
+      "id": "poly-p06",
+      "type": "numeric",
+      "prompt": "In parallelogram ABCD, m∠A = (3x + 20)° and m∠B = (2x + 10)°. Find x.",
+      "figure": {
+        "alt": "Parallelogram ABCD. Angle A is 3x + 20 degrees and angle B is 2x + 10 degrees.",
+        "pts": [
+          { "id": "A", "x": 60.1, "y": 154.8, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 154.8, "name": "B" },
+          { "id": "C", "x": 269.9, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 6.0, "y": 6.0, "name": "D" }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B", "arrows": 1 },
+          { "a": "D", "b": "C", "arrows": 1 },
+          { "a": "A", "b": "D", "arrows": 2 },
+          { "a": "B", "b": "C", "arrows": 2 }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "D", "text": "(3x + 20)°", "out": true, "deg": 110 },
+          { "at": "B", "a": "A", "b": "C", "text": "(2x + 10)°", "out": true, "deg": 70 }
+        ]
+      },
+      "answer": "30",
+      "acceptable": [],
+      "check": "(180 - 20 - 10) / (3 + 2)",
+      "hints": [
+        "In a parallelogram, consecutive angles (next to each other) are supplementary.",
+        "(3x + 20) + (2x + 10) = 180.",
+        "5x + 30 = 180."
+      ],
+      "solution": "(3x + 20) + (2x + 10) = 180<br>5x = 150<br>x = <b>30</b> (angles 110° and 70°)"
+    },
+    {
+      "id": "poly-p07",
+      "type": "numeric",
+      "prompt": "The diagonals of parallelogram ABCD meet at E. AE = 2y + 4 and EC = 3y − 1. Find the length of diagonal AC.",
+      "figure": {
+        "alt": "Parallelogram ABCD with diagonals meeting at E. AE is 2y + 4 and EC is 3y − 1, marked congruent. The length AC is unknown.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 128.3, "name": "A" },
+          { "id": "B", "x": 250.6, "y": 128.3, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 79.4, "y": 6.0, "name": "D" },
+          { "id": "E", "x": 165.0, "y": 67.2, "name": "E" }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "C", "b": "D" },
+          { "a": "D", "b": "A" },
+          { "a": "A", "b": "E", "text": "2y + 4", "ticks": 1, "lx": -16, "ly": -20 },
+          { "a": "E", "b": "C", "text": "3y − 1", "ticks": 1, "lx": 16, "ly": 20 },
+          { "a": "B", "b": "E", "ticks": 2, "dash": true },
+          { "a": "E", "b": "D", "ticks": 2, "dash": true }
+        ],
+        "angles": [],
+        "notes": [{ "text": "AC = ?", "ask": true, "x": 160, "y": 168.3 }]
+      },
+      "answer": "28",
+      "acceptable": [],
+      "check": "2 * (2 * ((4 + 1) / (3 - 2)) + 4)",
+      "hints": [
+        "The diagonals of a parallelogram bisect each other, so AE = EC.",
+        "2y + 4 = 3y − 1 gives y = 5.",
+        "AE = 2(5) + 4 = 14. AC is AE + EC."
+      ],
+      "solution": "2y + 4 = 3y − 1 → y = 5<br>AE = EC = 14<br>AC = 14 + 14 = <b>28</b>"
+    },
+    {
+      "id": "poly-p08",
+      "type": "mcq",
+      "prompt": "Which quadrilateral <b>always</b> has diagonals that are congruent, perpendicular, and bisect each other?",
+      "figure": {
+        "alt": "Quadrilateral ABCD whose diagonals meet at E. All four halves of the diagonals are marked congruent, and the diagonals meet at a right angle.",
+        "pts": [
+          { "id": "A", "x": 44.6, "y": 226.0, "name": "A" },
+          { "id": "B", "x": 226.0, "y": 187.4, "name": "B" },
+          { "id": "C", "x": 187.4, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 6.0, "y": 44.6, "name": "D" },
+          { "id": "E", "x": 116.0, "y": 116.0, "name": "" }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "C", "b": "D" },
+          { "a": "D", "b": "A" },
+          { "a": "A", "b": "E", "ticks": 1, "dash": true },
+          { "a": "E", "b": "C", "ticks": 1, "dash": true },
+          { "a": "B", "b": "E", "ticks": 1, "dash": true },
+          { "a": "E", "b": "D", "ticks": 1, "dash": true }
+        ],
+        "angles": [{ "at": "E", "a": "B", "b": "C", "right": true }]
+      },
+      "choices": ["Square", "Rectangle", "Rhombus", "Kite"],
+      "answer": "Square",
+      "acceptable": [],
+      "hints": [
+        "Rectangle: diagonals are congruent. Rhombus: diagonals are perpendicular.",
+        "Which shape is both a rectangle and a rhombus?",
+        "A kite's diagonals are perpendicular, but they are not congruent and only one is bisected."
+      ],
+      "solution": "A <b>square</b> is a rectangle (congruent diagonals) and a rhombus (perpendicular diagonals), so it has both."
+    },
+    {
+      "id": "poly-p09",
+      "type": "numeric",
+      "prompt": "In rhombus ABCD, the diagonals meet at E. m∠ABE = 34°. Find m∠BAE.",
+      "figure": {
+        "alt": "Rhombus ABCD with diagonals meeting at E at a right angle. Angle ABE is 34 degrees and angle BAE is marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 131.0, "name": "A" },
+          { "id": "B", "x": 90.3, "y": 6.0, "name": "B" },
+          { "id": "C", "x": 174.6, "y": 131.0, "name": "C" },
+          { "id": "D", "x": 90.3, "y": 256.0, "name": "D" },
+          { "id": "E", "x": 90.3, "y": 131.0, "name": "E", "nameAt": [104.3, 147.0] }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B", "ticks": 1 },
+          { "a": "B", "b": "C", "ticks": 1 },
+          { "a": "C", "b": "D", "ticks": 1 },
+          { "a": "D", "b": "A", "ticks": 1 },
+          { "a": "A", "b": "C", "dash": true },
+          { "a": "B", "b": "D", "dash": true }
+        ],
+        "angles": [
+          { "at": "E", "a": "C", "b": "B", "right": true },
+          { "at": "B", "a": "A", "b": "E", "text": "34°" },
+          { "at": "A", "a": "B", "b": "E", "text": "x", "ask": true, "deg": 56 }
+        ]
+      },
+      "answer": "56",
+      "acceptable": [],
+      "check": "180 - 90 - 34",
+      "hints": [
+        "The diagonals of a rhombus are perpendicular, so ∠AEB = 90°.",
+        "△ABE is a right triangle. Its angles add to 180°.",
+        "x + 34 + 90 = 180."
+      ],
+      "solution": "∠AEB = 90° (diagonals ⟂)<br>x = 180 − 90 − 34 = <b>56°</b>"
+    },
+    {
+      "id": "poly-p10",
+      "type": "numeric",
+      "prompt": "A trapezoid has bases 14 and 22. Find the length of its midsegment.",
+      "figure": {
+        "alt": "Trapezoid ABCD with bases AB 22 and DC 14. The midsegment MN joins the midpoints of the legs and is marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 92.7, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 92.7, "name": "B" },
+          { "id": "C", "x": 251.7, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 49.4, "y": 6.0, "name": "D" },
+          { "id": "M", "x": 27.7, "y": 49.4, "name": "M", "dot": true },
+          { "id": "N", "x": 287.9, "y": 49.4, "name": "N", "dot": true }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B", "text": "22", "arrows": 1, "scale": "s", "draw": 22 },
+          { "a": "D", "b": "C", "text": "14", "arrows": 1, "scale": "s", "draw": 14 },
+          { "a": "A", "b": "M", "ticks": 1 },
+          { "a": "M", "b": "D", "ticks": 1 },
+          { "a": "B", "b": "N", "ticks": 2 },
+          { "a": "N", "b": "C", "ticks": 2 },
+          { "a": "M", "b": "N", "text": "x", "ask": true, "dash": true }
+        ],
+        "angles": []
+      },
+      "answer": "18",
+      "acceptable": [],
+      "check": "(14 + 22) / 2",
+      "hints": [
+        "The midsegment of a trapezoid joins the midpoints of the legs.",
+        "Its length is the average of the bases: (b₁ + b₂) ÷ 2.",
+        "(14 + 22) ÷ 2."
+      ],
+      "solution": "Midsegment = (14 + 22) ÷ 2 = 36 ÷ 2 = <b>18</b>"
+    }
+  ],
+  "flashcards": [
+    {
+      "id": "poly-fc01",
+      "front": "Polygon Interior Angle Sum",
+      "back": "(n − 2) · 180°, where n is the number of sides. Triangle 180°, quadrilateral 360°, pentagon 540°, hexagon 720°."
+    },
+    {
+      "id": "poly-fc02",
+      "front": "Each interior angle of a regular polygon",
+      "back": "(n − 2) · 180° ÷ n. Example: regular octagon = 1080 ÷ 8 = 135°."
+    },
+    {
+      "id": "poly-fc03",
+      "front": "Exterior Angle Sum",
+      "back": "The exterior angles of any convex polygon (one at each vertex) add to <b>360°</b>."
+    },
+    {
+      "id": "poly-fc04",
+      "front": "Each exterior angle of a regular polygon",
+      "back": "360° ÷ n. To find n from an angle: n = 360 ÷ (exterior angle). Interior + exterior = 180°."
+    },
+    {
+      "id": "poly-fc05",
+      "front": "Parallelogram properties",
+      "back": "Opposite sides parallel and congruent. Opposite angles congruent. Consecutive angles supplementary. Diagonals bisect each other.",
+      "figure": {
+        "alt": "Parallelogram ABCD with both pairs of opposite sides marked parallel and congruent, and opposite angles marked congruent.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 143.9, "name": "A" },
+          { "id": "B", "x": 259.7, "y": 143.9, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 70.3, "y": 6.0, "name": "D" }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B", "arrows": 1, "ticks": 1 },
+          { "a": "D", "b": "C", "arrows": 1, "ticks": 1 },
+          { "a": "A", "b": "D", "arrows": 2, "ticks": 2 },
+          { "a": "B", "b": "C", "arrows": 2, "ticks": 2 }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "D", "arcs": 1 },
+          { "at": "C", "a": "B", "b": "D", "arcs": 1 },
+          { "at": "B", "a": "A", "b": "C", "arcs": 2 },
+          { "at": "D", "a": "A", "b": "C", "arcs": 2 }
+        ]
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "poly-fc06",
+      "front": "Rectangle",
+      "back": "A parallelogram with four right angles. Its diagonals are <b>congruent</b>."
+    },
+    {
+      "id": "poly-fc07",
+      "front": "Rhombus",
+      "back": "A parallelogram with four congruent sides. Its diagonals are <b>perpendicular</b> and bisect the angles."
+    },
+    {
+      "id": "poly-fc08",
+      "front": "Square",
+      "back": "Both a rectangle and a rhombus: four right angles and four congruent sides. Diagonals are congruent and perpendicular."
+    },
+    {
+      "id": "poly-fc09",
+      "front": "Trapezoid",
+      "back": "Exactly one pair of parallel sides (the bases). The other two sides are the legs."
+    },
+    {
+      "id": "poly-fc10",
+      "front": "Trapezoid Midsegment Theorem",
+      "back": "The midsegment is parallel to the bases, and its length is the average of the bases: (b₁ + b₂) ÷ 2."
+    },
+    {
+      "id": "poly-fc11",
+      "front": "Isosceles trapezoid",
+      "back": "Congruent legs. Each pair of base angles is congruent, and the diagonals are congruent."
+    },
+    {
+      "id": "poly-fc12",
+      "front": "Kite",
+      "back": "Two pairs of consecutive congruent sides. Diagonals are perpendicular. One pair of opposite angles (between the unequal sides) is congruent."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "poly-q01",
+      "type": "numeric",
+      "prompt": "Find the sum of the interior angles of a nonagon (9 sides).",
+      "figure": {
+        "alt": "A nonagon. The sum of its interior angles is unknown.",
+        "pts": [
+          { "id": "V0", "x": 163.3, "y": 236.0, "name": "" },
+          { "id": "V1", "x": 225.5, "y": 183.9, "name": "" },
+          { "id": "V2", "x": 239.5, "y": 104.0, "name": "" },
+          { "id": "V3", "x": 199.0, "y": 33.7, "name": "" },
+          { "id": "V4", "x": 122.8, "y": 6.0, "name": "" },
+          { "id": "V5", "x": 46.6, "y": 33.7, "name": "" },
+          { "id": "V6", "x": 6.0, "y": 104.0, "name": "" },
+          { "id": "V7", "x": 20.1, "y": 183.9, "name": "" },
+          { "id": "V8", "x": 82.2, "y": 236.0, "name": "" }
+        ],
+        "polys": [["V0", "V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8"]],
+        "segs": [
+          { "a": "V0", "b": "V1" },
+          { "a": "V1", "b": "V2" },
+          { "a": "V2", "b": "V3" },
+          { "a": "V3", "b": "V4" },
+          { "a": "V4", "b": "V5" },
+          { "a": "V5", "b": "V6" },
+          { "a": "V6", "b": "V7" },
+          { "a": "V7", "b": "V8" },
+          { "a": "V8", "b": "V0" }
+        ],
+        "angles": [],
+        "notes": [{ "text": "sum of the angles = ?", "ask": true, "x": 160, "y": 276.0 }]
+      },
+      "answer": "1260",
+      "acceptable": [],
+      "check": "(9 - 2) * 180",
+      "hints": ["(n − 2) · 180°.", "n = 9."],
+      "solution": "(9 − 2) · 180 = 7 · 180 = <b>1260°</b>"
+    },
+    {
+      "id": "poly-q02",
+      "type": "numeric",
+      "prompt": "Each interior angle of a regular polygon is 140°. How many sides does it have?",
+      "figure": {
+        "alt": "One corner of a regular polygon. The interior angle is 140 degrees.",
+        "pts": [
+          { "id": "V8", "x": 6.0, "y": 100.6, "name": "" },
+          { "id": "V0", "x": 153.2, "y": 100.6, "name": "" },
+          { "id": "V1", "x": 266.0, "y": 6.0, "name": "" }
+        ],
+        "segs": [{ "a": "V8", "b": "V0", "ticks": 1 }, { "a": "V0", "b": "V1", "ticks": 1 }],
+        "angles": [{ "at": "V0", "a": "V8", "b": "V1", "text": "140°" }],
+        "notes": [{ "x": 140, "y": 140.6, "text": "number of sides = ?", "ask": true }]
+      },
+      "answer": "9",
+      "acceptable": [],
+      "check": "360 / (180 - 140)",
+      "hints": ["Each exterior angle = 180 − 140.", "n = 360 ÷ (exterior angle)."],
+      "solution": "Exterior = 180 − 140 = 40°<br>n = 360 ÷ 40 = <b>9</b>"
+    },
+    {
+      "id": "poly-q03",
+      "type": "numeric",
+      "prompt": "ABCD is a rectangle. Diagonal AC = 5x − 7 and diagonal BD = 3x + 9. Find x.",
+      "figure": {
+        "alt": "Rectangle ABCD with diagonals AC labeled 5x − 7 and BD labeled 3x + 9.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 196.8, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 196.8, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 6.0, "y": 6.0, "name": "D" }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "C", "b": "D" },
+          { "a": "D", "b": "A" },
+          { "a": "A", "b": "C", "text": "5x − 7", "at": 0.25, "lx": -18, "ly": -20 },
+          { "a": "B", "b": "D", "text": "3x + 9", "at": 0.25, "lx": 18, "ly": -20 }
+        ],
+        "angles": [{ "at": "A", "a": "B", "b": "D", "right": true }, { "at": "C", "a": "D", "b": "B", "right": true }]
+      },
+      "answer": "8",
+      "acceptable": [],
+      "check": "(9 + 7) / (5 - 3)",
+      "hints": ["The diagonals of a rectangle are congruent.", "5x − 7 = 3x + 9."],
+      "solution": "5x − 7 = 3x + 9 → 2x = 16 → x = <b>8</b>"
+    },
+    {
+      "id": "poly-q04",
+      "type": "numeric",
+      "prompt": "In kite ABCD, AB = AD and CB = CD. m∠A = 70° and m∠C = 80°. Find m∠B.",
+      "figure": {
+        "alt": "Kite ABCD with AB congruent to AD and CB congruent to CD. Angle A is 70 degrees, angle C is 80 degrees, and angle B is marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 127.4, "name": "A" },
+          { "id": "B", "x": 179.3, "y": 6.0, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 127.4, "name": "C" },
+          { "id": "D", "x": 179.3, "y": 248.8, "name": "D" }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B", "ticks": 1 },
+          { "a": "A", "b": "D", "ticks": 1 },
+          { "a": "C", "b": "B", "ticks": 2 },
+          { "a": "C", "b": "D", "ticks": 2 }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "D", "text": "70°" },
+          { "at": "C", "a": "B", "b": "D", "text": "80°" },
+          { "at": "B", "a": "A", "b": "C", "text": "x", "ask": true, "deg": 105 }
+        ]
+      },
+      "answer": "105",
+      "acceptable": [],
+      "check": "(360 - 70 - 80) / 2",
+      "hints": ["The angles of a quadrilateral add to 360°.", "In this kite, ∠B and ∠D are congruent."],
+      "solution": "∠B + ∠D = 360 − 70 − 80 = 210<br>m∠B = 210 ÷ 2 = <b>105°</b>"
+    },
+    {
+      "id": "poly-q05",
+      "type": "mcq",
+      "prompt": "Which statement is <b>not</b> always true for every parallelogram?",
+      "figure": {
+        "alt": "A parallelogram ABCD with both diagonals drawn.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 128.3, "name": "A" },
+          { "id": "B", "x": 250.6, "y": 128.3, "name": "B" },
+          { "id": "C", "x": 324.0, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 79.4, "y": 6.0, "name": "D" }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B", "arrows": 1 },
+          { "a": "D", "b": "C", "arrows": 1 },
+          { "a": "A", "b": "D", "arrows": 2 },
+          { "a": "B", "b": "C", "arrows": 2 },
+          { "a": "A", "b": "C", "dash": true },
+          { "a": "B", "b": "D", "dash": true }
+        ],
+        "angles": []
+      },
+      "choices": [
+        "The diagonals are congruent",
+        "Opposite sides are congruent",
+        "Opposite angles are congruent",
+        "The diagonals bisect each other"
+      ],
+      "answer": "The diagonals are congruent",
+      "acceptable": [],
+      "hints": [
+        "Three of these are properties of every parallelogram.",
+        "Look at the drawing: are the two diagonals the same length?"
+      ],
+      "solution": "Congruent diagonals happen only in rectangles. In the slanted parallelogram shown, AC is longer than BD. Answer: <b>the diagonals are congruent</b> is not always true."
+    },
+    {
+      "id": "poly-q06",
+      "type": "numeric",
+      "prompt": "A trapezoid has bases 2x and 30. Its midsegment is 21. Find x.",
+      "figure": {
+        "alt": "Trapezoid with bases 2x and 30 and midsegment 21.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 90.8, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 90.8, "name": "B" },
+          { "id": "C", "x": 239.2, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 112.0, "y": 6.0, "name": "D" },
+          { "id": "M", "x": 59.0, "y": 48.4, "name": "M", "dot": true },
+          { "id": "N", "x": 281.6, "y": 48.4, "name": "N", "dot": true }
+        ],
+        "polys": [["A", "B", "C", "D"]],
+        "segs": [
+          { "a": "A", "b": "B", "text": "30", "arrows": 1, "scale": "s", "draw": 30 },
+          { "a": "D", "b": "C", "text": "2x", "arrows": 1 },
+          { "a": "A", "b": "M", "ticks": 1 },
+          { "a": "M", "b": "D", "ticks": 1 },
+          { "a": "B", "b": "N", "ticks": 2 },
+          { "a": "N", "b": "C", "ticks": 2 },
+          { "a": "M", "b": "N", "text": "21", "dash": true, "scale": "s", "draw": 21 }
+        ],
+        "angles": []
+      },
+      "answer": "6",
+      "acceptable": [],
+      "check": "(2 * 21 - 30) / 2",
+      "hints": ["Midsegment = (b₁ + b₂) ÷ 2.", "(2x + 30) ÷ 2 = 21."],
+      "solution": "2x + 30 = 42 → 2x = 12 → x = <b>6</b>"
+    }
+  ]
+}

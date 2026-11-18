@@ -4,7 +4,8 @@
 Run from anywhere:  python3 tools/validate.py
 
 Checks:
-  1. All content JSON parses; app.json lists unit files that exist.
+  1. All content JSON parses; app.json lists unit files that exist; the
+     "terms" (pacing guide sections) name real units, once each, with real dates.
   2. Every practice/quiz item has id, type, prompt, answer, >= 2 hints, solution;
      MCQ answers are one of the choices; flashcards have front and back;
      unit ids and item ids are unique.
@@ -385,6 +386,8 @@ ROUNDING_CASES = {
                  ("41.4", False), ("42.49", True), ("43", False)],        # nearest foot
     "trig-p08": [("11.5", True), ("11.55", False), ("11.45", True), ("11.4715", True),
                  ("11.44", False), ("11.6", False)],                     # nearest tenth
+    "trig-p11": [("129", True), ("128.5", True), ("128.67", True), ("129.49", True),
+                 ("129.5", False), ("128.4", False), ("130", False)],          # nearest foot
     "trig-q05": [("18.8", True), ("18.85", False), ("18.79", True), ("18.75", True),
                  ("18.74", False), ("18.9", False)],                     # nearest tenth
 }
@@ -420,7 +423,7 @@ def practice_needs_diagram(unit_id, item):
 
 
 def _has_special(fig):
-    return any(k in fig for k in ("grid", "numberline", "balance", "bars", "solid", "solids"))
+    return any(k in fig for k in ("grid", "numberline", "balance", "bars", "frac", "chips", "solid", "solids"))
 
 
 def _num(v):
@@ -456,8 +459,25 @@ def _check_special(fig, item, bad):
                 bad("grid x range is empty")
             if _num(g.get("y0")) and _num(g.get("y1")) and not g["y0"] < g["y1"]:
                 bad("grid y range is empty")
-            if not (g.get("lines") or g.get("points") or g.get("curve") or g.get("ray")):
-                bad("grid needs a line, a point, or a curve")
+            if not (g.get("lines") or g.get("points") or g.get("curve") or g.get("ray") or g.get("shapes")):
+                bad("grid needs a line, a point, a shape, or a curve")
+            for sg in g.get("segs") or []:
+                if not isinstance(sg, dict) or not all(_num(sg.get(k)) for k in ("x1", "y1", "x2", "y2")):
+                    bad("grid segment needs numeric x1, y1, x2, y2")
+            for sh in g.get("shapes") or []:
+                pts = sh.get("pts") if isinstance(sh, dict) else None
+                if not isinstance(pts, list) or len(pts) < 3 or not all(
+                        isinstance(q, list) and len(q) == 2 and _num(q[0]) and _num(q[1]) for q in pts):
+                    bad("grid shape needs at least 3 numeric [x, y] vertices")
+                    continue
+                if _poly_area([(float(q[0]), float(q[1])) for q in pts]) < 1e-6:
+                    bad("grid shape is degenerate")
+                for q in pts:
+                    if not (g.get("x0", 0) <= q[0] <= g.get("x1", 0) and g.get("y0", 0) <= q[1] <= g.get("y1", 0)):
+                        bad(f"grid shape vertex {q} is off the grid")
+                labels = sh.get("labels") or []
+                if labels and len(labels) != len(pts):
+                    bad("grid shape needs one label per vertex")
             for ln in g.get("lines") or []:
                 if not isinstance(ln, dict) or not _num(ln.get("m")) or not _num(ln.get("b")):
                     bad("grid line needs a numeric slope and intercept")
@@ -473,6 +493,11 @@ def _check_special(fig, item, bad):
                     for p in g.get("points") or []:
                         if _num(p.get("x")) and _num(p.get("y")) and abs(p["x"] - ans[0]) < 0.05 and abs(p["y"] - ans[1]) < 0.05:
                             bad("plots the solution point")
+                    for sh in g.get("shapes") or []:
+                        for q in sh.get("pts") or []:
+                            if isinstance(q, list) and len(q) == 2 and _num(q[0]) and _num(q[1]) and \
+                                    abs(q[0] - ans[0]) < 0.05 and abs(q[1] - ans[1]) < 0.05:
+                                bad("a shape vertex sits on the solution point")
                     mk = g.get("mark")
                     if isinstance(mk, dict) and g.get("numbered", True) is not False and _num(mk.get("x")) and _num(mk.get("y")):
                         if abs(mk["x"] - ans[0]) < 0.05 and abs(mk["y"] - ans[1]) < 0.05:
@@ -485,6 +510,46 @@ def _check_special(fig, item, bad):
     if bal is not None:
         if not isinstance(bal, dict) or not nonempty_str(bal.get("left")) or not nonempty_str(bal.get("right")):
             bad("balance needs a left side and a right side")
+    frac = fig.get("frac")
+    if frac is not None:
+        if not isinstance(frac, dict) or not nonempty_str(frac.get("num")) or not nonempty_str(frac.get("den")):
+            bad("fraction needs a numerator and a denominator")
+        elif nonempty_str(frac.get("rhs")) and frac.get("ask") is not False and plain_measure(frac["rhs"]) is not None:
+            bad(f"fraction result {frac['rhs']!r} is a number (use ?)")
+    chips = fig.get("chips")
+    if chips is not None:
+        def chip_items(g):
+            if not isinstance(g, dict):
+                return None
+            if "items" in g:
+                it = g["items"]
+                return it if isinstance(it, list) and it and all(nonempty_str(x) for x in it) else None
+            n = g.get("n")
+            if isinstance(n, bool) or not isinstance(n, int) or not 1 <= n <= 14:
+                return None
+            return [g.get("text") or "x"] * n
+        if not isinstance(chips, dict):
+            bad("chips must be an object")
+        elif "num" in chips or "den" in chips:
+            ni, di = chip_items(chips.get("num")), chip_items(chips.get("den"))
+            if ni is None or di is None:
+                bad("chips fraction needs num and den rows (items, or n 1-14)")
+            else:
+                k = chips.get("cancel", 0)
+                if isinstance(k, bool) or not isinstance(k, int) or not 0 <= k <= min(len(ni), len(di)):
+                    bad("chips cancel must be a whole number no bigger than either row")
+                if max(len(ni), len(di)) > 14:
+                    bad("chips row is too long to read (max 14)")
+        else:
+            groups = chips.get("groups")
+            rows = [chip_items(g) for g in groups] if isinstance(groups, list) and groups else [None]
+            if any(r is None for r in rows):
+                bad("chips needs groups (items, or n 1-14) or num/den rows")
+            elif sum(len(r) for r in rows) > 14:
+                bad("chips row is too long to read (max 14)")
+        if isinstance(chips, dict) and nonempty_str(chips.get("rhs")) and chips.get("ask") is not False \
+                and plain_measure(chips["rhs"]) is not None:
+            bad(f"chips result {chips['rhs']!r} is a number (use ?)")
     bars = fig.get("bars")
     if bars is not None:
         if not isinstance(bars, dict) or not ((bars.get("items") or bars.get("ratios"))):
@@ -506,6 +571,27 @@ def _special_texts(fig):
     for p in g.get("points") or []:
         if p.get("text"):
             out.append(p["text"])
+    for sh in g.get("shapes") or []:
+        if isinstance(sh, dict):
+            out.extend(x for x in (sh.get("labels") or []) if isinstance(x, str))
+            if sh.get("text"):
+                out.append(sh["text"])
+    frac = fig.get("frac") or {}
+    for key in ("num", "den", "rhs", "caption", "power"):
+        if frac.get(key):
+            out.append(frac[key])
+    chips = fig.get("chips") or {}
+    if isinstance(chips, dict):
+        for key in ("rhs", "caption", "sep"):
+            if isinstance(chips.get(key), str) and chips.get(key):
+                out.append(chips[key])
+        for cg in (chips.get("groups") or []) + [chips.get("num"), chips.get("den")]:
+            if isinstance(cg, dict):
+                if isinstance(cg.get("label"), str) and cg.get("label"):
+                    out.append(cg["label"])
+                if isinstance(cg.get("text"), str) and cg.get("text"):
+                    out.append(cg["text"])
+                out.extend(x for x in (cg.get("items") or []) if isinstance(x, str))
     for key in ("vline", "mark", "ray"):
         if isinstance(g.get(key), dict) and g[key].get("text"):
             out.append(g[key]["text"])
@@ -1103,6 +1189,91 @@ def load_json(path):
         return None
 
 
+def check_terms(terms, unit_files):
+    """Pacing-guide sections: each term names real units, each unit at most once, valid dates in order."""
+    import datetime
+    if terms is None:
+        warn("app.json: no 'terms' list; the home screen shows every unit under 'Other'")
+        return
+    if not isinstance(terms, list) or not terms:
+        err("app.json: 'terms' must be a non-empty list")
+        return
+    seen_term_ids, placed, prev_end = set(), {}, None
+    for t in terms:
+        if not isinstance(t, dict):
+            err("app.json: each term must be an object")
+            continue
+        tid = t.get("id")
+        where = f"app.json term {tid or '?'}"
+        if not nonempty_str(tid) or tid in seen_term_ids:
+            err(f"{where}: needs a unique id")
+        seen_term_ids.add(tid)
+        for k in ("label", "dates"):
+            if not nonempty_str(t.get(k)):
+                err(f"{where}: missing {k}")
+        days = []
+        for k in ("start", "end"):
+            try:
+                days.append(datetime.date.fromisoformat(str(t.get(k))))
+            except ValueError:
+                err(f"{where}: {k} {t.get(k)!r} is not a YYYY-MM-DD date")
+        if len(days) == 2:
+            if days[0] > days[1]:
+                err(f"{where}: start is after end")
+            if prev_end and days[0] <= prev_end:
+                err(f"{where}: starts before the previous term ends (terms must be in date order)")
+            prev_end = days[1]
+        units = t.get("units")
+        if not isinstance(units, list) or not units:
+            err(f"{where}: 'units' must be a non-empty list")
+            continue
+        for uid in units:
+            if uid not in unit_files:
+                err(f"{where}: unit '{uid}' is not in the app.json units list")
+            if uid in placed:
+                err(f"{where}: unit '{uid}' is also in term {placed[uid]}")
+            placed[uid] = tid
+        for g in t.get("groups") or []:
+            if not isinstance(g, dict) or not nonempty_str(g.get("label")) or not isinstance(g.get("units"), list):
+                err(f"{where}: each group needs a label and a units list")
+                continue
+            for uid in g["units"]:
+                if uid not in units:
+                    err(f"{where}: group '{g['label']}' lists '{uid}', which is not in this term")
+    for uid in unit_files:
+        if uid not in placed:
+            warn(f"unit '{uid}' is not in any term (shown under 'Other')")
+    order = [u for t in terms if isinstance(t, dict) for u in (t.get("units") or [])]
+    listed = [u for u in unit_files if u in placed]
+    if listed != order:
+        warn("app.json: 'units' is not in pacing (term) order")
+
+
+def check_reference(uid, ref):
+    """Optional quick-reference card on the unit page."""
+    if ref is None:
+        return
+    where = f"{uid}/reference"
+    if not isinstance(ref, dict):
+        err(f"{where}: must be an object with title and rows")
+        return
+    if not nonempty_str(ref.get("title")):
+        err(f"{where}: missing title")
+    rows = ref.get("rows")
+    if not isinstance(rows, list) or not rows:
+        err(f"{where}: rows must be a non-empty list")
+        return
+    for i, r in enumerate(rows):
+        if not isinstance(r, dict) or not nonempty_str(r.get("label")) or not nonempty_str(r.get("rule")):
+            err(f"{where}: row {i + 1} needs a label and a rule")
+            continue
+        for key in ("label", "rule", "note"):
+            check_html(f"{where} row {i + 1}", r.get(key))
+        if re.search(r"<(?!/?(sup|sub|b|i)>)", r.get("rule", "") + (r.get("note") or "")):
+            err(f"{where}: row {i + 1} may only use <sup>, <sub>, <b>, <i>")
+    check_html(where, ref.get("foot"))
+
+
 def check_content():
     cfg = load_json(CONTENT / "app.json")
     if not isinstance(cfg, dict):
@@ -1116,6 +1287,7 @@ def check_content():
         err("app.json: 'units' must be a non-empty list of unit file names")
         return []
     strands = cfg.get("strands", {})
+    check_terms(cfg.get("terms"), unit_files)
     seen_units, seen_ids, inventory = set(), {}, []
     for name in unit_files:
         path = CONTENT / "units" / f"{name}.json"
@@ -1161,10 +1333,11 @@ def check_content():
             check_html(where, card.get("front"))
             check_html(where, card.get("back"))
             check_figure(uid, "flashcards", card, where)
+        check_reference(uid, unit.get("reference"))
         if len(practice) < 8:
             warn(f"{uid}: only {len(practice)} practice items (target ~10)")
-        if not 8 <= len(cards) <= 12:
-            warn(f"{uid}: {len(cards)} flashcards (target 8-12)")
+        if not 8 <= len(cards) <= 14:
+            warn(f"{uid}: {len(cards)} flashcards (target 8-14)")
         if not 6 <= len(quiz) <= 8:
             warn(f"{uid}: {len(quiz)} quiz items (target 6-8)")
         types = {}
@@ -1237,15 +1410,15 @@ def main():
     check_static([row[0] for row in inventory])
 
     print("Math Lab content inventory")
-    print("-" * 72)
-    print(f"{'unit':<18}{'strand':<10}{'practice':>9}{'cards':>7}{'quiz':>6}   types")
+    print("-" * 80)
+    print(f"{'unit':<25}{'strand':<10}{'practice':>9}{'cards':>7}{'quiz':>6}   types")
     tp = tc = tq = 0
     for uid, _title, strand, p, c, q, types in inventory:
         tp, tc, tq = tp + p, tc + c, tq + q
         tstr = ", ".join(f"{k}:{v}" for k, v in sorted(types.items(), key=lambda kv: str(kv[0])))
-        print(f"{uid:<18}{strand:<10}{p:>9}{c:>7}{q:>6}   {tstr}")
-    print("-" * 72)
-    print(f"{'TOTAL':<28}{tp:>9}{tc:>7}{tq:>6}   ({len(inventory)} units)")
+        print(f"{uid:<25}{strand:<10}{p:>9}{c:>7}{q:>6}   {tstr}")
+    print("-" * 80)
+    print(f"{'TOTAL':<35}{tp:>9}{tc:>7}{tq:>6}   ({len(inventory)} units)")
     print()
     print(f"Math machine-checked against an independent expression: {len(checked_ids)} items")
     n_round = sum(len(ROUNDING_CASES[i]) for i in ROUNDING_SEEN)

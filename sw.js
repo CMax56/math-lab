@@ -1,6 +1,6 @@
 /* Math Lab service worker: offline cache for same-origin files only.
  * Bump VERSION whenever app files change so phones pick up the update. */
-var VERSION = 'mathlab-v2';
+var VERSION = 'mathlab-v4';
 
 var CORE = [
   './',
@@ -9,6 +9,7 @@ var CORE = [
   'css/styles.css',
   'js/mathcheck.js',
   'js/store.js',
+  'js/figures.js',
   'js/app.js',
   'icons/icon.svg',
   'content/app.json',

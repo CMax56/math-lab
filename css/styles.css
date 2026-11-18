@@ -232,4 +232,36 @@ th { color: var(--muted); font-weight: 600; border-top: 0; }
 td:first-child { white-space: normal; min-width: 130px; font-weight: 600; }
 textarea.report { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; line-height: 1.4; }
 
+/* Triangle diagrams (inline SVG, follows light and dark tokens) */
+.figure {
+  display: flex; justify-content: center;
+  margin: 10px 0 14px; padding: 4px 2px 2px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+}
+.figure-svg { width: 100%; max-width: 460px; height: auto; display: block; overflow: visible; }
+.figure-svg .stroke { fill: none; stroke: var(--text); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.figure-svg .stroke.dash { stroke-dasharray: 6 5; }
+.figure-svg .fill { fill: var(--primary-soft); stroke: none; }
+.figure-svg .fill2 { fill: var(--warn-soft); stroke: none; }
+.figure-svg .tick { fill: none; stroke: var(--primary); stroke-width: 2.6; stroke-linecap: round; }
+.figure-svg .arrow { fill: none; stroke: var(--primary); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.figure-svg .angle, .figure-svg .right { fill: none; stroke: var(--accent); stroke-width: 2.3; stroke-linecap: round; }
+.figure-svg .sector { fill: var(--accent); opacity: .16; stroke: none; }
+.figure-svg .dot { fill: var(--text); stroke: none; }
+.figure-svg .label, .figure-svg .vlabel, .figure-svg .note {
+  fill: var(--text);
+  stroke: var(--bg);
+  stroke-width: 5px;
+  paint-order: stroke fill;
+  stroke-linejoin: round;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+}
+.figure-svg .label { font-size: 18px; }
+.figure-svg .label.long { font-size: 15px; }
+.figure-svg .vlabel { font-size: 18px; font-weight: 800; }
+.figure-svg .note { font-size: 15px; font-weight: 650; fill: var(--muted); }
+.figure-svg .ask { fill: var(--accent); }
+.flashcard .figure { width: 100%; margin: 6px 0 0; }
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

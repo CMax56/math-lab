@@ -9,6 +9,35 @@
       "id": "sim-p01",
       "type": "numeric",
       "prompt": "△ABC ∼ △DEF with AB = 6 and DE = 15. What is the scale factor from △ABC to △DEF?",
+      "figure": {
+        "alt": "Similar triangles ABC and DEF. AB is 6 and the corresponding side DE is 15.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 189.9, "name": "B" },
+          { "id": "C", "x": 81.2, "y": 189.9, "name": "C" },
+          { "id": "A", "x": 52.0, "y": 116.3, "name": "A" },
+          { "id": "E", "x": 136.1, "y": 189.9, "name": "E" },
+          { "id": "F", "x": 324.0, "y": 189.9, "name": "F" },
+          { "id": "D", "x": 251.0, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "text": "6", "draw": 6.0 },
+          { "a": "B", "b": "C", "scale": "s" },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "D", "b": "E", "scale": "s", "text": "15", "draw": 15.0 },
+          { "a": "E", "b": "F", "scale": "s" },
+          { "a": "F", "b": "D", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "B", "a": "A", "b": "C", "arcs": 1 },
+          { "at": "E", "a": "D", "b": "F", "arcs": 1 },
+          { "at": "A", "a": "B", "b": "C", "arcs": 2 },
+          { "at": "D", "a": "E", "b": "F", "arcs": 2 }
+        ]
+      },
       "answer": "5/2",
       "acceptable": ["2.5"],
       "check": "15 / 6",
@@ -23,6 +52,33 @@
       "id": "sim-p02",
       "type": "numeric",
       "prompt": "△ABC ∼ △DEF with AB = 6, DE = 15, and BC = 8. Find EF.",
+      "figure": {
+        "alt": "Similar triangles ABC and DEF. AB is 6, DE is 15, BC is 8, and EF is marked x.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 141.7, "name": "B" },
+          { "id": "C", "x": 86.5, "y": 141.7, "name": "C" },
+          { "id": "A", "x": 32.5, "y": 87.4, "name": "A" },
+          { "id": "E", "x": 122.7, "y": 141.7, "name": "E" },
+          { "id": "F", "x": 324.0, "y": 141.7, "name": "F" },
+          { "id": "D", "x": 188.9, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "text": "6", "draw": 6.0 },
+          { "a": "B", "b": "C", "scale": "s", "text": "8", "draw": 8.0 },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "D", "b": "E", "scale": "s", "text": "15", "draw": 15.0 },
+          { "a": "E", "b": "F", "scale": "s", "text": "x", "ask": true, "draw": 20.0 },
+          { "a": "F", "b": "D", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "B", "a": "A", "b": "C", "arcs": 1 },
+          { "at": "E", "a": "D", "b": "F", "arcs": 1 }
+        ]
+      },
       "answer": "20",
       "acceptable": [],
       "check": "8 * 15 / 6",
@@ -51,6 +107,35 @@
       "id": "sim-p04",
       "type": "mcq",
       "prompt": "Two triangles have two pairs of congruent angles. What does that prove?",
+      "figure": {
+        "alt": "Two triangles of different sizes with two pairs of angles marked congruent.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 110.8, "name": "B" },
+          { "id": "C", "x": 106.6, "y": 110.8, "name": "C" },
+          { "id": "A", "x": 88.2, "y": 41.8, "name": "A" },
+          { "id": "E", "x": 171.0, "y": 110.8, "name": "E" },
+          { "id": "F", "x": 324.0, "y": 110.8, "name": "F" },
+          { "id": "D", "x": 295.9, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s" },
+          { "a": "B", "b": "C", "scale": "s" },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "D", "b": "E", "scale": "s" },
+          { "a": "E", "b": "F", "scale": "s" },
+          { "a": "F", "b": "D", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "arcs": 1, "deg": 65.0 },
+          { "at": "D", "a": "E", "b": "F", "arcs": 1, "deg": 65.0 },
+          { "at": "B", "a": "A", "b": "C", "arcs": 2, "deg": 40.0 },
+          { "at": "E", "a": "D", "b": "F", "arcs": 2, "deg": 40.0 }
+        ]
+      },
       "choices": [
         "They are similar (AA similarity)",
         "They are congruent (ASA)",
@@ -70,6 +155,39 @@
       "id": "sim-p05",
       "type": "numeric",
       "prompt": "A 6-ft person casts a 4-ft shadow. At the same time, a tree casts a 22-ft shadow. How tall is the tree in feet?",
+      "figure": {
+        "alt": "Two right triangles for shadows cast at the same time. The person is 6 ft tall with a 4 ft shadow. The tree's shadow is 22 ft and its height is marked x.",
+        "pts": [
+          { "id": "YouC", "x": 20.0, "y": 230.0, "name": "" },
+          { "id": "YouA", "x": 120.0, "y": 230.0, "name": "" },
+          { "id": "YouB", "x": 20.0, "y": 80.0, "name": "" },
+          { "id": "TreeC", "x": 174.2, "y": 230.0, "name": "" },
+          { "id": "TreeA", "x": 320.8, "y": 230.0, "name": "" },
+          { "id": "TreeB", "x": 174.2, "y": 10.0, "name": "" }
+        ],
+        "polys": [
+          ["YouB", "YouA", "YouC"],
+          ["TreeB", "TreeA", "TreeC"]
+        ],
+        "segs": [
+          { "a": "YouC", "b": "YouA", "scale": "you", "text": "4 ft", "draw": 4.0 },
+          { "a": "YouC", "b": "YouB", "scale": "you", "text": "6 ft", "draw": 6.0 },
+          { "a": "YouA", "b": "YouB", "scale": "you" },
+          { "a": "TreeC", "b": "TreeA", "scale": "tree", "text": "22 ft", "draw": 22.0 },
+          { "a": "TreeC", "b": "TreeB", "scale": "tree", "text": "x", "ask": true, "draw": 33.0 },
+          { "a": "TreeA", "b": "TreeB", "scale": "tree" }
+        ],
+        "angles": [
+          { "at": "YouC", "a": "YouB", "b": "YouA", "right": true },
+          { "at": "TreeC", "a": "TreeB", "b": "TreeA", "right": true },
+          { "at": "YouA", "a": "YouC", "b": "YouB", "arcs": 1 },
+          { "at": "TreeA", "a": "TreeC", "b": "TreeB", "arcs": 1 }
+        ],
+        "notes": [
+          { "x": 56.0, "y": 80.0, "text": "you" },
+          { "x": 210.2, "y": 10.0, "text": "tree" }
+        ]
+      },
       "answer": "33",
       "acceptable": [],
       "check": "6 * 22 / 4",
@@ -84,6 +202,35 @@
       "id": "sim-p06",
       "type": "mcq",
       "prompt": "One triangle has sides 3, 4, 5. Another has sides 9, 12, 15. Are they similar?",
+      "figure": {
+        "alt": "A 3-4-5 triangle and a 9-12-15 triangle, with every given side labeled.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 158.2, "name": "C" },
+          { "id": "B", "x": 73.6, "y": 158.2, "name": "B" },
+          { "id": "A", "x": 6.0, "y": 107.4, "name": "A" },
+          { "id": "F", "x": 131.1, "y": 158.2, "name": "F" },
+          { "id": "E", "x": 334.0, "y": 158.2, "name": "E" },
+          { "id": "D", "x": 131.1, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s", "text": "3", "draw": 3.0 },
+          { "a": "C", "b": "B", "scale": "s", "text": "4", "draw": 4.0 },
+          { "a": "A", "b": "B", "scale": "s", "text": "5", "draw": 5.0 },
+          { "a": "F", "b": "D", "scale": "s", "text": "9", "draw": 9.0 },
+          { "a": "F", "b": "E", "scale": "s", "text": "12", "draw": 12.0 },
+          { "a": "D", "b": "E", "scale": "s", "text": "15", "draw": 15.0 }
+        ],
+        "angles": [
+          { "at": "A", "a": "C", "b": "B", "arcs": 1 },
+          { "at": "D", "a": "F", "b": "E", "arcs": 1 },
+          { "at": "B", "a": "C", "b": "A", "arcs": 2 },
+          { "at": "E", "a": "F", "b": "D", "arcs": 2 }
+        ]
+      },
       "choices": [
         "Yes, by SSS~ with scale factor 3",
         "Yes, by SAS~ with scale factor 2",
@@ -103,6 +250,40 @@
       "id": "sim-p07",
       "type": "numeric",
       "prompt": "Two similar triangles have a scale factor of 3 : 5 (small : large). The small triangle's perimeter is 24 cm. What is the large triangle's perimeter in cm?",
+      "figure": {
+        "alt": "Two similar triangles in the ratio 3 to 5. The smaller perimeter is 24 cm and the larger perimeter is marked unknown.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 105.4, "name": "B" },
+          { "id": "C", "x": 96.8, "y": 105.4, "name": "C" },
+          { "id": "A", "x": 52.6, "y": 45.8, "name": "A" },
+          { "id": "E", "x": 182.6, "y": 105.4, "name": "E" },
+          { "id": "F", "x": 334.0, "y": 105.4, "name": "F" },
+          { "id": "D", "x": 260.3, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s" },
+          { "a": "B", "b": "C", "scale": "s" },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "D", "b": "E", "scale": "s" },
+          { "a": "E", "b": "F", "scale": "s" },
+          { "a": "F", "b": "D", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "B", "a": "A", "b": "C", "arcs": 1 },
+          { "at": "E", "a": "D", "b": "F", "arcs": 1 },
+          { "at": "A", "a": "B", "b": "C", "arcs": 2 },
+          { "at": "D", "a": "E", "b": "F", "arcs": 2 }
+        ],
+        "notes": [
+          { "x": 51.8, "y": 131.4, "text": "perimeter 24 cm" },
+          { "x": 259.0, "y": 131.4, "text": "perimeter ?", "ask": true },
+          { "x": 155.4, "y": 18, "text": "scale 3 : 5" }
+        ]
+      },
       "answer": "40",
       "acceptable": [],
       "check": "24 * 5 / 3",
@@ -131,6 +312,28 @@
       "id": "sim-p09",
       "type": "numeric",
       "prompt": "In △ABC, segment DE is parallel to BC, with D on AB and E on AC. AD = 4, DB = 6, and AE = 5. Find EC.",
+      "figure": {
+        "alt": "Triangle ABC with DE parallel to BC. AD is 4, DB is 6, AE is 5, and EC is marked x.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 266.0, "name": "A" },
+          { "id": "B", "x": 285.9, "y": 266.0, "name": "B" },
+          { "id": "C", "x": 240.1, "y": 6.0, "name": "C" },
+          { "id": "D", "x": 118.0, "y": 266.0, "name": "D" },
+          { "id": "E", "x": 99.6, "y": 162.0, "name": "E" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "A", "b": "D", "scale": "s", "text": "4", "draw": 4.0 },
+          { "a": "D", "b": "B", "scale": "s", "text": "6", "draw": 6.0 },
+          { "a": "A", "b": "E", "scale": "s", "text": "5", "draw": 5.0 },
+          { "a": "E", "b": "C", "scale": "s", "text": "x", "ask": true, "draw": 7.5 },
+          { "a": "D", "b": "E", "scale": "s", "arrows": 1 },
+          { "a": "B", "b": "C", "scale": "s", "arrows": 1 }
+        ],
+        "angles": []
+      },
       "answer": "7.5",
       "acceptable": ["15/2"],
       "check": "5 * 6 / 4",
@@ -184,6 +387,33 @@
       "id": "sim-q02",
       "type": "numeric",
       "prompt": "△PQR ∼ △STU. PQ = 10, ST = 4, and QR = 15. Find TU.",
+      "figure": {
+        "alt": "Similar triangles PQR and STU. PQ is 10, ST is 4, QR is 15, and TU is marked x.",
+        "pts": [
+          { "id": "Q", "x": 6.0, "y": 122.8, "name": "Q" },
+          { "id": "R", "x": 204.4, "y": 122.8, "name": "R" },
+          { "id": "P", "x": 68.1, "y": 6.0, "name": "P" },
+          { "id": "T", "x": 254.6, "y": 122.8, "name": "T" },
+          { "id": "U", "x": 334.0, "y": 122.8, "name": "U" },
+          { "id": "S", "x": 279.5, "y": 76.1, "name": "S" }
+        ],
+        "polys": [
+          ["P", "Q", "R"],
+          ["S", "T", "U"]
+        ],
+        "segs": [
+          { "a": "P", "b": "Q", "scale": "s", "text": "10", "draw": 10.0 },
+          { "a": "Q", "b": "R", "scale": "s", "text": "15", "draw": 15.0 },
+          { "a": "R", "b": "P", "scale": "s" },
+          { "a": "S", "b": "T", "scale": "s", "text": "4", "draw": 4.0 },
+          { "a": "T", "b": "U", "scale": "s", "text": "x", "ask": true, "draw": 6.0 },
+          { "a": "U", "b": "S", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "Q", "a": "P", "b": "R", "arcs": 1 },
+          { "at": "T", "a": "S", "b": "U", "arcs": 1 }
+        ]
+      },
       "answer": "6",
       "acceptable": [],
       "check": "15 * 4 / 10",
@@ -194,6 +424,23 @@
       "id": "sim-q03",
       "type": "mcq",
       "prompt": "Which set of side lengths makes a triangle similar to one with sides 4, 6, 8?",
+      "figure": {
+        "alt": "A triangle with sides 4, 6, and 8.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 306.0, "name": "A" },
+          { "id": "B", "x": 212.6, "y": 306.0, "name": "B" },
+          { "id": "C", "x": 290.0, "y": 6.0, "name": "C" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "text": "4", "draw": 4.0 },
+          { "a": "B", "b": "C", "scale": "s", "text": "6", "draw": 6.0 },
+          { "a": "C", "b": "A", "scale": "s", "text": "8", "draw": 8.0 }
+        ],
+        "angles": []
+      },
       "choices": ["6, 9, 12", "5, 7, 9", "8, 10, 12", "2, 4, 6"],
       "answer": "6, 9, 12",
       "acceptable": [],

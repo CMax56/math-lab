@@ -13,8 +13,12 @@ Checks:
      gives the same value. Also runs each answer through a Python copy of the
      app's answer checker (js/mathcheck.js) to be sure the app accepts it.
      Items the script cannot check are listed for review by hand.
-  4. Static files: manifest fields, service-worker cache list, no external URLs.
-  5. Prints an inventory (units and counts).
+  4. Triangle diagrams: every practice item that describes a triangle has a
+     figure, the figure parses, and it is consistent (right angles look right,
+     labeled angles and side ratios match the drawing, congruent ticks match,
+     and the value being solved for is not written on the diagram).
+  5. Static files: manifest fields, service-worker cache list, no external URLs.
+  6. Prints an inventory (units and counts).
 
 Exit code 0 = no errors (warnings allowed), 1 = errors.
 """
@@ -343,6 +347,7 @@ def self_test():
         err("parser self-test: pair 'x=6, y=-15'")
     if norm_short("x <= 5") != norm_short("x ≤ 5"):
         err("parser self-test: <= normalization")
+    _figure_self_test()
 
     # Rounding rule (roundTo) vs. inclusive tolerance (exact-form items).
     for got, want, places, expect in [
@@ -395,6 +400,440 @@ def check_html(where, text):
         err(f"{where}: content contains disallowed HTML (scripts, handlers, images, or links)")
 
 
+# ---------------------------------------------------------------------------
+# Triangle diagrams
+# ---------------------------------------------------------------------------
+
+DIAGRAM_COUNTS = {"practice": 0, "quiz": 0, "flashcards": 0}
+PLAIN_MEASURE = re.compile(
+    r"^\s*(\d+(?:\.\d+)?)\s*(?:°|º|cm|mm|ft|in|units?)?\s*$",
+    re.I,
+)
+# A bare trailing m (meters) is allowed, but not a letter glued to the number (3x, 4y).
+PLAIN_MEASURE_M = re.compile(r"^\s*(\d+(?:\.\d+)?)\s*m\s*$", re.I)
+EXTRA_TRIANGLE_PRACTICE = {"sim-p05", "circ-p01", "circ-p02", "circ-p05", "circ-p08"}
+TRIANGLE_WORD = re.compile(r"△|triangles?", re.I)
+
+
+def practice_needs_diagram(unit_id, item):
+    prompt = item.get("prompt") or ""
+    if unit_id in ("congruence", "right-triangles"):
+        return True
+    if TRIANGLE_WORD.search(prompt):
+        return True
+    return item.get("id") in EXTRA_TRIANGLE_PRACTICE
+
+
+def plain_measure(text):
+    if not isinstance(text, str):
+        return None
+    m = PLAIN_MEASURE.match(text) or PLAIN_MEASURE_M.match(text)
+    return float(m.group(1)) if m else None
+
+
+def _xy(p):
+    return (float(p["x"]), float(p["y"]))
+
+
+def _dist(a, b):
+    return math.hypot(b[0] - a[0], b[1] - a[1])
+
+
+def _angle_deg(pts, at, a, b):
+    p, u, v = pts[at], pts[a], pts[b]
+    v1 = (u[0] - p[0], u[1] - p[1])
+    v2 = (v[0] - p[0], v[1] - p[1])
+    n1, n2 = math.hypot(*v1), math.hypot(*v2)
+    if n1 < 1e-6 or n2 < 1e-6:
+        return None
+    cos = max(-1.0, min(1.0, (v1[0] * v2[0] + v1[1] * v2[1]) / (n1 * n2)))
+    return math.degrees(math.acos(cos))
+
+
+def _direction(a, b):
+    return math.degrees(math.atan2(b[1] - a[1], b[0] - a[0])) % 180
+
+
+def _poly_area(coords):
+    a = 0.0
+    for i, p in enumerate(coords):
+        q = coords[(i + 1) % len(coords)]
+        a += p[0] * q[1] - q[0] * p[1]
+    return abs(a) / 2
+
+
+def _prompt_has_number(prompt, value):
+    text = re.sub(r"<[^>]+>", " ", prompt or "")
+    for m in re.finditer(r"\d+(?:\.\d+)?", text):
+        if abs(float(m.group(0)) - value) > 1e-6:
+            continue
+        end = m.end()
+        if end < len(text) and text[end].isalpha():
+            continue
+        return True
+    return False
+
+
+def _norm_label(s):
+    return re.sub(r"\s+", "", basic(str(s)))
+
+
+def _text_gives_answer(text, item):
+    """True when a diagram label states the thing the problem asks for."""
+    if not text or item is None:
+        return False
+    ans = "" if item.get("answer") is None else str(item.get("answer"))
+    if ans and _norm_label(text) == _norm_label(ans):
+        ln, an = plain_measure(text), plain_measure(ans)
+        if ln is not None and an is not None and abs(ln - an) < 1e-6:
+            if _prompt_has_number(item.get("prompt"), ln):
+                return False
+        return True
+    if item.get("type") == "numeric":
+        av = value_of("numeric", ans)
+        if isinstance(av, (int, float)):
+            for m in re.finditer(r"\d+(?:\.\d+)?", str(text)):
+                if abs(float(m.group(0)) - float(av)) > 1e-6:
+                    continue
+                end = m.end()
+                if end < len(str(text)) and str(text)[end].isalpha():
+                    continue
+                if not _prompt_has_number(item.get("prompt"), float(av)):
+                    return True
+    if item.get("type") == "mcq" and ans:
+        an = plain_measure(ans)
+        if an is not None and _prompt_has_number(item.get("prompt"), an):
+            return False
+        if len(ans) <= 16 and re.search(r"(?<![A-Za-z0-9])" + re.escape(ans) + r"(?![A-Za-z0-9])", str(text)):
+            return True
+        if len(ans) > 16 and ans.lower() in str(text).lower():
+            return True
+    return False
+
+
+def _seg_value(seg):
+    text = seg.get("text")
+    labeled = plain_measure(text) if text else None
+    draw = seg.get("draw")
+    if isinstance(draw, bool):
+        draw = None
+    if labeled is not None and isinstance(draw, (int, float)):
+        if abs(labeled - float(draw)) > max(0.05, abs(float(draw)) * 0.02):
+            return labeled, "label does not match draw length"
+    if labeled is not None:
+        return labeled, None
+    if isinstance(draw, (int, float)):
+        return float(draw), None
+    return None, None
+
+
+def _angle_target(g):
+    if g.get("right"):
+        return 90.0
+    if isinstance(g.get("deg"), (int, float)) and not isinstance(g.get("deg"), bool):
+        return float(g["deg"])
+    text = g.get("text") or ""
+    if "°" in text or "º" in text:
+        return plain_measure(text)
+    return None
+
+
+def figure_problems(fig, item=None, where="figure"):
+    """Return a list of problems. Empty means the diagram parses and is consistent."""
+    problems = []
+
+    def bad(msg):
+        problems.append(f"{where}: {msg}")
+
+    if not isinstance(fig, dict):
+        bad("figure must be an object")
+        return problems
+    alt = fig.get("alt")
+    if not nonempty_str(alt):
+        bad("figure needs an alt description")
+    elif "<" in alt or ">" in alt:
+        bad("figure alt must be plain text")
+    elif _text_gives_answer(alt, item):
+        bad("figure alt gives away the answer")
+
+    pts = fig.get("pts")
+    if not isinstance(pts, list) or len(pts) < 3:
+        bad("figure needs at least 3 points")
+        return problems
+    by_id = {}
+    for p in pts:
+        if not isinstance(p, dict) or not nonempty_str(p.get("id")):
+            bad("each point needs an id")
+            continue
+        pid = p["id"]
+        if pid in by_id:
+            bad(f"duplicate point id {pid}")
+        for coord in ("x", "y"):
+            if isinstance(p.get(coord), bool) or not isinstance(p.get(coord), (int, float)):
+                bad(f"point {pid} needs numeric {coord}")
+        if pid not in by_id and isinstance(p.get("x"), (int, float)) and isinstance(p.get("y"), (int, float)):
+            by_id[pid] = _xy(p)
+        name = p.get("name")
+        if name is not None and not isinstance(name, str):
+            bad(f"point {pid} name must be text")
+        elif name and _text_gives_answer(name, item):
+            bad(f"point name {name!r} gives away the answer")
+
+    coords = by_id
+    polys = fig.get("polys")
+    if not isinstance(polys, list) or not polys:
+        bad("figure needs at least one polygon (the triangle)")
+        polys = []
+    saw_triangle = False
+    for i, poly in enumerate(polys):
+        if not isinstance(poly, list) or len(poly) < 3:
+            bad(f"polygon {i} needs at least 3 vertices")
+            continue
+        if len(poly) == 3:
+            saw_triangle = True
+        missing = [pid for pid in poly if pid not in coords]
+        if missing:
+            bad(f"polygon {i} references unknown points {missing}")
+            continue
+        if _poly_area([coords[pid] for pid in poly]) < 20:
+            bad(f"polygon {i} is degenerate")
+    if polys and not saw_triangle:
+        bad("figure has no triangle (3-point polygon)")
+
+    def ref_pt(pid, what):
+        if pid not in coords:
+            bad(f"{what} references unknown point {pid}")
+            return False
+        return True
+
+    segs = fig.get("segs") or []
+    if not isinstance(segs, list):
+        bad("segs must be a list")
+        segs = []
+    angles = fig.get("angles") or []
+    if not isinstance(angles, list):
+        bad("angles must be a list")
+        angles = []
+
+    ratio_groups = {}
+    tick_groups = {}
+    for s in segs:
+        if not isinstance(s, dict):
+            bad("seg must be an object")
+            continue
+        if not ref_pt(s.get("a"), "seg") or not ref_pt(s.get("b"), "seg"):
+            continue
+        if s.get("a") == s.get("b"):
+            bad("seg has zero length")
+            continue
+        text = s.get("text") or ""
+        if text and ("<" in text or ">" in text):
+            bad(f"seg label {text!r} must be plain text")
+        if s.get("ask") and plain_measure(text) is not None:
+            bad(f"unknown side is labeled {text!r} (use x or ?)")
+        if text and _text_gives_answer(text, item):
+            bad(f"side label {text!r} gives away the answer")
+        ticks = s.get("ticks", 0)
+        if isinstance(ticks, bool) or not isinstance(ticks, int) or not 0 <= ticks <= 3:
+            bad("ticks must be a whole number 0-3")
+            ticks = 0
+        arrows = s.get("arrows", 0)
+        if isinstance(arrows, bool) or not isinstance(arrows, int) or not 0 <= arrows <= 2:
+            bad("arrows must be a whole number 0-2")
+        length = _dist(coords[s["a"]], coords[s["b"]])
+        if length < 8:
+            bad(f"seg {s.get('a')}{s.get('b')} is too short to read")
+        value, mismatch = _seg_value(s)
+        if mismatch:
+            bad(f"seg {s.get('a')}{s.get('b')}: {mismatch}")
+        if value is not None:
+            ratio_groups.setdefault(s.get("scale") or "default", []).append((value, length, f"{s.get('a')}{s.get('b')}"))
+        if ticks:
+            tick_groups.setdefault(ticks, []).append((length, f"{s.get('a')}{s.get('b')}"))
+
+    for scale, group in ratio_groups.items():
+        if len(group) < 2:
+            continue
+        ratios = [px / val for val, px, _ in group if val]
+        if not ratios or min(ratios) <= 0:
+            bad(f"scale {scale} has a zero length")
+            continue
+        if max(ratios) / min(ratios) > 1.08:
+            bad(f"scale {scale} sides are not in proportion " +
+                ", ".join(f"{name}={val:g} drawn {px:.1f}" for val, px, name in group))
+
+    for ticks, group in tick_groups.items():
+        if len(group) < 2:
+            continue
+        lengths = [px for px, _ in group]
+        if max(lengths) / min(lengths) > 1.08:
+            bad(f"tick-{ticks} sides should be congruent but differ: " +
+                ", ".join(f"{name}={px:.1f}" for px, name in group))
+
+    # Parallel marks.
+    arrow_groups = {}
+    for s in segs:
+        arrows = s.get("arrows") or 0
+        if not arrows or s.get("a") not in coords or s.get("b") not in coords:
+            continue
+        arrow_groups.setdefault(arrows, []).append(s)
+    for arrows, group in arrow_groups.items():
+        if len(group) < 2:
+            continue
+        dirs = [_direction(coords[s["a"]], coords[s["b"]]) for s in group]
+        for d in dirs[1:]:
+            delta = abs(dirs[0] - d) % 180
+            delta = min(delta, 180 - delta)
+            if delta > 6:
+                bad(f"arrow-{arrows} sides should be parallel ({delta:.1f}° apart)")
+
+    arc_groups = {}
+    for g in angles:
+        if not isinstance(g, dict):
+            bad("angle must be an object")
+            continue
+        if not ref_pt(g.get("at"), "angle") or not ref_pt(g.get("a"), "angle") or not ref_pt(g.get("b"), "angle"):
+            continue
+        if len({g.get("at"), g.get("a"), g.get("b")}) < 3:
+            bad("angle needs three distinct points")
+            continue
+        measured = _angle_deg(coords, g["at"], g["a"], g["b"])
+        if measured is None:
+            bad(f"angle at {g.get('at')} is degenerate")
+            continue
+        text = g.get("text") or ""
+        if text and ("<" in text or ">" in text):
+            bad(f"angle label {text!r} must be plain text")
+        if g.get("ask") and plain_measure(text) is not None:
+            bad(f"unknown angle is labeled {text!r} (use x or ?)")
+        if text and _text_gives_answer(text, item):
+            bad(f"angle label {text!r} gives away the answer")
+        arcs = g.get("arcs", 0) or 0
+        if isinstance(arcs, bool) or not isinstance(arcs, int) or not 0 <= arcs <= 3:
+            bad("arcs must be a whole number 0-3")
+            arcs = 0
+        target = _angle_target(g)
+        tol = 4.0 if g.get("right") else 6.0
+        if target is not None and abs(measured - target) > tol:
+            label = "right angle" if g.get("right") else (text or f"{target:g}°")
+            bad(f"angle at {g.get('at')} is drawn {measured:.1f}° but marked {label}")
+        if arcs and not g.get("right"):
+            arc_groups.setdefault(arcs, []).append((measured, g.get("at")))
+    for arcs, group in arc_groups.items():
+        if len(group) < 2:
+            continue
+        degs = [d for d, _ in group]
+        if max(degs) - min(degs) > 6:
+            bad(f"arc-{arcs} angles should be congruent but differ: " +
+                ", ".join(f"{at}={d:.1f}°" for d, at in group))
+
+    for c in fig.get("circles") or []:
+        if not isinstance(c, dict) or not ref_pt(c.get("c"), "circle"):
+            continue
+        r = c.get("r")
+        if isinstance(r, bool) or not isinstance(r, (int, float)) or r <= 0:
+            bad("circle needs a positive radius")
+        mark = c.get("mark")
+        if isinstance(mark, dict):
+            if mark.get("text") and _text_gives_answer(mark.get("text"), item):
+                bad(f"arc label {mark.get('text')!r} gives away the answer")
+            if mark.get("ask") and plain_measure(mark.get("text") or "") is not None:
+                bad("unknown arc is labeled with a number")
+    for n in fig.get("notes") or []:
+        if isinstance(n, dict) and n.get("text") and _text_gives_answer(n.get("text"), item):
+            bad(f"note {n.get('text')!r} gives away the answer")
+        if isinstance(n, dict) and n.get("ask") and plain_measure(n.get("text") or "") is not None:
+            bad("unknown note is labeled with a number")
+
+    try:
+        _figure_svg(fig)
+    except Exception as e:  # noqa: BLE001
+        bad(f"diagram does not parse as SVG ({e})")
+    return problems
+
+
+def _figure_svg(fig):
+    import xml.etree.ElementTree as ET
+    svg = ET.Element("svg", xmlns="http://www.w3.org/2000/svg")
+    title = ET.SubElement(svg, "title")
+    title.text = fig.get("alt") or "diagram"
+    by_id = {p["id"]: p for p in fig.get("pts") or [] if isinstance(p, dict) and "id" in p}
+    for poly in fig.get("polys") or []:
+        if not isinstance(poly, list):
+            continue
+        pts = []
+        for pid in poly:
+            p = by_id.get(pid)
+            if p:
+                pts.append(f"{p['x']},{p['y']}")
+        ET.SubElement(svg, "polygon", points=" ".join(pts))
+    for s in fig.get("segs") or []:
+        if isinstance(s, dict) and s.get("a") in by_id and s.get("b") in by_id:
+            a, b = by_id[s["a"]], by_id[s["b"]]
+            ET.SubElement(svg, "line", x1=str(a["x"]), y1=str(a["y"]), x2=str(b["x"]), y2=str(b["y"]))
+    xml = ET.tostring(svg, encoding="unicode")
+    ET.fromstring(xml)
+
+
+def _figure_self_test():
+    fig = {
+        "alt": "Right triangle with legs 3 and 4. The hypotenuse is marked unknown.",
+        "pts": [
+            {"id": "C", "x": 0, "y": 0, "name": "C"},
+            {"id": "B", "x": 80, "y": 0, "name": "B"},
+            {"id": "A", "x": 0, "y": 60, "name": "A"},
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [
+            {"a": "C", "b": "B", "text": "4", "draw": 4, "scale": "t"},
+            {"a": "C", "b": "A", "text": "3", "draw": 3, "scale": "t"},
+            {"a": "A", "b": "B", "text": "x", "ask": True, "draw": 5, "scale": "t"},
+        ],
+        "angles": [{"at": "C", "a": "A", "b": "B", "right": True}],
+    }
+    item = {"type": "numeric", "answer": "5", "prompt": "legs 3 and 4"}
+    probs = figure_problems(fig, item, "self-test")
+    if probs:
+        err("figure self-test failed: " + "; ".join(probs))
+    sneak = {
+        "alt": "Right triangle",
+        "pts": fig["pts"],
+        "polys": fig["polys"],
+        "segs": [{"a": "A", "b": "B", "text": "5", "ask": True, "scale": "t"}],
+        "angles": [],
+    }
+    if not figure_problems(sneak, item, "self-test"):
+        err("figure self-test: a numeric label on the unknown side should be rejected")
+    skew = {
+        "alt": "A triangle with a right-angle mark that is not square.",
+        "pts": [
+            {"id": "C", "x": 0, "y": 0},
+            {"id": "B", "x": 100, "y": 0},
+            {"id": "A", "x": 40, "y": 70},
+        ],
+        "polys": [["A", "B", "C"]],
+        "segs": [],
+        "angles": [{"at": "C", "a": "A", "b": "B", "right": True}],
+    }
+    if not any("right" in p for p in figure_problems(skew, None, "self-test")):
+        err("figure self-test: a non-right angle marked right should be rejected")
+
+
+def check_figure(unit_id, kind, item, where):
+    fig = item.get("figure")
+    needs = kind == "practice" and practice_needs_diagram(unit_id, item)
+    if fig is None:
+        if needs:
+            err(f"{where}: triangle practice item has no diagram")
+        return
+    if kind in DIAGRAM_COUNTS:
+        DIAGRAM_COUNTS[kind] += 1
+    # Flashcards teach the fact on the back, so the diagram may state it.
+    leak_item = None if kind == "flashcards" else item
+    for msg in figure_problems(fig, leak_item, where):
+        err(msg)
+
+
 def value_of(typ, text):
     if typ == "numeric":
         return parse_number(text)
@@ -444,6 +883,7 @@ def check_item(unit_id, kind, item, seen_ids):
         check_html(where, item.get(field))
     for hnt in hints or []:
         check_html(where, hnt)
+    check_figure(unit_id, kind, item, where)
     tol = item.get("tolerance", 1e-6)
     if not isinstance(tol, (int, float)) or tol < 0:
         err(f"{where}: tolerance must be a non-negative number")
@@ -590,6 +1030,7 @@ def check_content():
                 err(f"{where}: needs front and back")
             check_html(where, card.get("front"))
             check_html(where, card.get("back"))
+            check_figure(uid, "flashcards", card, where)
         if len(practice) < 8:
             warn(f"{uid}: only {len(practice)} practice items (target ~10)")
         if not 8 <= len(cards) <= 12:
@@ -609,7 +1050,7 @@ def check_content():
 
 def check_static(unit_ids):
     for rel in ("index.html", "manifest.json", "sw.js", "css/styles.css", "js/app.js", "js/store.js",
-                "js/mathcheck.js", "icons/icon.svg"):
+                "js/mathcheck.js", "js/figures.js", "icons/icon.svg"):
         if not (ROOT / rel).exists():
             err(f"missing file: {rel}")
 
@@ -627,6 +1068,13 @@ def check_static(unit_ids):
         warn("icons/apple-touch-icon.png not found — run: python3 tools/make_icons.py")
 
     sw = (ROOT / "sw.js").read_text(encoding="utf-8") if (ROOT / "sw.js").exists() else ""
+    if "js/figures.js" not in sw:
+        err("sw.js CORE list is missing js/figures.js")
+    if re.search(r"VERSION\s*=\s*'mathlab-v[12]'", sw):
+        err("sw.js VERSION was not bumped past mathlab-v2; phones would keep a stale cache")
+    html = (ROOT / "index.html").read_text(encoding="utf-8") if (ROOT / "index.html").exists() else ""
+    if "js/figures.js" not in html:
+        err("index.html does not load js/figures.js")
     for uid in unit_ids:
         if f"content/units/{uid}.json" not in sw:
             warn(f"sw.js CORE list is missing content/units/{uid}.json (it will still be cached after first online load)")
@@ -675,6 +1123,7 @@ def main():
     print(f"Needs review by hand (MCQ / text answers / no check expression): {len(hand_review)} items")
     if hand_review:
         print("  " + ", ".join(hand_review))
+    print(f"Triangle diagrams: {DIAGRAM_COUNTS['practice']} practice, {DIAGRAM_COUNTS['quiz']} quiz, {DIAGRAM_COUNTS['flashcards']} flashcards")
     print()
     for w in warnings:
         print("WARNING:", w)

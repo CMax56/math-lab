@@ -9,6 +9,32 @@
       "id": "circ-p01",
       "type": "numeric",
       "prompt": "A central angle and an inscribed angle both intercept the same 110° arc. What is the measure of the inscribed angle in degrees?",
+      "figure": {
+        "alt": "A circle with a 110 degree central angle and an inscribed angle that intercepts the same arc. The inscribed angle is marked unknown.",
+        "pts": [
+          { "id": "O", "x": 163.7, "y": 116.4, "name": "O", "dot": true },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 321.4, "y": 6.0, "name": "B" },
+          { "id": "C", "x": 197.1, "y": 306.0, "name": "C" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "O", "b": "A", "scale": "s" },
+          { "a": "O", "b": "B", "scale": "s" },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "C", "b": "B", "scale": "s" },
+          { "a": "A", "b": "B", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "O", "a": "A", "b": "B", "text": "110°", "sector": true },
+          { "at": "C", "a": "A", "b": "B", "text": "?", "ask": true, "deg": 55.0 }
+        ],
+        "circles": [
+          { "c": "O", "r": 192.5 }
+        ]
+      },
       "answer": "55",
       "acceptable": [],
       "check": "110 / 2",
@@ -23,6 +49,34 @@
       "id": "circ-p02",
       "type": "numeric",
       "prompt": "An inscribed angle measures 35°. What is the measure of its intercepted arc in degrees?",
+      "figure": {
+        "alt": "An inscribed angle of 35 degrees. The intercepted arc is marked unknown.",
+        "pts": [
+          { "id": "O", "x": 100.6, "y": 141.1, "name": "", "dot": true },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 195.2, "y": 6.0, "name": "B" },
+          { "id": "C", "x": 100.6, "y": 306.0, "name": "C" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "C", "b": "B", "scale": "s" },
+          { "a": "A", "b": "B", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "text": "35°" },
+          { "at": "O", "a": "A", "b": "B", "deg": 70.0 }
+        ],
+        "circles": [
+          {
+            "c": "O",
+            "r": 164.9,
+            "mark": { "from": "A", "to": "B", "text": "?", "ask": true }
+          }
+        ]
+      },
       "answer": "70",
       "acceptable": [],
       "check": "2 * 35",
@@ -67,6 +121,33 @@
       "id": "circ-p05",
       "type": "mcq",
       "prompt": "An angle is inscribed in a semicircle (its sides go to the ends of a diameter). What is its measure?",
+      "figure": {
+        "alt": "A semicircle with diameter AB and point C on the arc. The angle at C is marked unknown.",
+        "pts": [
+          { "id": "O", "x": 165.0, "y": 131.3, "name": "" },
+          { "id": "A", "x": 6.0, "y": 131.3, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 131.3, "name": "B" },
+          { "id": "C", "x": 67.1, "y": 6.0, "name": "C" }
+        ],
+        "polys": [
+          ["A", "C", "B"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s" },
+          { "a": "A", "b": "C", "scale": "s" },
+          { "a": "B", "b": "C", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "text": "?", "ask": true, "deg": 90.0 }
+        ],
+        "circles": [
+          {
+            "c": "O",
+            "r": 159.0,
+            "semi": ["A", "B"]
+          }
+        ]
+      },
       "choices": ["45°", "90°", "180°", "It depends on the circle"],
       "answer": "90°",
       "acceptable": [],
@@ -111,6 +192,28 @@
       "id": "circ-p08",
       "type": "numeric",
       "prompt": "Line PQ is tangent to circle O at point P. The radius OP = 5 and PQ = 12. Find OQ, the distance from the center O to point Q.",
+      "figure": {
+        "alt": "Circle with center O, radius OP of 5, and tangent segment PQ of 12. Distance OQ is marked x.",
+        "pts": [
+          { "id": "O", "x": 6.0, "y": 306.0, "name": "O", "dot": true },
+          { "id": "P", "x": 131.0, "y": 306.0, "name": "P" },
+          { "id": "Q", "x": 131.0, "y": 6.0, "name": "Q" }
+        ],
+        "polys": [
+          ["O", "P", "Q"]
+        ],
+        "segs": [
+          { "a": "O", "b": "P", "scale": "s", "text": "5", "draw": 5.0 },
+          { "a": "P", "b": "Q", "scale": "s", "text": "12", "draw": 12.0 },
+          { "a": "O", "b": "Q", "scale": "s", "text": "x", "dash": true, "ask": true, "draw": 13.0 }
+        ],
+        "angles": [
+          { "at": "P", "a": "O", "b": "Q", "right": true }
+        ],
+        "circles": [
+          { "c": "O", "r": 125.0 }
+        ]
+      },
       "answer": "13",
       "acceptable": [],
       "check": "sqrt(5**2 + 12**2)",
@@ -156,7 +259,39 @@
     { "id": "circ-fc03", "front": "Area of a circle", "back": "A = πr² (use the radius!)" },
     { "id": "circ-fc04", "front": "Central angle", "back": "Vertex at the center. Its measure <b>equals</b> its intercepted arc." },
     { "id": "circ-fc05", "front": "Inscribed angle", "back": "Vertex on the circle. Its measure is <b>half</b> its intercepted arc." },
-    { "id": "circ-fc06", "front": "Angle inscribed in a semicircle", "back": "Always 90°." },
+    {
+      "id": "circ-fc06",
+      "front": "Angle inscribed in a semicircle",
+      "back": "Always 90°.",
+      "figure": {
+        "alt": "Angle inscribed in a semicircle, marked as a right angle.",
+        "pts": [
+          { "id": "O", "x": 165.0, "y": 155.4, "name": "" },
+          { "id": "A", "x": 6.0, "y": 155.4, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 155.4, "name": "B" },
+          { "id": "C", "x": 110.6, "y": 6.0, "name": "C" }
+        ],
+        "polys": [
+          ["A", "C", "B"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s" },
+          { "a": "A", "b": "C", "scale": "s" },
+          { "a": "B", "b": "C", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "text": "90°", "right": true }
+        ],
+        "circles": [
+          {
+            "c": "O",
+            "r": 159.0,
+            "semi": ["A", "B"]
+          }
+        ]
+      },
+      "figureSide": "back"
+    },
     { "id": "circ-fc07", "front": "Tangent line", "back": "Touches the circle at exactly one point and is perpendicular (90°) to the radius there." },
     { "id": "circ-fc08", "front": "Arc length", "back": "(θ/360) × 2πr" },
     { "id": "circ-fc09", "front": "Sector area", "back": "(θ/360) × πr²" },
@@ -169,6 +304,34 @@
       "id": "circ-q01",
       "type": "numeric",
       "prompt": "An inscribed angle intercepts a 140° arc. What is the angle's measure in degrees?",
+      "figure": {
+        "alt": "An inscribed angle intercepting a 140 degree arc. The angle is marked unknown.",
+        "pts": [
+          { "id": "O", "x": 165.0, "y": 63.9, "name": "", "dot": true },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 324.0, "y": 6.0, "name": "B" },
+          { "id": "C", "x": 165.0, "y": 233.1, "name": "C" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "C", "b": "B", "scale": "s" },
+          { "a": "A", "b": "B", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "text": "?", "ask": true, "deg": 70.0 },
+          { "at": "O", "a": "A", "b": "B", "deg": 140.0 }
+        ],
+        "circles": [
+          {
+            "c": "O",
+            "r": 169.2,
+            "mark": { "from": "A", "to": "B", "text": "140°" }
+          }
+        ]
+      },
       "answer": "70",
       "acceptable": [],
       "check": "140 / 2",
@@ -210,6 +373,32 @@
       "id": "circ-q05",
       "type": "mcq",
       "prompt": "From point P outside a circle, two tangent segments touch the circle at A and B. PA = 9. What is PB?",
+      "figure": {
+        "alt": "Two tangent segments from point P touch the circle at A and B. PA is 9 and PB is marked x.",
+        "pts": [
+          { "id": "O", "x": 6.0, "y": 141.0, "name": "O", "dot": true },
+          { "id": "P", "x": 324.0, "y": 141.0, "name": "P" },
+          { "id": "A", "x": 81.0, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 81.0, "y": 276.0, "name": "B" }
+        ],
+        "polys": [
+          ["O", "A", "P"],
+          ["O", "B", "P"]
+        ],
+        "segs": [
+          { "a": "O", "b": "A", "scale": "s" },
+          { "a": "O", "b": "B", "scale": "s" },
+          { "a": "P", "b": "A", "scale": "s", "text": "9", "draw": 9.0 },
+          { "a": "P", "b": "B", "scale": "s", "text": "x", "ask": true, "draw": 9.0 }
+        ],
+        "angles": [
+          { "at": "A", "a": "O", "b": "P", "right": true },
+          { "at": "B", "a": "O", "b": "P", "right": true }
+        ],
+        "circles": [
+          { "c": "O", "r": 154.4 }
+        ]
+      },
       "choices": ["4.5", "9", "18", "Not enough information"],
       "answer": "9",
       "acceptable": [],

@@ -9,6 +9,25 @@
       "id": "trig-p01",
       "type": "numeric",
       "prompt": "A right triangle has legs 6 and 8. How long is the hypotenuse?",
+      "figure": {
+        "alt": "Right triangle with legs 6 and 8. The hypotenuse is marked x.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 244.5, "name": "C" },
+          { "id": "B", "x": 324.0, "y": 244.5, "name": "B" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s", "text": "6", "draw": 6.0 },
+          { "a": "C", "b": "B", "scale": "s", "text": "8", "draw": 8.0 },
+          { "a": "A", "b": "B", "scale": "s", "text": "x", "ask": true, "draw": 10.0 }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "right": true }
+        ]
+      },
       "answer": "10",
       "acceptable": [],
       "check": "sqrt(6**2 + 8**2)",
@@ -23,6 +42,25 @@
       "id": "trig-p02",
       "type": "numeric",
       "prompt": "A right triangle has hypotenuse 13 and one leg 5. How long is the other leg?",
+      "figure": {
+        "alt": "Right triangle with hypotenuse 13 and one leg 5. The other leg is marked x.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 306.0, "name": "C" },
+          { "id": "B", "x": 131.0, "y": 306.0, "name": "B" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "B", "scale": "s", "text": "5", "draw": 5.0 },
+          { "a": "C", "b": "A", "scale": "s", "text": "x", "ask": true, "draw": 12.0 },
+          { "a": "A", "b": "B", "scale": "s", "text": "13", "draw": 13.0 }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "right": true }
+        ]
+      },
       "answer": "12",
       "acceptable": [],
       "check": "sqrt(13**2 - 5**2)",
@@ -37,6 +75,27 @@
       "id": "trig-p03",
       "type": "numeric",
       "prompt": "A 45-45-90 triangle has legs of length 7. Find the hypotenuse. Give the exact answer (like 3√2) or round to the hundredths place.",
+      "figure": {
+        "alt": "Isosceles right triangle with both legs 7. The hypotenuse is marked x. Both acute angles are 45 degrees.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 306.0, "name": "C" },
+          { "id": "B", "x": 306.0, "y": 306.0, "name": "B" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s", "text": "7", "ticks": 1, "draw": 7.0 },
+          { "a": "C", "b": "B", "scale": "s", "text": "7", "ticks": 1, "draw": 7.0 },
+          { "a": "A", "b": "B", "scale": "s", "text": "x", "ask": true, "draw": 9.8995 }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "right": true },
+          { "at": "A", "a": "C", "b": "B", "text": "45°", "arcs": 1 },
+          { "at": "B", "a": "C", "b": "A", "text": "45°", "arcs": 1 }
+        ]
+      },
       "answer": "7√2",
       "acceptable": ["7sqrt(2)", "√98", "9.90"],
       "tolerance": 0.01,
@@ -52,6 +111,26 @@
       "id": "trig-p04",
       "type": "mcq",
       "prompt": "For an acute angle θ in a right triangle, which ratio is cos θ?",
+      "figure": {
+        "alt": "Right triangle with an acute angle labeled theta. The sides are labeled opposite, adjacent, and hypotenuse.",
+        "pts": [
+          { "id": "Theta", "x": 6.0, "y": 204.8, "name": "" },
+          { "id": "AdjEnd", "x": 324.0, "y": 204.8, "name": "" },
+          { "id": "Opp", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["Opp", "AdjEnd", "Theta"]
+        ],
+        "segs": [
+          { "a": "Theta", "b": "AdjEnd", "scale": "s", "text": "adjacent" },
+          { "a": "Theta", "b": "Opp", "scale": "s", "text": "opposite" },
+          { "a": "Opp", "b": "AdjEnd", "scale": "s", "text": "hypotenuse" }
+        ],
+        "angles": [
+          { "at": "Theta", "a": "Opp", "b": "AdjEnd", "right": true },
+          { "at": "AdjEnd", "a": "Theta", "b": "Opp", "text": "θ" }
+        ]
+      },
       "choices": ["opposite ÷ hypotenuse", "adjacent ÷ hypotenuse", "opposite ÷ adjacent", "hypotenuse ÷ adjacent"],
       "answer": "adjacent ÷ hypotenuse",
       "acceptable": [],
@@ -66,6 +145,27 @@
       "id": "trig-p05",
       "type": "numeric",
       "prompt": "A 30-60-90 triangle has a shorter leg of 4. Find the longer leg. Give the exact answer or round to the hundredths place.",
+      "figure": {
+        "alt": "30-60-90 triangle. The shorter leg is 4 and the longer leg is marked x.",
+        "pts": [
+          { "id": "Right", "x": 6.0, "y": 189.6, "name": "" },
+          { "id": "Thirty", "x": 324.0, "y": 189.6, "name": "" },
+          { "id": "Short", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["Short", "Thirty", "Right"]
+        ],
+        "segs": [
+          { "a": "Right", "b": "Short", "scale": "s", "text": "4", "draw": 4.0 },
+          { "a": "Right", "b": "Thirty", "scale": "s", "text": "x", "ask": true, "draw": 6.9282 },
+          { "a": "Short", "b": "Thirty", "scale": "s", "draw": 8.0 }
+        ],
+        "angles": [
+          { "at": "Right", "a": "Short", "b": "Thirty", "right": true },
+          { "at": "Thirty", "a": "Right", "b": "Short", "text": "30°" },
+          { "at": "Short", "a": "Right", "b": "Thirty", "text": "60°" }
+        ]
+      },
       "answer": "4√3",
       "acceptable": ["4sqrt(3)", "√48", "6.93"],
       "tolerance": 0.01,
@@ -81,6 +181,26 @@
       "id": "trig-p06",
       "type": "numeric",
       "prompt": "In right △ABC, the right angle is at C. The side opposite ∠A is 6, the side adjacent to ∠A is 8, and the hypotenuse is 10. Find sin A as a fraction or decimal.",
+      "figure": {
+        "alt": "Right triangle ABC with the right angle at C. Opposite angle A is 6, adjacent to angle A is 8, hypotenuse is 10.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 244.5, "name": "C" },
+          { "id": "A", "x": 324.0, "y": 244.5, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 6.0, "name": "B" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s", "text": "8", "draw": 8.0 },
+          { "a": "C", "b": "B", "scale": "s", "text": "6", "draw": 6.0 },
+          { "a": "A", "b": "B", "scale": "s", "text": "10", "draw": 10.0 }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "right": true },
+          { "at": "A", "a": "C", "b": "B", "arcs": 1 }
+        ]
+      },
       "answer": "3/5",
       "acceptable": ["0.6", "6/10"],
       "check": "6 / 10",
@@ -95,6 +215,26 @@
       "id": "trig-p07",
       "type": "numeric",
       "prompt": "In right △XYZ, the right angle is at Z. XZ = 5, YZ = 12, and XY = 13. Find tan X.",
+      "figure": {
+        "alt": "Right triangle XYZ with the right angle at Z. XZ is 5, YZ is 12, and hypotenuse XY is 13.",
+        "pts": [
+          { "id": "Z", "x": 6.0, "y": 306.0, "name": "Z" },
+          { "id": "X", "x": 131.0, "y": 306.0, "name": "X" },
+          { "id": "Y", "x": 6.0, "y": 6.0, "name": "Y" }
+        ],
+        "polys": [
+          ["X", "Y", "Z"]
+        ],
+        "segs": [
+          { "a": "Z", "b": "X", "scale": "s", "text": "5", "draw": 5.0 },
+          { "a": "Z", "b": "Y", "scale": "s", "text": "12", "draw": 12.0 },
+          { "a": "X", "b": "Y", "scale": "s", "text": "13", "draw": 13.0 }
+        ],
+        "angles": [
+          { "at": "Z", "a": "X", "b": "Y", "right": true },
+          { "at": "X", "a": "Z", "b": "Y", "arcs": 1 }
+        ]
+      },
       "answer": "12/5",
       "acceptable": ["2.4"],
       "check": "12 / 5",
@@ -109,6 +249,26 @@
       "id": "trig-p08",
       "type": "numeric",
       "prompt": "A right triangle has a 35° angle and a hypotenuse of 20. Find x, the side opposite the 35° angle, to the nearest tenth.",
+      "figure": {
+        "alt": "Right triangle with a 35 degree angle and hypotenuse 20. The side opposite 35 degrees is marked x.",
+        "pts": [
+          { "id": "Right", "x": 6.0, "y": 228.7, "name": "" },
+          { "id": "Angle", "x": 324.0, "y": 228.7, "name": "" },
+          { "id": "Opp", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["Opp", "Angle", "Right"]
+        ],
+        "segs": [
+          { "a": "Right", "b": "Angle", "scale": "s", "draw": 16.383 },
+          { "a": "Right", "b": "Opp", "scale": "s", "text": "x", "ask": true, "draw": 11.4715 },
+          { "a": "Opp", "b": "Angle", "scale": "s", "text": "20", "draw": 20.0 }
+        ],
+        "angles": [
+          { "at": "Right", "a": "Opp", "b": "Angle", "right": true },
+          { "at": "Angle", "a": "Right", "b": "Opp", "text": "35°" }
+        ]
+      },
       "answer": "11.5",
       "acceptable": [],
       "roundTo": 1,
@@ -125,6 +285,29 @@
       "id": "trig-p09",
       "type": "numeric",
       "prompt": "You stand 50 ft from the base of a building. The angle of elevation to the top is 40°. How tall is the building, to the nearest foot?",
+      "figure": {
+        "alt": "Right triangle for the angle of elevation. The horizontal distance is 50 ft, the angle is 40 degrees, and the height is marked x.",
+        "pts": [
+          { "id": "Foot", "x": 6.0, "y": 272.8, "name": "" },
+          { "id": "Person", "x": 324.0, "y": 272.8, "name": "" },
+          { "id": "Top", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["Top", "Person", "Foot"]
+        ],
+        "segs": [
+          { "a": "Foot", "b": "Person", "scale": "s", "text": "50 ft", "draw": 50.0 },
+          { "a": "Foot", "b": "Top", "scale": "s", "text": "x", "ask": true, "draw": 41.955 },
+          { "a": "Person", "b": "Top", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "Foot", "a": "Top", "b": "Person", "right": true },
+          { "at": "Person", "a": "Foot", "b": "Top", "text": "40°" }
+        ],
+        "notes": [
+          { "x": 34.0, "y": 14.0, "text": "building" }
+        ]
+      },
       "answer": "42",
       "acceptable": [],
       "roundTo": 0,
@@ -141,6 +324,26 @@
       "id": "trig-p10",
       "type": "numeric",
       "prompt": "In a right triangle, the side opposite angle A is 5 and the hypotenuse is 10. Find m∠A in degrees.",
+      "figure": {
+        "alt": "Right triangle. The side opposite angle A is 5 and the hypotenuse is 10. Angle A is marked unknown.",
+        "pts": [
+          { "id": "Right", "x": 6.0, "y": 189.6, "name": "" },
+          { "id": "A", "x": 324.0, "y": 189.6, "name": "A" },
+          { "id": "Opp", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["Opp", "A", "Right"]
+        ],
+        "segs": [
+          { "a": "Right", "b": "Opp", "scale": "s", "text": "5", "draw": 5.0 },
+          { "a": "Right", "b": "A", "scale": "s", "draw": 8.6603 },
+          { "a": "Opp", "b": "A", "scale": "s", "text": "10", "draw": 10.0 }
+        ],
+        "angles": [
+          { "at": "Right", "a": "Opp", "b": "A", "right": true },
+          { "at": "A", "a": "Right", "b": "Opp", "text": "?", "ask": true, "deg": 30.0 }
+        ]
+      },
       "answer": "30",
       "acceptable": [],
       "check": "degrees(asin(5 / 10))",
@@ -153,11 +356,112 @@
     }
   ],
   "flashcards": [
-    { "id": "trig-fc01", "front": "Pythagorean theorem", "back": "a² + b² = c² in a right triangle, where c is the hypotenuse (the longest side, across from the right angle)." },
+    {
+      "id": "trig-fc01",
+      "front": "Pythagorean theorem",
+      "back": "a² + b² = c² in a right triangle, where c is the hypotenuse (the longest side, across from the right angle).",
+      "figure": {
+        "alt": "Right triangle with legs a and b and hypotenuse c.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 244.5, "name": "" },
+          { "id": "B", "x": 324.0, "y": 244.5, "name": "" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s", "text": "a" },
+          { "a": "C", "b": "B", "scale": "s", "text": "b" },
+          { "a": "A", "b": "B", "scale": "s", "text": "c" }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "right": true }
+        ]
+      },
+      "figureSide": "back"
+    },
     { "id": "trig-fc02", "front": "Converse of the Pythagorean theorem", "back": "If a² + b² = c², the triangle is right. If c² &gt; a² + b² it is obtuse; if c² &lt; a² + b² it is acute." },
-    { "id": "trig-fc03", "front": "45-45-90 triangle", "back": "Sides x, x, x√2. Hypotenuse = leg × √2." },
-    { "id": "trig-fc04", "front": "30-60-90 triangle", "back": "Short leg x (across from 30°), long leg x√3 (across from 60°), hypotenuse 2x." },
-    { "id": "trig-fc05", "front": "SOH CAH TOA", "back": "Sin = Opposite/Hypotenuse<br>Cos = Adjacent/Hypotenuse<br>Tan = Opposite/Adjacent" },
+    {
+      "id": "trig-fc03",
+      "front": "45-45-90 triangle",
+      "back": "Sides x, x, x√2. Hypotenuse = leg × √2.",
+      "figure": {
+        "alt": "Isosceles right triangle labeled x, x, and x√2, with 45 degree angles.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 306.0, "name": "" },
+          { "id": "B", "x": 306.0, "y": 306.0, "name": "" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s", "text": "x", "ticks": 1, "draw": 1.0 },
+          { "a": "C", "b": "B", "scale": "s", "text": "x", "ticks": 1, "draw": 1.0 },
+          { "a": "A", "b": "B", "scale": "s", "text": "x√2", "draw": 1.4142 }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "right": true },
+          { "at": "A", "a": "C", "b": "B", "text": "45°", "arcs": 1 },
+          { "at": "B", "a": "C", "b": "A", "text": "45°", "arcs": 1 }
+        ]
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "trig-fc04",
+      "front": "30-60-90 triangle",
+      "back": "Short leg x (across from 30°), long leg x√3 (across from 60°), hypotenuse 2x.",
+      "figure": {
+        "alt": "30-60-90 triangle labeled x, x√3, and 2x.",
+        "pts": [
+          { "id": "R", "x": 6.0, "y": 189.6, "name": "" },
+          { "id": "T", "x": 324.0, "y": 189.6, "name": "" },
+          { "id": "S", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["S", "T", "R"]
+        ],
+        "segs": [
+          { "a": "R", "b": "S", "scale": "s", "text": "x", "draw": 1.0 },
+          { "a": "R", "b": "T", "scale": "s", "text": "x√3", "draw": 1.7321 },
+          { "a": "S", "b": "T", "scale": "s", "text": "2x", "draw": 2.0 }
+        ],
+        "angles": [
+          { "at": "R", "a": "S", "b": "T", "right": true },
+          { "at": "T", "a": "R", "b": "S", "text": "30°" },
+          { "at": "S", "a": "R", "b": "T", "text": "60°" }
+        ]
+      },
+      "figureSide": "back"
+    },
+    {
+      "id": "trig-fc05",
+      "front": "SOH CAH TOA",
+      "back": "Sin = Opposite/Hypotenuse<br>Cos = Adjacent/Hypotenuse<br>Tan = Opposite/Adjacent",
+      "figure": {
+        "alt": "Right triangle labeling the side opposite theta, the side adjacent to theta, and the hypotenuse.",
+        "pts": [
+          { "id": "Right", "x": 6.0, "y": 204.8, "name": "" },
+          { "id": "Adj", "x": 324.0, "y": 204.8, "name": "" },
+          { "id": "Opp", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["Opp", "Adj", "Right"]
+        ],
+        "segs": [
+          { "a": "Right", "b": "Adj", "scale": "s", "text": "adjacent" },
+          { "a": "Right", "b": "Opp", "scale": "s", "text": "opposite" },
+          { "a": "Opp", "b": "Adj", "scale": "s", "text": "hypotenuse" }
+        ],
+        "angles": [
+          { "at": "Right", "a": "Opp", "b": "Adj", "right": true },
+          { "at": "Adj", "a": "Right", "b": "Opp", "text": "θ" }
+        ]
+      },
+      "figureSide": "back"
+    },
     { "id": "trig-fc06", "front": "Inverse trig (sin⁻¹, cos⁻¹, tan⁻¹)", "back": "Use them to find an <b>angle</b> when you know two sides. Example: sin A = 0.5 → A = sin⁻¹(0.5) = 30°." },
     { "id": "trig-fc07", "front": "Angle of elevation", "back": "The angle measured <b>up</b> from the horizontal to an object above you." },
     { "id": "trig-fc08", "front": "Angle of depression", "back": "The angle measured <b>down</b> from the horizontal to an object below you. It equals the angle of elevation from the other end (alternate interior angles)." },
@@ -169,6 +473,25 @@
       "id": "trig-q01",
       "type": "numeric",
       "prompt": "A right triangle has legs 9 and 12. How long is the hypotenuse?",
+      "figure": {
+        "alt": "Right triangle with legs 9 and 12. The hypotenuse is marked x.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 244.5, "name": "C" },
+          { "id": "B", "x": 324.0, "y": 244.5, "name": "B" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s", "text": "9", "draw": 9.0 },
+          { "a": "C", "b": "B", "scale": "s", "text": "12", "draw": 12.0 },
+          { "a": "A", "b": "B", "scale": "s", "text": "x", "ask": true, "draw": 15.0 }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "right": true }
+        ]
+      },
       "answer": "15",
       "acceptable": [],
       "check": "sqrt(9**2 + 12**2)",
@@ -179,6 +502,27 @@
       "id": "trig-q02",
       "type": "numeric",
       "prompt": "A 30-60-90 triangle has a hypotenuse of 18. How long is the shorter leg?",
+      "figure": {
+        "alt": "30-60-90 triangle with hypotenuse 18. The shorter leg is marked x.",
+        "pts": [
+          { "id": "Right", "x": 6.0, "y": 189.6, "name": "" },
+          { "id": "Thirty", "x": 324.0, "y": 189.6, "name": "" },
+          { "id": "Short", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["Short", "Thirty", "Right"]
+        ],
+        "segs": [
+          { "a": "Right", "b": "Short", "scale": "s", "text": "x", "ask": true, "draw": 9.0 },
+          { "a": "Right", "b": "Thirty", "scale": "s", "draw": 15.5885 },
+          { "a": "Short", "b": "Thirty", "scale": "s", "text": "18", "draw": 18.0 }
+        ],
+        "angles": [
+          { "at": "Right", "a": "Short", "b": "Thirty", "right": true },
+          { "at": "Thirty", "a": "Right", "b": "Short", "text": "30°" },
+          { "at": "Short", "a": "Right", "b": "Thirty", "text": "60°" }
+        ]
+      },
       "answer": "9",
       "acceptable": [],
       "check": "18 / 2",
@@ -189,6 +533,27 @@
       "id": "trig-q03",
       "type": "numeric",
       "prompt": "A 45-45-90 triangle has a hypotenuse of 10. How long is each leg? Exact answer or round to the hundredths place.",
+      "figure": {
+        "alt": "Isosceles right triangle with hypotenuse 10. Each leg is marked x.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 306.0, "name": "C" },
+          { "id": "B", "x": 306.0, "y": 306.0, "name": "B" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s", "text": "x", "ticks": 1, "ask": true, "draw": 7.0711 },
+          { "a": "C", "b": "B", "scale": "s", "text": "x", "ticks": 1, "ask": true, "draw": 7.0711 },
+          { "a": "A", "b": "B", "scale": "s", "text": "10", "draw": 10.0 }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "right": true },
+          { "at": "A", "a": "C", "b": "B", "text": "45°", "arcs": 1 },
+          { "at": "B", "a": "C", "b": "A", "text": "45°", "arcs": 1 }
+        ]
+      },
       "answer": "5√2",
       "acceptable": ["5sqrt(2)", "√50", "10/√2", "7.07"],
       "tolerance": 0.01,
@@ -200,6 +565,23 @@
       "id": "trig-q04",
       "type": "mcq",
       "prompt": "Is a triangle with sides 7, 24, and 25 a right triangle?",
+      "figure": {
+        "alt": "A triangle with sides 7, 24, and 25.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 101.7, "name": "C" },
+          { "id": "B", "x": 334.0, "y": 101.7, "name": "B" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "C", "b": "A", "scale": "s", "text": "7", "draw": 7.0 },
+          { "a": "C", "b": "B", "scale": "s", "text": "24", "draw": 24.0 },
+          { "a": "A", "b": "B", "scale": "s", "text": "25", "draw": 25.0 }
+        ],
+        "angles": []
+      },
       "choices": [
         "Yes, because 7² + 24² = 25²",
         "No, because 7 + 24 ≠ 25",
@@ -215,6 +597,29 @@
       "id": "trig-q05",
       "type": "numeric",
       "prompt": "A 20-ft ladder leans against a wall and makes a 70° angle with the ground. How high up the wall does it reach, to the nearest tenth of a foot?",
+      "figure": {
+        "alt": "A 20 ft ladder makes a 70 degree angle with the ground. The height on the wall is marked x.",
+        "pts": [
+          { "id": "Base", "x": 6.0, "y": 306.0, "name": "" },
+          { "id": "Foot", "x": 115.2, "y": 306.0, "name": "" },
+          { "id": "Top", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["Top", "Foot", "Base"]
+        ],
+        "segs": [
+          { "a": "Base", "b": "Foot", "scale": "s", "draw": 6.8404 },
+          { "a": "Base", "b": "Top", "scale": "s", "text": "x", "ask": true, "draw": 18.7939 },
+          { "a": "Foot", "b": "Top", "scale": "s", "text": "20 ft", "draw": 20.0 }
+        ],
+        "angles": [
+          { "at": "Base", "a": "Top", "b": "Foot", "right": true },
+          { "at": "Foot", "a": "Base", "b": "Top", "text": "70°" }
+        ],
+        "notes": [
+          { "x": 32.0, "y": 156.0, "text": "wall" }
+        ]
+      },
       "answer": "18.8",
       "acceptable": [],
       "roundTo": 1,
@@ -227,6 +632,29 @@
       "id": "trig-q06",
       "type": "numeric",
       "prompt": "In a right triangle, cos θ = 0.8 and the hypotenuse is 15. How long is the side adjacent to θ?",
+      "figure": {
+        "alt": "Right triangle with hypotenuse 15 and angle theta. The side adjacent to theta is marked x. cos theta is 0.8.",
+        "pts": [
+          { "id": "Right", "x": 6.0, "y": 244.5, "name": "" },
+          { "id": "Theta", "x": 324.0, "y": 244.5, "name": "" },
+          { "id": "Opp", "x": 6.0, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["Opp", "Theta", "Right"]
+        ],
+        "segs": [
+          { "a": "Right", "b": "Theta", "scale": "s", "text": "x", "ask": true, "draw": 12.0 },
+          { "a": "Right", "b": "Opp", "scale": "s", "draw": 9.0 },
+          { "a": "Opp", "b": "Theta", "scale": "s", "text": "15", "draw": 15.0 }
+        ],
+        "angles": [
+          { "at": "Right", "a": "Opp", "b": "Theta", "right": true },
+          { "at": "Theta", "a": "Right", "b": "Opp", "text": "θ" }
+        ],
+        "notes": [
+          { "x": 316.0, "y": 208.5, "text": "cos θ = 0.8" }
+        ]
+      },
       "answer": "12",
       "acceptable": [],
       "check": "0.8 * 15",

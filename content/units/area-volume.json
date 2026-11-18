@@ -9,6 +9,25 @@
       "id": "vol-p01",
       "type": "numeric",
       "prompt": "A triangle has a base of 12 cm and a height of 7 cm. Find its area in cm².",
+      "figure": {
+        "alt": "A triangle with base 12 cm and height 7 cm. The height meets the base at a right angle.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 185.7, "name": "A" },
+          { "id": "B", "x": 314.0, "y": 185.7, "name": "B" },
+          { "id": "H", "x": 121.5, "y": 185.7, "name": "" },
+          { "id": "C", "x": 121.5, "y": 6.0, "name": "C" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "text": "12 cm", "draw": 12.0, "at": 0.78 },
+          { "a": "C", "b": "H", "scale": "s", "text": "7 cm", "dash": true, "draw": 7.0, "lx": -48, "ly": -8 }
+        ],
+        "angles": [
+          { "at": "H", "a": "C", "b": "B", "right": true }
+        ]
+      },
       "answer": "42",
       "acceptable": [],
       "check": "12 * 7 / 2",
@@ -151,7 +170,31 @@
     }
   ],
   "flashcards": [
-    { "id": "vol-fc01", "front": "Area of a triangle", "back": "A = ½ · b · h (height is perpendicular to the base)" },
+    {
+      "id": "vol-fc01",
+      "front": "Area of a triangle",
+      "back": "A = ½ · b · h (height is perpendicular to the base)",
+      "figure": {
+        "alt": "Triangle with base b and height h perpendicular to the base.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 204.8, "name": "" },
+          { "id": "B", "x": 324.0, "y": 204.8, "name": "" },
+          { "id": "H", "x": 125.2, "y": 204.8, "name": "" },
+          { "id": "C", "x": 125.2, "y": 6.0, "name": "" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "text": "b" },
+          { "a": "C", "b": "H", "scale": "s", "text": "h", "dash": true }
+        ],
+        "angles": [
+          { "at": "H", "a": "C", "b": "B", "right": true }
+        ]
+      },
+      "figureSide": "back"
+    },
     { "id": "vol-fc02", "front": "Area of a trapezoid", "back": "A = ½ (b₁ + b₂) · h" },
     { "id": "vol-fc03", "front": "Area of a parallelogram", "back": "A = b · h" },
     { "id": "vol-fc04", "front": "Volume of a prism or cylinder", "back": "V = B · h (B = area of the base). Cylinder: V = πr²h" },

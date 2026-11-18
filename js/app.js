@@ -38,6 +38,12 @@
     for (var i = 0; i < arguments.length; i++) add(app, arguments[i]);
     window.scrollTo(0, 0);
   }
+  function figureFor(item, side) {
+    if (!item || !item.figure || typeof Figures === 'undefined' || !Figures.render) return null;
+    if (item.figureSide && side && item.figureSide !== side) return null;
+    try { return Figures.render(item.figure); }
+    catch (e) { console.error(e); return null; }
+  }
 
   /* ---------- formatting ---------- */
 
@@ -446,6 +452,7 @@
       h('section', { class: 'card problem' },
         prior && prior.status === 'correct' ? h('p', { class: 'muted small', text: '✓ You solved this one before. Try it again for practice.' }) : null,
         h('div', { class: 'prompt', html: item.prompt }),
+        figureFor(item),
         widget.node,
         h('div', { class: 'btn-row' }, checkBtn, hintBtn),
         fbBox,
@@ -516,6 +523,7 @@
       },
         h('span', { class: 'side-label', text: flipped ? 'Back' : 'Front' }),
         h('span', { class: 'fc-text', html: flipped ? card.back : card.front }),
+        figureFor(card, flipped ? 'back' : 'front'),
         h('span', { class: 'fc-hint', text: flipped ? 'Tap to see the front' : 'Tap to flip' }));
       add(stage, [
         toolbar,
@@ -594,6 +602,7 @@
         progressBar(i, u.quiz.length),
         h('section', { class: 'card problem' },
           h('div', { class: 'prompt', html: item.prompt }),
+          figureFor(item),
           widget.node,
           h('div', { class: 'btn-row' }, submitBtn, nextBtn),
           fbBox)
@@ -621,6 +630,7 @@
           return h('details', { class: 'review ' + (a.ok ? 'ok' : 'miss'), open: !a.ok },
             h('summary', {}, (a.ok ? '✓ ' : '✗ ') + 'Question ' + (n + 1)),
             h('div', { class: 'prompt', html: a.item.prompt }),
+            figureFor(a.item),
             h('p', {}, h('span', { class: 'muted', text: 'Your answer: ' }), a.given),
             a.ok ? null : h('p', {}, h('span', { class: 'muted', text: 'Correct answer: ' }), a.item.answer),
             h('div', { class: 'solution', html: a.item.solution }));

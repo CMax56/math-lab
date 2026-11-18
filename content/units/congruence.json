@@ -9,6 +9,33 @@
       "id": "cong-p01",
       "type": "mcq",
       "prompt": "In △ABC and △DEF, AB = DE, BC = EF, and ∠B ≅ ∠E. Which criterion proves △ABC ≅ △DEF?",
+      "figure": {
+        "alt": "Triangles ABC and DEF. Sides AB and DE have one tick. Sides BC and EF have two ticks. Angles at B and E have one arc.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 94.9, "name": "B" },
+          { "id": "C", "x": 119.6, "y": 94.9, "name": "C" },
+          { "id": "A", "x": 38.4, "y": 6.0, "name": "A" },
+          { "id": "E", "x": 210.4, "y": 94.9, "name": "E" },
+          { "id": "F", "x": 324.0, "y": 94.9, "name": "F" },
+          { "id": "D", "x": 242.8, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "ticks": 1 },
+          { "a": "B", "b": "C", "scale": "s", "ticks": 2 },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "D", "b": "E", "scale": "s", "ticks": 1 },
+          { "a": "E", "b": "F", "scale": "s", "ticks": 2 },
+          { "a": "F", "b": "D", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "B", "a": "A", "b": "C", "arcs": 1 },
+          { "at": "E", "a": "D", "b": "F", "arcs": 1 }
+        ]
+      },
       "choices": ["SSS", "SAS", "ASA", "AAS"],
       "answer": "SAS",
       "acceptable": [],
@@ -23,6 +50,30 @@
       "id": "cong-p02",
       "type": "mcq",
       "prompt": "Which of these is <b>not</b> a valid way to prove two triangles congruent?",
+      "figure": {
+        "alt": "Two triangles with no matching marks, since the question does not give specific sides or angles.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 91.5, "name": "B" },
+          { "id": "C", "x": 125.2, "y": 91.5, "name": "C" },
+          { "id": "A", "x": 75.2, "y": 14.7, "name": "A" },
+          { "id": "E", "x": 200.8, "y": 91.5, "name": "E" },
+          { "id": "F", "x": 324.0, "y": 91.5, "name": "F" },
+          { "id": "D", "x": 219.0, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s" },
+          { "a": "B", "b": "C", "scale": "s" },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "D", "b": "E", "scale": "s" },
+          { "a": "E", "b": "F", "scale": "s" },
+          { "a": "F", "b": "D", "scale": "s" }
+        ],
+        "angles": []
+      },
       "choices": ["SSS", "ASA", "SSA", "HL"],
       "answer": "SSA",
       "acceptable": [],
@@ -37,6 +88,30 @@
       "id": "cong-p03",
       "type": "numeric",
       "prompt": "△PQR ≅ △XYZ. PQ = 7 cm, QR = 10 cm, and XZ = 12 cm. How long is YZ (in cm)?",
+      "figure": {
+        "alt": "Congruent triangles PQR and XYZ. PQ is 7 cm, QR is 10 cm, XZ is 12 cm, and YZ is marked x.",
+        "pts": [
+          { "id": "P", "x": 6.0, "y": 184.5, "name": "P" },
+          { "id": "Q", "x": 131.1, "y": 184.5, "name": "Q" },
+          { "id": "R", "x": 124.7, "y": 6.0, "name": "R" },
+          { "id": "X", "x": 198.9, "y": 184.5, "name": "X" },
+          { "id": "Y", "x": 324.0, "y": 184.5, "name": "Y" },
+          { "id": "Z", "x": 317.6, "y": 6.0, "name": "Z" }
+        ],
+        "polys": [
+          ["P", "Q", "R"],
+          ["X", "Y", "Z"]
+        ],
+        "segs": [
+          { "a": "P", "b": "Q", "scale": "s", "text": "7 cm", "ticks": 1, "draw": 7.0 },
+          { "a": "Q", "b": "R", "scale": "s", "text": "10 cm", "ticks": 2, "draw": 10.0 },
+          { "a": "R", "b": "P", "scale": "s", "ticks": 3, "draw": 12.0 },
+          { "a": "X", "b": "Y", "scale": "s", "ticks": 1, "draw": 7.0 },
+          { "a": "Y", "b": "Z", "scale": "s", "text": "x", "ticks": 2, "ask": true, "draw": 10.0 },
+          { "a": "Z", "b": "X", "scale": "s", "text": "12 cm", "ticks": 3, "draw": 12.0 }
+        ],
+        "angles": []
+      },
       "answer": "10",
       "acceptable": [],
       "hints": [
@@ -50,6 +125,37 @@
       "id": "cong-p04",
       "type": "numeric",
       "prompt": "△ABC ≅ △DEF. m∠A = 48° and m∠E = 75°. Find m∠F in degrees.",
+      "figure": {
+        "alt": "Congruent triangles ABC and DEF. Angle A is 48 degrees, angle E is 75 degrees, and angle F is marked unknown.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 150.4, "name": "B" },
+          { "id": "C", "x": 138.5, "y": 150.4, "name": "C" },
+          { "id": "A", "x": 44.7, "y": 6.0, "name": "A" },
+          { "id": "E", "x": 191.5, "y": 150.4, "name": "E" },
+          { "id": "F", "x": 324.0, "y": 150.4, "name": "F" },
+          { "id": "D", "x": 230.2, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s" },
+          { "a": "B", "b": "C", "scale": "s" },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "D", "b": "E", "scale": "s" },
+          { "a": "E", "b": "F", "scale": "s" },
+          { "a": "F", "b": "D", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "text": "48°", "arcs": 1 },
+          { "at": "D", "a": "E", "b": "F", "arcs": 1, "deg": 48.0 },
+          { "at": "E", "a": "D", "b": "F", "text": "75°", "arcs": 2 },
+          { "at": "B", "a": "A", "b": "C", "arcs": 2, "deg": 75.0 },
+          { "at": "F", "a": "D", "b": "E", "text": "?", "arcs": 3, "ask": true, "deg": 57.0 },
+          { "at": "C", "a": "A", "b": "B", "arcs": 3, "deg": 57.0 }
+        ]
+      },
       "answer": "57",
       "acceptable": [],
       "check": "180 - 48 - 75",
@@ -64,6 +170,27 @@
       "id": "cong-p05",
       "type": "numeric",
       "prompt": "In isosceles △ABC, AB = AC and m∠A = 40°. Find m∠B in degrees.",
+      "figure": {
+        "alt": "Isosceles triangle ABC with AB equal to AC and angle A equal to 40 degrees. Angle B is marked unknown.",
+        "pts": [
+          { "id": "A", "x": 115.2, "y": 6.0, "name": "A" },
+          { "id": "B", "x": 6.0, "y": 306.0, "name": "B" },
+          { "id": "C", "x": 224.4, "y": 306.0, "name": "C" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "ticks": 1, "draw": 6.0 },
+          { "a": "A", "b": "C", "scale": "s", "ticks": 1, "draw": 6.0 },
+          { "a": "B", "b": "C", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "text": "40°" },
+          { "at": "B", "a": "A", "b": "C", "text": "?", "arcs": 1, "ask": true, "deg": 70.0 },
+          { "at": "C", "a": "A", "b": "B", "arcs": 1, "deg": 70.0 }
+        ]
+      },
       "answer": "70",
       "acceptable": [],
       "check": "(180 - 40) / 2",
@@ -78,6 +205,33 @@
       "id": "cong-p06",
       "type": "numeric",
       "prompt": "△JKL ≅ △MNO. JK = 3x + 2 and MN = 5x − 6. Solve for x.",
+      "figure": {
+        "alt": "Congruent triangles JKL and MNO. Side JK is labeled 3x + 2 and side MN is labeled 5x − 6.",
+        "pts": [
+          { "id": "K", "x": 6.0, "y": 135.9, "name": "K" },
+          { "id": "L", "x": 126.5, "y": 135.9, "name": "L" },
+          { "id": "J", "x": 69.4, "y": 6.0, "name": "J" },
+          { "id": "N", "x": 203.5, "y": 135.9, "name": "N" },
+          { "id": "O", "x": 324.0, "y": 135.9, "name": "O" },
+          { "id": "M", "x": 266.9, "y": 6.0, "name": "M" }
+        ],
+        "polys": [
+          ["J", "K", "L"],
+          ["M", "N", "O"]
+        ],
+        "segs": [
+          { "a": "J", "b": "K", "scale": "s", "text": "3x + 2", "ticks": 1 },
+          { "a": "K", "b": "L", "scale": "s", "ticks": 2 },
+          { "a": "L", "b": "J", "scale": "s", "ticks": 3 },
+          { "a": "M", "b": "N", "scale": "s", "text": "5x − 6", "ticks": 1 },
+          { "a": "N", "b": "O", "scale": "s", "ticks": 2 },
+          { "a": "O", "b": "M", "scale": "s", "ticks": 3 }
+        ],
+        "angles": [
+          { "at": "K", "a": "J", "b": "L", "arcs": 1 },
+          { "at": "N", "a": "M", "b": "O", "arcs": 1 }
+        ]
+      },
       "answer": "4",
       "acceptable": [],
       "check": "(2 + 6) / (5 - 3)",
@@ -92,6 +246,33 @@
       "id": "cong-p07",
       "type": "numeric",
       "prompt": "△RST ≅ △UVW. m∠S = (4y − 10)° and m∠V = (2y + 30)°. Find m∠S in degrees.",
+      "figure": {
+        "alt": "Congruent triangles RST and UVW. Angle S is labeled (4y − 10) degrees and angle V is labeled (2y + 30) degrees.",
+        "pts": [
+          { "id": "S", "x": 6.0, "y": 130.5, "name": "S" },
+          { "id": "T", "x": 138.5, "y": 130.5, "name": "T" },
+          { "id": "R", "x": 51.3, "y": 6.0, "name": "R" },
+          { "id": "V", "x": 191.5, "y": 130.5, "name": "V" },
+          { "id": "W", "x": 324.0, "y": 130.5, "name": "W" },
+          { "id": "U", "x": 236.8, "y": 6.0, "name": "U" }
+        ],
+        "polys": [
+          ["R", "S", "T"],
+          ["U", "V", "W"]
+        ],
+        "segs": [
+          { "a": "R", "b": "S", "scale": "s" },
+          { "a": "S", "b": "T", "scale": "s" },
+          { "a": "T", "b": "R", "scale": "s" },
+          { "a": "U", "b": "V", "scale": "s" },
+          { "a": "V", "b": "W", "scale": "s" },
+          { "a": "W", "b": "U", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "S", "a": "R", "b": "T", "text": "(4y − 10)°", "arcs": 1, "deg": 70.0 },
+          { "at": "V", "a": "U", "b": "W", "text": "(2y + 30)°", "arcs": 1, "deg": 70.0 }
+        ]
+      },
       "answer": "70",
       "acceptable": [],
       "check": "4 * ((30 + 10) / (4 - 2)) - 10",
@@ -106,6 +287,33 @@
       "id": "cong-p08",
       "type": "mcq",
       "prompt": "Right triangles △ABC and △DEF have right angles at C and F. The hypotenuses match (AB = DE) and one pair of legs matches (AC = DF). Which theorem proves them congruent?",
+      "figure": {
+        "alt": "Two right triangles. Right angles are at C and F. Hypotenuses AB and DE match, and legs AC and DF match.",
+        "pts": [
+          { "id": "C", "x": 6.0, "y": 102.4, "name": "C" },
+          { "id": "B", "x": 134.5, "y": 102.4, "name": "B" },
+          { "id": "A", "x": 6.0, "y": 6.0, "name": "A" },
+          { "id": "F", "x": 195.5, "y": 102.4, "name": "F" },
+          { "id": "E", "x": 324.0, "y": 102.4, "name": "E" },
+          { "id": "D", "x": 195.5, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "ticks": 1, "draw": 10.0 },
+          { "a": "B", "b": "C", "scale": "s", "draw": 8.0 },
+          { "a": "C", "b": "A", "scale": "s", "ticks": 2, "draw": 6.0 },
+          { "a": "D", "b": "E", "scale": "s", "ticks": 1, "draw": 10.0 },
+          { "a": "E", "b": "F", "scale": "s", "draw": 8.0 },
+          { "a": "F", "b": "D", "scale": "s", "ticks": 2, "draw": 6.0 }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "right": true },
+          { "at": "F", "a": "D", "b": "E", "right": true }
+        ]
+      },
       "choices": ["HL", "SAS", "AAA", "SSA"],
       "answer": "HL",
       "acceptable": [],
@@ -120,6 +328,33 @@
       "id": "cong-p09",
       "type": "mcq",
       "prompt": "What is CPCTC used for in a proof?",
+      "figure": {
+        "alt": "Two congruent triangles with corresponding sides marked, showing matching parts after the triangles are congruent.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 92.7, "name": "B" },
+          { "id": "C", "x": 133.6, "y": 92.7, "name": "C" },
+          { "id": "A", "x": 52.1, "y": 6.0, "name": "A" },
+          { "id": "E", "x": 196.4, "y": 92.7, "name": "E" },
+          { "id": "F", "x": 324.0, "y": 92.7, "name": "F" },
+          { "id": "D", "x": 242.5, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "ticks": 1 },
+          { "a": "B", "b": "C", "scale": "s", "ticks": 2 },
+          { "a": "C", "b": "A", "scale": "s", "ticks": 3 },
+          { "a": "D", "b": "E", "scale": "s", "ticks": 1 },
+          { "a": "E", "b": "F", "scale": "s", "ticks": 2 },
+          { "a": "F", "b": "D", "scale": "s", "ticks": 3 }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "arcs": 1 },
+          { "at": "D", "a": "E", "b": "F", "arcs": 1 }
+        ]
+      },
       "choices": [
         "To prove two triangles are congruent",
         "To conclude that matching parts of congruent triangles are congruent",
@@ -139,6 +374,36 @@
       "id": "cong-p10",
       "type": "mcq",
       "prompt": "Segments AB and CD cross at point M. M is the midpoint of AB and also the midpoint of CD. Which criterion proves △AMC ≅ △BMD?",
+      "figure": {
+        "alt": "Segments AB and CD cross at their common midpoint M, forming triangles AMC and BMD.",
+        "pts": [
+          { "id": "A", "x": 48, "y": 28, "name": "A" },
+          { "id": "B", "x": 292, "y": 196, "name": "B" },
+          { "id": "C", "x": 292, "y": 28, "name": "C" },
+          { "id": "D", "x": 48, "y": 196, "name": "D" },
+          {
+            "id": "M",
+            "x": 170.0,
+            "y": 112.0,
+            "name": "M",
+            "nameAt": [204.0, 142.0]
+          }
+        ],
+        "polys": [
+          ["A", "M", "C"],
+          ["B", "M", "D"]
+        ],
+        "segs": [
+          { "a": "A", "b": "M", "scale": "s", "ticks": 1 },
+          { "a": "M", "b": "B", "scale": "s", "ticks": 1 },
+          { "a": "C", "b": "M", "scale": "s", "ticks": 2 },
+          { "a": "M", "b": "D", "scale": "s", "ticks": 2 }
+        ],
+        "angles": [
+          { "at": "M", "a": "A", "b": "C", "arcs": 1 },
+          { "at": "M", "a": "B", "b": "D", "arcs": 1 }
+        ]
+      },
       "choices": ["SSS", "SAS", "ASA", "HL"],
       "answer": "SAS",
       "acceptable": [],
@@ -160,7 +425,32 @@
     { "id": "cong-fc07", "front": "CPCTC", "back": "Corresponding Parts of Congruent Triangles are Congruent. Use it <b>after</b> you prove the triangles congruent." },
     { "id": "cong-fc08", "front": "Shortcuts that do NOT prove congruence", "back": "AAA (same shape, maybe a different size) and SSA (the ambiguous case)." },
     { "id": "cong-fc09", "front": "Vertical angles", "back": "The opposite angles formed when two lines cross. Vertical angles are always congruent." },
-    { "id": "cong-fc10", "front": "Isosceles Triangle Theorem", "back": "If two sides of a triangle are congruent, the angles opposite those sides (the base angles) are congruent." },
+    {
+      "id": "cong-fc10",
+      "front": "Isosceles Triangle Theorem",
+      "back": "If two sides of a triangle are congruent, the angles opposite those sides (the base angles) are congruent.",
+      "figure": {
+        "alt": "Isosceles triangle with the two equal sides ticked and the two base angles marked congruent.",
+        "pts": [
+          { "id": "A", "x": 6.0, "y": 249.6, "name": "A" },
+          { "id": "C", "x": 324.0, "y": 249.6, "name": "C" },
+          { "id": "B", "x": 210.4, "y": 6.0, "name": "B" }
+        ],
+        "polys": [
+          ["A", "B", "C"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "ticks": 1, "draw": 6.0 },
+          { "a": "A", "b": "C", "scale": "s", "ticks": 1, "draw": 6.0 },
+          { "a": "B", "b": "C", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "B", "a": "A", "b": "C", "arcs": 1 },
+          { "at": "C", "a": "A", "b": "B", "arcs": 1 }
+        ]
+      },
+      "figureSide": "back"
+    },
     { "id": "cong-fc11", "front": "Reflexive property", "back": "Anything is congruent to itself. Use it when two triangles share a side, for example BD ≅ BD." }
   ],
   "quiz": [
@@ -168,6 +458,37 @@
       "id": "cong-q01",
       "type": "mcq",
       "prompt": "Two triangles have all three pairs of angles congruent. Must the triangles be congruent?",
+      "figure": {
+        "alt": "Two triangles with all three pairs of angles marked congruent, drawn at different sizes.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 211.9, "name": "B" },
+          { "id": "C", "x": 100.6, "y": 211.9, "name": "C" },
+          { "id": "A", "x": 78.5, "y": 86.4, "name": "A" },
+          { "id": "E", "x": 168.8, "y": 211.9, "name": "E" },
+          { "id": "F", "x": 324.0, "y": 211.9, "name": "F" },
+          { "id": "D", "x": 287.7, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s" },
+          { "a": "B", "b": "C", "scale": "s" },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "D", "b": "E", "scale": "s" },
+          { "a": "E", "b": "F", "scale": "s" },
+          { "a": "F", "b": "D", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "arcs": 1, "deg": 40.0 },
+          { "at": "D", "a": "E", "b": "F", "arcs": 1, "deg": 40.0 },
+          { "at": "B", "a": "A", "b": "C", "arcs": 2, "deg": 60.0 },
+          { "at": "E", "a": "D", "b": "F", "arcs": 2, "deg": 60.0 },
+          { "at": "C", "a": "A", "b": "B", "arcs": 3, "deg": 80.0 },
+          { "at": "F", "a": "D", "b": "E", "arcs": 3, "deg": 80.0 }
+        ]
+      },
       "choices": [
         "Yes, by AAA",
         "No — matching angles only show the triangles are similar",
@@ -183,6 +504,35 @@
       "id": "cong-q02",
       "type": "mcq",
       "prompt": "In △ABC and △DEF, ∠A ≅ ∠D, AB = DE, and ∠B ≅ ∠E. Which criterion proves the triangles congruent?",
+      "figure": {
+        "alt": "Triangles ABC and DEF with angles at A and D marked congruent, sides AB and DE marked congruent, and angles at B and E marked congruent.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 133.9, "name": "B" },
+          { "id": "C", "x": 131.5, "y": 133.9, "name": "C" },
+          { "id": "A", "x": 57.7, "y": 6.0, "name": "A" },
+          { "id": "E", "x": 198.5, "y": 133.9, "name": "E" },
+          { "id": "F", "x": 324.0, "y": 133.9, "name": "F" },
+          { "id": "D", "x": 250.2, "y": 6.0, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["D", "E", "F"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "ticks": 1, "draw": 6.0 },
+          { "a": "B", "b": "C", "scale": "s" },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "D", "b": "E", "scale": "s", "ticks": 1, "draw": 6.0 },
+          { "a": "E", "b": "F", "scale": "s" },
+          { "a": "F", "b": "D", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "A", "a": "B", "b": "C", "arcs": 1 },
+          { "at": "D", "a": "E", "b": "F", "arcs": 1 },
+          { "at": "B", "a": "A", "b": "C", "arcs": 2 },
+          { "at": "E", "a": "D", "b": "F", "arcs": 2 }
+        ]
+      },
       "choices": ["SSS", "SAS", "ASA", "AAS"],
       "answer": "ASA",
       "acceptable": [],
@@ -193,6 +543,30 @@
       "id": "cong-q03",
       "type": "numeric",
       "prompt": "△GHI ≅ △KLM. GH = 2a + 1 and KL = 15. Find a.",
+      "figure": {
+        "alt": "Congruent triangles GHI and KLM. GH is labeled 2a + 1 and KL is 15.",
+        "pts": [
+          { "id": "H", "x": 6.0, "y": 128.6, "name": "H" },
+          { "id": "I", "x": 126.5, "y": 128.6, "name": "I" },
+          { "id": "G", "x": 82.6, "y": 6.0, "name": "G" },
+          { "id": "L", "x": 203.5, "y": 128.6, "name": "L" },
+          { "id": "M", "x": 324.0, "y": 128.6, "name": "M" },
+          { "id": "K", "x": 280.1, "y": 6.0, "name": "K" }
+        ],
+        "polys": [
+          ["G", "H", "I"],
+          ["K", "L", "M"]
+        ],
+        "segs": [
+          { "a": "G", "b": "H", "scale": "s", "text": "2a + 1", "ticks": 1, "draw": 15.0 },
+          { "a": "H", "b": "I", "scale": "s" },
+          { "a": "I", "b": "G", "scale": "s" },
+          { "a": "K", "b": "L", "scale": "s", "text": "15", "ticks": 1, "draw": 15.0 },
+          { "a": "L", "b": "M", "scale": "s" },
+          { "a": "M", "b": "K", "scale": "s" }
+        ],
+        "angles": []
+      },
       "answer": "7",
       "acceptable": [],
       "check": "(15 - 1) / 2",
@@ -203,6 +577,27 @@
       "id": "cong-q04",
       "type": "numeric",
       "prompt": "In △XYZ, XY = XZ and m∠Y = 52°. Find m∠X in degrees.",
+      "figure": {
+        "alt": "Isosceles triangle XYZ with XY equal to XZ. Angle Y is 52 degrees and angle X is marked unknown.",
+        "pts": [
+          { "id": "X", "x": 6.0, "y": 306.0, "name": "X" },
+          { "id": "Z", "x": 315.2, "y": 306.0, "name": "Z" },
+          { "id": "Y", "x": 80.8, "y": 6.0, "name": "Y" }
+        ],
+        "polys": [
+          ["X", "Y", "Z"]
+        ],
+        "segs": [
+          { "a": "X", "b": "Y", "scale": "s", "ticks": 1, "draw": 6.0 },
+          { "a": "X", "b": "Z", "scale": "s", "ticks": 1, "draw": 6.0 },
+          { "a": "Y", "b": "Z", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "X", "a": "Y", "b": "Z", "text": "?", "ask": true, "deg": 76.0 },
+          { "at": "Y", "a": "X", "b": "Z", "text": "52°", "arcs": 1 },
+          { "at": "Z", "a": "X", "b": "Y", "arcs": 1, "deg": 52.0 }
+        ]
+      },
       "answer": "76",
       "acceptable": [],
       "check": "180 - 2 * 52",
@@ -213,6 +608,27 @@
       "id": "cong-q05",
       "type": "mcq",
       "prompt": "△ABD and △CBD share side BD. AB = CB and AD = CD. Which criterion proves △ABD ≅ △CBD?",
+      "figure": {
+        "alt": "Triangles ABD and CBD share side BD. AB equals CB, and AD equals CD.",
+        "pts": [
+          { "id": "B", "x": 170, "y": 24, "name": "B" },
+          { "id": "D", "x": 170, "y": 210, "name": "D" },
+          { "id": "A", "x": 36, "y": 118, "name": "A" },
+          { "id": "C", "x": 304, "y": 118, "name": "C" }
+        ],
+        "polys": [
+          ["A", "B", "D"],
+          ["C", "B", "D"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s", "ticks": 1 },
+          { "a": "C", "b": "B", "scale": "s", "ticks": 1 },
+          { "a": "A", "b": "D", "scale": "s", "ticks": 2 },
+          { "a": "C", "b": "D", "scale": "s", "ticks": 2 },
+          { "a": "B", "b": "D", "scale": "s" }
+        ],
+        "angles": []
+      },
       "choices": ["SSS", "SAS", "ASA", "HL"],
       "answer": "SSS",
       "acceptable": [],
@@ -223,6 +639,32 @@
       "id": "cong-q06",
       "type": "mcq",
       "prompt": "△ABC ≅ △PQR. Which part corresponds to ∠C?",
+      "figure": {
+        "alt": "Congruent triangles ABC and PQR with the vertices named in matching order. Angle C is marked.",
+        "pts": [
+          { "id": "B", "x": 6.0, "y": 96.6, "name": "B" },
+          { "id": "C", "x": 131.5, "y": 96.6, "name": "C" },
+          { "id": "A", "x": 58.3, "y": 6.0, "name": "A" },
+          { "id": "Q", "x": 198.5, "y": 96.6, "name": "Q" },
+          { "id": "R", "x": 324.0, "y": 96.6, "name": "R" },
+          { "id": "P", "x": 250.8, "y": 6.0, "name": "P" }
+        ],
+        "polys": [
+          ["A", "B", "C"],
+          ["P", "Q", "R"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "scale": "s" },
+          { "a": "B", "b": "C", "scale": "s" },
+          { "a": "C", "b": "A", "scale": "s" },
+          { "a": "P", "b": "Q", "scale": "s" },
+          { "a": "Q", "b": "R", "scale": "s" },
+          { "a": "R", "b": "P", "scale": "s" }
+        ],
+        "angles": [
+          { "at": "C", "a": "A", "b": "B", "arcs": 1 }
+        ]
+      },
       "choices": ["∠P", "∠Q", "∠R", "side QR"],
       "answer": "∠R",
       "acceptable": [],

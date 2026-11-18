@@ -1,0 +1,223 @@
+{
+  "id": "systems",
+  "title": "Systems of Equations",
+  "description": "Find where two lines meet using graphing, substitution, or elimination, and set up systems from word problems.",
+  "strand": "algebra",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "sys-p01",
+      "type": "pair",
+      "prompt": "Solve the system. Type the answer like (x, y).<br>y = 2x<br>x + y = 9",
+      "answer": "(3, 6)",
+      "acceptable": [],
+      "check": "[9 / 3, 2 * 9 / 3]",
+      "hints": [
+        "The first equation already says what y is. Substitute 2x for y in the second equation.",
+        "x + 2x = 9, so 3x = 9.",
+        "Find x, then use y = 2x to find y."
+      ],
+      "solution": "Substitute: x + 2x = 9 → 3x = 9 → x = 3<br>y = 2(3) = 6<br><b>(3, 6)</b>"
+    },
+    {
+      "id": "sys-p02",
+      "type": "pair",
+      "prompt": "Solve the system. Type the answer like (x, y).<br>x + y = 10<br>x − y = 4",
+      "answer": "(7, 3)",
+      "acceptable": [],
+      "check": "[(10 + 4) / 2, (10 - 4) / 2]",
+      "hints": [
+        "The y terms are +y and −y. Adding the equations will cancel them (elimination).",
+        "Add: 2x = 14.",
+        "Find x, then put it back into x + y = 10."
+      ],
+      "solution": "Add the equations: 2x = 14 → x = 7<br>7 + y = 10 → y = 3<br><b>(7, 3)</b>"
+    },
+    {
+      "id": "sys-p03",
+      "type": "pair",
+      "prompt": "Solve the system. Type the answer like (x, y).<br>y = x + 1<br>2x + y = 13",
+      "answer": "(4, 5)",
+      "acceptable": [],
+      "check": "[(13 - 1) / 3, (13 - 1) / 3 + 1]",
+      "hints": [
+        "Substitute x + 1 for y in the second equation.",
+        "2x + (x + 1) = 13 → 3x + 1 = 13.",
+        "Solve for x, then y = x + 1."
+      ],
+      "solution": "2x + x + 1 = 13 → 3x = 12 → x = 4<br>y = 4 + 1 = 5<br><b>(4, 5)</b>"
+    },
+    {
+      "id": "sys-p04",
+      "type": "pair",
+      "prompt": "Solve the system. Type the answer like (x, y).<br>3x + 2y = 16<br>x − 2y = 0",
+      "answer": "(4, 2)",
+      "acceptable": [],
+      "check": "[16 / 4, (16 / 4) / 2]",
+      "hints": [
+        "The y terms are +2y and −2y. Add the equations.",
+        "4x = 16.",
+        "Put x = 4 into x − 2y = 0 to find y."
+      ],
+      "solution": "Add: 4x = 16 → x = 4<br>4 − 2y = 0 → y = 2<br><b>(4, 2)</b>"
+    },
+    {
+      "id": "sys-p05",
+      "type": "mcq",
+      "prompt": "How many solutions does this system have?<br>y = 3x + 2<br>y = 3x − 5",
+      "choices": ["One", "None", "Infinitely many", "Two"],
+      "answer": "None",
+      "acceptable": [],
+      "hints": [
+        "Compare the slopes and the y-intercepts.",
+        "Same slope (3) means the lines are parallel or the same line.",
+        "Different y-intercepts mean parallel lines that never meet."
+      ],
+      "solution": "Same slope, different y-intercepts → parallel lines → <b>no solution</b>."
+    },
+    {
+      "id": "sys-p06",
+      "type": "mcq",
+      "prompt": "How many solutions does this system have?<br>2x + 4y = 8<br>x + 2y = 4",
+      "choices": ["One", "None", "Infinitely many", "Two"],
+      "answer": "Infinitely many",
+      "acceptable": [],
+      "hints": [
+        "Compare the two equations. Is one a multiple of the other?",
+        "Divide every term of the first equation by 2.",
+        "If both equations are the same line, every point on it is a solution."
+      ],
+      "solution": "2x + 4y = 8 divided by 2 is x + 2y = 4, the same as the second equation.<br>Same line → <b>infinitely many</b> solutions."
+    },
+    {
+      "id": "sys-p07",
+      "type": "pair",
+      "prompt": "Solve the system. Type the answer like (x, y).<br>2x + 3y = 12<br>4x − 3y = 6",
+      "answer": "(3, 2)",
+      "acceptable": [],
+      "check": "[18 / 6, (12 - 2 * 18 / 6) / 3]",
+      "hints": [
+        "+3y and −3y cancel if you add the equations.",
+        "6x = 18.",
+        "Put x = 3 into 2x + 3y = 12."
+      ],
+      "solution": "Add: 6x = 18 → x = 3<br>2(3) + 3y = 12 → 3y = 6 → y = 2<br><b>(3, 2)</b>"
+    },
+    {
+      "id": "sys-p08",
+      "type": "numeric",
+      "prompt": "A school play sold 120 tickets for a total of $750. Adult tickets cost $8 and student tickets cost $5. How many adult tickets were sold?",
+      "answer": "50",
+      "acceptable": [],
+      "check": "(750 - 5 * 120) / (8 - 5)",
+      "hints": [
+        "Let a = adult tickets and s = student tickets. One equation counts tickets, the other counts money.",
+        "a + s = 120 and 8a + 5s = 750.",
+        "Substitute s = 120 − a into the money equation: 8a + 5(120 − a) = 750."
+      ],
+      "solution": "a + s = 120 → s = 120 − a<br>8a + 5(120 − a) = 750<br>8a + 600 − 5a = 750 → 3a = 150 → a = <b>50</b> adult tickets<br>(s = 70; check: 8·50 + 5·70 = 400 + 350 = 750 ✓)"
+    },
+    {
+      "id": "sys-p09",
+      "type": "pair",
+      "prompt": "Where do the lines y = −x + 6 and y = 2x intersect? Type the point like (x, y).",
+      "answer": "(2, 4)",
+      "acceptable": [],
+      "check": "[6 / 3, 2 * 6 / 3]",
+      "hints": [
+        "At the intersection both y-values are equal, so set −x + 6 = 2x.",
+        "Add x to both sides: 6 = 3x.",
+        "Find x, then y = 2x."
+      ],
+      "solution": "−x + 6 = 2x → 6 = 3x → x = 2<br>y = 2(2) = 4<br><b>(2, 4)</b>"
+    },
+    {
+      "id": "sys-p10",
+      "type": "pair",
+      "prompt": "Solve the system. Type the answer like (x, y).<br>5x + 2y = 1<br>3x + 2y = −1",
+      "answer": "(1, -2)",
+      "acceptable": [],
+      "check": "[(1 - (-1)) / (5 - 3), (1 - 5 * 1) / 2]",
+      "hints": [
+        "Both equations have +2y. Subtract one equation from the other to cancel y.",
+        "(5x + 2y) − (3x + 2y) = 1 − (−1) → 2x = 2.",
+        "Put x = 1 into 5x + 2y = 1."
+      ],
+      "solution": "Subtract: 2x = 2 → x = 1<br>5(1) + 2y = 1 → 2y = −4 → y = −2<br><b>(1, −2)</b>"
+    }
+  ],
+  "flashcards": [
+    { "id": "sys-fc01", "front": "Solution of a system", "back": "An ordered pair (x, y) that makes <b>every</b> equation true. On a graph it is where the lines cross." },
+    { "id": "sys-fc02", "front": "Substitution method", "back": "Solve one equation for a variable, plug that expression into the other equation, solve, then back-substitute." },
+    { "id": "sys-fc03", "front": "Elimination method", "back": "Add or subtract the equations (multiply first if needed) so one variable cancels." },
+    { "id": "sys-fc04", "front": "Graphing method", "back": "Graph both lines. The crossing point is the solution." },
+    { "id": "sys-fc05", "front": "One solution", "back": "Different slopes → the lines cross once." },
+    { "id": "sys-fc06", "front": "No solution", "back": "Same slope, different y-intercepts → parallel lines." },
+    { "id": "sys-fc07", "front": "Infinitely many solutions", "back": "The equations describe the same line (one is a multiple of the other)." },
+    { "id": "sys-fc08", "front": "Check your answer", "back": "Plug (x, y) into <b>both</b> original equations." },
+    { "id": "sys-fc09", "front": "When to use elimination", "back": "When a variable already has matching or opposite coefficients, like +3y and −3y." },
+    { "id": "sys-fc10", "front": "Word-problem setup", "back": "Name your variables. Usually one equation counts items and the other counts value (money, points, etc.)." }
+  ],
+  "quiz": [
+    {
+      "id": "sys-q01",
+      "type": "pair",
+      "prompt": "Solve: y = 3x and 2x + y = 15. Type it like (x, y).",
+      "answer": "(3, 9)",
+      "acceptable": [],
+      "check": "[15 / 5, 3 * 15 / 5]",
+      "hints": ["Substitute 3x for y.", "5x = 15."],
+      "solution": "2x + 3x = 15 → x = 3, y = 9 → <b>(3, 9)</b>"
+    },
+    {
+      "id": "sys-q02",
+      "type": "pair",
+      "prompt": "Solve: x + y = 8 and x − y = 2. Type it like (x, y).",
+      "answer": "(5, 3)",
+      "acceptable": [],
+      "check": "[(8 + 2) / 2, (8 - 2) / 2]",
+      "hints": ["Add the equations.", "2x = 10."],
+      "solution": "2x = 10 → x = 5; 5 + y = 8 → y = 3 → <b>(5, 3)</b>"
+    },
+    {
+      "id": "sys-q03",
+      "type": "pair",
+      "prompt": "Solve: 2x + y = 7 and x − y = 2. Type it like (x, y).",
+      "answer": "(3, 1)",
+      "acceptable": [],
+      "check": "[9 / 3, 7 - 2 * 9 / 3]",
+      "hints": ["Add the equations to cancel y.", "3x = 9."],
+      "solution": "3x = 9 → x = 3; 3 − y = 2 → y = 1 → <b>(3, 1)</b>"
+    },
+    {
+      "id": "sys-q04",
+      "type": "mcq",
+      "prompt": "How many solutions does this system have?<br>y = 2x + 1<br>4x − 2y = −2",
+      "choices": ["One", "None", "Infinitely many", "Two"],
+      "answer": "Infinitely many",
+      "acceptable": [],
+      "hints": ["Rewrite the second equation in y = mx + b form.", "−2y = −4x − 2, then divide by −2."],
+      "solution": "4x − 2y = −2 → −2y = −4x − 2 → y = 2x + 1. Same line → <b>infinitely many</b>."
+    },
+    {
+      "id": "sys-q05",
+      "type": "numeric",
+      "prompt": "Two numbers add up to 30, and their difference is 8. What is the larger number?",
+      "answer": "19",
+      "acceptable": [],
+      "check": "(30 + 8) / 2",
+      "hints": ["x + y = 30 and x − y = 8.", "Add the equations: 2x = 38."],
+      "solution": "2x = 38 → x = <b>19</b> (the other number is 11)"
+    },
+    {
+      "id": "sys-q06",
+      "type": "pair",
+      "prompt": "Solve: x + 2y = 4 and 3x − 2y = 4. Type it like (x, y).",
+      "answer": "(2, 1)",
+      "acceptable": [],
+      "check": "[8 / 4, (4 - 8 / 4) / 2]",
+      "hints": ["Add the equations to cancel y.", "4x = 8."],
+      "solution": "4x = 8 → x = 2; 2 + 2y = 4 → y = 1 → <b>(2, 1)</b>"
+    }
+  ]
+}

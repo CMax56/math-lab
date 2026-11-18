@@ -1,0 +1,24 @@
+{
+  "app": {
+    "title": "Math Lab",
+    "studentFirstName": "",
+    "school": "",
+    "course": "10th Grade Math",
+    "teacher": "",
+    "contentNotice": "Starter set: typical 10th-grade topics written for practice. This is not official class material. Units can be replaced with the real class topics when they arrive."
+  },
+  "strands": {
+    "geometry": "Geometry",
+    "algebra": "Algebra review"
+  },
+  "units": [
+    "congruence",
+    "similarity",
+    "right-triangles",
+    "circles",
+    "area-volume",
+    "linear",
+    "systems",
+    "quadratics"
+  ]
+}

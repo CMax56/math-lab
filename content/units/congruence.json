@@ -1,0 +1,233 @@
+{
+  "id": "congruence",
+  "title": "Congruence",
+  "description": "Prove triangles are the same size and shape with SSS, SAS, ASA, AAS, and HL. Then use matching parts (CPCTC) to find missing sides and angles.",
+  "strand": "geometry",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "cong-p01",
+      "type": "mcq",
+      "prompt": "In △ABC and △DEF, AB = DE, BC = EF, and ∠B ≅ ∠E. Which criterion proves △ABC ≅ △DEF?",
+      "choices": ["SSS", "SAS", "ASA", "AAS"],
+      "answer": "SAS",
+      "acceptable": [],
+      "hints": [
+        "List what you know: two pairs of sides and one pair of angles.",
+        "Find where ∠B sits. It is formed by sides AB and BC, so it is between the two known sides.",
+        "An angle between two known sides is the included angle: Side–Angle–Side."
+      ],
+      "solution": "Known: AB = DE (side), ∠B ≅ ∠E (angle), BC = EF (side).<br>∠B is formed by AB and BC, so it is the included angle.<br>Side–included Angle–Side → <b>SAS</b>."
+    },
+    {
+      "id": "cong-p02",
+      "type": "mcq",
+      "prompt": "Which of these is <b>not</b> a valid way to prove two triangles congruent?",
+      "choices": ["SSS", "ASA", "SSA", "HL"],
+      "answer": "SSA",
+      "acceptable": [],
+      "hints": [
+        "Recall the five valid shortcuts: SSS, SAS, ASA, AAS, and HL (right triangles only).",
+        "One option has the angle NOT between the two sides. That setup can make two different triangles.",
+        "Side–Side–Angle is the 'ambiguous case', so it does not guarantee congruence."
+      ],
+      "solution": "Valid: SSS, SAS, ASA, AAS, HL.<br>With SSA the angle is not between the two sides, and two different triangles can fit the same information.<br>Answer: <b>SSA</b>."
+    },
+    {
+      "id": "cong-p03",
+      "type": "numeric",
+      "prompt": "△PQR ≅ △XYZ. PQ = 7 cm, QR = 10 cm, and XZ = 12 cm. How long is YZ (in cm)?",
+      "answer": "10",
+      "acceptable": [],
+      "hints": [
+        "The order of the letters tells you which parts match: P↔X, Q↔Y, R↔Z.",
+        "YZ uses the 2nd and 3rd letters of XYZ. Which side uses the 2nd and 3rd letters of PQR?",
+        "YZ matches QR."
+      ],
+      "solution": "P↔X, Q↔Y, R↔Z, so YZ corresponds to QR.<br>Corresponding parts of congruent triangles are equal.<br>YZ = QR = <b>10 cm</b>."
+    },
+    {
+      "id": "cong-p04",
+      "type": "numeric",
+      "prompt": "△ABC ≅ △DEF. m∠A = 48° and m∠E = 75°. Find m∠F in degrees.",
+      "answer": "57",
+      "acceptable": [],
+      "check": "180 - 48 - 75",
+      "hints": [
+        "Match the angles by letter order: A↔D, B↔E, C↔F.",
+        "So m∠D = m∠A = 48°. Now you know two angles of △DEF.",
+        "The angles of a triangle add to 180°."
+      ],
+      "solution": "A↔D, so m∠D = 48°. We are given m∠E = 75°.<br>m∠F = 180° − 48° − 75°<br>m∠F = <b>57°</b>."
+    },
+    {
+      "id": "cong-p05",
+      "type": "numeric",
+      "prompt": "In isosceles △ABC, AB = AC and m∠A = 40°. Find m∠B in degrees.",
+      "answer": "70",
+      "acceptable": [],
+      "check": "(180 - 40) / 2",
+      "hints": [
+        "In an isosceles triangle, the angles opposite the equal sides are equal.",
+        "AB = AC, so ∠C and ∠B are the base angles and m∠B = m∠C.",
+        "Subtract ∠A from 180°, then split what's left evenly between ∠B and ∠C."
+      ],
+      "solution": "AB = AC, so the base angles are equal: m∠B = m∠C.<br>m∠B + m∠C = 180° − 40° = 140°<br>m∠B = 140° ÷ 2 = <b>70°</b>."
+    },
+    {
+      "id": "cong-p06",
+      "type": "numeric",
+      "prompt": "△JKL ≅ △MNO. JK = 3x + 2 and MN = 5x − 6. Solve for x.",
+      "answer": "4",
+      "acceptable": [],
+      "check": "(2 + 6) / (5 - 3)",
+      "hints": [
+        "JK and MN are corresponding sides (1st and 2nd letters of each name), so they are equal.",
+        "Write the equation 3x + 2 = 5x − 6.",
+        "Get the x terms on one side: subtract 3x from both sides, then add 6."
+      ],
+      "solution": "Corresponding sides are equal: 3x + 2 = 5x − 6<br>2 = 2x − 6<br>8 = 2x<br>x = <b>4</b> &nbsp;(check: JK = 14, MN = 14 ✓)"
+    },
+    {
+      "id": "cong-p07",
+      "type": "numeric",
+      "prompt": "△RST ≅ △UVW. m∠S = (4y − 10)° and m∠V = (2y + 30)°. Find m∠S in degrees.",
+      "answer": "70",
+      "acceptable": [],
+      "check": "4 * ((30 + 10) / (4 - 2)) - 10",
+      "hints": [
+        "∠S and ∠V are both the middle letter, so they are corresponding angles and are equal.",
+        "Solve 4y − 10 = 2y + 30 for y.",
+        "The question asks for the angle, not y. Plug y back into 4y − 10."
+      ],
+      "solution": "4y − 10 = 2y + 30<br>2y = 40, so y = 20<br>m∠S = 4(20) − 10 = <b>70°</b> &nbsp;(check: m∠V = 2(20) + 30 = 70° ✓)"
+    },
+    {
+      "id": "cong-p08",
+      "type": "mcq",
+      "prompt": "Right triangles △ABC and △DEF have right angles at C and F. The hypotenuses match (AB = DE) and one pair of legs matches (AC = DF). Which theorem proves them congruent?",
+      "choices": ["HL", "SAS", "AAA", "SSA"],
+      "answer": "HL",
+      "acceptable": [],
+      "hints": [
+        "Notice what you are told: both are right triangles.",
+        "You know the hypotenuse and one leg. There is a shortcut made for exactly that.",
+        "Hypotenuse–Leg works only for right triangles."
+      ],
+      "solution": "Both triangles are right triangles, with hypotenuse AB = DE and leg AC = DF.<br>That is the <b>HL</b> (Hypotenuse–Leg) theorem."
+    },
+    {
+      "id": "cong-p09",
+      "type": "mcq",
+      "prompt": "What is CPCTC used for in a proof?",
+      "choices": [
+        "To prove two triangles are congruent",
+        "To conclude that matching parts of congruent triangles are congruent",
+        "To find the area of a triangle",
+        "To prove two lines are parallel"
+      ],
+      "answer": "To conclude that matching parts of congruent triangles are congruent",
+      "acceptable": [],
+      "hints": [
+        "Spell it out: Corresponding Parts of Congruent Triangles are Congruent.",
+        "Do you use it before or after you know the triangles are congruent?",
+        "It comes after: once the triangles are congruent, every matching side and angle is too."
+      ],
+      "solution": "CPCTC = Corresponding Parts of Congruent Triangles are Congruent.<br>First prove the triangles congruent (SSS, SAS, ...). Then CPCTC lets you say any matching parts are congruent."
+    },
+    {
+      "id": "cong-p10",
+      "type": "mcq",
+      "prompt": "Segments AB and CD cross at point M. M is the midpoint of AB and also the midpoint of CD. Which criterion proves △AMC ≅ △BMD?",
+      "choices": ["SSS", "SAS", "ASA", "HL"],
+      "answer": "SAS",
+      "acceptable": [],
+      "hints": [
+        "Midpoint means it splits a segment into two equal parts. What two pairs of sides does that give you?",
+        "When two lines cross, the vertical angles are congruent. ∠AMC and ∠BMD are vertical angles.",
+        "Check where the angle sits: ∠AMC is between sides AM and CM."
+      ],
+      "solution": "M is the midpoint of AB → AM = BM (side).<br>∠AMC ≅ ∠BMD (vertical angles).<br>M is the midpoint of CD → CM = DM (side).<br>The angle is between the two sides → <b>SAS</b>."
+    }
+  ],
+  "flashcards": [
+    { "id": "cong-fc01", "front": "Congruent figures", "back": "Same shape and same size. One can be moved onto the other with rigid motions: translations (slides), reflections (flips), and rotations (turns)." },
+    { "id": "cong-fc02", "front": "SSS", "back": "Side–Side–Side: if all three pairs of sides are congruent, the triangles are congruent." },
+    { "id": "cong-fc03", "front": "SAS", "back": "Side–Angle–Side: two pairs of sides and the angle <b>between</b> them (the included angle)." },
+    { "id": "cong-fc04", "front": "ASA", "back": "Angle–Side–Angle: two pairs of angles and the side <b>between</b> them (the included side)." },
+    { "id": "cong-fc05", "front": "AAS", "back": "Angle–Angle–Side: two pairs of angles and a side that is <b>not</b> between them." },
+    { "id": "cong-fc06", "front": "HL", "back": "Hypotenuse–Leg: for <b>right triangles only</b>. Matching hypotenuses and one matching pair of legs." },
+    { "id": "cong-fc07", "front": "CPCTC", "back": "Corresponding Parts of Congruent Triangles are Congruent. Use it <b>after</b> you prove the triangles congruent." },
+    { "id": "cong-fc08", "front": "Shortcuts that do NOT prove congruence", "back": "AAA (same shape, maybe a different size) and SSA (the ambiguous case)." },
+    { "id": "cong-fc09", "front": "Vertical angles", "back": "The opposite angles formed when two lines cross. Vertical angles are always congruent." },
+    { "id": "cong-fc10", "front": "Isosceles Triangle Theorem", "back": "If two sides of a triangle are congruent, the angles opposite those sides (the base angles) are congruent." },
+    { "id": "cong-fc11", "front": "Reflexive property", "back": "Anything is congruent to itself. Use it when two triangles share a side, for example BD ≅ BD." }
+  ],
+  "quiz": [
+    {
+      "id": "cong-q01",
+      "type": "mcq",
+      "prompt": "Two triangles have all three pairs of angles congruent. Must the triangles be congruent?",
+      "choices": [
+        "Yes, by AAA",
+        "No — matching angles only show the triangles are similar",
+        "Yes, by ASA",
+        "Only if they are right triangles"
+      ],
+      "answer": "No — matching angles only show the triangles are similar",
+      "acceptable": [],
+      "hints": ["Picture a small and a large equilateral triangle.", "Same angles means same shape, but not necessarily the same size."],
+      "solution": "A small and a large equilateral triangle have the same angles but different sizes. AAA guarantees the triangles are <b>similar</b>. They <i>could</i> also be congruent (if the scale factor happens to be 1), but matching angles alone don't guarantee it, so the answer is <b>No</b>."
+    },
+    {
+      "id": "cong-q02",
+      "type": "mcq",
+      "prompt": "In △ABC and △DEF, ∠A ≅ ∠D, AB = DE, and ∠B ≅ ∠E. Which criterion proves the triangles congruent?",
+      "choices": ["SSS", "SAS", "ASA", "AAS"],
+      "answer": "ASA",
+      "acceptable": [],
+      "hints": ["You know two angles and one side.", "Side AB connects vertex A to vertex B, so it lies between the two known angles."],
+      "solution": "AB is between ∠A and ∠B, so it is the included side: Angle–Side–Angle, <b>ASA</b>."
+    },
+    {
+      "id": "cong-q03",
+      "type": "numeric",
+      "prompt": "△GHI ≅ △KLM. GH = 2a + 1 and KL = 15. Find a.",
+      "answer": "7",
+      "acceptable": [],
+      "check": "(15 - 1) / 2",
+      "hints": ["GH and KL are corresponding sides, so they are equal.", "Solve 2a + 1 = 15."],
+      "solution": "2a + 1 = 15<br>2a = 14<br>a = <b>7</b>"
+    },
+    {
+      "id": "cong-q04",
+      "type": "numeric",
+      "prompt": "In △XYZ, XY = XZ and m∠Y = 52°. Find m∠X in degrees.",
+      "answer": "76",
+      "acceptable": [],
+      "check": "180 - 2 * 52",
+      "hints": ["XY = XZ, so the base angles ∠Y and ∠Z are equal.", "m∠X = 180° − m∠Y − m∠Z."],
+      "solution": "m∠Z = m∠Y = 52° (base angles)<br>m∠X = 180° − 52° − 52° = <b>76°</b>"
+    },
+    {
+      "id": "cong-q05",
+      "type": "mcq",
+      "prompt": "△ABD and △CBD share side BD. AB = CB and AD = CD. Which criterion proves △ABD ≅ △CBD?",
+      "choices": ["SSS", "SAS", "ASA", "HL"],
+      "answer": "SSS",
+      "acceptable": [],
+      "hints": ["Count the pairs of sides you know, including the shared side.", "BD ≅ BD by the reflexive property."],
+      "solution": "AB = CB, AD = CD, and BD = BD (shared side). Three pairs of sides → <b>SSS</b>."
+    },
+    {
+      "id": "cong-q06",
+      "type": "mcq",
+      "prompt": "△ABC ≅ △PQR. Which part corresponds to ∠C?",
+      "choices": ["∠P", "∠Q", "∠R", "side QR"],
+      "answer": "∠R",
+      "acceptable": [],
+      "hints": ["Match letters by position in the name.", "C is the 3rd letter of ABC."],
+      "solution": "A↔P, B↔Q, C↔R, so ∠C corresponds to <b>∠R</b>."
+    }
+  ]
+}

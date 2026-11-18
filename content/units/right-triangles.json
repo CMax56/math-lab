@@ -1,0 +1,237 @@
+{
+  "id": "right-triangles",
+  "title": "Right Triangles & Trig",
+  "description": "Pythagorean theorem, the special 45-45-90 and 30-60-90 triangles, and SOH CAH TOA for missing sides and angles.",
+  "strand": "geometry",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "trig-p01",
+      "type": "numeric",
+      "prompt": "A right triangle has legs 6 and 8. How long is the hypotenuse?",
+      "answer": "10",
+      "acceptable": [],
+      "check": "sqrt(6**2 + 8**2)",
+      "hints": [
+        "Use the Pythagorean theorem: a² + b² = c², where c is the hypotenuse.",
+        "6² + 8² = 36 + 64.",
+        "c² = 100. Take the square root."
+      ],
+      "solution": "c² = 6² + 8² = 36 + 64 = 100<br>c = √100 = <b>10</b>"
+    },
+    {
+      "id": "trig-p02",
+      "type": "numeric",
+      "prompt": "A right triangle has hypotenuse 13 and one leg 5. How long is the other leg?",
+      "answer": "12",
+      "acceptable": [],
+      "check": "sqrt(13**2 - 5**2)",
+      "hints": [
+        "The hypotenuse is c. Use a² + b² = c² with c = 13.",
+        "5² + b² = 13², so b² = 169 − 25.",
+        "Take the square root of 144."
+      ],
+      "solution": "5² + b² = 13²<br>b² = 169 − 25 = 144<br>b = <b>12</b>"
+    },
+    {
+      "id": "trig-p03",
+      "type": "numeric",
+      "prompt": "A 45-45-90 triangle has legs of length 7. Find the hypotenuse. Give the exact answer (like 3√2) or round to the hundredths place.",
+      "answer": "7√2",
+      "acceptable": ["7sqrt(2)", "√98", "9.90"],
+      "tolerance": 0.01,
+      "check": "7 * sqrt(2)",
+      "hints": [
+        "In a 45-45-90 triangle the sides are x, x, x√2.",
+        "The legs are x = 7.",
+        "Hypotenuse = leg × √2."
+      ],
+      "solution": "45-45-90 pattern: x, x, x√2<br>x = 7, so the hypotenuse = <b>7√2 ≈ 9.90</b>"
+    },
+    {
+      "id": "trig-p04",
+      "type": "mcq",
+      "prompt": "For an acute angle θ in a right triangle, which ratio is cos θ?",
+      "choices": ["opposite ÷ hypotenuse", "adjacent ÷ hypotenuse", "opposite ÷ adjacent", "hypotenuse ÷ adjacent"],
+      "answer": "adjacent ÷ hypotenuse",
+      "acceptable": [],
+      "hints": [
+        "Remember SOH CAH TOA.",
+        "The C in CAH stands for cosine.",
+        "CAH: Cosine = Adjacent / Hypotenuse."
+      ],
+      "solution": "SOH CAH TOA → <b>cos θ = adjacent ÷ hypotenuse</b>."
+    },
+    {
+      "id": "trig-p05",
+      "type": "numeric",
+      "prompt": "A 30-60-90 triangle has a shorter leg of 4. Find the longer leg. Give the exact answer or round to the hundredths place.",
+      "answer": "4√3",
+      "acceptable": ["4sqrt(3)", "√48", "6.93"],
+      "tolerance": 0.01,
+      "check": "4 * sqrt(3)",
+      "hints": [
+        "In a 30-60-90 triangle the sides are x (short leg), x√3 (long leg), and 2x (hypotenuse).",
+        "Here x = 4.",
+        "Long leg = x√3."
+      ],
+      "solution": "30-60-90 pattern: x, x√3, 2x<br>x = 4, so the longer leg = <b>4√3 ≈ 6.93</b>"
+    },
+    {
+      "id": "trig-p06",
+      "type": "numeric",
+      "prompt": "In right △ABC, the right angle is at C. The side opposite ∠A is 6, the side adjacent to ∠A is 8, and the hypotenuse is 10. Find sin A as a fraction or decimal.",
+      "answer": "3/5",
+      "acceptable": ["0.6", "6/10"],
+      "check": "6 / 10",
+      "hints": [
+        "SOH: sine = opposite ÷ hypotenuse.",
+        "Opposite ∠A is 6 and the hypotenuse is 10.",
+        "Simplify 6/10."
+      ],
+      "solution": "sin A = opposite/hypotenuse = 6/10 = <b>3/5</b> (0.6)"
+    },
+    {
+      "id": "trig-p07",
+      "type": "numeric",
+      "prompt": "In right △XYZ, the right angle is at Z. XZ = 5, YZ = 12, and XY = 13. Find tan X.",
+      "answer": "12/5",
+      "acceptable": ["2.4"],
+      "check": "12 / 5",
+      "hints": [
+        "TOA: tangent = opposite ÷ adjacent.",
+        "Stand at angle X. The side across from X is YZ. The leg touching X is XZ.",
+        "tan X = YZ ÷ XZ."
+      ],
+      "solution": "Opposite X: YZ = 12. Adjacent to X: XZ = 5.<br>tan X = 12/5 = <b>2.4</b>"
+    },
+    {
+      "id": "trig-p08",
+      "type": "numeric",
+      "prompt": "A right triangle has a 35° angle and a hypotenuse of 20. Find x, the side opposite the 35° angle, to the nearest tenth.",
+      "answer": "11.5",
+      "acceptable": [],
+      "roundTo": 1,
+      "tolerance": 0.05,
+      "check": "20 * sin(radians(35))",
+      "hints": [
+        "You know the hypotenuse and want the opposite side. Which ratio uses opposite and hypotenuse?",
+        "SOH: sin 35° = x / 20.",
+        "Multiply: x = 20 · sin 35°. Make sure your calculator is in degree mode."
+      ],
+      "solution": "sin 35° = x/20<br>x = 20 · sin 35° ≈ 20 · 0.5736 ≈ 11.47<br>x ≈ <b>11.5</b>"
+    },
+    {
+      "id": "trig-p09",
+      "type": "numeric",
+      "prompt": "You stand 50 ft from the base of a building. The angle of elevation to the top is 40°. How tall is the building, to the nearest foot?",
+      "answer": "42",
+      "acceptable": [],
+      "roundTo": 0,
+      "tolerance": 0.5,
+      "check": "50 * tan(radians(40))",
+      "hints": [
+        "Sketch it: the ground (50 ft) is adjacent to the 40° angle. The height is opposite.",
+        "Opposite and adjacent → TOA: tan 40° = h / 50.",
+        "h = 50 · tan 40°. Check that your calculator is in degree mode."
+      ],
+      "solution": "tan 40° = h/50<br>h = 50 · tan 40° ≈ 50 · 0.8391 ≈ 41.96<br>h ≈ <b>42 ft</b>"
+    },
+    {
+      "id": "trig-p10",
+      "type": "numeric",
+      "prompt": "In a right triangle, the side opposite angle A is 5 and the hypotenuse is 10. Find m∠A in degrees.",
+      "answer": "30",
+      "acceptable": [],
+      "check": "degrees(asin(5 / 10))",
+      "hints": [
+        "Opposite and hypotenuse → sine. sin A = 5/10 = 0.5.",
+        "To find an angle, use the inverse: A = sin⁻¹(0.5).",
+        "Which special angle has a sine of 1/2? (Think 30-60-90.)"
+      ],
+      "solution": "sin A = 5/10 = 0.5<br>A = sin⁻¹(0.5) = <b>30°</b>"
+    }
+  ],
+  "flashcards": [
+    { "id": "trig-fc01", "front": "Pythagorean theorem", "back": "a² + b² = c² in a right triangle, where c is the hypotenuse (the longest side, across from the right angle)." },
+    { "id": "trig-fc02", "front": "Converse of the Pythagorean theorem", "back": "If a² + b² = c², the triangle is right. If c² &gt; a² + b² it is obtuse; if c² &lt; a² + b² it is acute." },
+    { "id": "trig-fc03", "front": "45-45-90 triangle", "back": "Sides x, x, x√2. Hypotenuse = leg × √2." },
+    { "id": "trig-fc04", "front": "30-60-90 triangle", "back": "Short leg x (across from 30°), long leg x√3 (across from 60°), hypotenuse 2x." },
+    { "id": "trig-fc05", "front": "SOH CAH TOA", "back": "Sin = Opposite/Hypotenuse<br>Cos = Adjacent/Hypotenuse<br>Tan = Opposite/Adjacent" },
+    { "id": "trig-fc06", "front": "Inverse trig (sin⁻¹, cos⁻¹, tan⁻¹)", "back": "Use them to find an <b>angle</b> when you know two sides. Example: sin A = 0.5 → A = sin⁻¹(0.5) = 30°." },
+    { "id": "trig-fc07", "front": "Angle of elevation", "back": "The angle measured <b>up</b> from the horizontal to an object above you." },
+    { "id": "trig-fc08", "front": "Angle of depression", "back": "The angle measured <b>down</b> from the horizontal to an object below you. It equals the angle of elevation from the other end (alternate interior angles)." },
+    { "id": "trig-fc09", "front": "Common Pythagorean triples", "back": "3-4-5, 5-12-13, 8-15-17, 7-24-25, and their multiples (6-8-10, 9-12-15, ...)." },
+    { "id": "trig-fc10", "front": "Calculator check before trig", "back": "Make sure it is in <b>degree</b> mode (DEG), not radians." }
+  ],
+  "quiz": [
+    {
+      "id": "trig-q01",
+      "type": "numeric",
+      "prompt": "A right triangle has legs 9 and 12. How long is the hypotenuse?",
+      "answer": "15",
+      "acceptable": [],
+      "check": "sqrt(9**2 + 12**2)",
+      "hints": ["a² + b² = c².", "81 + 144 = 225."],
+      "solution": "c² = 81 + 144 = 225<br>c = <b>15</b>"
+    },
+    {
+      "id": "trig-q02",
+      "type": "numeric",
+      "prompt": "A 30-60-90 triangle has a hypotenuse of 18. How long is the shorter leg?",
+      "answer": "9",
+      "acceptable": [],
+      "check": "18 / 2",
+      "hints": ["Hypotenuse = 2x.", "Short leg = x."],
+      "solution": "2x = 18, so x = <b>9</b>"
+    },
+    {
+      "id": "trig-q03",
+      "type": "numeric",
+      "prompt": "A 45-45-90 triangle has a hypotenuse of 10. How long is each leg? Exact answer or round to the hundredths place.",
+      "answer": "5√2",
+      "acceptable": ["5sqrt(2)", "√50", "10/√2", "7.07"],
+      "tolerance": 0.01,
+      "check": "10 / sqrt(2)",
+      "hints": ["Hypotenuse = leg × √2, so leg = hypotenuse ÷ √2.", "10/√2 simplifies by multiplying top and bottom by √2."],
+      "solution": "leg = 10/√2 = 10√2/2 = <b>5√2 ≈ 7.07</b>"
+    },
+    {
+      "id": "trig-q04",
+      "type": "mcq",
+      "prompt": "Is a triangle with sides 7, 24, and 25 a right triangle?",
+      "choices": [
+        "Yes, because 7² + 24² = 25²",
+        "No, because 7 + 24 ≠ 25",
+        "No, because 7² + 24² > 25²",
+        "You can't tell without the angles"
+      ],
+      "answer": "Yes, because 7² + 24² = 25²",
+      "acceptable": [],
+      "hints": ["Test a² + b² against c², using the longest side as c.", "49 + 576 = ?"],
+      "solution": "7² + 24² = 49 + 576 = 625 = 25². <b>Yes</b>, it is a right triangle."
+    },
+    {
+      "id": "trig-q05",
+      "type": "numeric",
+      "prompt": "A 20-ft ladder leans against a wall and makes a 70° angle with the ground. How high up the wall does it reach, to the nearest tenth of a foot?",
+      "answer": "18.8",
+      "acceptable": [],
+      "roundTo": 1,
+      "tolerance": 0.05,
+      "check": "20 * sin(radians(70))",
+      "hints": ["The ladder is the hypotenuse. The height is opposite the 70° angle.", "sin 70° = h/20."],
+      "solution": "h = 20 · sin 70° ≈ 20 · 0.9397 ≈ <b>18.8 ft</b>"
+    },
+    {
+      "id": "trig-q06",
+      "type": "numeric",
+      "prompt": "In a right triangle, cos θ = 0.8 and the hypotenuse is 15. How long is the side adjacent to θ?",
+      "answer": "12",
+      "acceptable": [],
+      "check": "0.8 * 15",
+      "hints": ["cos θ = adjacent/hypotenuse.", "0.8 = a/15."],
+      "solution": "a = 0.8 × 15 = <b>12</b>"
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "id": "linear",
+  "title": "Linear Equations & Inequalities",
+  "description": "Solve multi-step equations and inequalities, find slope, and write equations of lines.",
+  "strand": "algebra",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "lin-p01",
+      "type": "numeric",
+      "prompt": "Solve for x: 3x + 7 = 22",
+      "answer": "5",
+      "acceptable": [],
+      "check": "(22 - 7) / 3",
+      "hints": [
+        "Undo things in reverse order: first the + 7, then the × 3.",
+        "Subtract 7 from both sides: 3x = 15.",
+        "Divide both sides by 3."
+      ],
+      "solution": "3x + 7 = 22<br>3x = 15<br>x = <b>5</b> &nbsp;(check: 3·5 + 7 = 22 ✓)"
+    },
+    {
+      "id": "lin-p02",
+      "type": "numeric",
+      "prompt": "Solve for x: 5(x − 2) = 3x + 8",
+      "answer": "9",
+      "acceptable": [],
+      "check": "(8 + 10) / (5 - 3)",
+      "hints": [
+        "Distribute the 5 first: 5x − 10.",
+        "Get the x terms on one side: subtract 3x from both sides.",
+        "2x − 10 = 8. Add 10, then divide by 2."
+      ],
+      "solution": "5x − 10 = 3x + 8<br>2x − 10 = 8<br>2x = 18<br>x = <b>9</b> &nbsp;(check: 5·7 = 35 and 27 + 8 = 35 ✓)"
+    },
+    {
+      "id": "lin-p03",
+      "type": "numeric",
+      "prompt": "Solve for x: x/4 − 3 = 2",
+      "answer": "20",
+      "acceptable": [],
+      "check": "(2 + 3) * 4",
+      "hints": [
+        "First undo the − 3 by adding 3 to both sides.",
+        "x/4 = 5.",
+        "Undo dividing by 4 by multiplying both sides by 4."
+      ],
+      "solution": "x/4 − 3 = 2<br>x/4 = 5<br>x = <b>20</b>"
+    },
+    {
+      "id": "lin-p04",
+      "type": "short",
+      "prompt": "Solve: −2x + 5 &gt; 11. Type your answer like x &lt; 7 (you can type &gt;= or &lt;= for ≥ and ≤).",
+      "answer": "x < -3",
+      "acceptable": ["-3 > x"],
+      "hints": [
+        "Solve it like an equation first: subtract 5 from both sides.",
+        "−2x > 6. Now divide both sides by −2.",
+        "When you multiply or divide by a negative number, flip the inequality sign."
+      ],
+      "solution": "−2x + 5 > 11<br>−2x > 6<br>Divide by −2 and flip the sign: <b>x &lt; −3</b><br>(check x = −4: −2(−4) + 5 = 13 > 11 ✓)"
+    },
+    {
+      "id": "lin-p05",
+      "type": "numeric",
+      "prompt": "Find the slope of the line through (2, 3) and (6, 11).",
+      "answer": "2",
+      "acceptable": [],
+      "check": "(11 - 3) / (6 - 2)",
+      "hints": [
+        "Slope = rise over run = (y₂ − y₁) / (x₂ − x₁).",
+        "Rise: 11 − 3. Run: 6 − 2.",
+        "8 ÷ 4."
+      ],
+      "solution": "m = (11 − 3)/(6 − 2) = 8/4 = <b>2</b>"
+    },
+    {
+      "id": "lin-p06",
+      "type": "mcq",
+      "prompt": "Which equation has a slope of −3 and a y-intercept of 4?",
+      "choices": ["y = 4x − 3", "y = −3x + 4", "y = 3x + 4", "y = −3x − 4"],
+      "answer": "y = −3x + 4",
+      "acceptable": [],
+      "hints": [
+        "Slope-intercept form is y = mx + b.",
+        "m is the slope (the number multiplying x). b is the y-intercept.",
+        "Put m = −3 and b = 4 into y = mx + b."
+      ],
+      "solution": "y = mx + b with m = −3 and b = 4 → <b>y = −3x + 4</b>"
+    },
+    {
+      "id": "lin-p07",
+      "type": "short",
+      "prompt": "Write the equation of the line through (1, 5) with slope 2, in slope-intercept form (y = mx + b).",
+      "answer": "y = 2x + 3",
+      "acceptable": ["y = 3 + 2x"],
+      "hints": [
+        "Start with y = 2x + b. You just need b.",
+        "The point (1, 5) is on the line, so put x = 1 and y = 5 into the equation.",
+        "5 = 2(1) + b. Solve for b."
+      ],
+      "solution": "y = 2x + b<br>5 = 2(1) + b → b = 3<br><b>y = 2x + 3</b>"
+    },
+    {
+      "id": "lin-p08",
+      "type": "numeric",
+      "prompt": "A phone plan costs $25 per month plus $0.10 per text. One month's bill was $32.50. How many texts were sent?",
+      "answer": "75",
+      "acceptable": [],
+      "check": "(32.50 - 25) / 0.10",
+      "hints": [
+        "Let t = the number of texts. Cost = 25 + 0.10t.",
+        "Set up 25 + 0.10t = 32.50.",
+        "Subtract 25, then divide by 0.10."
+      ],
+      "solution": "25 + 0.10t = 32.50<br>0.10t = 7.50<br>t = 7.50 ÷ 0.10 = <b>75 texts</b>"
+    },
+    {
+      "id": "lin-p09",
+      "type": "numeric",
+      "prompt": "What is the slope of a line perpendicular to y = (2/3)x − 1?",
+      "answer": "-3/2",
+      "acceptable": ["-1.5"],
+      "check": "-1 / (2 / 3)",
+      "hints": [
+        "Perpendicular slopes are negative reciprocals.",
+        "The original slope is 2/3. Flip it, then change the sign.",
+        "Flip 2/3 → 3/2. Change the sign → ?"
+      ],
+      "solution": "Original slope: 2/3<br>Negative reciprocal: <b>−3/2</b> &nbsp;(check: (2/3)(−3/2) = −1 ✓)"
+    },
+    {
+      "id": "lin-p10",
+      "type": "mcq",
+      "prompt": "A student needs <b>at least</b> 18 service hours. Which inequality shows the number of hours h that meets the goal?",
+      "choices": ["h > 18", "h ≥ 18", "h < 18", "h ≤ 18"],
+      "answer": "h ≥ 18",
+      "acceptable": [],
+      "hints": [
+        "Is exactly 18 hours enough?",
+        "'At least 18' means 18 or more.",
+        "'Or more' with the endpoint included uses ≥."
+      ],
+      "solution": "At least 18 means 18 or more, so 18 is included: <b>h ≥ 18</b>"
+    }
+  ],
+  "flashcards": [
+    { "id": "lin-fc01", "front": "Slope formula", "back": "m = (y₂ − y₁) / (x₂ − x₁) — rise over run" },
+    { "id": "lin-fc02", "front": "Slope-intercept form", "back": "y = mx + b (m = slope, b = y-intercept)" },
+    { "id": "lin-fc03", "front": "Point-slope form", "back": "y − y₁ = m(x − x₁)" },
+    { "id": "lin-fc04", "front": "Standard form", "back": "Ax + By = C" },
+    { "id": "lin-fc05", "front": "Parallel lines", "back": "Same slope, different y-intercepts." },
+    { "id": "lin-fc06", "front": "Perpendicular lines", "back": "Slopes are negative reciprocals (they multiply to −1). Example: 2/3 and −3/2." },
+    { "id": "lin-fc07", "front": "Flipping an inequality", "back": "When you multiply or divide both sides by a <b>negative</b> number, flip the sign (&lt; becomes &gt;)." },
+    { "id": "lin-fc08", "front": "Horizontal and vertical lines", "back": "Horizontal: y = k, slope 0. Vertical: x = k, slope undefined." },
+    { "id": "lin-fc09", "front": "Graphing inequalities on a number line", "back": "Open circle for &lt; or &gt; (endpoint not included). Closed circle for ≤ or ≥ (included)." },
+    { "id": "lin-fc10", "front": "Distributive property", "back": "a(b + c) = ab + ac" },
+    { "id": "lin-fc11", "front": "'At least' and 'at most'", "back": "At least → ≥. At most → ≤." }
+  ],
+  "quiz": [
+    {
+      "id": "lin-q01",
+      "type": "numeric",
+      "prompt": "Solve for x: 7 − 2x = 15",
+      "answer": "-4",
+      "acceptable": [],
+      "check": "(15 - 7) / -2",
+      "hints": ["Subtract 7 from both sides.", "−2x = 8."],
+      "solution": "−2x = 8<br>x = <b>−4</b>"
+    },
+    {
+      "id": "lin-q02",
+      "type": "numeric",
+      "prompt": "Solve for x: 2(3x + 1) = 4x + 10",
+      "answer": "4",
+      "acceptable": [],
+      "check": "(10 - 2) / (6 - 4)",
+      "hints": ["Distribute: 6x + 2.", "Subtract 4x and 2 from both sides."],
+      "solution": "6x + 2 = 4x + 10<br>2x = 8<br>x = <b>4</b>"
+    },
+    {
+      "id": "lin-q03",
+      "type": "short",
+      "prompt": "Solve: 3x − 4 ≤ 11. Type your answer like x &lt;= 7.",
+      "answer": "x ≤ 5",
+      "acceptable": ["x <= 5", "5 ≥ x", "5 >= x"],
+      "hints": ["Add 4 to both sides.", "Divide by 3 (positive, so no flip)."],
+      "solution": "3x ≤ 15<br><b>x ≤ 5</b>"
+    },
+    {
+      "id": "lin-q04",
+      "type": "numeric",
+      "prompt": "Find the slope of the line through (−1, 4) and (3, −4).",
+      "answer": "-2",
+      "acceptable": [],
+      "check": "(-4 - 4) / (3 - (-1))",
+      "hints": ["m = (y₂ − y₁)/(x₂ − x₁).", "(−4 − 4)/(3 − (−1)) = −8/4."],
+      "solution": "m = (−4 − 4)/(3 + 1) = −8/4 = <b>−2</b>"
+    },
+    {
+      "id": "lin-q05",
+      "type": "numeric",
+      "prompt": "What is the y-intercept of 2x + 3y = 12? (Give the y-value.)",
+      "answer": "4",
+      "acceptable": [],
+      "check": "12 / 3",
+      "hints": ["The y-intercept is where x = 0.", "3y = 12."],
+      "solution": "Set x = 0: 3y = 12 → y = <b>4</b>, so the point is (0, 4)"
+    },
+    {
+      "id": "lin-q06",
+      "type": "mcq",
+      "prompt": "The lines y = 4x + 1 and y = 4x − 7 are:",
+      "choices": ["Parallel", "Perpendicular", "The same line", "Crossing at one point, not perpendicular"],
+      "answer": "Parallel",
+      "acceptable": [],
+      "hints": ["Compare the slopes.", "Compare the y-intercepts."],
+      "solution": "Same slope (4), different y-intercepts (1 and −7) → <b>parallel</b>."
+    }
+  ]
+}

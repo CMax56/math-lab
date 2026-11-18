@@ -1,0 +1,230 @@
+{
+  "id": "circles",
+  "title": "Circles",
+  "description": "Central and inscribed angles, arcs, circumference and area, arc length and sector area, tangents and chords.",
+  "strand": "geometry",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "circ-p01",
+      "type": "numeric",
+      "prompt": "A central angle and an inscribed angle both intercept the same 110° arc. What is the measure of the inscribed angle in degrees?",
+      "answer": "55",
+      "acceptable": [],
+      "check": "110 / 2",
+      "hints": [
+        "A central angle has its vertex at the center. An inscribed angle has its vertex on the circle.",
+        "An inscribed angle is half of its intercepted arc.",
+        "Take half of 110°."
+      ],
+      "solution": "Inscribed angle = ½ × arc = ½ × 110° = <b>55°</b>"
+    },
+    {
+      "id": "circ-p02",
+      "type": "numeric",
+      "prompt": "An inscribed angle measures 35°. What is the measure of its intercepted arc in degrees?",
+      "answer": "70",
+      "acceptable": [],
+      "check": "2 * 35",
+      "hints": [
+        "Inscribed angle = ½ × intercepted arc.",
+        "So the arc = 2 × the inscribed angle.",
+        "Double 35°."
+      ],
+      "solution": "Arc = 2 × 35° = <b>70°</b>"
+    },
+    {
+      "id": "circ-p03",
+      "type": "numeric",
+      "prompt": "Find the circumference of a circle with radius 6. Give the answer in terms of π (like 5π) or round to the hundredths place.",
+      "answer": "12π",
+      "acceptable": ["12pi", "37.70"],
+      "tolerance": 0.01,
+      "check": "2 * pi * 6",
+      "hints": [
+        "Circumference: C = 2πr.",
+        "r = 6, so C = 2 · π · 6.",
+        "2 · 6 = 12. Keep the π."
+      ],
+      "solution": "C = 2πr = 2π(6) = <b>12π ≈ 37.70</b>"
+    },
+    {
+      "id": "circ-p04",
+      "type": "numeric",
+      "prompt": "Find the area of a circle with diameter 10. Give the answer in terms of π or round to the hundredths place.",
+      "answer": "25π",
+      "acceptable": ["25pi", "78.54"],
+      "tolerance": 0.01,
+      "check": "pi * 5**2",
+      "hints": [
+        "The area formula uses the radius, not the diameter: A = πr².",
+        "Radius = diameter ÷ 2 = 5.",
+        "Square the radius first: 5² = 25."
+      ],
+      "solution": "r = 10 ÷ 2 = 5<br>A = πr² = π(5²) = <b>25π ≈ 78.54</b>"
+    },
+    {
+      "id": "circ-p05",
+      "type": "mcq",
+      "prompt": "An angle is inscribed in a semicircle (its sides go to the ends of a diameter). What is its measure?",
+      "choices": ["45°", "90°", "180°", "It depends on the circle"],
+      "answer": "90°",
+      "acceptable": [],
+      "hints": [
+        "A diameter cuts the circle into two arcs. How many degrees is each?",
+        "The angle intercepts a 180° arc.",
+        "Inscribed angle = half the arc."
+      ],
+      "solution": "The intercepted arc is a semicircle = 180°.<br>Inscribed angle = ½ × 180° = <b>90°</b>. This is always true."
+    },
+    {
+      "id": "circ-p06",
+      "type": "numeric",
+      "prompt": "A circle has radius 9. Find the length of an arc with a central angle of 120°. Give the answer in terms of π or round to the hundredths place.",
+      "answer": "6π",
+      "acceptable": ["6pi", "18.85"],
+      "tolerance": 0.01,
+      "check": "120 / 360 * 2 * pi * 9",
+      "hints": [
+        "An arc is a fraction of the whole circumference. What fraction is 120° of 360°?",
+        "120/360 = 1/3. The full circumference is 2π(9) = 18π.",
+        "Arc length = (1/3) × 18π."
+      ],
+      "solution": "Arc length = (120/360) · 2π(9)<br>= (1/3) · 18π = <b>6π ≈ 18.85</b>"
+    },
+    {
+      "id": "circ-p07",
+      "type": "numeric",
+      "prompt": "Find the area of a sector with radius 4 and central angle 90°. Give the answer in terms of π or round to the hundredths place.",
+      "answer": "4π",
+      "acceptable": ["4pi", "12.57"],
+      "tolerance": 0.01,
+      "check": "90 / 360 * pi * 4**2",
+      "hints": [
+        "A sector is a 'pizza slice': a fraction of the whole circle's area.",
+        "90° is 1/4 of 360°. The whole area is π(4²) = 16π.",
+        "Take 1/4 of 16π."
+      ],
+      "solution": "Sector area = (90/360) · π(4²)<br>= (1/4) · 16π = <b>4π ≈ 12.57</b>"
+    },
+    {
+      "id": "circ-p08",
+      "type": "numeric",
+      "prompt": "Line PQ is tangent to circle O at point P. The radius OP = 5 and PQ = 12. Find OQ, the distance from the center O to point Q.",
+      "answer": "13",
+      "acceptable": [],
+      "check": "sqrt(5**2 + 12**2)",
+      "hints": [
+        "A tangent line is perpendicular to the radius at the point of tangency.",
+        "So △OPQ is a right triangle with its right angle at P. OQ is the hypotenuse.",
+        "Use a² + b² = c² with legs 5 and 12."
+      ],
+      "solution": "OP ⟂ PQ, so ∠P = 90°.<br>OQ² = 5² + 12² = 25 + 144 = 169<br>OQ = <b>13</b>"
+    },
+    {
+      "id": "circ-p09",
+      "type": "mcq",
+      "prompt": "A quadrilateral is inscribed in a circle (all four corners on the circle). What is true about its opposite angles?",
+      "choices": ["They are congruent", "They are supplementary (add to 180°)", "They are complementary (add to 90°)", "They are always right angles"],
+      "answer": "They are supplementary (add to 180°)",
+      "acceptable": [],
+      "hints": [
+        "Each angle is an inscribed angle, so it is half of its intercepted arc.",
+        "Two opposite angles intercept two arcs that together make the whole circle (360°).",
+        "Half of 360° is ...?"
+      ],
+      "solution": "Opposite angles intercept arcs that add to 360°. Each angle is half its arc, so together they are ½ × 360° = 180°.<br>They are <b>supplementary</b>."
+    },
+    {
+      "id": "circ-p10",
+      "type": "numeric",
+      "prompt": "Two chords cross inside a circle. One chord is split into pieces 4 and 6. The other is split into pieces 3 and x. Find x.",
+      "answer": "8",
+      "acceptable": [],
+      "check": "4 * 6 / 3",
+      "hints": [
+        "Intersecting chords: the products of the pieces are equal.",
+        "Piece × piece on one chord = piece × piece on the other: 4 · 6 = 3 · x.",
+        "Solve 24 = 3x."
+      ],
+      "solution": "4 · 6 = 3 · x<br>24 = 3x<br>x = <b>8</b>"
+    }
+  ],
+  "flashcards": [
+    { "id": "circ-fc01", "front": "Radius and diameter", "back": "Radius r: center to the circle. Diameter d: all the way across through the center. d = 2r." },
+    { "id": "circ-fc02", "front": "Circumference", "back": "C = 2πr = πd" },
+    { "id": "circ-fc03", "front": "Area of a circle", "back": "A = πr² (use the radius!)" },
+    { "id": "circ-fc04", "front": "Central angle", "back": "Vertex at the center. Its measure <b>equals</b> its intercepted arc." },
+    { "id": "circ-fc05", "front": "Inscribed angle", "back": "Vertex on the circle. Its measure is <b>half</b> its intercepted arc." },
+    { "id": "circ-fc06", "front": "Angle inscribed in a semicircle", "back": "Always 90°." },
+    { "id": "circ-fc07", "front": "Tangent line", "back": "Touches the circle at exactly one point and is perpendicular (90°) to the radius there." },
+    { "id": "circ-fc08", "front": "Arc length", "back": "(θ/360) × 2πr" },
+    { "id": "circ-fc09", "front": "Sector area", "back": "(θ/360) × πr²" },
+    { "id": "circ-fc10", "front": "Intersecting chords", "back": "If two chords cross, the products of their pieces are equal: a · b = c · d." },
+    { "id": "circ-fc11", "front": "Inscribed quadrilateral", "back": "Opposite angles are supplementary (add to 180°)." },
+    { "id": "circ-fc12", "front": "Two tangents from one point", "back": "Tangent segments from the same outside point to a circle are congruent." }
+  ],
+  "quiz": [
+    {
+      "id": "circ-q01",
+      "type": "numeric",
+      "prompt": "An inscribed angle intercepts a 140° arc. What is the angle's measure in degrees?",
+      "answer": "70",
+      "acceptable": [],
+      "check": "140 / 2",
+      "hints": ["Inscribed angle = half the arc.", "½ × 140°."],
+      "solution": "½ × 140° = <b>70°</b>"
+    },
+    {
+      "id": "circ-q02",
+      "type": "numeric",
+      "prompt": "A circle has area 49π. What is its radius?",
+      "answer": "7",
+      "acceptable": [],
+      "check": "sqrt(49)",
+      "hints": ["πr² = 49π.", "r² = 49."],
+      "solution": "πr² = 49π → r² = 49 → r = <b>7</b>"
+    },
+    {
+      "id": "circ-q03",
+      "type": "numeric",
+      "prompt": "A circle has circumference 18π. What is its diameter?",
+      "answer": "18",
+      "acceptable": [],
+      "check": "18 * pi / pi",
+      "hints": ["C = πd.", "πd = 18π."],
+      "solution": "C = πd → 18π = πd → d = <b>18</b>"
+    },
+    {
+      "id": "circ-q04",
+      "type": "numeric",
+      "prompt": "A circle has radius 12. Find the length of an arc with central angle 60°. Give the answer in terms of π or round to the hundredths place.",
+      "answer": "4π",
+      "acceptable": ["4pi", "12.57"],
+      "tolerance": 0.01,
+      "check": "60 / 360 * 2 * pi * 12",
+      "hints": ["60° is 1/6 of the circle.", "Full circumference = 2π(12) = 24π."],
+      "solution": "(60/360) · 24π = (1/6) · 24π = <b>4π ≈ 12.57</b>"
+    },
+    {
+      "id": "circ-q05",
+      "type": "mcq",
+      "prompt": "From point P outside a circle, two tangent segments touch the circle at A and B. PA = 9. What is PB?",
+      "choices": ["4.5", "9", "18", "Not enough information"],
+      "answer": "9",
+      "acceptable": [],
+      "hints": ["Think about the two-tangent theorem.", "Tangent segments from the same outside point are congruent."],
+      "solution": "Tangent segments from the same point are congruent, so PB = PA = <b>9</b>."
+    },
+    {
+      "id": "circ-q06",
+      "type": "numeric",
+      "prompt": "Quadrilateral ABCD is inscribed in a circle. m∠A = 115°. Find m∠C in degrees.",
+      "answer": "65",
+      "acceptable": [],
+      "check": "180 - 115",
+      "hints": ["∠A and ∠C are opposite angles.", "Opposite angles of an inscribed quadrilateral add to 180°."],
+      "solution": "m∠C = 180° − 115° = <b>65°</b>"
+    }
+  ]
+}

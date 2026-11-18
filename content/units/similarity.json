@@ -1,0 +1,234 @@
+{
+  "id": "similarity",
+  "title": "Similarity",
+  "description": "Same shape, different size. Use scale factors and proportions to find missing lengths, and prove triangles similar with AA, SSS~, and SAS~.",
+  "strand": "geometry",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "sim-p01",
+      "type": "numeric",
+      "prompt": "△ABC ∼ △DEF with AB = 6 and DE = 15. What is the scale factor from △ABC to △DEF?",
+      "answer": "5/2",
+      "acceptable": ["2.5"],
+      "check": "15 / 6",
+      "hints": [
+        "Scale factor from the first figure to the second = new length ÷ original length.",
+        "AB and DE are corresponding sides. Divide DE by AB.",
+        "Simplify 15/6."
+      ],
+      "solution": "Scale factor = DE ÷ AB = 15 ÷ 6<br>= 5/2 = <b>2.5</b>"
+    },
+    {
+      "id": "sim-p02",
+      "type": "numeric",
+      "prompt": "△ABC ∼ △DEF with AB = 6, DE = 15, and BC = 8. Find EF.",
+      "answer": "20",
+      "acceptable": [],
+      "check": "8 * 15 / 6",
+      "hints": [
+        "Corresponding sides are proportional: DE/AB = EF/BC.",
+        "Set up 15/6 = EF/8.",
+        "Multiply both sides by 8 (or multiply BC by the scale factor 2.5)."
+      ],
+      "solution": "15/6 = EF/8<br>EF = 8 × 15/6 = 8 × 2.5<br>EF = <b>20</b>"
+    },
+    {
+      "id": "sim-p03",
+      "type": "numeric",
+      "prompt": "Solve the proportion: x/12 = 5/8",
+      "answer": "7.5",
+      "acceptable": ["15/2"],
+      "check": "12 * 5 / 8",
+      "hints": [
+        "Cross-multiply: 8 · x = 12 · 5.",
+        "That gives 8x = 60.",
+        "Divide both sides by 8."
+      ],
+      "solution": "Cross-multiply: 8x = 60<br>x = 60/8<br>x = <b>7.5</b>"
+    },
+    {
+      "id": "sim-p04",
+      "type": "mcq",
+      "prompt": "Two triangles have two pairs of congruent angles. What does that prove?",
+      "choices": [
+        "They are similar (AA similarity)",
+        "They are congruent (ASA)",
+        "They are congruent (HL)",
+        "Nothing, unless a side is known"
+      ],
+      "answer": "They are similar (AA similarity)",
+      "acceptable": [],
+      "hints": [
+        "If two angles match, what must the third angle be? (Angles add to 180°.)",
+        "All three angles matching means the same shape.",
+        "Same shape is similarity. You need a side to prove congruence."
+      ],
+      "solution": "If two pairs of angles match, the third pair matches too (180° total). Same angles → same shape.<br>That is <b>AA similarity</b>. With no sides known, you can't prove congruence."
+    },
+    {
+      "id": "sim-p05",
+      "type": "numeric",
+      "prompt": "A 6-ft person casts a 4-ft shadow. At the same time, a tree casts a 22-ft shadow. How tall is the tree in feet?",
+      "answer": "33",
+      "acceptable": [],
+      "check": "6 * 22 / 4",
+      "hints": [
+        "The sun hits both at the same angle, so the person and tree make similar right triangles.",
+        "Set up height/shadow = height/shadow: 6/4 = h/22.",
+        "Cross-multiply and solve for h."
+      ],
+      "solution": "6/4 = h/22<br>4h = 132<br>h = <b>33 ft</b>"
+    },
+    {
+      "id": "sim-p06",
+      "type": "mcq",
+      "prompt": "One triangle has sides 3, 4, 5. Another has sides 9, 12, 15. Are they similar?",
+      "choices": [
+        "Yes, by SSS~ with scale factor 3",
+        "Yes, by SAS~ with scale factor 2",
+        "No, the ratios are different",
+        "You can't tell without the angles"
+      ],
+      "answer": "Yes, by SSS~ with scale factor 3",
+      "acceptable": [],
+      "hints": [
+        "Match shortest to shortest, middle to middle, longest to longest.",
+        "Find each ratio: 9/3, 12/4, 15/5.",
+        "If all three ratios are equal, the triangles are similar by SSS~."
+      ],
+      "solution": "9/3 = 3, 12/4 = 3, 15/5 = 3. All three ratios are equal.<br><b>Similar by SSS~, scale factor 3.</b>"
+    },
+    {
+      "id": "sim-p07",
+      "type": "numeric",
+      "prompt": "Two similar triangles have a scale factor of 3 : 5 (small : large). The small triangle's perimeter is 24 cm. What is the large triangle's perimeter in cm?",
+      "answer": "40",
+      "acceptable": [],
+      "check": "24 * 5 / 3",
+      "hints": [
+        "Perimeters grow by the same scale factor as the sides.",
+        "Set up 3/5 = 24/P.",
+        "Cross-multiply: 3P = 120."
+      ],
+      "solution": "Perimeter ratio = scale factor = 3/5<br>3/5 = 24/P → 3P = 120<br>P = <b>40 cm</b>"
+    },
+    {
+      "id": "sim-p08",
+      "type": "numeric",
+      "prompt": "Two similar rectangles have a scale factor of 2 : 3 (small : large). The small one has an area of 20 in². What is the area of the large one in in²?",
+      "answer": "45",
+      "acceptable": [],
+      "check": "20 * (3 / 2) ** 2",
+      "hints": [
+        "Areas do not scale by k. They scale by k² (k squared).",
+        "The area ratio is 2² : 3² = 4 : 9.",
+        "Set up 4/9 = 20/A and solve."
+      ],
+      "solution": "Area ratio = 2² : 3² = 4 : 9<br>4/9 = 20/A → 4A = 180<br>A = <b>45 in²</b>"
+    },
+    {
+      "id": "sim-p09",
+      "type": "numeric",
+      "prompt": "In △ABC, segment DE is parallel to BC, with D on AB and E on AC. AD = 4, DB = 6, and AE = 5. Find EC.",
+      "answer": "7.5",
+      "acceptable": ["15/2"],
+      "check": "5 * 6 / 4",
+      "hints": [
+        "A line parallel to one side of a triangle splits the other two sides proportionally (Triangle Proportionality Theorem).",
+        "Set up AD/DB = AE/EC: 4/6 = 5/EC.",
+        "Cross-multiply: 4 · EC = 30."
+      ],
+      "solution": "AD/DB = AE/EC<br>4/6 = 5/EC → 4·EC = 30<br>EC = <b>7.5</b>"
+    },
+    {
+      "id": "sim-p10",
+      "type": "pair",
+      "prompt": "A dilation centered at the origin with scale factor 3 maps the point (2, −5) to what point? Type it like (x, y).",
+      "answer": "(6, -15)",
+      "acceptable": [],
+      "check": "[2 * 3, -5 * 3]",
+      "hints": [
+        "A dilation centered at the origin multiplies both coordinates by the scale factor.",
+        "The rule is (x, y) → (3x, 3y).",
+        "Multiply 2 by 3 and −5 by 3. Keep the negative sign."
+      ],
+      "solution": "(x, y) → (3x, 3y)<br>(2, −5) → (3·2, 3·(−5)) = <b>(6, −15)</b>"
+    }
+  ],
+  "flashcards": [
+    { "id": "sim-fc01", "front": "Similar figures", "back": "Same shape, possibly different size. Corresponding angles are congruent and corresponding sides are proportional. Symbol: ∼" },
+    { "id": "sim-fc02", "front": "Scale factor (k)", "back": "new length ÷ original length. k &gt; 1 enlarges; 0 &lt; k &lt; 1 shrinks." },
+    { "id": "sim-fc03", "front": "AA similarity", "back": "If two pairs of angles are congruent, the triangles are similar." },
+    { "id": "sim-fc04", "front": "SSS similarity (SSS~)", "back": "If all three pairs of sides have the same ratio, the triangles are similar." },
+    { "id": "sim-fc05", "front": "SAS similarity (SAS~)", "back": "If two pairs of sides have the same ratio and the included angles are congruent, the triangles are similar." },
+    { "id": "sim-fc06", "front": "Triangle Proportionality Theorem", "back": "A line parallel to one side of a triangle divides the other two sides proportionally." },
+    { "id": "sim-fc07", "front": "Dilation centered at the origin", "back": "(x, y) → (kx, ky). Multiply both coordinates by the scale factor k." },
+    { "id": "sim-fc08", "front": "Perimeter of similar figures", "back": "Perimeter ratio = k (same as the side ratio)." },
+    { "id": "sim-fc09", "front": "Area of similar figures", "back": "Area ratio = k². Example: k = 3 → area is 9 times as big." },
+    { "id": "sim-fc10", "front": "Volume of similar solids", "back": "Volume ratio = k³. Example: k = 2 → volume is 8 times as big." },
+    { "id": "sim-fc11", "front": "Cross-multiplying", "back": "If a/b = c/d, then a·d = b·c. Use it to solve proportions." }
+  ],
+  "quiz": [
+    {
+      "id": "sim-q01",
+      "type": "numeric",
+      "prompt": "A map uses the scale 1 cm : 2.5 km. Two towns are 7.2 cm apart on the map. How many km apart are they?",
+      "answer": "18",
+      "acceptable": [],
+      "check": "7.2 * 2.5",
+      "hints": ["Each map centimeter stands for 2.5 km.", "Multiply 7.2 by 2.5."],
+      "solution": "7.2 × 2.5 = <b>18 km</b>"
+    },
+    {
+      "id": "sim-q02",
+      "type": "numeric",
+      "prompt": "△PQR ∼ △STU. PQ = 10, ST = 4, and QR = 15. Find TU.",
+      "answer": "6",
+      "acceptable": [],
+      "check": "15 * 4 / 10",
+      "hints": ["ST/PQ = TU/QR.", "4/10 = TU/15."],
+      "solution": "Scale factor = 4/10 = 0.4<br>TU = 15 × 0.4 = <b>6</b>"
+    },
+    {
+      "id": "sim-q03",
+      "type": "mcq",
+      "prompt": "Which set of side lengths makes a triangle similar to one with sides 4, 6, 8?",
+      "choices": ["6, 9, 12", "5, 7, 9", "8, 10, 12", "2, 4, 6"],
+      "answer": "6, 9, 12",
+      "acceptable": [],
+      "hints": ["Look for one number that multiplies 4, 6, and 8 to give the new sides.", "Adding the same amount does not keep the shape."],
+      "solution": "6/4 = 9/6 = 12/8 = 1.5, so <b>6, 9, 12</b> works (scale factor 1.5). The others don't have equal ratios."
+    },
+    {
+      "id": "sim-q04",
+      "type": "numeric",
+      "prompt": "Two similar cylinders have a scale factor of 1 : 2 (small : large). The small one holds 50 cm³. What is the volume of the large one in cm³?",
+      "answer": "400",
+      "acceptable": [],
+      "check": "50 * 2 ** 3",
+      "hints": ["Volumes scale by k³.", "k = 2, so k³ = 8."],
+      "solution": "Volume ratio = 1³ : 2³ = 1 : 8<br>50 × 8 = <b>400 cm³</b>"
+    },
+    {
+      "id": "sim-q05",
+      "type": "numeric",
+      "prompt": "Solve for x: x/9 = 8/12",
+      "answer": "6",
+      "acceptable": [],
+      "check": "9 * 8 / 12",
+      "hints": ["Cross-multiply.", "12x = 72."],
+      "solution": "12x = 9 · 8 = 72<br>x = <b>6</b>"
+    },
+    {
+      "id": "sim-q06",
+      "type": "pair",
+      "prompt": "Dilate the point (−4, 10) by a scale factor of 1/2, centered at the origin. Type it like (x, y).",
+      "answer": "(-2, 5)",
+      "acceptable": [],
+      "check": "[-4 / 2, 10 / 2]",
+      "hints": ["Multiply both coordinates by 1/2.", "Half of −4 is −2."],
+      "solution": "(−4 · ½, 10 · ½) = <b>(−2, 5)</b>"
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "id": "quadratics",
+  "title": "Quadratics",
+  "description": "Solve by factoring, square roots, and the quadratic formula. Find the vertex and axis of symmetry, and use the discriminant.",
+  "strand": "algebra",
+  "status": "starter",
+  "practice": [
+    {
+      "id": "quad-p01",
+      "type": "multi",
+      "prompt": "Solve x² − 5x + 6 = 0. Type both solutions separated by a comma, like 1, 7.",
+      "answer": "2, 3",
+      "acceptable": [],
+      "check": "roots(1, -5, 6)",
+      "hints": [
+        "Factor: find two numbers that multiply to 6 and add to −5.",
+        "−2 and −3 work: (x − 2)(x − 3) = 0.",
+        "Zero product property: set each factor equal to 0."
+      ],
+      "solution": "(x − 2)(x − 3) = 0<br>x − 2 = 0 or x − 3 = 0<br>x = <b>2 or 3</b>"
+    },
+    {
+      "id": "quad-p02",
+      "type": "multi",
+      "prompt": "Solve x² − 16 = 0. Type both solutions separated by a comma.",
+      "answer": "-4, 4",
+      "acceptable": ["±4"],
+      "check": "roots(1, 0, -16)",
+      "hints": [
+        "Add 16 to both sides: x² = 16.",
+        "Take the square root of both sides. Don't forget there are two answers.",
+        "x = ±√16."
+      ],
+      "solution": "x² = 16<br>x = ±√16 = <b>±4</b> (x = 4 or x = −4)<br>(Or factor: (x + 4)(x − 4) = 0.)"
+    },
+    {
+      "id": "quad-p03",
+      "type": "multi",
+      "prompt": "Solve x² + 7x + 10 = 0. Type both solutions separated by a comma.",
+      "answer": "-2, -5",
+      "acceptable": [],
+      "check": "roots(1, 7, 10)",
+      "hints": [
+        "Find two numbers that multiply to 10 and add to 7.",
+        "2 and 5 work: (x + 2)(x + 5) = 0.",
+        "Set each factor to 0. Watch the signs."
+      ],
+      "solution": "(x + 2)(x + 5) = 0<br>x = <b>−2 or −5</b>"
+    },
+    {
+      "id": "quad-p04",
+      "type": "multi",
+      "prompt": "Solve 2x² − 8x = 0. Type both solutions separated by a comma.",
+      "answer": "0, 4",
+      "acceptable": [],
+      "check": "roots(2, -8, 0)",
+      "hints": [
+        "There's no constant term. Factor out the greatest common factor.",
+        "2x(x − 4) = 0.",
+        "Set each factor to 0. Don't divide by x, or you'll lose a solution."
+      ],
+      "solution": "2x(x − 4) = 0<br>2x = 0 → x = 0, or x − 4 = 0 → x = 4<br>x = <b>0 or 4</b>"
+    },
+    {
+      "id": "quad-p05",
+      "type": "numeric",
+      "prompt": "Find the axis of symmetry of y = x² − 6x + 5. Type the x-value.",
+      "answer": "3",
+      "acceptable": [],
+      "check": "-(-6) / (2 * 1)",
+      "hints": [
+        "The axis of symmetry is x = −b / (2a).",
+        "Here a = 1 and b = −6.",
+        "−(−6) / (2 · 1) = 6/2."
+      ],
+      "solution": "x = −b/(2a) = −(−6)/(2·1) = 6/2 → <b>x = 3</b>"
+    },
+    {
+      "id": "quad-p06",
+      "type": "pair",
+      "prompt": "Find the vertex of y = x² − 4x + 7. Type it like (x, y).",
+      "answer": "(2, 3)",
+      "acceptable": [],
+      "check": "[2, 2**2 - 4 * 2 + 7]",
+      "hints": [
+        "First find the x-coordinate with x = −b/(2a).",
+        "a = 1 and b = −4, so x = 4/2 = 2.",
+        "Plug x = 2 into the equation to get the y-coordinate."
+      ],
+      "solution": "x = −(−4)/(2·1) = 2<br>y = 2² − 4(2) + 7 = 4 − 8 + 7 = 3<br>Vertex: <b>(2, 3)</b>"
+    },
+    {
+      "id": "quad-p07",
+      "type": "multi",
+      "prompt": "Use the quadratic formula to solve 2x² + 3x − 2 = 0. Type both solutions separated by a comma (fractions are fine).",
+      "answer": "1/2, -2",
+      "acceptable": ["0.5, -2"],
+      "check": "roots(2, 3, -2)",
+      "hints": [
+        "x = (−b ± √(b² − 4ac)) / (2a), with a = 2, b = 3, c = −2.",
+        "Discriminant: b² − 4ac = 9 − 4(2)(−2) = 9 + 16 = 25.",
+        "x = (−3 ± 5) / 4. Do the + and the − separately."
+      ],
+      "solution": "b² − 4ac = 9 + 16 = 25, √25 = 5<br>x = (−3 + 5)/4 = 2/4 = 1/2<br>x = (−3 − 5)/4 = −8/4 = −2<br>x = <b>1/2 or −2</b>"
+    },
+    {
+      "id": "quad-p08",
+      "type": "mcq",
+      "prompt": "Use the discriminant of x² + 4x + 5. How many real solutions does x² + 4x + 5 = 0 have?",
+      "choices": ["Two", "One", "None (no real solutions)", "Infinitely many"],
+      "answer": "None (no real solutions)",
+      "acceptable": [],
+      "hints": [
+        "Discriminant = b² − 4ac. Here a = 1, b = 4, c = 5.",
+        "16 − 20 = −4.",
+        "Positive → two, zero → one, negative → none."
+      ],
+      "solution": "b² − 4ac = 16 − 20 = −4 &lt; 0<br>A negative discriminant means <b>no real solutions</b> (the parabola never touches the x-axis)."
+    },
+    {
+      "id": "quad-p09",
+      "type": "multi",
+      "prompt": "Solve (x − 3)² = 25. Type both solutions separated by a comma.",
+      "answer": "8, -2",
+      "acceptable": [],
+      "check": "roots(1, -6, -16)",
+      "hints": [
+        "Take the square root of both sides first. Don't expand.",
+        "x − 3 = ±5.",
+        "Solve x − 3 = 5 and x − 3 = −5 separately."
+      ],
+      "solution": "x − 3 = ±5<br>x = 3 + 5 = 8 or x = 3 − 5 = −2<br>x = <b>8 or −2</b>"
+    },
+    {
+      "id": "quad-p10",
+      "type": "mcq",
+      "prompt": "Which is the factored form of x² − 9x + 20?",
+      "choices": ["(x − 4)(x − 5)", "(x + 4)(x + 5)", "(x − 2)(x − 10)", "(x − 4)(x + 5)"],
+      "answer": "(x − 4)(x − 5)",
+      "acceptable": [],
+      "hints": [
+        "Find two numbers that multiply to +20 and add to −9.",
+        "Both numbers must be negative (positive product, negative sum).",
+        "−4 · −5 = 20 and −4 + (−5) = −9."
+      ],
+      "solution": "−4 and −5 multiply to 20 and add to −9.<br><b>(x − 4)(x − 5)</b>. Check by FOIL: x² − 5x − 4x + 20 = x² − 9x + 20 ✓"
+    }
+  ],
+  "flashcards": [
+    { "id": "quad-fc01", "front": "Standard form of a quadratic", "back": "y = ax² + bx + c (a ≠ 0)" },
+    { "id": "quad-fc02", "front": "Vertex form", "back": "y = a(x − h)² + k, vertex at (h, k)" },
+    { "id": "quad-fc03", "front": "Axis of symmetry", "back": "x = −b / (2a)" },
+    { "id": "quad-fc04", "front": "Quadratic formula", "back": "x = (−b ± √(b² − 4ac)) / (2a)" },
+    { "id": "quad-fc05", "front": "Discriminant", "back": "b² − 4ac<br>&gt; 0: two real solutions<br>= 0: one real solution<br>&lt; 0: no real solutions" },
+    { "id": "quad-fc06", "front": "Zero product property", "back": "If A · B = 0, then A = 0 or B = 0." },
+    { "id": "quad-fc07", "front": "Difference of squares", "back": "a² − b² = (a + b)(a − b)" },
+    { "id": "quad-fc08", "front": "Perfect square trinomial", "back": "(a + b)² = a² + 2ab + b²<br>(a − b)² = a² − 2ab + b²" },
+    { "id": "quad-fc09", "front": "Which way does a parabola open?", "back": "a &gt; 0: opens up (has a minimum). a &lt; 0: opens down (has a maximum)." },
+    { "id": "quad-fc10", "front": "Roots, zeros, x-intercepts, solutions", "back": "All the same idea: the x-values where y = 0." },
+    { "id": "quad-fc11", "front": "Square root method", "back": "If x² = k (k ≥ 0), then x = ±√k. Remember both signs." }
+  ],
+  "quiz": [
+    {
+      "id": "quad-q01",
+      "type": "multi",
+      "prompt": "Solve x² − x − 12 = 0. Type both solutions separated by a comma.",
+      "answer": "4, -3",
+      "acceptable": [],
+      "check": "roots(1, -1, -12)",
+      "hints": ["Multiply to −12, add to −1.", "(x − 4)(x + 3)."],
+      "solution": "(x − 4)(x + 3) = 0 → x = <b>4 or −3</b>"
+    },
+    {
+      "id": "quad-q02",
+      "type": "multi",
+      "prompt": "Solve x² = 49. Type both solutions separated by a comma.",
+      "answer": "7, -7",
+      "acceptable": ["±7"],
+      "check": "roots(1, 0, -49)",
+      "hints": ["Take the square root of both sides.", "Remember ±."],
+      "solution": "x = ±√49 = <b>±7</b>"
+    },
+    {
+      "id": "quad-q03",
+      "type": "numeric",
+      "prompt": "Find the axis of symmetry of y = 2x² + 8x − 1. Type the x-value.",
+      "answer": "-2",
+      "acceptable": [],
+      "check": "-8 / (2 * 2)",
+      "hints": ["x = −b/(2a).", "a = 2, b = 8."],
+      "solution": "x = −8/(2·2) = −8/4 → <b>x = −2</b>"
+    },
+    {
+      "id": "quad-q04",
+      "type": "multi",
+      "prompt": "Solve 3x² + 5x − 2 = 0. Type both solutions separated by a comma (fractions are fine).",
+      "answer": "1/3, -2",
+      "acceptable": ["0.33, -2"],
+      "tolerance": 0.01,
+      "check": "roots(3, 5, -2)",
+      "hints": ["Quadratic formula with a = 3, b = 5, c = −2.", "b² − 4ac = 25 + 24 = 49."],
+      "solution": "x = (−5 ± 7)/6<br>x = 2/6 = 1/3 or x = −12/6 = −2<br>x = <b>1/3 or −2</b>"
+    },
+    {
+      "id": "quad-q05",
+      "type": "mcq",
+      "prompt": "The parabola y = −x² + 4 opens:",
+      "choices": ["Up, with a minimum", "Down, with a maximum", "Left", "Right"],
+      "answer": "Down, with a maximum",
+      "acceptable": [],
+      "hints": ["Look at the sign of a, the number in front of x².", "a = −1."],
+      "solution": "a = −1 &lt; 0, so it opens <b>down</b> and has a maximum at (0, 4)."
+    },
+    {
+      "id": "quad-q06",
+      "type": "mcq",
+      "prompt": "What does the discriminant tell you about x² − 6x + 9 = 0?",
+      "choices": ["Two real solutions", "Exactly one real solution", "No real solutions", "Infinitely many solutions"],
+      "answer": "Exactly one real solution",
+      "acceptable": [],
+      "hints": ["b² − 4ac with a = 1, b = −6, c = 9.", "36 − 36 = ?"],
+      "solution": "b² − 4ac = 36 − 36 = 0 → <b>exactly one real solution</b> (x = 3, since (x − 3)² = 0)."
+    }
+  ]
+}

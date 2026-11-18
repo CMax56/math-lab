@@ -91,6 +91,22 @@
       "id": "circ-p03",
       "type": "numeric",
       "prompt": "Find the circumference of a circle with radius 6. Give the answer in terms of π (like 5π) or round to the hundredths place.",
+      "figure": {
+        "alt": "Circle with radius 6. The circumference is marked unknown.",
+        "pts": [
+          { "id": "O", "x": 120, "y": 100, "name": "O", "dot": true },
+          { "id": "R", "x": 210, "y": 100, "name": "" }
+        ],
+        "circles": [
+          { "c": "O", "r": 90 }
+        ],
+        "segs": [
+          { "a": "O", "b": "R", "text": "6" }
+        ],
+        "notes": [
+          { "x": 120, "y": 210, "text": "circumference ?", "ask": true }
+        ]
+      },
       "answer": "12π",
       "acceptable": ["12pi", "37.70"],
       "tolerance": 0.01,
@@ -106,6 +122,23 @@
       "id": "circ-p04",
       "type": "numeric",
       "prompt": "Find the area of a circle with diameter 10. Give the answer in terms of π or round to the hundredths place.",
+      "figure": {
+        "alt": "Circle with diameter 10. The area is marked unknown.",
+        "pts": [
+          { "id": "A", "x": 40, "y": 110, "name": "" },
+          { "id": "B", "x": 240, "y": 110, "name": "" },
+          { "id": "O", "x": 140, "y": 110, "name": "O", "dot": true }
+        ],
+        "circles": [
+          { "c": "O", "r": 100 }
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "text": "10" }
+        ],
+        "notes": [
+          { "x": 140, "y": 230, "text": "area ?", "ask": true }
+        ]
+      },
       "answer": "25π",
       "acceptable": ["25pi", "78.54"],
       "tolerance": 0.01,
@@ -162,6 +195,28 @@
       "id": "circ-p06",
       "type": "numeric",
       "prompt": "A circle has radius 9. Find the length of an arc with a central angle of 120°. Give the answer in terms of π or round to the hundredths place.",
+      "figure": {
+        "alt": "Circle with radius 9 and a 120 degree central angle. The arc length is marked unknown.",
+        "pts": [
+          { "id": "O", "x": 150, "y": 130, "name": "O", "dot": true },
+          { "id": "A", "x": 240, "y": 130, "name": "A" },
+          { "id": "B", "x": 105, "y": 207.9, "name": "B" }
+        ],
+        "circles": [
+          {
+            "c": "O",
+            "r": 90,
+            "mark": { "from": "A", "to": "B", "text": "?", "ask": true }
+          }
+        ],
+        "segs": [
+          { "a": "O", "b": "A", "text": "9" },
+          { "a": "O", "b": "B" }
+        ],
+        "angles": [
+          { "at": "O", "a": "A", "b": "B", "text": "120°", "sector": true }
+        ]
+      },
       "answer": "6π",
       "acceptable": ["6pi", "18.85"],
       "tolerance": 0.01,
@@ -177,6 +232,24 @@
       "id": "circ-p07",
       "type": "numeric",
       "prompt": "Find the area of a sector with radius 4 and central angle 90°. Give the answer in terms of π or round to the hundredths place.",
+      "figure": {
+        "alt": "Quarter circle, a 90 degree sector with radius 4. The area is marked unknown.",
+        "pts": [
+          { "id": "O", "x": 70, "y": 170, "name": "O" },
+          { "id": "A", "x": 190, "y": 170, "name": "" },
+          { "id": "B", "x": 70, "y": 50, "name": "" }
+        ],
+        "segs": [
+          { "a": "O", "b": "A", "text": "4", "draw": 4, "scale": "t" },
+          { "a": "O", "b": "B", "text": "4", "draw": 4, "scale": "t" }
+        ],
+        "angles": [
+          { "at": "O", "a": "A", "b": "B", "right": true, "text": "90°", "sector": true }
+        ],
+        "notes": [
+          { "x": 150, "y": 100, "text": "area ?", "ask": true }
+        ]
+      },
       "answer": "4π",
       "acceptable": ["4pi", "12.57"],
       "tolerance": 0.01,
@@ -228,6 +301,28 @@
       "id": "circ-p09",
       "type": "mcq",
       "prompt": "A quadrilateral is inscribed in a circle (all four corners on the circle). What is true about its opposite angles?",
+      "figure": {
+        "alt": "Quadrilateral ABCD with every vertex on a circle.",
+        "pts": [
+          { "id": "O", "x": 150, "y": 120, "name": "", "dot": true },
+          { "id": "A", "x": 240.2, "y": 152.8, "name": "A" },
+          { "id": "B", "x": 117.2, "y": 210.2, "name": "B" },
+          { "id": "C", "x": 59.8, "y": 87.2, "name": "C" },
+          { "id": "D", "x": 198.0, "y": 36.9, "name": "D" }
+        ],
+        "polys": [
+          ["A", "B", "C", "D"]
+        ],
+        "circles": [
+          { "c": "O", "r": 96 }
+        ],
+        "segs": [
+          { "a": "A", "b": "B" },
+          { "a": "B", "b": "C" },
+          { "a": "C", "b": "D" },
+          { "a": "D", "b": "A" }
+        ]
+      },
       "choices": ["They are congruent", "They are supplementary (add to 180°)", "They are complementary (add to 90°)", "They are always right angles"],
       "answer": "They are supplementary (add to 180°)",
       "acceptable": [],
@@ -242,6 +337,26 @@
       "id": "circ-p10",
       "type": "numeric",
       "prompt": "Two chords cross inside a circle. One chord is split into pieces 4 and 6. The other is split into pieces 3 and x. Find x.",
+      "figure": {
+        "alt": "Two chords cross. One is split into 4 and 6. The other is split into 3 and x.",
+        "pts": [
+          { "id": "M", "x": 160, "y": 130, "name": "M" },
+          { "id": "A", "x": 88, "y": 130, "name": "" },
+          { "id": "B", "x": 268, "y": 130, "name": "" },
+          { "id": "C", "x": 133, "y": 83, "name": "" },
+          { "id": "D", "x": 232, "y": 255, "name": "" },
+          { "id": "O", "x": 160, "y": 140, "name": "", "dot": true }
+        ],
+        "circles": [
+          { "c": "O", "r": 160 }
+        ],
+        "segs": [
+          { "a": "A", "b": "M", "text": "4", "draw": 4, "scale": "c", "at": 0.35, "lx": 0, "ly": -22 },
+          { "a": "M", "b": "B", "text": "6", "draw": 6, "scale": "c", "at": 0.62, "lx": 0, "ly": 22 },
+          { "a": "C", "b": "M", "text": "3", "draw": 3, "scale": "c", "at": 0.28, "lx": -18, "ly": -16 },
+          { "a": "M", "b": "D", "text": "x", "ask": true, "draw": 8, "scale": "c", "at": 0.55, "lx": 20, "ly": 10 }
+        ]
+      },
       "answer": "8",
       "acceptable": [],
       "check": "4 * 6 / 3",

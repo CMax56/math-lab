@@ -9,6 +9,19 @@
       "id": "sys-p01",
       "type": "pair",
       "prompt": "Solve the system. Type the answer like (x, y).<br>y = 2x<br>x + y = 9",
+      "figure": {
+        "alt": "Lines y = 2x and y = −x + 9. Their crossing is not marked.",
+        "grid": {
+          "x0": -1,
+          "x1": 6,
+          "y0": -1,
+          "y1": 10,
+          "lines": [
+            { "m": 2, "b": 0, "text": "y = 2x", "labelAt": 12 },
+            { "m": -1, "b": 9, "text": "y = −x + 9", "labelAt": 30 }
+          ]
+        }
+      },
       "answer": "(3, 6)",
       "acceptable": [],
       "check": "[9 / 3, 2 * 9 / 3]",
@@ -23,6 +36,19 @@
       "id": "sys-p02",
       "type": "pair",
       "prompt": "Solve the system. Type the answer like (x, y).<br>x + y = 10<br>x − y = 4",
+      "figure": {
+        "alt": "Lines x + y = 10 and x − y = 4. Their crossing is not marked.",
+        "grid": {
+          "x0": 0,
+          "x1": 11,
+          "y0": -4,
+          "y1": 11,
+          "lines": [
+            { "m": -1, "b": 10, "text": "x + y = 10", "labelAt": 14 },
+            { "m": 1, "b": -4, "text": "x − y = 4", "labelAt": 32 }
+          ]
+        }
+      },
       "answer": "(7, 3)",
       "acceptable": [],
       "check": "[(10 + 4) / 2, (10 - 4) / 2]",
@@ -37,6 +63,19 @@
       "id": "sys-p03",
       "type": "pair",
       "prompt": "Solve the system. Type the answer like (x, y).<br>y = x + 1<br>2x + y = 13",
+      "figure": {
+        "alt": "Lines y = x + 1 and 2x + y = 13. Their crossing is not marked.",
+        "grid": {
+          "x0": -1,
+          "x1": 8,
+          "y0": -1,
+          "y1": 12,
+          "lines": [
+            { "m": 1, "b": 1, "text": "y = x + 1", "labelAt": 12 },
+            { "m": -2, "b": 13, "text": "2x + y = 13", "labelAt": 30 }
+          ]
+        }
+      },
       "answer": "(4, 5)",
       "acceptable": [],
       "check": "[(13 - 1) / 3, (13 - 1) / 3 + 1]",
@@ -51,6 +90,19 @@
       "id": "sys-p04",
       "type": "pair",
       "prompt": "Solve the system. Type the answer like (x, y).<br>3x + 2y = 16<br>x − 2y = 0",
+      "figure": {
+        "alt": "Lines 3x + 2y = 16 and x − 2y = 0. Their crossing is not marked.",
+        "grid": {
+          "x0": -1,
+          "x1": 7,
+          "y0": -2,
+          "y1": 9,
+          "lines": [
+            { "m": -1.5, "b": 8, "text": "3x + 2y = 16", "labelAt": 14 },
+            { "m": 0.5, "b": 0, "text": "x − 2y = 0", "labelAt": 30 }
+          ]
+        }
+      },
       "answer": "(4, 2)",
       "acceptable": [],
       "check": "[16 / 4, (16 / 4) / 2]",
@@ -65,6 +117,19 @@
       "id": "sys-p05",
       "type": "mcq",
       "prompt": "How many solutions does this system have?<br>y = 3x + 2<br>y = 3x − 5",
+      "figure": {
+        "alt": "Lines y = 3x + 2 and y = 3x − 5, which stay apart.",
+        "grid": {
+          "x0": -1,
+          "x1": 4,
+          "y0": -8,
+          "y1": 12,
+          "lines": [
+            { "m": 3, "b": 2, "text": "y = 3x + 2", "labelAt": 16 },
+            { "m": 3, "b": -5, "text": "y = 3x − 5", "labelAt": 30 }
+          ]
+        }
+      },
       "choices": ["One", "None", "Infinitely many", "Two"],
       "answer": "None",
       "acceptable": [],
@@ -79,6 +144,19 @@
       "id": "sys-p06",
       "type": "mcq",
       "prompt": "How many solutions does this system have?<br>2x + 4y = 8<br>x + 2y = 4",
+      "figure": {
+        "alt": "The equations 2x + 4y = 8 and x + 2y = 4 draw the same line.",
+        "grid": {
+          "x0": -2,
+          "x1": 8,
+          "y0": -2,
+          "y1": 6,
+          "lines": [
+            { "m": -0.5, "b": 2, "text": "2x + 4y = 8", "labelAt": 12 },
+            { "m": -0.5, "b": 2, "text": "x + 2y = 4", "labelAt": 32 }
+          ]
+        }
+      },
       "choices": ["One", "None", "Infinitely many", "Two"],
       "answer": "Infinitely many",
       "acceptable": [],
@@ -93,6 +171,19 @@
       "id": "sys-p07",
       "type": "pair",
       "prompt": "Solve the system. Type the answer like (x, y).<br>2x + 3y = 12<br>4x − 3y = 6",
+      "figure": {
+        "alt": "Lines 2x + 3y = 12 and 4x − 3y = 6. Their crossing is not marked.",
+        "grid": {
+          "x0": -1,
+          "x1": 6,
+          "y0": -3,
+          "y1": 7,
+          "lines": [
+            { "m": -0.6666666666666666, "b": 4, "text": "2x + 3y = 12", "labelAt": 14 },
+            { "m": 1.3333333333333333, "b": -2, "text": "4x − 3y = 6", "labelAt": 32 }
+          ]
+        }
+      },
       "answer": "(3, 2)",
       "acceptable": [],
       "check": "[18 / 6, (12 - 2 * 18 / 6) / 3]",
@@ -107,6 +198,17 @@
       "id": "sys-p08",
       "type": "numeric",
       "prompt": "A school play sold 120 tickets for a total of $750. Adult tickets cost $8 and student tickets cost $5. How many adult tickets were sold?",
+      "figure": {
+        "alt": "Ticket diagram: adult tickets are 8 dollars times an unknown count, student tickets are 5 dollars, 120 tickets in all, total 750 dollars.",
+        "bars": {
+          "caption": "120 tickets",
+          "items": [
+            { "text": "adult $8 × x", "share": 1, "ask": true },
+            { "text": "student $5 × ?", "share": 1, "ask": true }
+          ],
+          "total": "total $750"
+        }
+      },
       "answer": "50",
       "acceptable": [],
       "check": "(750 - 5 * 120) / (8 - 5)",
@@ -121,6 +223,19 @@
       "id": "sys-p09",
       "type": "pair",
       "prompt": "Where do the lines y = −x + 6 and y = 2x intersect? Type the point like (x, y).",
+      "figure": {
+        "alt": "Lines y = −x + 6 and y = 2x. Their crossing is not marked.",
+        "grid": {
+          "x0": -1,
+          "x1": 7,
+          "y0": -2,
+          "y1": 8,
+          "lines": [
+            { "m": -1, "b": 6, "text": "y = −x + 6", "labelAt": 14 },
+            { "m": 2, "b": 0, "text": "y = 2x", "labelAt": 30 }
+          ]
+        }
+      },
       "answer": "(2, 4)",
       "acceptable": [],
       "check": "[6 / 3, 2 * 6 / 3]",
@@ -135,6 +250,19 @@
       "id": "sys-p10",
       "type": "pair",
       "prompt": "Solve the system. Type the answer like (x, y).<br>5x + 2y = 1<br>3x + 2y = −1",
+      "figure": {
+        "alt": "Lines 5x + 2y = 1 and 3x + 2y = −1. Their crossing is not marked.",
+        "grid": {
+          "x0": -1,
+          "x1": 4,
+          "y0": -5,
+          "y1": 4,
+          "lines": [
+            { "m": -2.5, "b": 0.5, "text": "5x + 2y = 1", "labelAt": 16 },
+            { "m": -1.5, "b": -0.5, "text": "3x + 2y = −1", "labelAt": 32 }
+          ]
+        }
+      },
       "answer": "(1, -2)",
       "acceptable": [],
       "check": "[(1 - (-1)) / (5 - 3), (1 - 5 * 1) / 2]",

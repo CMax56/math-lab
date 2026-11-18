@@ -93,6 +93,15 @@
       "id": "sim-p03",
       "type": "numeric",
       "prompt": "Solve the proportion: x/12 = 5/8",
+      "figure": {
+        "alt": "The proportion x over 12 equals 5 over 8. x is the unknown.",
+        "bars": {
+          "ratios": [
+            { "num": "x", "den": "12", "ask": true },
+            { "num": "5", "den": "8" }
+          ]
+        }
+      },
       "answer": "7.5",
       "acceptable": ["15/2"],
       "check": "12 * 5 / 8",
@@ -298,6 +307,31 @@
       "id": "sim-p08",
       "type": "numeric",
       "prompt": "Two similar rectangles have a scale factor of 2 : 3 (small : large). The small one has an area of 20 in². What is the area of the large one in in²?",
+      "figure": {
+        "alt": "Two similar rectangles in the ratio 2 to 3. The smaller area is 20 square inches and the larger area is unknown.",
+        "pts": [
+          { "id": "A", "x": 20, "y": 70, "name": "" },
+          { "id": "B", "x": 100, "y": 70, "name": "" },
+          { "id": "C", "x": 100, "y": 120, "name": "" },
+          { "id": "D", "x": 20, "y": 120, "name": "" },
+          { "id": "E", "x": 140, "y": 40, "name": "" },
+          { "id": "F", "x": 260, "y": 40, "name": "" },
+          { "id": "G", "x": 260, "y": 115, "name": "" },
+          { "id": "H", "x": 140, "y": 115, "name": "" }
+        ],
+        "polys": [
+          ["A", "B", "C", "D"],
+          ["E", "F", "G", "H"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "text": "2", "draw": 2, "scale": "r" },
+          { "a": "E", "b": "F", "text": "3", "draw": 3, "scale": "r" }
+        ],
+        "notes": [
+          { "x": 60, "y": 148, "text": "area 20" },
+          { "x": 200, "y": 148, "text": "area ?", "ask": true }
+        ]
+      },
       "answer": "45",
       "acceptable": [],
       "check": "20 * (3 / 2) ** 2",
@@ -348,6 +382,21 @@
       "id": "sim-p10",
       "type": "pair",
       "prompt": "A dilation centered at the origin with scale factor 3 maps the point (2, −5) to what point? Type it like (x, y).",
+      "figure": {
+        "alt": "The point (2, −5) and an arrow showing a dilation by 3 from the origin. The image point is marked unknown.",
+        "grid": {
+          "x0": -4,
+          "x1": 5,
+          "y0": -6,
+          "y1": 3,
+          "numbered": true,
+          "points": [
+            { "x": 2, "y": -5, "text": "(2, −5)" }
+          ],
+          "ray": { "x1": 0, "y1": 0, "x2": 2.4, "y2": -6, "text": "× 3" },
+          "mark": { "x": 2.4, "y": -6, "text": "?" }
+        }
+      },
       "answer": "(6, -15)",
       "acceptable": [],
       "check": "[2 * 3, -5 * 3]",

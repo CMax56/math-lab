@@ -9,6 +9,10 @@
       "id": "lin-p01",
       "type": "numeric",
       "prompt": "Solve for x: 3x + 7 = 22",
+      "figure": {
+        "alt": "A balance with 3x + 7 on one side and 22 on the other.",
+        "balance": { "left": "3x + 7", "right": "22", "sign": "=" }
+      },
       "answer": "5",
       "acceptable": [],
       "check": "(22 - 7) / 3",
@@ -23,6 +27,10 @@
       "id": "lin-p02",
       "type": "numeric",
       "prompt": "Solve for x: 5(x − 2) = 3x + 8",
+      "figure": {
+        "alt": "A balance with 5(x − 2) on one side and 3x + 8 on the other.",
+        "balance": { "left": "5(x − 2)", "right": "3x + 8", "sign": "=" }
+      },
       "answer": "9",
       "acceptable": [],
       "check": "(8 + 10) / (5 - 3)",
@@ -37,6 +45,10 @@
       "id": "lin-p03",
       "type": "numeric",
       "prompt": "Solve for x: x/4 − 3 = 2",
+      "figure": {
+        "alt": "A balance with x/4 − 3 on one side and 2 on the other.",
+        "balance": { "left": "x/4 − 3", "right": "2", "sign": "=" }
+      },
       "answer": "20",
       "acceptable": [],
       "check": "(2 + 3) * 4",
@@ -51,6 +63,10 @@
       "id": "lin-p04",
       "type": "short",
       "prompt": "Solve: −2x + 5 &gt; 11. Type your answer like x &lt; 7 (you can type &gt;= or &lt;= for ≥ and ≤).",
+      "figure": {
+        "alt": "A balance showing −2x + 5 is greater than 11. The solution ray is not drawn.",
+        "balance": { "left": "−2x + 5", "right": "11", "sign": ">" }
+      },
       "answer": "x < -3",
       "acceptable": ["-3 > x"],
       "hints": [
@@ -64,6 +80,22 @@
       "id": "lin-p05",
       "type": "numeric",
       "prompt": "Find the slope of the line through (2, 3) and (6, 11).",
+      "figure": {
+        "alt": "The line through the given points (2, 3) and (6, 11).",
+        "grid": {
+          "x0": 0,
+          "x1": 8,
+          "y0": 0,
+          "y1": 13,
+          "lines": [
+            { "m": 2, "b": -1, "text": "", "labelAt": 18 }
+          ],
+          "points": [
+            { "x": 2, "y": 3, "text": "(2, 3)" },
+            { "x": 6, "y": 11, "text": "(6, 11)" }
+          ]
+        }
+      },
       "answer": "2",
       "acceptable": [],
       "check": "(11 - 3) / (6 - 2)",
@@ -78,6 +110,22 @@
       "id": "lin-p06",
       "type": "mcq",
       "prompt": "Which equation has a slope of −3 and a y-intercept of 4?",
+      "figure": {
+        "alt": "A line with y-intercept 4 and slope −3, shown with a slope triangle. The equation is not written.",
+        "grid": {
+          "x0": -1,
+          "x1": 3,
+          "y0": -6,
+          "y1": 6,
+          "lines": [
+            { "m": -3, "b": 4, "text": "", "labelAt": 18 }
+          ],
+          "points": [
+            { "x": 0, "y": 4, "text": "4" }
+          ],
+          "tri": { "x": 0, "y": 4, "run": 1, "rise": -3, "runText": "1", "riseText": "−3" }
+        }
+      },
       "choices": ["y = 4x − 3", "y = −3x + 4", "y = 3x + 4", "y = −3x − 4"],
       "answer": "y = −3x + 4",
       "acceptable": [],
@@ -92,6 +140,22 @@
       "id": "lin-p07",
       "type": "short",
       "prompt": "Write the equation of the line through (1, 5) with slope 2, in slope-intercept form (y = mx + b).",
+      "figure": {
+        "alt": "The given point (1, 5) and a slope triangle for slope 2. The equation is not written.",
+        "grid": {
+          "x0": -1,
+          "x1": 5,
+          "y0": 0,
+          "y1": 10,
+          "lines": [
+            { "m": 2, "b": 3, "text": "", "labelAt": 18 }
+          ],
+          "points": [
+            { "x": 1, "y": 5, "text": "(1, 5)" }
+          ],
+          "tri": { "x": 1, "y": 5, "run": 1, "rise": 2, "runText": "1", "riseText": "2" }
+        }
+      },
       "answer": "y = 2x + 3",
       "acceptable": ["y = 3 + 2x"],
       "hints": [
@@ -105,6 +169,17 @@
       "id": "lin-p08",
       "type": "numeric",
       "prompt": "A phone plan costs $25 per month plus $0.10 per text. One month's bill was $32.50. How many texts were sent?",
+      "figure": {
+        "alt": "Phone plan: 25 dollars plus 10 cents times an unknown number of texts equals a 32.50 dollar bill.",
+        "bars": {
+          "caption": "one month",
+          "items": [
+            { "text": "$25", "share": 1 },
+            { "text": "$0.10 × x texts", "share": 1.3, "ask": true }
+          ],
+          "total": "bill = $32.50"
+        }
+      },
       "answer": "75",
       "acceptable": [],
       "check": "(32.50 - 25) / 0.10",
@@ -119,6 +194,19 @@
       "id": "lin-p09",
       "type": "numeric",
       "prompt": "What is the slope of a line perpendicular to y = (2/3)x − 1?",
+      "figure": {
+        "alt": "The line y = (2/3)x − 1 and a perpendicular line whose slope is marked unknown.",
+        "grid": {
+          "x0": -2,
+          "x1": 6,
+          "y0": -3,
+          "y1": 6,
+          "lines": [
+            { "m": 0.6666666666666666, "b": -1, "text": "y = (2/3)x − 1", "labelAt": 14 },
+            { "m": -1.5, "b": 5.5, "text": "m = ?", "labelAt": 32 }
+          ]
+        }
+      },
       "answer": "-3/2",
       "acceptable": ["-1.5"],
       "check": "-1 / (2 / 3)",
@@ -133,6 +221,17 @@
       "id": "lin-p10",
       "type": "mcq",
       "prompt": "A student needs <b>at least</b> 18 service hours. Which inequality shows the number of hours h that meets the goal?",
+      "figure": {
+        "alt": "A number line with 18 hours marked. No arrow is drawn, so the inequality is not chosen.",
+        "numberline": {
+          "min": 0,
+          "max": 28,
+          "caption": "service hours",
+          "marks": [
+            { "at": 18, "text": "18", "plain": true }
+          ]
+        }
+      },
       "choices": ["h > 18", "h ≥ 18", "h < 18", "h ≤ 18"],
       "answer": "h ≥ 18",
       "acceptable": [],

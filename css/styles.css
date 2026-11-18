@@ -248,6 +248,12 @@ textarea.report { font-family: ui-monospace, Menlo, Consolas, monospace; font-si
 .figure-svg .angle, .figure-svg .right { fill: none; stroke: var(--accent); stroke-width: 2.3; stroke-linecap: round; }
 .figure-svg .sector { fill: var(--accent); opacity: .16; stroke: none; }
 .figure-svg .dot { fill: var(--text); stroke: none; }
+.figure-svg .gridline { fill: none; stroke: var(--line); stroke-width: 1; }
+.figure-svg .axis { fill: none; stroke: var(--muted); stroke-width: 1.7; }
+.figure-svg .plot { fill: none; stroke: var(--primary); stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; }
+.figure-svg .plot2 { fill: none; stroke: var(--accent); stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; }
+.figure-svg .open-dot { fill: var(--bg); stroke: var(--accent); stroke-width: 2.5; }
+.figure-svg .pan { fill: var(--card); stroke: var(--text); stroke-width: 2; }
 .figure-svg .label, .figure-svg .vlabel, .figure-svg .note {
   fill: var(--text);
   stroke: var(--bg);

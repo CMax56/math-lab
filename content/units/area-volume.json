@@ -42,6 +42,29 @@
       "id": "vol-p02",
       "type": "numeric",
       "prompt": "A trapezoid has bases of 8 m and 14 m and a height of 5 m. Find its area in m².",
+      "figure": {
+        "alt": "Trapezoid with bases 14 m and 8 m and height 5 m.",
+        "pts": [
+          { "id": "A", "x": 20, "y": 180, "name": "A" },
+          { "id": "B", "x": 300, "y": 180, "name": "B" },
+          { "id": "C", "x": 250, "y": 80, "name": "C" },
+          { "id": "D", "x": 90, "y": 80, "name": "D" },
+          { "id": "H", "x": 90, "y": 180, "name": "" }
+        ],
+        "polys": [
+          ["A", "B", "C", "D"]
+        ],
+        "segs": [
+          { "a": "A", "b": "B", "text": "14 m", "draw": 14, "scale": "t" },
+          { "a": "D", "b": "C", "text": "8 m", "draw": 8, "scale": "t" },
+          { "a": "D", "b": "H", "text": "5 m", "draw": 5, "scale": "t", "dash": true },
+          { "a": "A", "b": "D" },
+          { "a": "B", "b": "C" }
+        ],
+        "angles": [
+          { "at": "H", "a": "D", "b": "B", "right": true }
+        ]
+      },
       "answer": "55",
       "acceptable": [],
       "check": "(8 + 14) / 2 * 5",
@@ -56,6 +79,10 @@
       "id": "vol-p03",
       "type": "numeric",
       "prompt": "A rectangular prism (box) is 4 in by 5 in by 6 in. Find its volume in in³.",
+      "figure": {
+        "alt": "Rectangular box 4 in by 5 in by 6 in.",
+        "solid": { "kind": "box", "w": 4, "d": 5, "h": 6, "lw": "4 in", "ld": "5 in", "lh": "6 in" }
+      },
       "answer": "120",
       "acceptable": [],
       "check": "4 * 5 * 6",
@@ -70,6 +97,10 @@
       "id": "vol-p04",
       "type": "numeric",
       "prompt": "A cylinder has radius 3 and height 10. Find its volume. Give the answer in terms of π or round to the hundredths place.",
+      "figure": {
+        "alt": "Cylinder with radius 3 and height 10.",
+        "solid": { "kind": "cylinder", "r": 3, "h": 10, "lr": "r = 3", "lh": "h = 10" }
+      },
       "answer": "90π",
       "acceptable": ["90pi", "282.74", "282.7"],
       "tolerance": 0.05,
@@ -85,6 +116,10 @@
       "id": "vol-p05",
       "type": "numeric",
       "prompt": "A cone has radius 6 and height 8. Find its volume. Give the answer in terms of π or round to the hundredths place.",
+      "figure": {
+        "alt": "Cone with radius 6 and height 8.",
+        "solid": { "kind": "cone", "r": 6, "h": 8, "lr": "r = 6", "lh": "h = 8" }
+      },
       "answer": "96π",
       "acceptable": ["96pi", "301.59", "301.6"],
       "tolerance": 0.05,
@@ -100,6 +135,10 @@
       "id": "vol-p06",
       "type": "numeric",
       "prompt": "A square pyramid has a base side of 9 and a height of 10. Find its volume.",
+      "figure": {
+        "alt": "Square pyramid with base side 9 and height 10.",
+        "solid": { "kind": "pyramid", "ls": "9", "lh": "h = 10" }
+      },
       "answer": "270",
       "acceptable": [],
       "check": "9**2 * 10 / 3",
@@ -114,6 +153,10 @@
       "id": "vol-p07",
       "type": "numeric",
       "prompt": "A sphere has radius 3. Find its volume. Give the answer in terms of π or round to the hundredths place.",
+      "figure": {
+        "alt": "Sphere with radius 3.",
+        "solid": { "kind": "sphere", "lr": "r = 3" }
+      },
       "answer": "36π",
       "acceptable": ["36pi", "113.10", "113.1"],
       "tolerance": 0.05,
@@ -129,6 +172,10 @@
       "id": "vol-p08",
       "type": "numeric",
       "prompt": "Find the total surface area of a cube with edge length 5.",
+      "figure": {
+        "alt": "Cube with edge length 5.",
+        "solid": { "kind": "cube", "edge": 5, "le": "5" }
+      },
       "answer": "150",
       "acceptable": [],
       "check": "6 * 5**2",
@@ -143,6 +190,13 @@
       "id": "vol-p09",
       "type": "mcq",
       "prompt": "A cone and a cylinder have the same radius and the same height. The cone's volume is what fraction of the cylinder's?",
+      "figure": {
+        "alt": "A cone and a cylinder with the same radius and the same height.",
+        "solids": [
+          { "kind": "cylinder", "r": 3, "h": 8, "lr": "r", "lh": "h" },
+          { "kind": "cone", "r": 3, "h": 8, "lr": "r", "lh": "h" }
+        ]
+      },
       "choices": ["1/2", "1/3", "2/3", "They are the same"],
       "answer": "1/3",
       "acceptable": [],
@@ -157,6 +211,10 @@
       "id": "vol-p10",
       "type": "numeric",
       "prompt": "A closed cylinder has radius 2 and height 5. Find its total surface area. Give the answer in terms of π or round to the hundredths place.",
+      "figure": {
+        "alt": "Closed cylinder with radius 2 and height 5. Both bases are shown.",
+        "solid": { "kind": "cylinder", "r": 2, "h": 5, "lr": "r = 2", "lh": "h = 5", "closed": true }
+      },
       "answer": "28π",
       "acceptable": ["28pi", "87.96"],
       "tolerance": 0.05,

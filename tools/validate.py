@@ -416,12 +416,131 @@ TRIANGLE_WORD = re.compile(r"△|triangles?", re.I)
 
 
 def practice_needs_diagram(unit_id, item):
-    prompt = item.get("prompt") or ""
-    if unit_id in ("congruence", "right-triangles"):
-        return True
-    if TRIANGLE_WORD.search(prompt):
-        return True
-    return item.get("id") in EXTRA_TRIANGLE_PRACTICE
+    return True
+
+
+def _has_special(fig):
+    return any(k in fig for k in ("grid", "numberline", "balance", "bars", "solid", "solids"))
+
+
+def _num(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def _askish(text, fig):
+    def walk(obj):
+        if isinstance(obj, dict):
+            if obj.get("ask") and (obj.get("text") == text or obj.get("num") == text):
+                return True
+            if obj.get("askLeft") and obj.get("left") == text:
+                return True
+            if obj.get("askRight") and obj.get("right") == text:
+                return True
+            return any(walk(v) for v in obj.values())
+        if isinstance(obj, list):
+            return any(walk(v) for v in obj)
+        return False
+    return walk(fig)
+
+
+def _check_special(fig, item, bad):
+    g = fig.get("grid")
+    if g is not None:
+        if not isinstance(g, dict):
+            bad("grid must be an object")
+        else:
+            for key in ("x0", "x1", "y0", "y1"):
+                if not _num(g.get(key)):
+                    bad(f"grid.{key} must be a number")
+            if _num(g.get("x0")) and _num(g.get("x1")) and not g["x0"] < g["x1"]:
+                bad("grid x range is empty")
+            if _num(g.get("y0")) and _num(g.get("y1")) and not g["y0"] < g["y1"]:
+                bad("grid y range is empty")
+            if not (g.get("lines") or g.get("points") or g.get("curve") or g.get("ray")):
+                bad("grid needs a line, a point, or a curve")
+            for ln in g.get("lines") or []:
+                if not isinstance(ln, dict) or not _num(ln.get("m")) or not _num(ln.get("b")):
+                    bad("grid line needs a numeric slope and intercept")
+            for p in g.get("points") or []:
+                if not isinstance(p, dict) or not _num(p.get("x")) or not _num(p.get("y")):
+                    bad("grid point needs numeric coordinates")
+            curve = g.get("curve")
+            if curve is not None and (not isinstance(curve, dict) or not all(_num(curve.get(k)) for k in ("a", "b", "c"))):
+                bad("parabola needs numeric a, b, and c")
+            if item and item.get("type") == "pair":
+                ans = parse_pair(str(item.get("answer") or ""))
+                if ans:
+                    for p in g.get("points") or []:
+                        if _num(p.get("x")) and _num(p.get("y")) and abs(p["x"] - ans[0]) < 0.05 and abs(p["y"] - ans[1]) < 0.05:
+                            bad("plots the solution point")
+                    mk = g.get("mark")
+                    if isinstance(mk, dict) and g.get("numbered", True) is not False and _num(mk.get("x")) and _num(mk.get("y")):
+                        if abs(mk["x"] - ans[0]) < 0.05 and abs(mk["y"] - ans[1]) < 0.05:
+                            bad("marks the solution on a numbered grid")
+    nline = fig.get("numberline")
+    if nline is not None:
+        if not isinstance(nline, dict) or not _num(nline.get("min")) or not _num(nline.get("max")) or not nline["min"] < nline["max"]:
+            bad("number line needs a min and a max")
+    bal = fig.get("balance")
+    if bal is not None:
+        if not isinstance(bal, dict) or not nonempty_str(bal.get("left")) or not nonempty_str(bal.get("right")):
+            bad("balance needs a left side and a right side")
+    bars = fig.get("bars")
+    if bars is not None:
+        if not isinstance(bars, dict) or not ((bars.get("items") or bars.get("ratios"))):
+            bad("bar model needs items or ratios")
+    solids = list(fig.get("solids") or [])
+    if isinstance(fig.get("solid"), dict):
+        solids.append(fig["solid"])
+    for s in solids:
+        if s.get("kind") not in ("box", "cube", "cylinder", "cone", "sphere", "pyramid"):
+            bad(f"unknown solid kind {s.get('kind')!r}")
+
+
+def _special_texts(fig):
+    out = []
+    g = fig.get("grid") or {}
+    for ln in g.get("lines") or []:
+        if ln.get("text"):
+            out.append(ln["text"])
+    for p in g.get("points") or []:
+        if p.get("text"):
+            out.append(p["text"])
+    for key in ("vline", "mark", "ray"):
+        if isinstance(g.get(key), dict) and g[key].get("text"):
+            out.append(g[key]["text"])
+    tri = g.get("tri") or {}
+    for key in ("runText", "riseText"):
+        if tri.get(key):
+            out.append(tri[key])
+    nline = fig.get("numberline") or {}
+    if nline.get("caption"):
+        out.append(nline["caption"])
+    for m in nline.get("marks") or []:
+        if m.get("text"):
+            out.append(m["text"])
+    bal = fig.get("balance") or {}
+    for key in ("left", "right", "sign"):
+        if bal.get(key):
+            out.append(bal[key])
+    bars = fig.get("bars") or {}
+    if bars.get("total"):
+        out.append(bars["total"])
+    if bars.get("caption"):
+        out.append(bars["caption"])
+    for it in bars.get("items") or []:
+        if it.get("text"):
+            out.append(it["text"])
+    for r in bars.get("ratios") or []:
+        out.extend([r.get("num") or "", r.get("den") or ""])
+    solids = list(fig.get("solids") or [])
+    if isinstance(fig.get("solid"), dict):
+        solids.append(fig["solid"])
+    for s in solids:
+        for key in ("lw", "ld", "lh", "le", "lr", "ls"):
+            if s.get(key):
+                out.append(s[key])
+    return [t for t in out if t]
 
 
 def plain_measure(text):
@@ -556,9 +675,24 @@ def figure_problems(fig, item=None, where="figure"):
     elif _text_gives_answer(alt, item):
         bad("figure alt gives away the answer")
 
+    for text in _special_texts(fig):
+        if re.search(r"<\s*/?\s*[a-z]", text, re.I):
+            bad(f"label {text!r} must be plain text")
+        elif _text_gives_answer(text, item):
+            bad(f"label {text!r} gives away the answer")
+        elif _askish(text, fig) and plain_measure(text) is not None:
+            bad(f"unknown is labeled {text!r}")
+    _check_special(fig, item, bad)
+
     pts = fig.get("pts")
-    if not isinstance(pts, list) or len(pts) < 3:
-        bad("figure needs at least 3 points")
+    if not isinstance(pts, list) or len(pts) < 2:
+        if not _has_special(fig):
+            bad("figure needs a drawing")
+        else:
+            try:
+                _figure_svg(fig)
+            except Exception as e:  # noqa: BLE001
+                bad(f"diagram does not parse as SVG ({e})")
         return problems
     by_id = {}
     for p in pts:
@@ -580,26 +714,22 @@ def figure_problems(fig, item=None, where="figure"):
             bad(f"point name {name!r} gives away the answer")
 
     coords = by_id
-    polys = fig.get("polys")
-    if not isinstance(polys, list) or not polys:
-        bad("figure needs at least one polygon (the triangle)")
+    polys = fig.get("polys") or []
+    if not isinstance(polys, list):
+        bad("polys must be a list")
         polys = []
-    saw_triangle = False
+    if not polys and not fig.get("circles") and not fig.get("segs") and not _has_special(fig):
+        bad("figure needs a shape")
     for i, poly in enumerate(polys):
         if not isinstance(poly, list) or len(poly) < 3:
             bad(f"polygon {i} needs at least 3 vertices")
             continue
-        if len(poly) == 3:
-            saw_triangle = True
         missing = [pid for pid in poly if pid not in coords]
         if missing:
             bad(f"polygon {i} references unknown points {missing}")
             continue
         if _poly_area([coords[pid] for pid in poly]) < 20:
             bad(f"polygon {i} is degenerate")
-    if polys and not saw_triangle:
-        bad("figure has no triangle (3-point polygon)")
-
     def ref_pt(pid, what):
         if pid not in coords:
             bad(f"{what} references unknown point {pid}")
@@ -824,7 +954,7 @@ def check_figure(unit_id, kind, item, where):
     needs = kind == "practice" and practice_needs_diagram(unit_id, item)
     if fig is None:
         if needs:
-            err(f"{where}: triangle practice item has no diagram")
+            err(f"{where}: practice item has no diagram")
         return
     if kind in DIAGRAM_COUNTS:
         DIAGRAM_COUNTS[kind] += 1
@@ -1123,7 +1253,7 @@ def main():
     print(f"Needs review by hand (MCQ / text answers / no check expression): {len(hand_review)} items")
     if hand_review:
         print("  " + ", ".join(hand_review))
-    print(f"Triangle diagrams: {DIAGRAM_COUNTS['practice']} practice, {DIAGRAM_COUNTS['quiz']} quiz, {DIAGRAM_COUNTS['flashcards']} flashcards")
+    print(f"Diagrams: {DIAGRAM_COUNTS['practice']} practice, {DIAGRAM_COUNTS['quiz']} quiz, {DIAGRAM_COUNTS['flashcards']} flashcards")
     print()
     for w in warnings:
         print("WARNING:", w)

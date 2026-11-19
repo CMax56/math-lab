@@ -41,7 +41,7 @@
       "dates": "Oct 12 – Dec 18, 2026",
       "start": "2026-10-12",
       "end": "2026-12-18",
-      "units": ["parallel-perpendicular", "congruence", "triangle-relationships"]
+      "units": ["parallel-perpendicular", "transversals", "congruence", "triangle-relationships"]
     },
     {
       "id": "t3",
@@ -70,6 +70,7 @@
     "exponent-rules",
     "foundations",
     "parallel-perpendicular",
+    "transversals",
     "congruence",
     "triangle-relationships",
     "quadrilaterals-polygons",

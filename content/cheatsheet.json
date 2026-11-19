@@ -1,0 +1,232 @@
+{
+  "title": "Geometry Cheat Sheet",
+  "subtitle": "Angle Proofs & Triangle Congruence",
+  "units": ["transversals", "congruence"],
+  "footer": "Same as the Geometry Cheat Sheet in Notion. Last updated Nov 19, 2026.",
+  "sections": [
+    {
+      "id": "vocabulary",
+      "title": "Angle vocabulary",
+      "type": "table",
+      "columns": ["Term", "Meaning"],
+      "rows": [
+        ["Acute", "less than 90°"],
+        ["Right", "exactly 90°"],
+        ["Obtuse", "between 90° and 180°"],
+        ["Straight", "exactly 180°"],
+        ["Complementary", "two angles that add to 90°"],
+        ["Supplementary", "two angles that add to 180°"],
+        ["Adjacent", "share a vertex and a side, no overlap"],
+        ["Linear pair", "adjacent angles whose outer sides form a line (always supplementary)"],
+        ["Vertical angles", "opposite angles formed by two intersecting lines (always congruent)"],
+        ["Angle bisector", "ray that splits an angle into two congruent angles"]
+      ]
+    },
+    {
+      "id": "properties",
+      "title": "Properties and postulates you cite in proofs",
+      "type": "table",
+      "stack": true,
+      "columns": ["Reason", "What it lets you say"],
+      "rows": [
+        ["Reflexive Property", "AB ≅ AB (a shared side or angle equals itself)"],
+        ["Symmetric Property", "if ∠A ≅ ∠B, then ∠B ≅ ∠A"],
+        ["Transitive Property", "if ∠A ≅ ∠B and ∠B ≅ ∠C, then ∠A ≅ ∠C"],
+        ["Substitution Property", "replace a quantity with an equal one"],
+        ["Addition/Subtraction Property of Equality", "add or subtract the same amount on both sides"],
+        ["Angle Addition Postulate", "if D is in the interior of ∠ABC, then m∠ABD + m∠DBC = m∠ABC"],
+        ["Segment Addition Postulate", "if B is between A and C, then AB + BC = AC"],
+        ["Linear Pair Postulate", "angles in a linear pair are supplementary"],
+        ["Definition of congruent angles", "∠A ≅ ∠B iff m∠A = m∠B"],
+        ["Definition of midpoint", "splits a segment into two congruent segments"],
+        ["Definition of perpendicular", "lines meet to form right angles"]
+      ]
+    },
+    {
+      "id": "theorems",
+      "title": "Angle theorems",
+      "type": "bullets",
+      "items": [
+        {"name": "Vertical Angles Theorem", "text": "vertical angles are congruent."},
+        {"name": "Congruent Supplements Theorem", "text": "angles supplementary to the same (or congruent) angles are congruent."},
+        {"name": "Congruent Complements Theorem", "text": "angles complementary to the same (or congruent) angles are congruent."},
+        {"name": "Right Angle Congruence Theorem", "text": "all right angles are congruent."},
+        {"name": "Triangle Angle Sum Theorem", "text": "interior angles of a triangle add to 180°."},
+        {"name": "Exterior Angle Theorem", "text": "an exterior angle equals the sum of the two remote interior angles."},
+        {"name": "Isosceles Triangle Theorem", "text": "if two sides are congruent, the angles opposite them are congruent (and the converse is true)."}
+      ]
+    },
+    {
+      "id": "transversal",
+      "title": "Parallel lines cut by a transversal",
+      "type": "table",
+      "columns": ["Angle pair", "Relationship"],
+      "rows": [
+        ["Corresponding", "Congruent"],
+        ["Alternate interior", "Congruent"],
+        ["Alternate exterior", "Congruent"],
+        ["Same-side (consecutive) interior", "Supplementary (add to 180°)"],
+        ["Same-side (consecutive) exterior", "Supplementary (add to 180°)"],
+        ["Linear pair (next to each other on one line)", "Supplementary (add to 180°)"],
+        ["Vertical angles (across the X)", "Congruent"]
+      ],
+      "note": "Note: The converses also hold: if any of these relationships is true, the lines are parallel."
+    },
+    {
+      "id": "solve-x",
+      "title": "Solving for x with parallel lines",
+      "type": "steps",
+      "steps": [
+        "Name the angle pair (corresponding, alternate interior, and so on).",
+        "Congruent pair: set the expressions equal. Supplementary pair: set their sum = 180.",
+        "Solve for x, then plug x back in to find the angle measure if asked."
+      ],
+      "examples": [
+        {
+          "title": "Congruent example",
+          "text": "Corresponding angles are (2x + 41)° and 51°. So 2x + 41 = 51, 2x = 10, x = 5."
+        },
+        {
+          "title": "Supplementary example",
+          "text": "Same-side interior angles are (3x + 10)° and (5x + 10)°. So 3x + 10 + 5x + 10 = 180, 8x = 160, x = 20 (angles are 70° and 110°)."
+        }
+      ],
+      "tip": "Quick check: both angles look acute (or both obtuse)? They're congruent, so set them equal. One acute and one obtuse? They're supplementary, so add to 180."
+    },
+    {
+      "id": "angle-proofs",
+      "title": "Sample angle proofs",
+      "type": "proofs",
+      "proofs": [
+        {
+          "title": "Vertical angles are congruent",
+          "given": "lines intersect forming ∠1, ∠2, ∠3, with ∠1 and ∠3 vertical.",
+          "prove": "∠1 ≅ ∠3.",
+          "columns": ["Statement", "Reason"],
+          "rows": [
+            ["1) ∠1 and ∠2 form a linear pair; ∠2 and ∠3 form a linear pair", "Given / definition of linear pair"],
+            ["2) m∠1 + m∠2 = 180° and m∠2 + m∠3 = 180°", "Linear Pair Postulate"],
+            ["3) m∠1 + m∠2 = m∠2 + m∠3", "Substitution (or Transitive)"],
+            ["4) m∠1 = m∠3", "Subtraction Property of Equality"],
+            ["5) ∠1 ≅ ∠3", "Definition of congruent angles"]
+          ]
+        },
+        {
+          "title": "Triangle angle sum is 180°",
+          "given": "△ABC. Draw line ℓ through B parallel to AC, making ∠4 (left of B) and ∠5 (right of B).",
+          "prove": "m∠A + m∠ABC + m∠C = 180°.",
+          "columns": ["Statement", "Reason"],
+          "rows": [
+            ["1) ℓ ∥ AC", "Parallel Postulate (construction)"],
+            ["2) m∠4 + m∠ABC + m∠5 = 180°", "Angle Addition / straight angle"],
+            ["3) ∠4 ≅ ∠A, ∠5 ≅ ∠C", "Alternate Interior Angles Theorem"],
+            ["4) m∠A + m∠ABC + m∠C = 180°", "Substitution"]
+          ]
+        },
+        {
+          "title": "Congruent supplements",
+          "given": "∠1 and ∠2 are supplementary; ∠3 and ∠2 are supplementary.",
+          "prove": "∠1 ≅ ∠3.",
+          "columns": ["Statement", "Reason"],
+          "rows": [
+            ["1) m∠1 + m∠2 = 180°, m∠3 + m∠2 = 180°", "Definition of supplementary"],
+            ["2) m∠1 + m∠2 = m∠3 + m∠2", "Substitution"],
+            ["3) m∠1 = m∠3", "Subtraction Property"],
+            ["4) ∠1 ≅ ∠3", "Definition of congruent angles"]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "congruence",
+      "title": "Triangle congruence shortcuts",
+      "type": "table",
+      "columns": ["Shortcut", "What you need", "Works?"],
+      "rows": [
+        ["SSS", "all three pairs of sides congruent", "✅"],
+        ["SAS", "two sides and the angle between them", "✅"],
+        ["ASA", "two angles and the side between them", "✅"],
+        ["AAS", "two angles and a side not between them", "✅"],
+        ["HL", "right triangles, hypotenuse and one leg", "✅ (right triangles only)"],
+        ["AAA", "three angles", "❌ proves similar, not congruent"],
+        ["SSA", "two sides and a non-included angle", "❌ ambiguous (except HL)"]
+      ],
+      "tip": "Memory trick: the letter order matters. In SAS the A is in the middle, so the angle must sit between the two sides. Never rely on SSA or AAA.",
+      "blocks": [
+        {
+          "title": "CPCTC",
+          "text": "Corresponding Parts of Congruent Triangles are Congruent. Use it after you prove the triangles congruent, to conclude that a specific side or angle matches."
+        },
+        {
+          "title": "Where to find the pieces",
+          "items": [
+            "Shared side: Reflexive Property.",
+            "Vertical angles at an X: Vertical Angles Theorem.",
+            "Midpoint or bisector: gives congruent segments or angles.",
+            "Parallel lines: alternate interior angles are congruent.",
+            "Perpendicular lines: right angles, and all right angles are congruent."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "congruence-proofs",
+      "title": "Sample congruence proofs",
+      "type": "proofs",
+      "proofs": [
+        {
+          "title": "SAS with a midpoint",
+          "given": "M is the midpoint of AD and of BC (segments cross at M).",
+          "prove": "△AMB ≅ △DMC.",
+          "columns": ["Statement", "Reason"],
+          "rows": [
+            ["1) M is the midpoint of AD and BC", "Given"],
+            ["2) AM ≅ DM, BM ≅ CM", "Definition of midpoint"],
+            ["3) ∠AMB ≅ ∠DMC", "Vertical Angles Theorem"],
+            ["4) △AMB ≅ △DMC", "SAS"]
+          ]
+        },
+        {
+          "title": "ASA with an angle bisector + CPCTC",
+          "given": "BD bisects ∠ABC and ∠ADC.",
+          "prove": "AB ≅ CB.",
+          "columns": ["Statement", "Reason"],
+          "rows": [
+            ["1) BD bisects ∠ABC and ∠ADC", "Given"],
+            ["2) ∠ABD ≅ ∠CBD, ∠ADB ≅ ∠CDB", "Definition of angle bisector"],
+            ["3) BD ≅ BD", "Reflexive Property"],
+            ["4) △ABD ≅ △CBD", "ASA"],
+            ["5) AB ≅ CB", "CPCTC"]
+          ]
+        },
+        {
+          "title": "HL with perpendicular lines",
+          "given": "BD ⊥ AC, AB ≅ CB.",
+          "prove": "△ABD ≅ △CBD.",
+          "columns": ["Statement", "Reason"],
+          "rows": [
+            ["1) BD ⊥ AC", "Given"],
+            ["2) ∠ADB and ∠CDB are right angles", "Definition of perpendicular"],
+            ["3) △ABD and △CBD are right triangles", "Definition of right triangle"],
+            ["4) AB ≅ CB (hypotenuses)", "Given"],
+            ["5) BD ≅ BD (leg)", "Reflexive Property"],
+            ["6) △ABD ≅ △CBD", "HL"]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "checklist",
+      "title": "Proof-writing checklist",
+      "type": "checklist",
+      "items": [
+        "Mark the diagram with everything from the Given (tick marks, arcs, right-angle boxes).",
+        "Look for free pieces: shared sides, vertical angles, parallel-line angles.",
+        "Pick the shortcut that matches what you have (SSS, SAS, ASA, AAS, HL).",
+        "Name the triangles in matching vertex order (△ABC ≅ △DEF means A↔D, B↔E, C↔F).",
+        "Every statement needs a reason: Given, definition, postulate, or theorem.",
+        "Need a side or angle after congruence? Finish with CPCTC."
+      ]
+    }
+  ]
+}

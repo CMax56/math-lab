@@ -1308,6 +1308,136 @@ def check_reference(uid, ref):
     check_html(where, ref.get("foot"))
 
 
+def check_cheatsheet(unit_ids):
+    """Read-only geometry cheat sheet. Shape only; the page renders the strings as text."""
+    path = CONTENT / "cheatsheet.json"
+    if not path.exists():
+        err("content/cheatsheet.json is missing")
+        return
+    data = load_json(path)
+    if not isinstance(data, dict):
+        err("content/cheatsheet.json: must be an object")
+        return
+
+    def walk(value, where):
+        if isinstance(value, str):
+            check_html(where, value)
+        elif isinstance(value, list):
+            for i, item in enumerate(value):
+                walk(item, f"{where}[{i}]")
+        elif isinstance(value, dict):
+            for key, item in value.items():
+                walk(item, f"{where}.{key}")
+        elif isinstance(value, bool):
+            return
+        elif value is not None:
+            err(f"{where}: unexpected {type(value).__name__}")
+
+    walk(data, "cheatsheet")
+    if not nonempty_str(data.get("title")) or not nonempty_str(data.get("subtitle")):
+        err("cheatsheet: needs a title and subtitle")
+    if not nonempty_str(data.get("footer")):
+        err("cheatsheet: needs a footer")
+    linked = data.get("units")
+    if not isinstance(linked, list) or not linked:
+        err("cheatsheet: units must list the unit pages that link here")
+    else:
+        for uid in linked:
+            if uid not in unit_ids:
+                err(f"cheatsheet: unit {uid!r} is not in the app.json units list")
+        for uid in ("transversals", "congruence"):
+            if uid not in linked:
+                err(f"cheatsheet: {uid} should link to the cheat sheet")
+    sections = data.get("sections")
+    if not isinstance(sections, list) or not sections:
+        err("cheatsheet: sections must be a non-empty list")
+        return
+    seen = set()
+    need = ["vocabulary", "properties", "theorems", "transversal", "solve-x",
+            "angle-proofs", "congruence", "congruence-proofs", "checklist"]
+    for sec in sections:
+        if not isinstance(sec, dict):
+            err("cheatsheet: each section must be an object")
+            continue
+        sid = sec.get("id")
+        where = f"cheatsheet/{sid or '?'}"
+        if not nonempty_str(sid) or sid in seen:
+            err(f"{where}: needs a unique id")
+        seen.add(sid)
+        if not nonempty_str(sec.get("title")):
+            err(f"{where}: missing title")
+        kind = sec.get("type")
+        if kind == "table":
+            cols = sec.get("columns")
+            rows = sec.get("rows")
+            if not isinstance(cols, list) or not cols or not all(nonempty_str(c) for c in cols):
+                err(f"{where}: table needs columns")
+            elif not isinstance(rows, list) or not rows:
+                err(f"{where}: table needs rows")
+            else:
+                for i, row in enumerate(rows):
+                    if not isinstance(row, list) or len(row) != len(cols) or not all(nonempty_str(c) for c in row):
+                        err(f"{where}: row {i + 1} needs {len(cols)} text cells")
+        elif kind == "bullets":
+            items = sec.get("items")
+            if not isinstance(items, list) or not items:
+                err(f"{where}: bullets need items")
+            else:
+                for i, item in enumerate(items):
+                    if not isinstance(item, dict) or not nonempty_str(item.get("name")) or not nonempty_str(item.get("text")):
+                        err(f"{where}: bullet {i + 1} needs a name and text")
+        elif kind == "steps":
+            if not isinstance(sec.get("steps"), list) or not all(nonempty_str(s) for s in sec.get("steps") or []):
+                err(f"{where}: steps must be a non-empty list of text")
+        elif kind == "proofs":
+            proofs = sec.get("proofs")
+            if not isinstance(proofs, list) or not proofs:
+                err(f"{where}: proofs must be a non-empty list")
+            else:
+                for i, proof in enumerate(proofs):
+                    pw = f"{where} proof {i + 1}"
+                    if not isinstance(proof, dict):
+                        err(f"{pw}: must be an object")
+                        continue
+                    for key in ("title", "given", "prove"):
+                        if not nonempty_str(proof.get(key)):
+                            err(f"{pw}: missing {key}")
+                    cols = proof.get("columns")
+                    rows = proof.get("rows")
+                    if not isinstance(cols, list) or cols != ["Statement", "Reason"]:
+                        err(f"{pw}: columns must be Statement and Reason")
+                    elif not isinstance(rows, list) or not rows:
+                        err(f"{pw}: needs rows")
+                    else:
+                        for r, row in enumerate(rows):
+                            if not isinstance(row, list) or len(row) != 2 or not all(nonempty_str(c) for c in row):
+                                err(f"{pw}: row {r + 1} needs a statement and a reason")
+        elif kind == "checklist":
+            items = sec.get("items")
+            if not isinstance(items, list) or not items or not all(nonempty_str(s) for s in items):
+                err(f"{where}: checklist items must be non-empty text")
+        else:
+            err(f"{where}: unknown section type {kind!r}")
+        if "tip" in sec and not nonempty_str(sec.get("tip")):
+            err(f"{where}: tip must be text")
+        if "note" in sec and not nonempty_str(sec.get("note")):
+            err(f"{where}: note must be text")
+        for i, ex in enumerate(sec.get("examples") or []):
+            if not isinstance(ex, dict) or not nonempty_str(ex.get("title")) or not nonempty_str(ex.get("text")):
+                err(f"{where}: example {i + 1} needs a title and text")
+        for i, block in enumerate(sec.get("blocks") or []):
+            if not isinstance(block, dict) or not nonempty_str(block.get("title")):
+                err(f"{where}: block {i + 1} needs a title")
+                continue
+            has_text = nonempty_str(block.get("text"))
+            has_items = isinstance(block.get("items"), list) and block["items"] and all(nonempty_str(s) for s in block["items"])
+            if has_text == has_items:
+                err(f"{where}: block {i + 1} needs text or a list of items")
+    for sid in need:
+        if sid not in seen:
+            err(f"cheatsheet: missing section {sid}")
+
+
 def check_content():
     cfg = load_json(CONTENT / "app.json")
     if not isinstance(cfg, dict):
@@ -1411,6 +1541,8 @@ def check_static(unit_ids):
     sw = (ROOT / "sw.js").read_text(encoding="utf-8") if (ROOT / "sw.js").exists() else ""
     if "js/figures.js" not in sw:
         err("sw.js CORE list is missing js/figures.js")
+    if "content/cheatsheet.json" not in sw:
+        err("sw.js CORE list is missing content/cheatsheet.json")
     if re.search(r"VERSION\s*=\s*'mathlab-v[12]'", sw):
         err("sw.js VERSION was not bumped past mathlab-v2; phones would keep a stale cache")
     html = (ROOT / "index.html").read_text(encoding="utf-8") if (ROOT / "index.html").exists() else ""
@@ -1443,9 +1575,11 @@ def check_static(unit_ids):
 def main():
     self_test()
     inventory = check_content()
+    unit_ids = [row[0] for row in inventory]
     for iid in sorted(set(ROUNDING_CASES) - ROUNDING_SEEN):
         err(f"rounding boundary cases: item {iid} not found in content")
-    check_static([row[0] for row in inventory])
+    check_cheatsheet(unit_ids)
+    check_static(unit_ids)
 
     print("Math Lab content inventory")
     print("-" * 80)

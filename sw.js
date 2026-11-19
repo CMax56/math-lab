@@ -1,6 +1,6 @@
 /* Math Lab service worker: offline cache for same-origin files only.
  * Bump VERSION whenever app files change so phones pick up the update. */
-var VERSION = 'mathlab-v8';
+var VERSION = 'mathlab-v9';
 
 var CORE = [
   './',
@@ -13,6 +13,7 @@ var CORE = [
   'js/app.js',
   'icons/icon.svg',
   'content/app.json',
+  'content/cheatsheet.json',
   'content/units/makeup-transversal.json',
   'content/units/makeup-linear-forms.json',
   'content/units/makeup-quotient.json',

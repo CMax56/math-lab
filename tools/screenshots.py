@@ -17,6 +17,7 @@ Exit code 0 = no browser errors and all checks passed.
 """
 import json
 import os
+import re
 import socket
 import subprocess
 import sys
@@ -88,7 +89,7 @@ def main():
                 page.screenshot(path=str(OUT / name), full_page=full)
 
             # ---- 1. every route ----
-            routes = ["/", "/makeup", "/parent"]
+            routes = ["/", "/makeup", "/parent", "/cheatsheet"]
             for uid, u in units.items():
                 routes += [f"/unit/{uid}", f"/cards/{uid}", f"/quiz/{uid}"]
                 routes += [f"/practice/{uid}/{i}" for i in range(len(u["practice"]))]
@@ -125,6 +126,8 @@ def main():
             for q in mq:
                 if page.locator(f".mq-card[href='#/unit/{q['prepUnit']}']", has_text=q["name"]).count() != 1:
                     fails.append(f"no make-up card linking {q['name']!r} to {q['prepUnit']}")
+            if page.locator(".hero a[href='#/cheatsheet']", has_text="Cheat Sheet").count() != 1:
+                fails.append("home has no Cheat Sheet button")
             page.screenshot(path=str(OUT / "home-makeup.png"))
             shot("home.png")
             # expand all terms for a full overview
@@ -312,6 +315,41 @@ def main():
             if len(st["makeups"]) != 4 or st.get("practice", {}).get("par-p01", {}).get("status") != "correct":
                 fails.append(f"seeding lost or duplicated data: {len(st['makeups'])} entries")
             c.close()
+
+            # ---- geometry cheat sheet (phone width, tables, collapsible proofs) ----
+            go("/cheatsheet")
+            sheet_text = page.locator("#app").text_content()
+            for need in ("Angle vocabulary", "less than 90°", "Reflexive Property", "AB ≅ AB",
+                         "Vertical Angles Theorem", "Same-side (consecutive) exterior", "2x + 41 = 51",
+                         "x = 5", "x = 20", "SSS", "SSA", "CPCTC", "△AMB ≅ △DMC", "BD ⊥ AC",
+                         "Proof-writing checklist", "Last updated Nov 19, 2026", "ℓ ∥ AC"):
+                if need not in sheet_text:
+                    fails.append(f"cheat sheet missing {need!r}")
+            if re.search(r"\bASS\b", sheet_text):
+                fails.append("cheat sheet used ASS; the shortcut is SSA")
+            if page.locator(".sheet-table").count() < 5:
+                fails.append(f"cheat sheet has {page.locator('.sheet-table').count()} tables, expected at least 5")
+            page.locator("details.proof").first.locator("summary").click()
+            page.wait_for_timeout(80)
+            if page.locator("details.proof[open]").count() != 1:
+                fails.append("cheat sheet proof did not open")
+            opened = page.locator("details.proof[open]").inner_text()
+            if "Linear Pair Postulate" not in opened or "∠1 ≅ ∠3" not in opened:
+                fails.append("opened angle proof is missing the two-column steps")
+            if page.evaluate("() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1"):
+                fails.append("cheat sheet page scrolls sideways on a phone")
+            nowrap = page.evaluate("""() => [...document.querySelectorAll('.sheet-table td, .sheet-table th')]
+              .filter(td => getComputedStyle(td).whiteSpace === 'nowrap').length""")
+            if nowrap:
+                fails.append(f"{nowrap} cheat sheet cells are nowrap and will not fit a phone")
+            shot("cheatsheet.png")
+            for uid in ("transversals", "congruence"):
+                go(f"/unit/{uid}")
+                if page.locator("a[href='#/cheatsheet']", has_text="Cheat Sheet").count() != 1:
+                    fails.append(f"{uid} unit page has no Cheat Sheet link")
+            go("/unit/linear")
+            if page.locator("a[href='#/cheatsheet']").count() != 0:
+                fails.append("linear unit page should not link to the cheat sheet")
             browser.close()
     finally:
         srv.terminate()

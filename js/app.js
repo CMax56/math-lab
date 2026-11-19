@@ -376,7 +376,8 @@
     show(
       h('section', { class: 'hero' },
         h('h1', { text: name ? 'Aloha, ' + name : 'Aloha' }),
-        h('p', { class: 'muted', text: [CONTENT.app.course, CONTENT.app.teacher].filter(Boolean).join(' · ') })),
+        h('p', { class: 'muted', text: [CONTENT.app.course, CONTENT.app.teacher].filter(Boolean).join(' · ') }),
+        cheatSheetEntry()),
       makeupQuizSection(),
       tip,
       h('div', { class: 'stats' },
@@ -457,6 +458,7 @@
       termOf(u.id) ? h('p', { class: 'term-line' }, h('span', { class: 'term-chip' + (termOf(u.id).id === currentTermId() ? ' now' : ''), text: termShortLabel(termOf(u.id)) })) : null,
       isPrepUnit(u.id) ? h('p', { class: 'term-line' }, h('span', { class: 'term-chip mq-chip', text: 'Make-up quiz prep' })) : null,
       h('h1', { text: u.title }),
+      cheatSheetEntry(u.id),
       isPrepUnit(u.id) ? makeupQuizNote() : null,
       relatedLinks(u),
       referenceCard(u.reference),
@@ -499,6 +501,105 @@
     return h('section', { class: 'card ref-card', 'aria-label': ref.title || 'Quick reference' },
       h('h2', { text: ref.title || 'Quick reference' }), dl,
       ref.foot ? h('p', { class: 'muted small ref-foot', html: ref.foot }) : null);
+  }
+
+  /* Read-only geometry cheat sheet (content/cheatsheet.json).
+   * Shown on the home screen, and on any unit named in cheatsheet.units. */
+  function cheatSheetEntry(unitId) {
+    var sheet = CONTENT.cheatsheet;
+    if (!sheet) return null;
+    if (unitId && (!sheet.units || sheet.units.indexOf(unitId) === -1)) return null;
+    return h('a', { class: 'sheet-entry', href: '#/cheatsheet' },
+      h('strong', { text: 'Cheat Sheet' }),
+      sheet.subtitle ? h('span', { text: sheet.subtitle }) : null);
+  }
+
+  function markClass(text) {
+    text = String(text || '');
+    if (text.indexOf('✅') !== -1 && text.indexOf('❌') === -1) return 'mark-yes';
+    if (text.indexOf('❌') !== -1) return 'mark-no';
+    return '';
+  }
+
+  function sheetCellText(text) {
+    /* A slash is not a wrap point, so "Addition/Subtraction" would overflow a phone column. */
+    return String(text == null ? '' : text).replace(/\//g, '/\u200b');
+  }
+
+  function sheetTable(columns, rows, opts) {
+    opts = opts || {};
+    var cls = 'sheet-table' + (opts.stack ? ' stack' : ' pairs') + (opts.proof ? ' proof-table' : '');
+    if ((columns || []).length > 2) cls += ' cols-3';
+    var table = h('table', { class: cls });
+    table.appendChild(h('thead', {}, h('tr', {}, (columns || []).map(function (c) {
+      return h('th', { scope: 'col', text: c });
+    }))));
+    var tbody = h('tbody');
+    (rows || []).forEach(function (row) {
+      tbody.appendChild(h('tr', {}, row.map(function (cell, i) {
+        var mark = markClass(cell);
+        return h('td', { 'data-label': columns[i] || '', class: mark || null, text: sheetCellText(cell) });
+      })));
+    });
+    table.appendChild(tbody);
+    return h('div', { class: 'sheet-wrap' }, table);
+  }
+
+  function renderProofs(proofs) {
+    return h('div', { class: 'proofs' }, (proofs || []).map(function (p) {
+      return h('details', { class: 'proof' },
+        h('summary', { text: p.title }),
+        h('div', { class: 'proof-body' },
+          h('p', {}, h('strong', { text: 'Given: ' }), p.given),
+          h('p', {}, h('strong', { text: 'Prove: ' }), p.prove),
+          sheetTable(p.columns || ['Statement', 'Reason'], p.rows, { stack: true, proof: true })));
+    }));
+  }
+
+  function renderSheetExtra(block) {
+    if (block.items) {
+      return h('div', { class: 'sheet-extra' },
+        h('h3', { text: block.title }),
+        h('ul', { class: 'sheet-list' }, block.items.map(function (item) { return h('li', { text: item }); })));
+    }
+    return h('div', { class: 'sheet-extra' }, h('h3', { text: block.title }), h('p', { text: block.text }));
+  }
+
+  function renderSheetSection(sec) {
+    var kids = [h('h2', { text: sec.title })];
+    if (sec.type === 'table') kids.push(sheetTable(sec.columns, sec.rows, { stack: (sec.columns || []).length > 2 || sec.stack === true }));
+    if (sec.type === 'bullets') {
+      kids.push(h('ul', { class: 'sheet-list' }, (sec.items || []).map(function (item) {
+        return h('li', {}, h('strong', { text: item.name + ': ' }), item.text);
+      })));
+    }
+    if (sec.steps && sec.steps.length) {
+      kids.push(h('ol', { class: 'sheet-steps' }, sec.steps.map(function (step) { return h('li', { text: step }); })));
+    }
+    (sec.examples || []).forEach(function (ex) {
+      kids.push(h('div', { class: 'sheet-example' }, h('h3', { text: ex.title }), h('p', { text: ex.text })));
+    });
+    if (sec.tip) kids.push(h('div', { class: 'sheet-tip' }, h('h3', { text: 'Tip' }), h('p', { text: sec.tip })));
+    if (sec.note) kids.push(h('p', { class: 'sheet-note', text: sec.note }));
+    if (sec.type === 'proofs') kids.push(renderProofs(sec.proofs));
+    if (sec.type === 'checklist') {
+      kids.push(h('ol', { class: 'sheet-steps' }, (sec.items || []).map(function (item) { return h('li', { text: item }); })));
+    }
+    (sec.blocks || []).forEach(function (block) { kids.push(renderSheetExtra(block)); });
+    return h('section', { class: 'card sheet-sec', id: 'sheet-' + sec.id }, kids);
+  }
+
+  function renderCheatSheet() {
+    var sheet = CONTENT.cheatsheet;
+    if (!sheet || !sheet.sections) return notFound();
+    var blocks = [
+      backLink('#/', 'Home'),
+      h('h1', { text: sheet.title || 'Cheat Sheet' }),
+      sheet.subtitle ? h('p', { class: 'muted sheet-sub', text: sheet.subtitle }) : null
+    ];
+    sheet.sections.forEach(function (sec) { blocks.push(renderSheetSection(sec)); });
+    if (sheet.footer) blocks.push(h('p', { class: 'muted small sheet-foot', text: sheet.footer }));
+    show(blocks);
   }
 
   function actionCard(href, title, desc, meta) {
@@ -1098,6 +1199,7 @@
       case 'quiz': return renderQuiz(parts[1]);
       case 'makeup': return renderMakeups();
       case 'parent': return renderParent();
+      case 'cheatsheet': return renderCheatSheet();
       default: return notFound();
     }
   }
@@ -1115,7 +1217,11 @@
 
   function loadContent() {
     return getJSON('content/app.json').then(function (cfg) {
-      return Promise.all(cfg.units.map(function (id) { return getJSON('content/units/' + id + '.json'); })).then(function (units) {
+      var loads = cfg.units.map(function (id) { return getJSON('content/units/' + id + '.json'); });
+      loads.push(getJSON('content/cheatsheet.json'));
+      return Promise.all(loads).then(function (parts) {
+        var sheet = parts.pop();
+        var units = parts;
         var byId = {};
         units.forEach(function (u) {
           u.practice = u.practice || [];
@@ -1128,7 +1234,7 @@
         var order = [];
         terms.forEach(function (t) { (t.units || []).forEach(function (id) { if (byId[id] && order.indexOf(id) === -1) order.push(id); }); });
         units.forEach(function (u) { if (order.indexOf(u.id) === -1) order.push(u.id); });
-        return { app: cfg.app || {}, strands: cfg.strands || {}, terms: terms, makeupQuizzes: cfg.makeupQuizzes || null, units: order.map(function (id) { return byId[id]; }), byId: byId };
+        return { app: cfg.app || {}, strands: cfg.strands || {}, terms: terms, makeupQuizzes: cfg.makeupQuizzes || null, cheatsheet: sheet, units: order.map(function (id) { return byId[id]; }), byId: byId };
       });
     });
   }

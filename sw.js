@@ -1,6 +1,6 @@
 /* Math Lab service worker: offline cache for same-origin files only.
  * Bump VERSION whenever app files change so phones pick up the update. */
-var VERSION = 'mathlab-v10';
+var VERSION = 'mathlab-v11';
 
 var CORE = [
   './',

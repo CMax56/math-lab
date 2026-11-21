@@ -1,6 +1,6 @@
 /* Math Lab service worker: offline cache for same-origin files only.
  * Bump VERSION whenever app files change so phones pick up the update. */
-var VERSION = 'mathlab-v9';
+var VERSION = 'mathlab-v10';
 
 var CORE = [
   './',
@@ -21,6 +21,7 @@ var CORE = [
   'content/units/systems.json',
   'content/units/quadratics.json',
   'content/units/exponent-rules.json',
+  'content/units/factoring-gcf.json',
   'content/units/foundations.json',
   'content/units/parallel-perpendicular.json',
   'content/units/transversals.json',

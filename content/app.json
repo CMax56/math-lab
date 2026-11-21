@@ -29,9 +29,9 @@
       "dates": "Aug 3 – Oct 2, 2026",
       "start": "2026-08-03",
       "end": "2026-10-02",
-      "units": ["linear", "systems", "quadratics", "exponent-rules", "foundations"],
+      "units": ["linear", "systems", "quadratics", "exponent-rules", "factoring-gcf", "foundations"],
       "groups": [
-        { "label": "Algebra Review", "units": ["linear", "systems", "quadratics", "exponent-rules"] },
+        { "label": "Algebra Review", "units": ["linear", "systems", "quadratics", "exponent-rules", "factoring-gcf"] },
         { "label": "Foundations of Geometry", "units": ["foundations"] }
       ]
     },
@@ -68,6 +68,7 @@
     "systems",
     "quadratics",
     "exponent-rules",
+    "factoring-gcf",
     "foundations",
     "parallel-perpendicular",
     "transversals",
